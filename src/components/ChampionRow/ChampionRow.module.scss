@@ -1,0 +1,120 @@
+.championRow {
+  display: flex;
+  background-color: var(--brand-secondary);
+  background-image: linear-gradient(110deg, var(--brand-primary) 40%, var(--brand-secondary) 100%);
+  border-radius: 10px;
+  padding: 6px 15px;
+  margin-bottom: 8px;
+  position: relative;
+  height: 75px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  border-left: 5px solid rgba(255,255,255,0.3);
+}
+
+.titleInfo {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  z-index: 1;
+}
+
+.titleIcon {
+  width: 90px;
+  height: 70px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+    transform: perspective(500px) rotateY(-10deg);
+  }
+}
+
+.titleText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65%;
+}
+
+.titleLabel {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--brand-primary);
+  text-shadow: 2px 2px 4px black;
+  margin: 0;
+  letter-spacing: 0.5px;
+  max-lines: 1;
+  text-overflow: ellipsis;
+}
+
+.championName {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 950;
+  font-style: italic;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+  
+}
+
+.portraitContainer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 70px;
+  display: flex;
+  pointer-events: none;
+  z-index: 2;
+
+  &.singleLayout {
+    width: 80px;
+    margin-right: 10px;
+    justify-content: center;
+  }
+
+  &.tagTeamLayout {
+    width: 120px;
+    justify-content: center;
+
+    .championPortrait {
+      &:nth-child(1) {
+        transform: translateX(25px);
+        margin-right: 20px;
+        z-index: 2;
+      }
+      &:nth-child(2) {
+        transform: translateX(-25px);
+        z-index: 3;
+      }
+    }
+  }
+}
+
+.championPortrait {
+  flex-shrink: 0;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(-5px 0 10px rgba(0,0,0,0.5));
+  }
+
+  .placeholder {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+  }
+}

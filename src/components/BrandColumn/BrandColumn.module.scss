@@ -1,0 +1,31 @@
+.column {
+  flex: 1 1 300px;
+  background-color: #0c0c0c;
+  border: 4px solid var(--brand-primary);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  margin: 5px;
+  transition: transform 0.3s ease;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 15px rgba(var(--brand-primary-rgb), 0.2);
+  }
+}
+
+.header {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brandLogo {
+  height: 100px;
+  width: 250px;
+  object-fit: cover;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.15));
+}

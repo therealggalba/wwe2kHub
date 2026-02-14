@@ -1,73 +1,47 @@
-# React + TypeScript + Vite
+# wwe2kHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Producido por IA
 
-Currently, two official plugins are available:
+Este proyecto ha sido desarrollado con la asistencia de **Antigravity**, siguiendo una metodología estricta para garantizar calidad, escalabilidad y facilidad de mantenimiento.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🛠️ Tecnología Utilizada
 
-## React Compiler
+| Tecnología | Propósito | Razón de Elección |
+| :--- | :--- | :--- |
+| **TypeScript** | Lenguaje Principal | Proporciona tipado estático, reduciendo errores en tiempo de ejecución y mejorando la autocompletación y documentación del código. |
+| **Vite** | Build Tool | Ofrece un entorno de desarrollo extremadamente rápido gracias a su sistema de HMR (Hot Module Replacement) nativo de ES Modules. |
+| **React** | Biblioteca UI | Permite la creación de interfaces de usuario modulares y reactivas mediante componentes reutilizables. |
+| **Vitest** | Framework de Testing | Rápido, ligero y compatible con la configuración de Vite, ideal para implementar TDD de forma fluida. |
+| **SCSS Modules** | Estilos | Permite un diseño manual y modular, evitando conflictos de selectores y facilitando la personalización del tema sin ad-hoc utilities. |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🛑 Reglas de Validación Estrictas
 
-## Expanding the ESLint configuration
+Para asegurar la integridad del proyecto, se aplican las siguientes reglas:
+- **Cero Errores de Compilación**: No se dará por válida ninguna entrega o fase que contenga errores de compilación de TypeScript o Vite.
+- **Cero Tests Fallidos**: Todos los tests deben pasar exitosamente. Un solo test fallido invalida la implementación actual.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🧠 Metodología de Implementación por IA
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+El desarrollo de este proyecto se basa en los siguientes principios:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Test-Driven Development (TDD)**: Es obligatorio escribir y verificar tests antes de implementar cualquier funcionalidad. Esto asegura que cada pieza de código cumple con su propósito y previene regresiones.
+2.  **Modularidad Extrema**: Tanto el código (React) como los estilos (SCSS) se mantienen en archivos pequeños y específicos para cada componente.
+3.  **Planificación por Etapas**: Antes de cada gran cambio, se genera un plan de implementación detallado para ser revisado y aprobado, asegurando que el desarrollo está alineado con las expectativas.
+4.  **Calidad sobre Rapidez**: Se prioriza la legibilidad del código y el seguimiento de las mejores prácticas de ingeniería sobre la entrega inmediata de funcionalidades.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 🏃 Cómo empezar
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+# Instalar dependencias
+npm install
+
+# Lanzar entorno de desarrollo
+npm run dev
+
+# Ejecutar tests
+npm test
 ```

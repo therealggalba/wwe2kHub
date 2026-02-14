@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba($dark-bg, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  border-bottom: 2px solid $primary-red;
+  transition: all $standard-transition;
+
+  @media (max-width: $tablet) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: $mobile) {
+    height: 50px;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: $accent-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  @media (max-width: $mobile) {
+    font-size: 1.25rem;
+  }
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+
+  @media (max-width: $tablet) {
+    gap: 0.75rem;
+  }
+}
+
+.navButton {
+  background: transparent;
+  color: $text-white;
+  padding: 0.4rem 0.8rem;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  transition: all $standard-transition;
+  border-bottom: 2px solid transparent;
+
+  &:hover {
+    color: $primary-red;
+  }
+
+  &.active {
+    border-bottom: 2px solid $primary-red;
+  }
+
+  @media (max-width: $mobile) {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

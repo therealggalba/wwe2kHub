@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.rosterPage {
+  width: 100%;
+}
+
+.brandContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  gap: 15px; // Ensure gap between columns
+}
+
+.championsSection {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.rosterGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  width: 100%;
+}

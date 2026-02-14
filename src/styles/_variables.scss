@@ -1,0 +1,20 @@
+// WWE Colors
+$primary-red: #e00012;
+$secondary-red: #ff3333;
+$dark-bg: #0a0a0a;
+$card-bg: #1a1a1a;
+$text-white: #ffffff;
+$text-gray: #b3b3b3;
+$accent-gradient: linear-gradient(135deg, $primary-red, $secondary-red);
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1200px;
+
+// Transitions
+$standard-transition: 0.3s ease;
+
+// Typography
+$font-family: 'Inter', system-ui, -apple-system, sans-serif;

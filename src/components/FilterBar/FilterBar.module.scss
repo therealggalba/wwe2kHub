@@ -1,0 +1,63 @@
+.filterBar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  &:not(:last-of-type) {
+    position: relative;
+    padding-right: 15px;
+    
+    &::after {
+      content: '|';
+      position: absolute;
+      right: -2px;
+      color: var(--brand-primary);
+      opacity: 0.3;
+      font-weight: 300;
+    }
+  }
+}
+
+.filterButton {
+  background: none;
+  border: none;
+  color: var(--brand-primary);
+  opacity: 0.4;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 900;
+  font-style: italic;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
+  &:hover {
+    opacity: 1;
+    transform: skew(-10deg);
+  }
+
+  &.active {
+    opacity: 1;
+    color: var(--brand-primary);
+    font-weight: 1000;
+    transform: scale(1.05);
+  }
+}
+
+.dots {
+  color: #888;
+  font-weight: 900;
+}
