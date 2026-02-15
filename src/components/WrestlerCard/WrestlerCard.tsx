@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { slugify } from '../../utils/slugify';
 import styles from './WrestlerCard.module.scss';
 
 interface WrestlerCardProps {
@@ -20,7 +22,8 @@ const WrestlerCard: React.FC<WrestlerCardProps> = ({
 }) => {
   const displayImage = avatar || image;
   return (
-    <div 
+    <Link 
+      to={`/roster/${slugify(name)}`}
       className={styles.card} 
       style={{ 
         '--brand-primary': primaryColor,
@@ -38,7 +41,7 @@ const WrestlerCard: React.FC<WrestlerCardProps> = ({
         <h4 className={styles.wrestlerName}>{name.toUpperCase()}</h4>
         {faction && <p className={styles.factionName}>{faction}</p>}
       </div>
-    </div>
+    </Link>
   );
 };
 

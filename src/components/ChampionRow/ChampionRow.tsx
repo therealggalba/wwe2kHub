@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { slugify } from '../../utils/slugify';
 import styles from './ChampionRow.module.scss';
 import type { Wrestler } from '../../models/types';
 
@@ -68,17 +70,18 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
       <div className={`${styles.portraitContainer} ${isTagTeam ? styles.tagTeamLayout : styles.singleLayout}`}>
         {sortedChampions.length > 0 ? (
           (isTagTeam ? sortedChampions.slice(0, 2) : [sortedChampions[0]]).map((champion, index) => (
-            <div 
+            <Link 
               key={champion.id} 
+              to={`/roster/${slugify(champion.name)}`}
               className={styles.championPortrait}
               style={{ '--index': index } as React.CSSProperties}
             >
-              {champion.image ? (
-                <img src={champion.image} alt={champion.name} />
+              {champion.avatar ? (
+                <img src={champion.avatar} alt={champion.name} />
               ) : (
                 <div className={styles.placeholder}>👤</div>
               )}
-            </div>
+            </Link>
           ))
         ) : (
           <div className={styles.championPortrait}>
