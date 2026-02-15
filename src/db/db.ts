@@ -10,8 +10,8 @@ export class WWE2kDatabase extends Dexie {
 
   constructor() {
     super('WWE2kDatabase');
-    this.version(3).stores({
-      wrestlers: '++id, name, brandId, rating, gender, alignment',
+    this.version(4).stores({
+      wrestlers: '++id, name, brandId, rating, gender, alignment, *currentTitlesIds',
       shows: '++id, name, date, brandId, type',
       brands: '++id, name, logo',
       championships: '++id, name, brandId, currentChampionId',

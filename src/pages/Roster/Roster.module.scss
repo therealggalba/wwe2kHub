@@ -1,7 +1,16 @@
 @use '../../styles/variables' as *;
 
 .rosterPage {
-  width: 100%;
+  min-height: 100vh;
+  color: #fff;
+  padding: 0.5rem;
+  background-attachment: fixed;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0px;
 }
 
 .brandContainer {

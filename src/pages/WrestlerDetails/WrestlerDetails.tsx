@@ -18,6 +18,7 @@ const WrestlerDetails: React.FC = () => {
   const [brand, setBrand] = useState<Brand | null>(null);
   const [allBrands, setAllBrands] = useState<Brand[]>([]);
   const [titles, setTitles] = useState<Championship[]>([]);
+  const [allChampionships, setAllChampionships] = useState<Championship[]>([]);
   const [loading, setLoading] = useState(true);
   
   // Edit State
@@ -30,6 +31,9 @@ const WrestlerDetails: React.FC = () => {
       
       const brandsData = await db.brands.toArray();
       setAllBrands(brandsData);
+
+      const championshipsData = await db.championships.toArray();
+      setAllChampionships(championshipsData);
 
       const allWrestlers = await db.wrestlers.toArray();
       const foundWrestler = allWrestlers.find(w => slugify(w.name) === slug);
@@ -56,6 +60,14 @@ const WrestlerDetails: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    
+    if (name === 'currentTitlesIds') {
+      const select = e.target as HTMLSelectElement;
+      const values = Array.from(select.selectedOptions).map(opt => Number(opt.value));
+      setFormData(prev => ({ ...prev, currentTitlesIds: values }));
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: (name === 'rating' || name === 'brandId') ? Number(value) : value
@@ -66,8 +78,67 @@ const WrestlerDetails: React.FC = () => {
     if (!wrestler?.id) return;
     
     try {
+      const oldTitles = wrestler.currentTitlesIds || [];
+      const newTitles = formData.currentTitlesIds || [];
+
+      // 1. Identify titles removed from this wrestler
+      const removedTitles = oldTitles.filter(id => !newTitles.includes(id));
+      for (const titleId of removedTitles) {
+        await db.championships.update(titleId, { currentChampionId: undefined });
+      }
+
+      // 2. Identify titles added to this wrestler
+      const addedTitles = newTitles.filter(id => !oldTitles.includes(id));
+      for (const titleId of addedTitles) {
+        const title = await db.championships.get(titleId);
+        if (!title) continue;
+
+        const isTagTeam = title.name.toLowerCase().includes('tag team');
+        const currentHolders = await db.wrestlers.where('currentTitlesIds').equals(titleId).toArray();
+
+        if (isTagTeam) {
+          // Tag Team Logic: Max 2 holders
+          if (currentHolders.length >= 2) {
+            // Remove from the "oldest" holder (first one that isn't the current wrestler)
+            const oldestHolder = currentHolders.find(h => h.id !== wrestler.id);
+            if (oldestHolder) {
+              const updatedOwnerTitles = (oldestHolder.currentTitlesIds || []).filter(id => id !== titleId);
+              await db.wrestlers.update(oldestHolder.id!, { currentTitlesIds: updatedOwnerTitles });
+            }
+          }
+        } else {
+          // Singular Title Logic: Max 1 holder
+          for (const holder of currentHolders) {
+            if (holder.id !== wrestler.id) {
+              const updatedOwnerTitles = (holder.currentTitlesIds || []).filter(id => id !== titleId);
+              await db.wrestlers.update(holder.id!, { currentTitlesIds: updatedOwnerTitles });
+            }
+          }
+        }
+        
+        // Update championship to point to the most recent owner
+        await db.championships.update(titleId, { currentChampionId: wrestler.id });
+      }
+
+      // 3. Update current wrestler
       await db.wrestlers.update(wrestler.id, formData);
-      setWrestler({ ...wrestler, ...formData } as Wrestler);
+      
+      // Reload wrestler and titles to reflect changes correctly
+      const updatedWrestler = await db.wrestlers.get(wrestler.id);
+      if (updatedWrestler) {
+        setWrestler(updatedWrestler);
+        if (updatedWrestler.brandId) {
+          const brandData = await db.brands.get(updatedWrestler.brandId);
+          if (brandData) setBrand(brandData);
+        }
+        if (updatedWrestler.currentTitlesIds && updatedWrestler.currentTitlesIds.length > 0) {
+          const titleData = await db.championships.bulkGet(updatedWrestler.currentTitlesIds);
+          setTitles(titleData.filter((t): t is Championship => t !== undefined));
+        } else {
+          setTitles([]);
+        }
+      }
+
       setIsEditing(false);
       alert('Cambios guardados correctamente');
     } catch (error) {
@@ -168,6 +239,26 @@ const WrestlerDetails: React.FC = () => {
                   {allBrands.map(b => (
                     <option key={b.id} value={b.id}>{b.name}</option>
                   ))}
+                </select>
+              </div>
+              <div className={styles.formGroup}>
+                <label>TITLES (Ctrl+Click multi)</label>
+                <select 
+                  name="currentTitlesIds" 
+                  multiple 
+                  value={(formData.currentTitlesIds || []).map(String)} 
+                  onChange={handleInputChange}
+                  className={styles.multiSelect}
+                >
+                  {allChampionships
+                    .filter(c => c.brandId === formData.brandId)
+                    .filter(c => {
+                      const isWomenTitle = c.name.toLowerCase().includes('women');
+                      return wrestler.gender === 'Female' ? isWomenTitle : !isWomenTitle;
+                    })
+                    .map(c => (
+                      <option key={c.id} value={c.id}>{c.name}</option>
+                    ))}
                 </select>
               </div>
               <button className={styles.saveButton} onClick={handleSave}>

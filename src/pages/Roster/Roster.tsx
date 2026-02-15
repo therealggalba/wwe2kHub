@@ -137,20 +137,33 @@ const Roster: React.FC = () => {
           .filter(id => id !== undefined);
 
         if (!existing) {
-          await db.wrestlers.add({
+          const wrestlerId = await db.wrestlers.add({
             ...wrestlerData,
             name: wrestlerName,
             brandId: brandId,
             currentTitlesIds,
             historicalTitlesIds: []
           });
+          // Sync titles table
+          for (const titleId of currentTitlesIds) {
+            await db.championships.update(titleId, { currentChampionId: wrestlerId });
+          }
         } else {
+          // Only update visual metadata to avoid overwriting user edits in the UI
           await db.wrestlers.update(existing.id!, { 
-            ...wrestlerData,
-            name: wrestlerName,
-            brandId: brandId,
-            currentTitlesIds 
+            image: wrestlerData.image,
+            avatar: wrestlerData.avatar,
+            gender: wrestlerData.gender
           });
+          
+          // CRITICAL: Even if wrestler exists, if we haven't synced titles yet in this DB session, 
+          // we should ensure the championship record points to this wrestler if they hold it.
+          for (const titleId of existing.currentTitlesIds || []) {
+            const title = await db.championships.get(titleId);
+            if (title && !title.currentChampionId) {
+              await db.championships.update(titleId, { currentChampionId: existing.id });
+            }
+          }
         }
       }
 

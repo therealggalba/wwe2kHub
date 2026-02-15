@@ -1,0 +1,33 @@
+.toolsContainer {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
+
+.toolButton {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #aaa;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Outfit', sans-serif;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--brand-primary, #fff);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}

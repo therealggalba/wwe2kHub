@@ -340,7 +340,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['United States Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Cedric Alexander',
@@ -476,7 +476,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['WWE Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Cruz Del Toro',
@@ -561,7 +561,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['Intercontinental Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Dragon Lee',
@@ -595,7 +595,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['World Heavyweight Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Duke Hudson',
@@ -680,7 +680,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT North American Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Finn Balor',
@@ -867,7 +867,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['World Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: 'Jimmy Uso',
@@ -884,7 +884,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['World Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: 'Joaquin Wilde',
@@ -952,7 +952,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'John Cena',
@@ -986,7 +986,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['WWE Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: 'Josh Briggs',
@@ -1751,7 +1751,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: 'The Miz',
@@ -1785,7 +1785,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['WWE Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: 'Tonga Loa',
@@ -1802,7 +1802,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT Tag Team Champions']
+    holdsTitleNames: ['']
   },
   {
     name: "Tony D'Angelo",
@@ -2041,7 +2041,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['United States Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'B-Fab',
@@ -2109,7 +2109,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Brie Bella',
@@ -2177,7 +2177,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['Intercontinental Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Carmella',
@@ -2398,7 +2398,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'SMACKDOWN',
-    holdsTitleNames: ['World Heavyweight Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Jaida Parker',
@@ -2908,7 +2908,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'RAW',
-    holdsTitleNames: ['WWE Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Tamina',
@@ -2976,7 +2976,7 @@ export const WRESTLERS_SEED: SeedWrestler[] = [
     moral: 100,
     contract: 'Full-time',
     brandName: 'NXT',
-    holdsTitleNames: ['NXT North American Women Champion']
+    holdsTitleNames: ['']
   },
   {
     name: 'Tiffany Stratton',
