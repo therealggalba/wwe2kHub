@@ -1,0 +1,616 @@
+.eventCreationPage {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .topBar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: #111;
+    padding: 0.25rem 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+
+    .typeLabel {
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    .brandDropdownContainer {
+      position: relative;
+      
+      .brandDropdownHeader {
+        cursor: pointer;
+        border: 1px solid var(--primary);
+        padding: 0.5rem;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:hover { border-color: var(--primary); border: 2px solid var(--primary);}
+        
+        .currentBrandLogo {
+          height: 60px;
+          width: 80px;
+          display: block;
+          object-fit: contain;
+        }
+
+        .sharedLabel {
+          font-size: 0.7rem;
+          font-weight: bold;
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-top: -0.5rem;
+        }
+      }
+
+      .brandDropdownList {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #000;
+        border: 1px solid gray;
+        z-index: 100;
+        width: 250px;
+        
+        .brandOption {
+          display: flex;
+          align-items: center;
+          gap: 0.3rem;
+          padding: 0.3rem;
+          cursor: pointer;
+          &:hover { background: #222; color: var(--primary); }
+          &.active { border-left: 2px solid var(--primary); }
+          img { height: 50px; }
+          span { font-weight: bold; }
+        }
+      }
+    }
+
+    .showInfo {
+      flex: 1;
+      .showDropdownContainer {
+        position: relative;
+        width: 100%;
+        
+        .showDropdownHeader {
+          background: rgba(0,0,0,0.5);
+          border: 1px solid var(--primary);
+          border-radius: 4px;
+          padding: 0.5rem 1rem;
+          cursor: pointer;
+          min-height: 60px;
+          display: flex;
+          align-items: center;
+          
+          &:hover { border-width: 2px; }
+
+          .selectedShow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            .showLogoHeader {
+              height: 70px;
+              object-fit: contain;
+            }
+            span {
+              font-size: 1.2rem;
+              font-weight: bold;
+              font-style: italic;
+            }
+          }
+
+          .placeholderText {
+            color: #666;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-style: italic;
+          }
+        }
+
+        .showDropdownList {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background: #000;
+          border: 1px solid var(--primary);
+          border-top: none;
+          max-height: 400px;
+          overflow-y: auto;
+          z-index: 200;
+          
+          .showOption {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #222;
+            
+            &:hover {
+              background: #111;
+              .showOptionLeft span { color: var(--primary); }
+            }
+            
+            .showOptionLeft {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              .showOptionImage {
+                height: 40px;
+                width: 60px;
+                object-fit: contain;
+              }
+              span {
+                font-weight: bold;
+                font-style: italic;
+                text-transform: uppercase;
+              }
+            }
+
+            .sharedIndicators {
+              display: flex;
+              gap: 0.3rem;
+              .miniLogo {
+                height: 40px;
+                width: 60px;
+                object-fit: contain;
+              }
+            }
+          }
+        }
+      }
+
+      .weeklyPlaceholder {
+        font-size: 1.5rem;
+        color: rgba($color: #000000, $alpha: 0.3);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-style: italic;
+      }
+    }
+
+    .timeInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .inputGroup {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        input {
+          width: 80px;
+          background: #fff;
+          color: #000;
+          border: none;
+          padding: 0.2rem 0.5rem;
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+        span {
+          font-size: 1.2rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-style: italic;
+          min-width: 100px;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
+.controlBar {
+  display: flex;
+  align-items: center;
+  background: var(--primary);
+  padding: 0.5rem 2rem;
+  border-radius: 99px;
+  gap: 2rem;
+  border: 2px solid #fff;
+
+  .carteleraLabel {
+    font-size: 1rem;
+    font-weight: 800;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  .addButtons {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    span {
+      font-weight: bold;
+    }
+    button {
+      background: #fff;
+      color: #000;
+      border: none;
+      padding: 0.4rem 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        background: #eee;
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        background: #555;
+        color: #888;
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+    }
+
+    .warningHint {
+      font-size: 0.8rem;
+      color: #ffca28;
+      font-style: italic;
+      margin-left: 0.5rem;
+      animation: fadeIn 0.5s;
+    }
+  }
+
+  .rosterToggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    span {
+      font-weight: bold;
+    }
+    button {
+      background: transparent;
+      color: #fff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &.active {
+        background: gray;
+        color: #000;
+      }
+    }
+  }
+}
+
+.segmentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.segmentWrapper {
+  background: var(--primary);
+  border: 4px solid #fff;
+  padding: 0.5rem 1rem;
+  position: relative;
+
+  .segmentHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .headerLeft {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .segmentTitle {
+      font-size: 1rem;
+      font-weight: 800;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+    .deleteBtn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 1rem;
+    font-family: inherit;
+    resize: none;
+    font-size: 0.6rem;
+    font-weight: bold;
+    &::placeholder { color: #888; }
+  }
+}
+
+.participantControls {
+  display: flex;
+  align-items: center;
+}
+
+.addParticipantBtn, .removeParticipantBtn {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-style: italic;
+  font-size: 1rem;
+  padding: 0.1rem 0.4rem;
+  margin-right: 10px;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    font-size: 1.1rem;
+  }
+}
+
+.removeParticipantBtn {
+  &:hover {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    font-size: 1.1rem;
+  }
+}
+
+.promoContent {
+  display: flex;
+  background: #fff;
+  padding: 1rem;
+  gap: 1rem;
+  min-height: 200px;
+
+    .promoLeft {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+    .promoGrid {
+      display: grid;
+      gap: 0.1rem;
+      height: 150px;
+      
+      &.grid-1 { grid-template-columns: 1fr; }
+      &.grid-2 { grid-template-columns: 1fr 1fr; }
+      &.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+      &.grid-4 { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
+      &.grid-5, &.grid-6 { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
+
+      .pSlot {
+        background: #eee;
+        border: 2px dashed #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        overflow: hidden;
+        img { width: 100%; height: 100%; object-fit: cover;}
+        .placeholder { font-size: 2rem; color: #ccc; }
+      }
+    }
+  }
+  .promoRight {
+    flex: 5;
+    textarea {
+      height: 100%;
+      background: #eee;
+      border: 2px solid #000;
+    }
+  }
+}
+
+.matchContent {
+  background: #fff;
+  padding: 1rem;
+
+  .matchControls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    select {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+
+  .matchBody {
+    display: flex;
+    gap: 2rem;
+    border: 2px solid #000;
+    padding: 0.6rem 0.4rem;
+
+    .matchParticipants {
+      flex: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .participantNode {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.3rem;
+        min-width: 100px;
+      }
+
+      .pSlot {
+        width: 100px;
+        height: 100px;
+        background: #eee;
+        border: 2px dashed var(--primary);
+        cursor: pointer;
+        position: relative;
+        img { width: 100%; height: 100%; object-fit: cover; }
+        .placeholder { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 2rem; }
+
+        &.locked {
+          border: 2px solid gold;
+          cursor: not-allowed;
+          &::after {
+            content: '👑';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 0.8rem;
+            background: #000;
+            border-radius: 50%;
+            padding: 2px;
+          }
+        }
+      }
+
+      .pName { 
+        font-weight: 800; 
+        font-style: italic; 
+        text-transform: uppercase; 
+        color: black;
+        font-size: 0.6rem;
+        text-align: center;
+        white-space: normal;
+        max-lines: 1;
+      }
+      
+      .vs { 
+        font-weight: 800; 
+        font-size: 2rem; 
+        font-style: italic; 
+        color: var(--primary); 
+        margin: 0 0.5rem;
+        align-self: center;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .matchRight {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .winnerSection {
+        display: flex;
+        flex-direction: column;
+        label { font-weight: 900; font-style: italic; }
+        select {
+          background: #eee;
+          color: var(--primary);
+          border: 2px solid #000;
+          padding: 0.5rem;
+          font-weight: bold;
+        }
+      }
+
+      textarea {
+        background: #eee;
+        border: 2px solid #000;
+        height: 120px;
+      }
+    }
+  }
+}
+
+.footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+
+  .saveBtn {
+    background: #fff;
+    color: #000;
+    border: 3px solid var(--primary);
+    padding: 1rem 3rem;
+    font-weight: 800;
+    cursor: pointer;
+    font-size: 1rem;
+    &:hover {
+      background: lime;
+    }
+  }
+}
+
+.rosterModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: black;
+  border: 5px solid var(--primary);
+  width: 80%;
+  max-width: 1000px;
+  max-height: 80vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  .modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    button {
+      background: var(--primary);
+      border: none;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+
+  .wrestlerGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.2rem;
+    overflow-y: auto;
+
+    .wrestlerItem {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      background: #1a1a1a;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: transform 0.2s;
+
+      &:hover {
+        transform: scale(1.05);
+        background: #252525;
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+
+      span {
+        font-size: 0.5rem;
+        text-align: center;
+      }
+    }
+  }
+}

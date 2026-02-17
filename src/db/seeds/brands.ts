@@ -26,4 +26,10 @@ export const BRANDS_SEED: SeedBrand[] = [
     secondaryColor: '#000000',
     logo: './visuals/Brands/nxt.png',
   },
+  {
+    name: 'SHARED',
+    primaryColor: '#814ac0ff',
+    secondaryColor: '#000000',
+    logo: './visuals/Brands/shared.png',
+  },
 ];

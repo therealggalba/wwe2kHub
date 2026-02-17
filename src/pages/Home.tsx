@@ -20,23 +20,50 @@ const Home = () => {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        {[1, 2, 3].map((i) => (
-          <div key={i} style={{ 
-            backgroundColor: '#1a1a1a', 
-            padding: '2rem', 
-            borderRadius: '12px', 
-            borderLeft: '4px solid #e00012',
-            transition: 'transform 0.3s ease',
-            cursor: 'pointer'
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.transform = 'translateY(-10px)')}
-          onMouseLeave={(e) => (e.currentTarget.style.transform = 'translateY(0)')}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', justifyContent: 'center' }}>
+        {[
+          { title: 'Show Semanal', type: 'semanal', description: 'Crea y gestiona tu programación semanal (RAW, SmackDown, NXT).' },
+          { title: 'Show Especial', type: 'especial', description: 'Planifica eventos premium en vivo (WrestleMania, Royal Rumble, etc.).' }
+        ].map((event) => (
+          <div 
+            key={event.type} 
+            onClick={() => window.location.href = `/create-event/${event.type}`}
+            style={{ 
+              backgroundColor: '#1a1a1a', 
+              padding: '2rem', 
+              borderRadius: '12px', 
+              borderLeft: `4px solid ${event.type === 'semanal' ? '#e00012' : '#ffd700'}`,
+              transition: 'transform 0.3s ease, border-color 0.3s ease',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '1rem'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-10px)';
+              e.currentTarget.style.backgroundColor = '#252525';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.backgroundColor = '#1a1a1a';
+            }}
           >
-            <h3 style={{ marginBottom: '1rem', color: '#e00012' }}>Card Title {i}</h3>
-            <p style={{ color: '#b3b3b3' }}>
-              Descripción dummy para mostrar el estilo premium y el layout responsivo de la aplicación wwe2kHub.
+            <h3 style={{ margin: 0, color: event.type === 'semanal' ? '#e00012' : '#ffd700', fontSize: '1.5rem', fontWeight: 'bold' }}>
+              {event.title}
+            </h3>
+            <p style={{ color: '#b3b3b3', fontSize: '1rem', lineHeight: '1.5' }}>
+              {event.description}
             </p>
+            <div style={{ 
+              marginTop: 'auto', 
+              paddingTop: '1rem', 
+              color: event.type === 'semanal' ? '#e00012' : '#ffd700',
+              fontWeight: '900',
+              fontSize: '0.9rem',
+              letterSpacing: '1px'
+            }}>
+              GESTIONAR →
+            </div>
           </div>
         ))}
       </div>

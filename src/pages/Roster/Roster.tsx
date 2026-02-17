@@ -194,7 +194,7 @@ const Roster: React.FC = () => {
           await db.shows.add({
             name: showName,
             brandId: brandId,
-            valuation: showData.valuation,
+            valuation: (showData as any).valuation,
             type: showData.type,
             date: new Date()
           });
@@ -205,7 +205,7 @@ const Roster: React.FC = () => {
       const allWrestlers = await db.wrestlers.toArray();
       const allTitles = await db.championships.toArray();
 
-      setBrands(allBrands.filter(b => b.name !== 'FREE AGENT'));
+      setBrands(allBrands.filter(b => b.name !== 'FREE AGENT' && b.name !== 'SHARED'));
       setWrestlers(allWrestlers);
       setTitles(allTitles);
       setLoading(false);

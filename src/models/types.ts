@@ -1,6 +1,6 @@
 // Types for the WWE2kHub Data Model
 
-export type BrandName = "RAW" | "NXT" | "SMACKDOWN" | "FREE AGENT";
+export type BrandName = "RAW" | "NXT" | "SMACKDOWN" | "FREE AGENT" | "SHARED";
 
 export interface Brand {
   id?: number;
@@ -67,18 +67,27 @@ export interface Match {
   participantsIds: number[];
   winnersIds: number[];
   rating: number; // 0-5 stars
+  notes?: string;
 }
 
 export interface Promo {
-  id?: string;
+  id: string;
   participantsIds: number[];
   description: string;
-  rating: number;
+  rating?: number;
+}
+
+export interface Video {
+  id: string;
+  description: string;
 }
 
 export interface Segment {
-  type: "Match" | "Promo";
-  data: Match | Promo;
+  id: string;
+  type: "Match" | "Promo" | "Video";
+  matchData?: Match;
+  promoData?: Promo;
+  videoData?: Video;
 }
 
 export interface MatchCard {
