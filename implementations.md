@@ -46,3 +46,19 @@ Registro detallado de todas las funcionalidades, mejoras y cambios realizados en
   - Componentes `WrestlerCard` y `BrandColumn`.
   - Sistema de auto-seeding de datos para demostración.
 - **Testing**: Tests de integración en `Roster.test.tsx`.
+
+---
+
+## 17 de Febrero de 2026 - Gestión de Marcas y Mejora en Creación de Eventos
+- **Implementación**: Evolución de la marca "SHARED" y robustez en la creación de eventos.
+- **Detalle**: 
+  - **Marca Standalone SHARED**: La marca SHARED ahora funciona como una entidad propia, agrupando todos los luchadores y títulos para PLEs.
+  - **Sincronización e Idempotencia**: Sistema de seeding mejorado en `EventCreation` que sincroniza marcas y limpia duplicados automáticamente.
+  - **Headers Dinámicos**: Los eventos semanales ahora muestran automáticamente el logo y nombre oficial (RAW, SmackDown, NXT) en el selector.
+  - **Filtros Avanzados en Modal**: Integración de `FilterBar` en el modal de selección de luchadores con filtros por Género y Alignment.
+  - **Restricción Intergénero**: Lógica de validación que impide combates mixtos basándose en el primer participante seleccionado.
+  - **Validaciones de Integridad**: 
+    - Reset automático de participantes al cambiar estipulación o título.
+    - Bloqueo de creación de segmentos en PLEs hasta que se elija un evento.
+    - Selección obligatoria de ganador (incluyendo opción "NO CONTEST") para poder avanzar o guardar.
+  - **Refinamiento de UI**: Exclusión de la marca SHARED en la vista de Roster principal por petición del usuario.
