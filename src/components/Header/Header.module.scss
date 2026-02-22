@@ -27,6 +27,12 @@
   }
 }
 
+.titleLink {
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+}
+
 .title {
   font-size: 1.5rem;
   font-weight: 900;
@@ -35,6 +41,7 @@
   letter-spacing: -1px;
   background: $accent-gradient;
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
   @media (max-width: $mobile) {

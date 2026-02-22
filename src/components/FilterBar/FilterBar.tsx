@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './FilterBar.module.scss';
 
-export type GenderFilter = 'TODOS' | 'MEN' | 'WOMEN';
-export type AlignmentFilter = 'TODOS' | 'FACES' | 'HEELS';
+export type GenderFilter = 'ALL' | 'MEN' | 'WOMEN';
+export type AlignmentFilter = 'ALL' | 'FACES' | 'HEELS';
 
 interface FilterBarProps {
   activeGender: GenderFilter;
@@ -34,13 +34,13 @@ const FilterBar: React.FC<FilterBarProps> = ({
     >
       <div className={styles.filterGroup}>
         <button
-          className={`${styles.filterButton} ${activeGender === 'TODOS' && activeAlignment === 'TODOS' ? styles.active : ''}`}
+          className={`${styles.filterButton} ${activeGender === 'ALL' && activeAlignment === 'ALL' ? styles.active : ''}`}
           onClick={() => {
-            onGenderChange('TODOS');
-            onAlignmentChange('TODOS');
+            onGenderChange('ALL');
+            onAlignmentChange('ALL');
           }}
         >
-          TODOS
+          ALL
         </button>
       </div>
 
@@ -49,7 +49,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           <button
             key={filter}
             className={`${styles.filterButton} ${activeGender === filter ? styles.active : ''}`}
-            onClick={() => onGenderChange(activeGender === filter ? 'TODOS' : filter)}
+            onClick={() => onGenderChange(activeGender === filter ? 'ALL' : filter)}
           >
             {filter}
           </button>
@@ -61,7 +61,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
           <button
             key={filter}
             className={`${styles.filterButton} ${activeAlignment === filter ? styles.active : ''}`}
-            onClick={() => onAlignmentChange(activeAlignment === filter ? 'TODOS' : filter)}
+            onClick={() => onAlignmentChange(activeAlignment === filter ? 'ALL' : filter)}
           >
             {filter}
           </button>

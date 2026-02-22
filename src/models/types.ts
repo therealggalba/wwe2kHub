@@ -104,4 +104,6 @@ export interface Show {
   card?: MatchCard;
   valuation: number; // Overall show rating
   type: "Weekly" | "PLE" | "Special";
+  season?: number;
+  week?: number;
 }

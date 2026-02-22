@@ -26,7 +26,7 @@ const Roster: React.FC = () => {
       loadingRef.current = true;
 
       // Import new modular seed data (using internal variable names to avoid conflicts)
-      const { BRANDS_SEED, CHAMPIONSHIPS_SEED, WRESTLERS_SEED, SHOWS_SEED } = await import('../../db/seedData');
+      const { BRANDS_SEED, CHAMPIONSHIPS_SEED, WRESTLERS_SEED } = await import('../../db/seedData');
 
       // 1. Seed Brands
       for (const brandData of BRANDS_SEED) {
@@ -185,21 +185,7 @@ const Roster: React.FC = () => {
       }
       if (wrestlerCleanupIds.length > 0) await db.wrestlers.bulkDelete(wrestlerCleanupIds);
 
-      // 4. Seed Shows
-      for (const showData of SHOWS_SEED) {
-        const brandId = showData.brandName === 'SHARED' ? undefined : brandMap.get(showData.brandName as BrandName);
-        const showName = showData.name.trim();
-        const existing = await db.shows.where('name').equals(showName).first();
-        if (!existing) {
-          await db.shows.add({
-            name: showName,
-            brandId: brandId,
-            valuation: (showData as any).valuation,
-            type: showData.type,
-            date: new Date()
-          });
-        }
-      }
+      // Show seeding removed to allow clean archive
 
       const allBrands = await db.brands.toArray();
       const allWrestlers = await db.wrestlers.toArray();
@@ -218,14 +204,14 @@ const Roster: React.FC = () => {
   const handleGenderChange = (brandId: number, filter: GenderFilter) => {
     setActiveFilters(prev => ({
       ...prev,
-      [brandId]: { ...(prev[brandId] || { gender: 'TODOS', alignment: 'TODOS' }), gender: filter }
+      [brandId]: { ...(prev[brandId] || { gender: 'ALL', alignment: 'ALL' }), gender: filter }
     }));
   };
 
   const handleAlignmentChange = (brandId: number, filter: AlignmentFilter) => {
     setActiveFilters(prev => ({
       ...prev,
-      [brandId]: { ...(prev[brandId] || { gender: 'TODOS', alignment: 'TODOS' }), alignment: filter }
+      [brandId]: { ...(prev[brandId] || { gender: 'ALL', alignment: 'ALL' }), alignment: filter }
     }));
   };
 
@@ -238,16 +224,16 @@ const Roster: React.FC = () => {
           const brandId = brand.id!;
           const brandWrestlers = wrestlers.filter((w) => w.brandId === brandId);
           const brandTitles = titles.filter((t) => t.brandId === brandId);
-          const currentFilters = activeFilters[brandId] || { gender: 'TODOS', alignment: 'TODOS' };
+          const currentFilters = activeFilters[brandId] || { gender: 'ALL', alignment: 'ALL' };
 
           const filteredWrestlers = brandWrestlers.filter(w => {
             const matchesGender = 
-              currentFilters.gender === 'TODOS' || 
+              currentFilters.gender === 'ALL' || 
               (currentFilters.gender === 'MEN' && w.gender === 'Male') || 
               (currentFilters.gender === 'WOMEN' && w.gender === 'Female');
 
             const matchesAlignment = 
-              currentFilters.alignment === 'TODOS' || 
+              currentFilters.alignment === 'ALL' || 
               (currentFilters.alignment === 'FACES' && w.alignment === 'Face') || 
               (currentFilters.alignment === 'HEELS' && w.alignment === 'Heel');
 
