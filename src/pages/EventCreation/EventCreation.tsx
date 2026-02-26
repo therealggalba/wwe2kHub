@@ -42,6 +42,8 @@ const EventCreation = () => {
   } | null>(null);
   const [overallRating, setOverallRating] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
+  const [customPoster, setCustomPoster] = useState<string | null>(null);
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
   const [isShowDropdownOpen, setIsShowDropdownOpen] = useState(false);
@@ -50,6 +52,7 @@ const EventCreation = () => {
   const [activeGender, setActiveGender] = useState<GenderFilter>("ALL");
   const [activeAlignment, setActiveAlignment] =
     useState<AlignmentFilter>("ALL");
+  const [activeSubBrandId, setActiveSubBrandId] = useState<number | undefined>();
 
   // Sequential logic for Season/Week
   useEffect(() => {
@@ -80,6 +83,9 @@ const EventCreation = () => {
 
   useEffect(() => {
     const loadData = async () => {
+      // Reset sub-brand filter when changing main brand
+      setActiveSubBrandId(undefined);
+
       // 1. Sync Brands from Seed
       const seedNames = BRANDS_SEED.map((s) => s.name.trim());
 
@@ -150,8 +156,25 @@ const EventCreation = () => {
   // Helper to fix paths
   const fixPath = (path: string | undefined): string => {
     if (!path) return "";
+    if (path.startsWith("data:image")) return path; // Already a base64 string
     if (path.startsWith("./")) return path.replace("./", "/");
     return path;
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.includes("png")) {
+      alert("Please upload a PNG image.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCustomPoster(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   };
 
   const addSegment = (segmentType: "Match" | "Promo" | "Video") => {
@@ -230,10 +253,96 @@ const EventCreation = () => {
         week,
       };
 
+      if (customPoster) {
+        showData.image = customPoster;
+      }
+
       // 2. Save to Dexie
       await db.shows.add(showData as unknown as Show);
 
-      // 3. Dummy JSON Export for verification
+      // 3. Automated Championship Management
+      for (const segment of segments) {
+        if (segment.type === 'Match' && segment.matchData?.titleMatch && segment.matchData.championshipId) {
+          const { championshipId, winnersIds } = segment.matchData;
+          const championship = await db.championships.get(championshipId);
+          
+          if (championship) {
+            const currentChampionId = championship.currentChampionId;
+            const isNewChampion = winnersIds.length > 0 && !winnersIds.includes(currentChampionId || -1);
+
+            if (isNewChampion) {
+              // A. Remove title from former champion
+              if (currentChampionId) {
+                const formerChampion = await db.wrestlers.get(currentChampionId);
+                if (formerChampion) {
+                  await db.wrestlers.update(currentChampionId, {
+                    currentTitlesIds: (formerChampion.currentTitlesIds || []).filter(id => id !== championshipId)
+                  });
+                }
+              }
+
+              // B. Add title to new champion(s)
+              // Note: For tag team titles, winnersIds might have multiple wrestlers
+              for (const newChampId of winnersIds) {
+                const wrestler = await db.wrestlers.get(newChampId);
+                if (wrestler) {
+                  const updatedTitles = Array.from(new Set([...(wrestler.currentTitlesIds || []), championshipId]));
+                  await db.wrestlers.update(newChampId, {
+                    currentTitlesIds: updatedTitles
+                  });
+                }
+              }
+
+              // C. Update Championship record
+              const newChampionNames = await Promise.all(
+                winnersIds.map(async id => (await db.wrestlers.get(id))?.name || 'Unknown')
+              );
+
+              const historyEntry = {
+                wrestlerName: newChampionNames.join(' & '),
+                reignNumber: (championship.history?.length || 0) + 1,
+                totalWeeks: 0
+              };
+
+              await db.championships.update(championshipId, {
+                currentChampionId: winnersIds[0], // For tag, we store the first one or logic needs adjustment for multi-champion tracking
+                history: [...(championship.history || []), historyEntry]
+              });
+            }
+          }
+        }
+      }
+
+      // 4. Automated Wrestler Statistics Management
+      for (const segment of segments) {
+        if (segment.type === 'Match' && segment.matchData) {
+          const { participantsIds, winnersIds } = segment.matchData;
+          const isDraw = winnersIds.includes(-1);
+
+          for (const pid of participantsIds) {
+            if (pid === 0) continue; // Skip unassigned slots
+            const wrestler = await db.wrestlers.get(pid);
+            if (!wrestler) continue;
+
+            const updateFields: Partial<typeof wrestler> = {};
+
+            if (isDraw) {
+              updateFields.draws = (wrestler.draws || 0) + 1;
+            } else {
+              const won = winnersIds.includes(pid);
+              if (won) {
+                updateFields.wins = (wrestler.wins || 0) + 1;
+              } else {
+                updateFields.losses = (wrestler.losses || 0) + 1;
+              }
+            }
+
+            await db.wrestlers.update(pid, updateFields);
+          }
+        }
+      }
+
+      // 5. Dummy JSON Export for verification
       const blob = new Blob([JSON.stringify(showData, null, 2)], {
         type: "application/json",
       });
@@ -260,7 +369,10 @@ const EventCreation = () => {
     return <div className={styles.loading}>Loading...</div>;
 
   const brandWrestlers = allWrestlers.filter((w) => {
-    if (selectedBrand.name === "SHARED") return true;
+    if (selectedBrand.name === "SHARED") {
+      if (activeSubBrandId) return w.brandId === activeSubBrandId;
+      return true;
+    }
     return w.brandId === selectedBrand.id;
   });
 
@@ -397,6 +509,24 @@ const EventCreation = () => {
                   ))}
                 </div>
               )}
+            </div>
+          )}
+          {!isWeekly && (
+            <div className={styles.posterUploadArea}>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                accept="image/png"
+                onChange={handleImageUpload}
+              />
+              <button
+                className={`${styles.uploadBtn} ${customPoster ? styles.hasPoster : ""}`}
+                onClick={() => fileInputRef.current?.click()}
+                title="Upload custom PLE poster"
+              >
+                {customPoster ? "✅ Poster" : "📤 Poster"}
+              </button>
             </div>
           )}
           {isWeekly && (
@@ -855,6 +985,9 @@ const EventCreation = () => {
             onAlignmentChange={setActiveAlignment}
             primaryColor={selectedBrand.primaryColor}
             secondaryColor={selectedBrand.secondaryColor}
+            brands={selectedBrand.name === "SHARED" ? brands.filter(b => b.name !== "SHARED" && b.name !== "FREE AGENT") : undefined}
+            activeBrandId={activeSubBrandId}
+            onBrandChange={setActiveSubBrandId}
           />
 
           <div className={styles.wrestlerGrid}>

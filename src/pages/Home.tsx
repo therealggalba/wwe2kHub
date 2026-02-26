@@ -1,3 +1,5 @@
+import PLECarousel from '../components/PLECarousel/PLECarousel';
+
 const Home = () => {
   return (
     <section>
@@ -20,7 +22,9 @@ const Home = () => {
         </p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', justifyContent: 'center' }}>
+      <PLECarousel />
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', justifyContent: 'center', marginTop: '2rem' }}>
         {[
           { title: 'Show Semanal', type: 'semanal', description: 'Crea y gestiona tu programación semanal (RAW, SmackDown, NXT).' },
           { title: 'Show Especial', type: 'especial', description: 'Planifica eventos premium en vivo (WrestleMania, Royal Rumble, etc.).' }
@@ -72,3 +76,4 @@ const Home = () => {
 }
 
 export default Home
+

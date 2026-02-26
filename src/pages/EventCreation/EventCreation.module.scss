@@ -73,6 +73,7 @@
     }
 
     .showInfo {
+      display: flex;
       flex: 1;
       .showDropdownContainer {
         position: relative;
@@ -200,6 +201,36 @@
           font-style: italic;
           min-width: 100px;
           text-align: right;
+        }
+      }
+    }
+
+    .posterUploadArea {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+    
+      .uploadBtn {
+        width: 80%;
+        height: 100%;
+        background: transparent;
+        color: #fff;
+        border: 1px solid var(--primary);
+        padding: 0.3rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.5rem;
+        text-transform: uppercase;
+
+        &:hover {
+          background: var(--primary);
+        }
+
+        &.hasPoster {
+          &:hover {
+            background: rgba(0, 255, 0, 0.1);
+          }
         }
       }
     }

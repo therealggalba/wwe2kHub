@@ -61,3 +61,23 @@
   color: #888;
   font-weight: 900;
 }
+
+.brandBtn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 2px !important;
+}
+
+.miniBrandLogo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: all 0.2s ease;
+  filter: grayscale(100%) brightness(0.5);
+
+  .active & {
+    filter: none;
+    transform: scale(1.2);
+  }
+}

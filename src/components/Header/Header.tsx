@@ -26,6 +26,12 @@ const Header = () => {
         >
           Archive
         </NavLink>
+        <NavLink 
+          to="/options" 
+          className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
+        >
+          Options
+        </NavLink>
       </nav>
     </header>
   )
