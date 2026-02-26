@@ -8,21 +8,21 @@ export interface SeedShow {
 }
 
 export const SHOWS_SEED: SeedShow[] = [
-  { name: 'Monday Night RAW', brandName: 'RAW', type: 'Weekly', image: './visuals/Events/Logos/raw.png' },
+  { name: 'Monday Night RAW', brandName: 'RAW', type: 'Weekly', image: './visuals/Brands/raw.png' },
   { name: 'Backlash', brandName: 'RAW', type: 'PLE', image: './visuals/Events/Logos/backlash.png' },
   { name: 'Bad Blood', brandName: 'RAW', type: 'PLE', image: './visuals/Events/Logos/badblood.png' },
   { name: 'Crown Jewel', brandName: 'RAW', type: 'PLE', image: './visuals/Events/Logos/crownjewel.png' },
   { name: 'Night Of Champions', brandName: 'RAW', type: 'PLE', image: './visuals/Events/Logos/nightofchampions.png'},
   { name: 'Payback', brandName: 'RAW', type: 'PLE', image: './visuals/Events/Logos/payback.png'},
 
-  { name: 'Friday Night SmackDown', brandName: 'SMACKDOWN', type: 'Weekly', image: './visuals/Events/Logos/smackdown.png' },
+  { name: 'Friday Night SmackDown', brandName: 'SMACKDOWN', type: 'Weekly', image: './visuals/Brands/smackdown.png' },
   { name: 'Clash At The Castle', brandName: 'SMACKDOWN', type: 'PLE', image: './visuals/Events/Logos/clashatthecastle.png' },
   { name: 'Hell In A Cell', brandName: 'SMACKDOWN', type: 'PLE', image: './visuals/Events/Logos/hellinacell.png'},
   { name: "New Year's Revolution", brandName: 'SMACKDOWN', type: 'PLE', image: './visuals/Events/Logos/newyearsrevolution.png'},
   { name: 'No Mercy', brandName: 'SMACKDOWN', type: 'PLE', image: './visuals/Events/Logos/nomercy.png'},
   { name: 'Super Showdown', brandName: 'SMACKDOWN', type: 'PLE', image: './visuals/Events/Logos/supershowdown.png'},
 
-  { name: 'Tuesday Night NXT', brandName: 'NXT', type: 'Weekly', image: './visuals/Events/Logos/nxt.png' },
+  { name: 'Tuesday Night NXT', brandName: 'NXT', type: 'Weekly', image: './visuals/Brands/nxt.png' },
   { name: 'Halloween Havoc', brandName: 'NXT', type: 'PLE', image: './visuals/Events/Logos/halloweenhavoc.png' },
   { name: "New Year's Evil", brandName: 'NXT', type: 'PLE', image: './visuals/Events/Logos/newyearsevil.png'},
   { name: 'NXT Battleground', brandName: 'NXT', type: 'PLE', image: './visuals/Events/Logos/nxtbattleground.png'},

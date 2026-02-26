@@ -1,0 +1,88 @@
+.homeSection {
+  padding-bottom: 2rem;
+}
+
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1549413204-7476e81fabb6?q=80&w=2070&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 1px solid #333;
+
+  .heroTitle {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .heroDescription {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 600px;
+    text-align: center;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.eventCard {
+  background-color: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-left: 4px solid transparent;
+
+  &:hover {
+    transform: translateY(-10px);
+    background-color: #252525;
+  }
+
+  &.semanal {
+    border-color: #e00012;
+    .eventTitle, .eventAction { color: #e00012; }
+  }
+
+  &.especial {
+    border-color: #ffd700;
+    .eventTitle, .eventAction { color: #ffd700; }
+  }
+
+  .eventTitle {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .eventDescription {
+    color: #b3b3b3;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .eventAction {
+    margin-top: auto;
+    padding-top: 1rem;
+    font-weight: 900;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+  }
+}

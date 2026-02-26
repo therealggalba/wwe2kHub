@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db } from '../../db/db';
 import type { Show, Brand } from '../../models/types';
 import styles from './ShowArchive.module.scss';
+import { SHOWS_SEED } from '../../db/seeds/shows';
 
 const ShowArchive = () => {
   const navigate = useNavigate();
@@ -119,31 +120,34 @@ const ShowArchive = () => {
           <div className={styles.showTable}>
             <div className={styles.tableHeader}>
             <span>Date</span>
-            <span>Brand</span>
-            <span>Show</span>
             <span>Logo</span>
+            <span>Show</span>
+            <span>Brand</span>
             <span>Rating</span>
             <span style={{ textAlign: 'right' }}>Actions</span>
           </div>
             {filteredShows.map(show => {
               const brand = brands.find(b => b.id === show.brandId);
+              const showSeed = SHOWS_SEED.find(s => s.name === show.name);
+              const officialLogo = showSeed?.image || show.image;
+
               return (
                 <div key={show.id} className={styles.showRow}>
                   <div className={styles.dateCell}>
                     <span className={styles.seasonLabel}>S{show.season}</span>
                     <span className={styles.weekLabel}>W{show.week}</span>
                   </div>
-                  <div className={styles.brandCell}>
-                    {brand && <img src={fixPath(brand.logo)} alt={brand.name} className={styles.brandLogo} title={brand.name} />}
+                  <div className={styles.logoCell}>
+                    {officialLogo && (
+                      <img src={fixPath(officialLogo)} alt="Official Logo" title={show.name} className={styles.pleLogoImage} />
+                    )}
                   </div>
                   <div className={styles.nameCell}>
                     <span className={styles.showName}>{show.name}</span>
                     {show.type === 'PLE' && <span className={styles.pleBadge}>PLE</span>}
                   </div>
-                  <div className={styles.logoCell}>
-                    {show.type === 'PLE' && show.image && (
-                      <img src={fixPath(show.image)} alt="PLE Logo" title={show.name} className={styles.pleLogoImage} />
-                    )}
+                  <div className={styles.brandCell}>
+                    {brand && <img src={fixPath(brand.logo)} alt={brand.name} className={styles.brandLogo} title={brand.name} />}
                   </div>
                   <div className={styles.ratingCell}>
                     <span className={styles.numericRating}>

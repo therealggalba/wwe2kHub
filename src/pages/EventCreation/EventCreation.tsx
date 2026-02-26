@@ -271,14 +271,15 @@ const EventCreation = () => {
             const isNewChampion = winnersIds.length > 0 && !winnersIds.includes(currentChampionId || -1);
 
             if (isNewChampion) {
-              // A. Remove title from former champion
-              if (currentChampionId) {
-                const formerChampion = await db.wrestlers.get(currentChampionId);
-                if (formerChampion) {
-                  await db.wrestlers.update(currentChampionId, {
-                    currentTitlesIds: (formerChampion.currentTitlesIds || []).filter(id => id !== championshipId)
-                  });
-                }
+              // A. Remove title from former champion(s)
+              const formerChampions = await db.wrestlers
+                .filter(w => (w.currentTitlesIds || []).includes(championshipId))
+                .toArray();
+
+              for (const former of formerChampions) {
+                await db.wrestlers.update(former.id!, {
+                  currentTitlesIds: (former.currentTitlesIds || []).filter(id => id !== championshipId)
+                });
               }
 
               // B. Add title to new champion(s)
@@ -766,13 +767,22 @@ const EventCreation = () => {
                         (t) => t.id === champId,
                       );
 
-                      // Reset participants: first slot for champ, others to 0
+                      // Reset participants
                       const currentCount =
                         segment.matchData?.participantsIds.length || 2;
+                      const currentType = segment.matchData?.type;
                       const newParticipants = Array(currentCount).fill(0);
 
-                      if (championship?.currentChampionId) {
-                        newParticipants[0] = championship.currentChampionId;
+                      if (championship) {
+                        const champions = allWrestlers.filter(w => w.currentTitlesIds?.includes(championship.id!));
+                        if (champions.length > 0) {
+                          if (currentType === "2 vs 2 Tag Team") {
+                            newParticipants[0] = champions[0].id!;
+                            if (champions[1]) newParticipants[1] = champions[1].id!;
+                          } else {
+                            newParticipants[0] = champions[0].id!;
+                          }
+                        }
                       }
 
                       updateSegment(segment.id, {
@@ -800,19 +810,30 @@ const EventCreation = () => {
                       let numParticipants = 2;
                       if (newType === "Triple Threat 1 vs 1 vs 1")
                         numParticipants = 3;
-                      if (newType === "Fatal 4-Way 1 vs 1 vs 1 vs 1")
+                      if (newType === "Fatal 4-Way 1 vs 1 vs 1 vs 1" || newType === "2 vs 2 Tag Team")
                         numParticipants = 4;
 
                       // Reset participants to 0
                       const newParticipants = Array(numParticipants).fill(0);
 
-                      // If title match, re-apply champion to first slot
+                      // If title match, re-apply champions
                       if (segment.matchData?.championshipId) {
                         const championship = allTitles.find(
                           (t) => t.id === segment.matchData?.championshipId,
                         );
-                        if (championship?.currentChampionId) {
-                          newParticipants[0] = championship.currentChampionId;
+                        if (championship) {
+                          // Find all wrestlers who have this title
+                          const champions = allWrestlers.filter(w => w.currentTitlesIds?.includes(championship.id!));
+                          if (champions.length > 0) {
+                            if (newType === "2 vs 2 Tag Team") {
+                              // Tag match: fill first two slots with champions
+                              newParticipants[0] = champions[0].id!;
+                              if (champions[1]) newParticipants[1] = champions[1].id!;
+                            } else {
+                              // Singles/Multi: first slot for champ
+                              newParticipants[0] = champions[0].id!;
+                            }
+                          }
                         }
                       }
 
@@ -830,72 +851,144 @@ const EventCreation = () => {
                     <option>1 vs 1 noDQ</option>
                     <option>Triple Threat 1 vs 1 vs 1</option>
                     <option>Fatal 4-Way 1 vs 1 vs 1 vs 1</option>
+                    <option>2 vs 2 Tag Team</option>
                   </select>
                 </div>
                 <div className={styles.matchBody}>
                   <div className={styles.matchParticipants}>
-                    {segment.matchData?.participantsIds.map((pid, pIdx) => {
-                      const wrestler = allWrestlers.find((w) => w.id === pid);
-                      return (
-                        <React.Fragment key={pIdx}>
-                          <div className={styles.participantNode}>
-                            <div
-                              className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx === 0 ? styles.locked : ""}`}
-                              onClick={() => {
-                                if (segment.matchData?.titleMatch && pIdx === 0)
-                                  return;
-                                setActivePicker({
-                                  segmentId: segment.id,
-                                  type: "Match",
-                                  index: pIdx,
-                                });
-                              }}
-                            >
-                              {wrestler ? (
-                                <img
-                                  src={fixPath(
-                                    wrestler.avatar || wrestler.image,
-                                  )}
-                                  alt={wrestler.name}
-                                />
-                              ) : (
-                                <div className={styles.placeholder}>?</div>
-                              )}
+                    {segment.matchData?.type === "2 vs 2 Tag Team" ? (
+                      // TAG TEAM LAYOUT
+                      <>
+                        <div className={styles.tagGroup}>
+                          {[0, 1].map((pIdx) => {
+                            const pid = segment.matchData!.participantsIds[pIdx];
+                            const wrestler = allWrestlers.find((w) => w.id === pid);
+                            return (
+                              <div key={pIdx} className={styles.participantNode}>
+                                <div
+                                  className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < 2 ? styles.locked : ""}`}
+                                  onClick={() => {
+                                    if (segment.matchData?.titleMatch && pIdx < 2) return;
+                                    setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx });
+                                  }}
+                                >
+                                  {wrestler ? <img src={fixPath(wrestler.avatar || wrestler.image)} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
+                                </div>
+                                <span className={styles.pName}>{wrestler?.name || `Wrestler ${pIdx + 1}`}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <span className={styles.vs}>VS.</span>
+                        <div className={styles.tagGroup}>
+                          {[2, 3].map((pIdx) => {
+                            const pid = segment.matchData!.participantsIds[pIdx];
+                            const wrestler = allWrestlers.find((w) => w.id === pid);
+                            return (
+                              <div key={pIdx} className={styles.participantNode}>
+                                <div
+                                  className={styles.pSlot}
+                                  onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
+                                >
+                                  {wrestler ? <img src={fixPath(wrestler.avatar || wrestler.image)} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
+                                </div>
+                                <span className={styles.pName}>{wrestler?.name || `Wrestler ${pIdx + 1}`}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </>
+                    ) : (
+                      // SINGLES / MULTI LAYOUT
+                      segment.matchData?.participantsIds.map((pid, pIdx) => {
+                        const wrestler = allWrestlers.find((w) => w.id === pid);
+                        return (
+                          <React.Fragment key={pIdx}>
+                            <div className={styles.participantNode}>
+                              <div
+                                className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx === 0 ? styles.locked : ""}`}
+                                onClick={() => {
+                                  if (segment.matchData?.titleMatch && pIdx === 0)
+                                    return;
+                                  setActivePicker({
+                                    segmentId: segment.id,
+                                    type: "Match",
+                                    index: pIdx,
+                                  });
+                                }}
+                              >
+                                {wrestler ? (
+                                  <img
+                                    src={fixPath(
+                                      wrestler.avatar || wrestler.image,
+                                    )}
+                                    alt={wrestler.name}
+                                  />
+                                ) : (
+                                  <div className={styles.placeholder}>?</div>
+                                )}
+                              </div>
+                              <span className={styles.pName}>
+                                {wrestler?.name || `Wrestler ${pIdx + 1}`}
+                              </span>
                             </div>
-                            <span className={styles.pName}>
-                              {wrestler?.name || `Wrestler ${pIdx + 1}`}
-                            </span>
-                          </div>
-                          {pIdx <
-                            (segment.matchData?.participantsIds.length || 0) -
-                              1 && <span className={styles.vs}>VS.</span>}
-                        </React.Fragment>
-                      );
-                    })}
+                            {pIdx < (segment.matchData?.participantsIds.length || 0) - 1 && <span className={styles.vs}>VS.</span>}
+                          </React.Fragment>
+                        );
+                      })
+                    )}
                   </div>
                   <div className={styles.matchRight}>
                     <div className={styles.winnerSection}>
                       <select
-                        value={segment.matchData?.winnersIds[0] || ""}
-                        onChange={(e) =>
-                          updateSegment(segment.id, {
-                            matchData: {
-                              ...segment.matchData!,
-                              winnersIds: [parseInt(e.target.value)],
-                            },
-                          })
-                        }
+                        className={styles.winnerSelect}
+                        value={segment.matchData?.winnersIds.join(",")}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          if (val === "-1") {
+                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: [-1] } });
+                          } else if (val) {
+                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: val.split(",").map(Number) } });
+                          } else {
+                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: [] } });
+                          }
+                        }}
                       >
                         <option value="">Choose the winner</option>
-                        {segment.matchData?.participantsIds.map((pid) => {
-                          const w = allWrestlers.find((wr) => wr.id === pid);
-                          if (!w) return null;
-                          return (
-                            <option key={pid} value={pid}>
-                              {w.name}
-                            </option>
-                          );
-                        })}
+                        {segment.matchData?.type === "2 vs 2 Tag Team" ? (
+                          <>
+                            {(() => {
+                              const p0 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[0]);
+                              const p1 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[1]);
+                              const p2 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[2]);
+                              const p3 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[3]);
+                              return (
+                                <>
+                                  {p0 && p1 && (
+                                    <option value={[p0.id, p1.id].join(",")}>
+                                      {p0.name} & {p1.name}
+                                    </option>
+                                  )}
+                                  {p2 && p3 && (
+                                    <option value={[p2.id, p3.id].join(",")}>
+                                      {p2.name} & {p3.name}
+                                    </option>
+                                  )}
+                                </>
+                              );
+                            })()}
+                          </>
+                        ) : (
+                          segment.matchData?.participantsIds.map((pid) => {
+                            const w = allWrestlers.find((wr) => wr.id === pid);
+                            if (!w) return null;
+                            return (
+                              <option key={pid} value={pid.toString()}>
+                                {w.name}
+                              </option>
+                            );
+                          })
+                        )}
                         <option value="-1">NO CONTEST</option>
                       </select>
                     </div>
@@ -1059,10 +1152,33 @@ const EventCreation = () => {
                         if (activePicker.type === "Match") {
                           const newP = [...segment.matchData!.participantsIds];
                           newP[activePicker.index] = w.id!;
+
+                          // Auto-partner selection for Tag Team
+                          if (segment.matchData!.type === "2 vs 2 Tag Team" && w.faction) {
+                            const isSlot0or1 = activePicker.index <= 1;
+                            const partnerIndex = isSlot0or1
+                              ? (activePicker.index === 0 ? 1 : 0)
+                              : (activePicker.index === 2 ? 3 : 2);
+                            
+                            // If partner slot is empty, try to fill it
+                            if (newP[partnerIndex] === 0) {
+                              const partner = allWrestlers.find(p => 
+                                p.faction === w.faction && 
+                                p.id !== w.id && 
+                                p.gender === w.gender &&
+                                !newP.includes(p.id!)
+                              );
+                              if (partner) {
+                                newP[partnerIndex] = partner.id!;
+                              }
+                            }
+                          }
+
                           updateSegment(segment.id, {
                             matchData: {
                               ...segment.matchData!,
                               participantsIds: newP,
+                              winnersIds: [], // Reset winners on change
                             },
                           });
                         } else {

@@ -97,20 +97,56 @@ const ShowDetails = () => {
                                         )}
                                     </div>
                                     <div className={styles.participants}>
-                                                {segment.matchData.participantsIds.map((pid, pIdx) => {
-                                                    const w = wrestlers.find(wr => wr.id === pid);
-                                                    const isWinner = segment.matchData?.winnersIds.includes(pid);
+                                        {segment.matchData.type === "2 vs 2 Tag Team" ? (
+                                            // TAG TEAM GROUPED LAYOUT
+                                            <>
+                                                {[0, 2].map((startIndex) => {
+                                                    const p1 = wrestlers.find(wr => wr.id === segment.matchData?.participantsIds[startIndex]);
+                                                    const p2 = wrestlers.find(wr => wr.id === segment.matchData?.participantsIds[startIndex + 1]);
+                                                    const isWinner = segment.matchData?.winnersIds.includes(p1?.id || -1) || segment.matchData?.winnersIds.includes(p2?.id || -1);
+                                                    const commonFaction = (p1?.faction && p1.faction === p2?.faction) ? p1.faction : null;
+
                                                     return (
-                                                        <React.Fragment key={pIdx}>
-                                                            <div className={`${styles.wrestlerBox} ${isWinner ? styles.winner : ''}`}>
-                                                                {w?.avatar && <img src={fixPath(w.avatar)} alt={w.name} />}
-                                                                <span>{w?.name || 'Unknown'}</span>
-                                                                {isWinner && <div className={styles.winnerBadge}>WINNER</div>}
+                                                        <React.Fragment key={startIndex}>
+                                                            <div className={`${styles.teamBox} ${isWinner ? styles.winner : ''}`}>
+                                                                <div className={styles.teamAvatars}>
+                                                                    {p1?.avatar && <img src={fixPath(p1.avatar)} alt={p1.name} />}
+                                                                    {p2?.avatar && <img src={fixPath(p2.avatar)} alt={p2.name} />}
+                                                                </div>
+                                                                <div className={styles.teamNames}>
+                                                                    {commonFaction ? (
+                                                                        <>
+                                                                            <span className={styles.factionName}>{commonFaction}</span>
+                                                                            <span className={styles.memberNames}>({p1?.name} & {p2?.name})</span>
+                                                                        </>
+                                                                    ) : (
+                                                                        <span className={styles.namesOnly}>{p1?.name} & {p2?.name}</span>
+                                                                    )}
+                                                                </div>
+                                                                {isWinner && <div className={styles.winnerBadge}>WINNERS</div>}
                                                             </div>
-                                                            {pIdx < segment.matchData!.participantsIds.length - 1 && <span className={styles.vs}>VS</span>}
+                                                            {startIndex === 0 && <span className={styles.vs}>VS</span>}
                                                         </React.Fragment>
                                                     );
                                                 })}
+                                            </>
+                                        ) : (
+                                            // SINGLES / MULTI LAYOUT (Standard)
+                                            segment.matchData.participantsIds.map((pid, pIdx) => {
+                                                const w = wrestlers.find(wr => wr.id === pid);
+                                                const isWinner = segment.matchData?.winnersIds.includes(pid);
+                                                return (
+                                                    <React.Fragment key={pIdx}>
+                                                        <div className={`${styles.wrestlerBox} ${isWinner ? styles.winner : ''}`}>
+                                                            {w?.avatar && <img src={fixPath(w.avatar)} alt={w.name} />}
+                                                            <span>{w?.name || 'Unknown'}</span>
+                                                            {isWinner && <div className={styles.winnerBadge}>WINNER</div>}
+                                                        </div>
+                                                        {pIdx < segment.matchData!.participantsIds.length - 1 && <span className={styles.vs}>VS</span>}
+                                                    </React.Fragment>
+                                                );
+                                            })
+                                        )}
                                     </div>
                                     {segment.matchData.notes && (
                                         <div className={styles.notes}>

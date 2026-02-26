@@ -478,6 +478,12 @@
       justify-content: center;
       gap: 1rem;
 
+      .tagGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
       .participantNode {
         display: flex;
         flex-direction: column;
