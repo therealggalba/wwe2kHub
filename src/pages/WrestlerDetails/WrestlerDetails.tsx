@@ -283,7 +283,9 @@ const WrestlerDetails: React.FC = () => {
                 </div>
                 <div className={styles.statItem}>
                   <span className={styles.statLabel}>Injuries</span>
-                  <span className={styles.statValue}>{wrestler.injuryStatus}</span>
+                  <span className={`${styles.statValue} ${wrestler.injuryWeeks > 0 ? styles.injuredValue : ''}`}>
+                    {wrestler.injuryWeeks > 0 ? `${wrestler.injuryWeeks} Weeks` : 'None'}
+                  </span>
                 </div>
                 <div className={styles.statItem}>
                   <span className={styles.statLabel}>Moral</span>
@@ -298,7 +300,42 @@ const WrestlerDetails: React.FC = () => {
               <h2 className={styles.sectionTitle} style={{ marginTop: '3rem' }}>
                 Honors
               </h2>
-              <p className={styles.placeholderText}>Coming soon...</p>
+              <div className={styles.honorsList}>
+                {allChampionships
+                  .map(champ => {
+                    const reigns = (champ.history || []).filter(h => 
+                      (h.wrestlerIds && h.wrestlerIds.includes(wrestler.id!)) || 
+                      (!h.wrestlerIds && h.wrestlerName === wrestler.name)
+                    );
+                    
+                    if (reigns.length === 0) return null;
+                    
+                    const totalDays = reigns.reduce((sum, r) => sum + (r.totalWeeks * 7), 0);
+                    const isCurrentHolder = (wrestler.currentTitlesIds || []).includes(champ.id!);
+                    
+                    return (
+                      <div key={champ.id} className={styles.honorItem}>
+                        <span className={styles.honorReigns}>{reigns.length} x</span>
+                        <span className={styles.honorTitleName}>{champ.name}</span>
+                        {champ.image && (
+                          <img 
+                            src={fixImagePath(champ.image)} 
+                            alt={champ.name} 
+                            className={styles.honorImage} 
+                          />
+                        )}
+                        <span className={styles.honorDays}>- {totalDays}{isCurrentHolder ? '+' : ''} días</span>
+                      </div>
+                    );
+                  })
+                  .filter(item => item !== null)}
+                {allChampionships.every(champ => 
+                  !(champ.history || []).some(h => 
+                    (h.wrestlerIds && h.wrestlerIds.includes(wrestler.id!)) || 
+                    (!h.wrestlerIds && h.wrestlerName === wrestler.name)
+                  )
+                ) && <p className={styles.placeholderText}>No honors yet.</p>}
+              </div>
             </div>
           )}
         </section>

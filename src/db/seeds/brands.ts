@@ -1,3 +1,4 @@
+import { GAME_CONFIG } from '../../config/gameConfig';
 import type { BrandName } from '../../models/types';
 
 export interface SeedBrand {
@@ -5,31 +6,17 @@ export interface SeedBrand {
   primaryColor: string;
   secondaryColor: string;
   logo: string;
+  priority: number;
+  isMajorBrand: boolean;
+  isShared: boolean;
 }
 
-export const BRANDS_SEED: SeedBrand[] = [
-  {
-    name: 'RAW',
-    primaryColor: '#e00012',
-    secondaryColor: '#000000',
-    logo: './visuals/Brands/raw.png',
-  },
-  {
-    name: 'SMACKDOWN',
-    primaryColor: '#0070bb',
-    secondaryColor: '#000000',
-    logo: './visuals/Brands/smackdown.png',
-  },
-  {
-    name: 'NXT',
-    primaryColor: '#e7b512ff',
-    secondaryColor: '#000000',
-    logo: './visuals/Brands/nxt.png',
-  },
-  {
-    name: 'SHARED',
-    primaryColor: '#814ac0ff',
-    secondaryColor: '#000000',
-    logo: './visuals/Brands/shared.png',
-  },
-];
+export const BRANDS_SEED: SeedBrand[] = GAME_CONFIG.brands.map(b => ({
+  name: b.name,
+  primaryColor: b.primaryColor,
+  secondaryColor: b.secondaryColor,
+  logo: b.logo,
+  priority: b.priority,
+  isMajorBrand: b.isMajorBrand,
+  isShared: b.isShared
+}));

@@ -1,0 +1,175 @@
+.editorContainer {
+  margin-top: 2rem;
+  color: #fff;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.5rem;
+  color: #888;
+}
+
+.brandList {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.brandCard {
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.displayCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brandInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoPreview {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.brandName {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.colors {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.colorDot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #444;
+}
+
+.editBtn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #222;
+    border-color: #666;
+  }
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    input[type="text"], input[type="number"] {
+      background: #000;
+      border: 1px solid #333;
+      padding: 0.6rem;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.95rem;
+
+      &:focus {
+        border-color: #e00012;
+        outline: none;
+      }
+    }
+
+    input[type="color"] {
+      width: 100%;
+      height: 40px;
+      padding: 2px;
+      background: #000;
+      border: 1px solid #333;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  }
+
+  .fieldRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .fieldCheck {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #ccc;
+    cursor: pointer;
+
+    input {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+
+    button {
+      flex: 1;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .saveBtn {
+      background: #e00012;
+      color: #fff;
+
+      &:hover {
+        background: #ff1a2e;
+      }
+    }
+
+    .cancelBtn {
+      background: #333;
+      color: #ccc;
+
+      &:hover {
+        background: #444;
+      }
+    }
+  }
+}

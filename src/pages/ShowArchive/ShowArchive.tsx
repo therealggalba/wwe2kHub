@@ -21,34 +21,22 @@ const ShowArchive = () => {
       
       setBrands(allBrands);
 
-      // Sorting logic: Season > Week > Brand Priority
-      const brandPriority: Record<string, number> = {
-        'RAW': 0,
-        'NXT': 1,
-        'SMACKDOWN': 2,
-        'SHARED': 3,
-        'FREE AGENT': 4
-      };
-
       const sorted = [...allShows]
-        .filter(s => !!s.card) // Only shows that have been manually saved/created
+        .filter(s => !!s.card)
         .sort((a, b) => {
-        // 1. Season
         if ((a.season || 0) !== (b.season || 0)) {
           return (a.season || 0) - (b.season || 0);
         }
-        // 2. Week
         if ((a.week || 0) !== (b.week || 0)) {
           return (a.week || 0) - (b.week || 0);
         }
-        // 3. Type (Weekly before PLE)
         if (a.type !== b.type) {
           return a.type === 'Weekly' ? -1 : 1;
         }
-        // 4. Brand Priority
-        const brandA = allBrands.find(br => br.id === a.brandId)?.name || '';
-        const brandB = allBrands.find(br => br.id === b.brandId)?.name || '';
-        return (brandPriority[brandA] ?? 99) - (brandPriority[brandB] ?? 99);
+        
+        const priorityA = allBrands.find(br => br.id === a.brandId)?.priority ?? 99;
+        const priorityB = allBrands.find(br => br.id === b.brandId)?.priority ?? 99;
+        return priorityA - priorityB;
       });
 
       setShows(sorted);

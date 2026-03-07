@@ -37,7 +37,10 @@ const Roster: React.FC = () => {
             name: brandName,
             primaryColor: brandData.primaryColor,
             secondaryColor: brandData.secondaryColor,
-            logo: brandData.logo
+            logo: brandData.logo,
+            priority: brandData.priority || 0,
+            isMajorBrand: brandData.isMajorBrand || false,
+            isShared: brandData.isShared || false
           });
         } else {
           await db.brands.update(existing.id!, {
@@ -142,7 +145,11 @@ const Roster: React.FC = () => {
             name: wrestlerName,
             brandId: brandId,
             currentTitlesIds,
-            historicalTitlesIds: []
+            historicalTitlesIds: [],
+            injuryWeeks: 0,
+            moral: 80,
+            matchesSeason: 0,
+            isActive: true
           });
           // Sync titles table
           for (const titleId of currentTitlesIds) {
@@ -222,7 +229,7 @@ const Roster: React.FC = () => {
       <div className={styles.brandContainer}>
         {brands.map((brand) => {
           const brandId = brand.id!;
-          const brandWrestlers = wrestlers.filter((w) => w.brandId === brandId);
+          const brandWrestlers = wrestlers.filter((w) => w.brandId === brandId && w.isActive !== false);
           const brandTitles = titles.filter((t) => t.brandId === brandId);
           const currentFilters = activeFilters[brandId] || { gender: 'ALL', alignment: 'ALL' };
 
@@ -286,6 +293,8 @@ const Roster: React.FC = () => {
                       faction={wrestler.faction}
                       primaryColor={brand.primaryColor}
                       secondaryColor={brand.secondaryColor}
+                      isInjured={wrestler.injuryWeeks > 0}
+                      injuryWeeks={wrestler.injuryWeeks}
                     />
                   ))}
               </div>

@@ -7,10 +7,20 @@ const DatabaseTools: React.FC = () => {
     try {
       const wrestlers = await db.wrestlers.toArray();
       const championships = await db.championships.toArray();
+      const brands = await db.brands.toArray();
       
       const exportData = {
         version: 1,
         timestamp: new Date().toISOString(),
+        brands: brands.map(b => ({
+          name: b.name,
+          primaryColor: b.primaryColor,
+          secondaryColor: b.secondaryColor,
+          logo: b.logo,
+          priority: b.priority,
+          isMajorBrand: b.isMajorBrand,
+          isShared: b.isShared
+        })),
         wrestlers: wrestlers.map(w => ({
           name: w.name,
           rating: w.rating,
@@ -61,6 +71,23 @@ const DatabaseTools: React.FC = () => {
       try {
         const data = JSON.parse(event.target?.result as string);
         if (!data.wrestlers) throw new Error('Formato de archivo inválido');
+
+        // 1. Update Brands if present
+        if (data.brands) {
+          for (const bData of data.brands) {
+             const existing = await db.brands.where('name').equals(bData.name).first();
+             if (existing) {
+               await db.brands.update(existing.id!, {
+                 primaryColor: bData.primaryColor,
+                 secondaryColor: bData.secondaryColor,
+                 logo: bData.logo,
+                 priority: bData.priority,
+                 isMajorBrand: bData.isMajorBrand,
+                 isShared: bData.isShared
+               });
+             }
+          }
+        }
 
         const allTitles = await db.championships.toArray();
         const titleMap = new Map(allTitles.map(t => [t.name, t.id!]));

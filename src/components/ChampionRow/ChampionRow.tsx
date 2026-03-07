@@ -73,7 +73,7 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
             <Link 
               key={champion.id} 
               to={`/roster/${slugify(champion.name)}`}
-              className={styles.championPortrait}
+              className={`${styles.championPortrait} ${(champion.moral || 80) < 20 ? styles.lowMorale : ''}`}
               style={{ '--index': index } as React.CSSProperties}
             >
               {champion.avatar ? (

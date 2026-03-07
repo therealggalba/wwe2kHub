@@ -10,6 +10,9 @@ interface WrestlerCardProps {
   faction?: string;
   primaryColor: string;
   secondaryColor: string;
+  isInjured?: boolean;
+  injuryWeeks?: number;
+  moral?: number;
 }
 
 const WrestlerCard: React.FC<WrestlerCardProps> = ({ 
@@ -18,13 +21,18 @@ const WrestlerCard: React.FC<WrestlerCardProps> = ({
   image, 
   faction, 
   primaryColor, 
-  secondaryColor 
+  secondaryColor,
+  isInjured,
+  injuryWeeks,
+  moral
 }) => {
   const displayImage = avatar || image;
+  const isLowMorale = (moral || 80) < 20;
+
   return (
     <Link 
       to={`/roster/${slugify(name)}`}
-      className={styles.card} 
+      className={`${styles.card} ${isInjured ? styles.injured : ''} ${isLowMorale ? styles.lowMorale : ''}`} 
       style={{ 
         '--brand-primary': primaryColor,
         '--brand-secondary': secondaryColor 
@@ -35,6 +43,11 @@ const WrestlerCard: React.FC<WrestlerCardProps> = ({
           <img src={displayImage} alt={name} />
         ) : (
           <div className={styles.placeholder}>👤</div>
+        )}
+        {isInjured && (
+          <div className={styles.injuryOverlay}>
+            <span className={styles.injuryWeeks}>{injuryWeeks}</span>
+          </div>
         )}
       </div>
       <div className={styles.details}>

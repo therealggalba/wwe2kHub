@@ -1,6 +1,6 @@
 // Types for the WWE2kHub Data Model
 
-export type BrandName = "RAW" | "NXT" | "SMACKDOWN" | "FREE AGENT" | "SHARED";
+export type BrandName = string;
 
 export interface Brand {
   id?: number;
@@ -10,10 +10,13 @@ export interface Brand {
   logo?: string;
   arena?: string;
   music?: string;
-  // Relationships are handled via IDs in IndexedDB
+  priority: number;
+  isMajorBrand: boolean;
+  isShared: boolean;
 }
 
 export interface TitleHistoryEntry {
+  wrestlerIds?: number[];
   wrestlerName: string;
   reignNumber: number;
   totalWeeks: number;
@@ -52,7 +55,10 @@ export interface Wrestler {
   currentTitlesIds: number[]; // Championship IDs
   historicalTitlesIds: number[]; // Championship IDs
   injuryStatus: string; // "None", "Minor", "Major", etc.
+  injuryWeeks: number;
   moral: number; // 0-100
+  matchesSeason: number;
+  isActive?: boolean;
   contract: string; // e.g., "Full-time", "Part-time", "Expired"
   rating: number;
   gender: "Male" | "Female";

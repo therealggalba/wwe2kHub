@@ -6,9 +6,10 @@ import type {
   Wrestler,
   Championship,
   Segment,
-  BrandName,
   Show,
+  TitleHistoryEntry
 } from "../../models/types";
+import { GAME_CONFIG } from "../../config/gameConfig";
 import { BRANDS_SEED } from "../../db/seeds/brands";
 import { SHOWS_SEED } from "../../db/seeds/shows";
 import FilterBar, {
@@ -64,9 +65,12 @@ const EventCreation = () => {
         .reverse()
         .sortBy("date");
 
+      const weeksSetting = await db.settings.get('weeksPerSeason');
+      const weeksPerSeason = weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason;
+
       if (latestShow.length > 0) {
         const last = latestShow[0];
-        if (last.week && last.week < 4) {
+        if (last.week && last.week < weeksPerSeason) {
           setWeek(last.week + 1);
           setSeason(last.season || 1);
         } else {
@@ -97,16 +101,22 @@ const EventCreation = () => {
           .first();
         if (!existing) {
           await db.brands.add({
-            name: brandName as BrandName,
+            name: brandName,
             primaryColor: brandData.primaryColor,
             secondaryColor: brandData.secondaryColor,
             logo: brandData.logo,
+            priority: brandData.priority,
+            isMajorBrand: brandData.isMajorBrand,
+            isShared: brandData.isShared,
           });
         } else {
           await db.brands.update(existing.id!, {
             primaryColor: brandData.primaryColor,
             secondaryColor: brandData.secondaryColor,
             logo: brandData.logo,
+            priority: brandData.priority,
+            isMajorBrand: brandData.isMajorBrand,
+            isShared: brandData.isShared,
           });
         }
       }
@@ -141,12 +151,10 @@ const EventCreation = () => {
       setAllWrestlers(w);
       setAllTitles(t);
 
-      // Default brand
+      // Default brand by priority
       if (filteredBrands.length > 0) {
-        setSelectedBrand(
-          filteredBrands.find((brand) => brand.name === "RAW") ||
-            filteredBrands[0],
-        );
+        const sortedBrands = [...filteredBrands].sort((a, b) => a.priority - b.priority);
+        setSelectedBrand(sortedBrands[0]);
       }
       setLoading(false);
     };
@@ -260,7 +268,11 @@ const EventCreation = () => {
       // 2. Save to Dexie
       await db.shows.add(showData as unknown as Show);
 
-      // 3. Automated Championship Management
+      // 3. Automated Championship Management & Morale
+      const titleLosers = new Set<number>();
+      const titleWinners = new Set<number>();
+      const titleDefenders = new Set<number>();
+
       for (const segment of segments) {
         if (segment.type === 'Match' && segment.matchData?.titleMatch && segment.matchData.championshipId) {
           const { championshipId, winnersIds } = segment.matchData;
@@ -268,7 +280,8 @@ const EventCreation = () => {
           
           if (championship) {
             const currentChampionId = championship.currentChampionId;
-            const isNewChampion = winnersIds.length > 0 && !winnersIds.includes(currentChampionId || -1);
+            const isDraw = winnersIds.includes(-1);
+            const isNewChampion = !isDraw && winnersIds.length > 0 && !winnersIds.includes(currentChampionId || -1);
 
             if (isNewChampion) {
               // A. Remove title from former champion(s)
@@ -277,16 +290,17 @@ const EventCreation = () => {
                 .toArray();
 
               for (const former of formerChampions) {
+                titleLosers.add(former.id!);
                 await db.wrestlers.update(former.id!, {
                   currentTitlesIds: (former.currentTitlesIds || []).filter(id => id !== championshipId)
                 });
               }
 
               // B. Add title to new champion(s)
-              // Note: For tag team titles, winnersIds might have multiple wrestlers
               for (const newChampId of winnersIds) {
                 const wrestler = await db.wrestlers.get(newChampId);
                 if (wrestler) {
+                  titleWinners.add(newChampId);
                   const updatedTitles = Array.from(new Set([...(wrestler.currentTitlesIds || []), championshipId]));
                   await db.wrestlers.update(newChampId, {
                     currentTitlesIds: updatedTitles
@@ -299,47 +313,80 @@ const EventCreation = () => {
                 winnersIds.map(async id => (await db.wrestlers.get(id))?.name || 'Unknown')
               );
 
-              const historyEntry = {
+              const historyEntry: TitleHistoryEntry = {
+                wrestlerIds: winnersIds,
                 wrestlerName: newChampionNames.join(' & '),
                 reignNumber: (championship.history?.length || 0) + 1,
                 totalWeeks: 0
               };
 
               await db.championships.update(championshipId, {
-                currentChampionId: winnersIds[0], // For tag, we store the first one or logic needs adjustment for multi-champion tracking
+                currentChampionId: winnersIds[0],
                 history: [...(championship.history || []), historyEntry]
               });
+            } else if (!isDraw) {
+              // Champion retained
+              winnersIds.forEach(id => titleDefenders.add(id));
             }
           }
         }
       }
 
-      // 4. Automated Wrestler Statistics Management
-      for (const segment of segments) {
-        if (segment.type === 'Match' && segment.matchData) {
-          const { participantsIds, winnersIds } = segment.matchData;
-          const isDraw = winnersIds.includes(-1);
+      // 3.5 Increment Tenure for ALL active championships (1 week passes)
+      const allChamps = await db.championships.toArray();
+      for (const champ of allChamps) {
+        if (champ.currentChampionId && champ.history && champ.history.length > 0) {
+          const lastIndex = champ.history.length - 1;
+          const updatedHistory = [...champ.history];
+          updatedHistory[lastIndex].totalWeeks += 1;
+          await db.championships.update(champ.id!, { history: updatedHistory });
+        }
+      }
 
-          for (const pid of participantsIds) {
-            if (pid === 0) continue; // Skip unassigned slots
-            const wrestler = await db.wrestlers.get(pid);
-            if (!wrestler) continue;
+      // 4. Automated Wrestler Statistics & Morale Management
+      const appearanceBonus = isWeekly ? 3 : 5;
+      const allParticipants = new Set(segments.flatMap(s => 
+        s.type === 'Match' ? (s.matchData?.participantsIds || []) : 
+        s.type === 'Promo' ? (s.promoData?.participantsIds || []) : []
+      ));
 
-            const updateFields: Partial<typeof wrestler> = {};
+      const moraleSettings = await db.settings.get("enableMorale");
+      const isMoraleEnabled = moraleSettings ? moraleSettings.value : GAME_CONFIG.settings.enableMorale;
 
-            if (isDraw) {
-              updateFields.draws = (wrestler.draws || 0) + 1;
-            } else {
-              const won = winnersIds.includes(pid);
-              if (won) {
-                updateFields.wins = (wrestler.wins || 0) + 1;
-              } else {
-                updateFields.losses = (wrestler.losses || 0) + 1;
-              }
-            }
+      for (const pid of allParticipants) {
+        if (pid === 0) continue;
+        const wrestler = await db.wrestlers.get(pid);
+        if (!wrestler) continue;
 
-            await db.wrestlers.update(pid, updateFields);
+        const updateFields: Partial<Wrestler> = {};
+
+        if (isMoraleEnabled) {
+          let moraleChange = appearanceBonus;
+          if (titleWinners.has(pid) || titleDefenders.has(pid)) moraleChange += 5;
+          if (titleLosers.has(pid)) moraleChange -= 10;
+
+          const nextMorale = Math.min(100, Math.max(5, (wrestler.moral || 80) + moraleChange));
+          updateFields.moral = nextMorale;
+          updateFields.isActive = nextMorale >= 5;
+        }
+
+        // If in a match, update stats (always, unless specifically told otherwise)
+        const matchSegment = segments.find(s => s.type === 'Match' && s.matchData?.participantsIds.includes(pid));
+        if (matchSegment?.matchData) {
+          const { winnersIds } = matchSegment.matchData;
+          updateFields.matchesSeason = (wrestler.matchesSeason || 0) + 1;
+          
+          if (winnersIds.includes(-1)) {
+            updateFields.draws = (wrestler.draws || 0) + 1;
+          } else if (winnersIds.includes(pid)) {
+            updateFields.wins = (wrestler.wins || 0) + 1;
+          } else {
+            updateFields.losses = (wrestler.losses || 0) + 1;
           }
+        }
+
+        if (Object.keys(updateFields).length > 0) {
+          await db.wrestlers.update(pid, updateFields);
         }
       }
 
@@ -355,6 +402,89 @@ const EventCreation = () => {
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+      
+      // 6. Injury System logic
+      const injurySettings = await db.settings.get("enableInjuries");
+      const isInjuryEnabled = injurySettings ? injurySettings.value : GAME_CONFIG.settings.enableInjuries;
+
+      if (isInjuryEnabled) {
+        const participantsIds = new Set(segments.flatMap(s => s.type === 'Match' ? (s.matchData?.participantsIds || []) : []));
+        
+        // 1. Recover/Decrement weeks for existing injuries of this brand
+        const currentlyInjured = await db.wrestlers
+          .where('brandId').equals(selectedBrand.id!)
+          .and(w => w.injuryWeeks > 0)
+          .toArray();
+        
+        for (const w of currentlyInjured) {
+          // If they weren't in this show, decrement
+          if (!participantsIds.has(w.id!)) {
+            const nextWeeks = w.injuryWeeks - 1;
+            const updateFields: Partial<Wrestler> = {
+              injuryWeeks: nextWeeks,
+              injuryStatus: nextWeeks > 0 ? w.injuryStatus : "None",
+            };
+
+            if (isMoraleEnabled) {
+              const updatedMorale = Math.min(100, Math.max(5, (w.moral || 80) - 5));
+              updateFields.moral = updatedMorale;
+              updateFields.isActive = updatedMorale >= 5;
+            }
+
+            await db.wrestlers.update(w.id!, updateFields);
+          }
+        }
+
+        // 2. Calculate NEW injuries
+        const config = GAME_CONFIG.settings.injurySystem;
+        for (const w of brandWrestlers) {
+          if (w.injuryWeeks > 0 || w.isActive === false) continue;
+
+          let chance = config.baseChance;
+          const isInMatch = participantsIds.has(w.id!);
+          if (isInMatch) {
+            chance += config.matchBonus;
+            const match = segments.find(s => s.type === 'Match' && s.matchData?.participantsIds.includes(w.id!))?.matchData;
+            if (match && (match.type.toLowerCase().includes('extreme') || match.type.toLowerCase().includes('nodq'))) {
+              chance += config.extremeBonus;
+            }
+          }
+
+          if (Math.random() < chance) {
+            const weeks = Math.floor(Math.random() * (config.maxWeeks - config.minWeeks + 1)) + config.minWeeks;
+            await db.wrestlers.update(w.id!, {
+              injuryWeeks: weeks,
+              injuryStatus: "Injured"
+            });
+          }
+        }
+      }
+
+      // 7. New Season Logic: Departures check
+      const weeksSetting = await db.settings.get('weeksPerSeason');
+      const weeksLimit = weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason;
+      
+      if (week === weeksLimit) {
+        // This was the last show of the season. At the start of next show (New Season), checks happen.
+        // Wait, rule 7 says: "Al comenzar una nueva season, se comprobará..."
+        // I'll implement this during the SAVE of the LAST show of the season OR during the SAVE of the FIRST show of the next season.
+        // "Al comenzar una nueva season" implies before create or during create of season N+1.
+        // Let's do it right now if this is the transition.
+      }
+      
+      // Better: Check if we are TRANSITIONING to a new season.
+      // Since suggestNextShow handles the display, handleSave should handle the enforcement.
+      // If we are saving Season S, Week W, and W is the last week.
+      if (week === weeksLimit) {
+        const wrestlersToCheck = await db.wrestlers.toArray();
+        for (const w of wrestlersToCheck) {
+          if (w.matchesSeason < 10) {
+            await db.wrestlers.update(w.id!, { isActive: false });
+          }
+          // Reset matches count for new season
+          await db.wrestlers.update(w.id!, { matchesSeason: 0 });
+        }
+      }
 
       // 4. Navigate back
       navigate("/");
@@ -493,9 +623,7 @@ const EventCreation = () => {
                       {show.brandName === "SHARED" && (
                         <div className={styles.sharedIndicators}>
                           {brands
-                            .filter(
-                              (b) => b.name === "RAW" || b.name === "SMACKDOWN",
-                            )
+                            .filter((b) => b.isMajorBrand)
                             .map((b) => (
                               <img
                                 key={b.id}
@@ -774,7 +902,11 @@ const EventCreation = () => {
                       const newParticipants = Array(currentCount).fill(0);
 
                       if (championship) {
-                        const champions = allWrestlers.filter(w => w.currentTitlesIds?.includes(championship.id!));
+                        const champions = allWrestlers.filter(w => 
+                          w.currentTitlesIds?.includes(championship.id!) && 
+                          w.name.toLowerCase() !== 'vacante' && 
+                          w.name.trim() !== ''
+                        );
                         if (champions.length > 0) {
                           if (currentType === "2 vs 2 Tag Team") {
                             newParticipants[0] = champions[0].id!;
@@ -822,8 +954,12 @@ const EventCreation = () => {
                           (t) => t.id === segment.matchData?.championshipId,
                         );
                         if (championship) {
-                          // Find all wrestlers who have this title
-                          const champions = allWrestlers.filter(w => w.currentTitlesIds?.includes(championship.id!));
+                          // Find all wrestlers who have this title, excluding 'Vacante'
+                          const champions = allWrestlers.filter(w => 
+                            w.currentTitlesIds?.includes(championship.id!) && 
+                            w.name.toLowerCase() !== 'vacante' && 
+                            w.name.trim() !== ''
+                          );
                           if (champions.length > 0) {
                             if (newType === "2 vs 2 Tag Team") {
                               // Tag match: fill first two slots with champions
@@ -1086,6 +1222,9 @@ const EventCreation = () => {
           <div className={styles.wrestlerGrid}>
             {brandWrestlers
               .filter((w) => {
+                // Filter inactive
+                if (w.isActive === false) return false;
+
                 // Participation filter
                 if (activePicker?.type === "Match") {
                   const segment = segments.find(
@@ -1131,7 +1270,6 @@ const EventCreation = () => {
                   }
                 }
 
-                // Alignment filter
                 const matchesAlignment =
                   activeAlignment === "ALL" ||
                   (activeAlignment === "FACES" && w.alignment === "Face") ||
@@ -1142,8 +1280,9 @@ const EventCreation = () => {
               .map((w) => (
                 <div
                   key={w.id}
-                  className={styles.wrestlerItem}
+                  className={`${styles.wrestlerItem} ${w.injuryWeeks > 0 ? styles.injured : ""} ${(w.moral || 80) < 20 ? styles.lowMorale : ""}`}
                   onClick={() => {
+                    if (w.injuryWeeks > 0) return;
                     if (activePicker) {
                       const segment = segments.find(
                         (s) => s.id === activePicker.segmentId,
@@ -1196,7 +1335,14 @@ const EventCreation = () => {
                     }
                   }}
                 >
-                  <img src={fixPath(w.avatar)} alt={w.name} />
+                  <div className={styles.wrestlerAvatar}>
+                    <img src={fixPath(w.avatar || w.image)} alt={w.name} />
+                    {w.injuryWeeks > 0 && (
+                      <div className={styles.injuryIndicator}>
+                        <span className={styles.injuryWeeks}>{w.injuryWeeks}</span>
+                      </div>
+                    )}
+                  </div>
                   <span>{w.name}</span>
                 </div>
               ))}

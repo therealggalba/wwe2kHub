@@ -15,7 +15,7 @@ const Home = () => {
 
       <div className={styles.grid}>
         {[
-          { title: 'Show Semanal', type: 'semanal', description: 'Crea y gestiona tu programación semanal (RAW, SmackDown, NXT).' },
+          { title: 'Show Semanal', type: 'semanal', description: 'Crea y gestiona tu programación semanal de marcas y programas.' },
           { title: 'Show Especial', type: 'especial', description: 'Planifica eventos premium en vivo (WrestleMania, Royal Rumble, etc.).' }
         ].map((event) => (
           <div 
