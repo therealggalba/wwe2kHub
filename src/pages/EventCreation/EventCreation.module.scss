@@ -30,6 +30,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        min-height: 60px;
         &:hover { border-color: var(--primary); border: 2px solid var(--primary);}
         
         .currentBrandLogo {
@@ -37,15 +39,6 @@
           width: 80px;
           display: block;
           object-fit: contain;
-        }
-
-        .sharedLabel {
-          font-size: 0.7rem;
-          font-weight: bold;
-          color: #fff;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin-top: -0.5rem;
         }
       }
 
@@ -61,13 +54,18 @@
         .brandOption {
           display: flex;
           align-items: center;
-          gap: 0.3rem;
-          padding: 0.3rem;
+          justify-content: center;
+          padding: 0;
           cursor: pointer;
-          &:hover { background: #222; color: var(--primary); }
-          &.active { border-left: 2px solid var(--primary); }
-          img { height: 50px; }
-          span { font-weight: bold; }
+          overflow: hidden;
+          &:hover { background: #222; }
+          &.active { border-left: 4px solid var(--primary); }
+          img { 
+            width: 100%;
+            height: 100px;
+            object-fit: contain;
+            padding: 5px;
+          }
         }
       }
     }
@@ -119,50 +117,43 @@
           top: 100%;
           left: 0;
           width: 100%;
-          background: #000;
-          border: 1px solid var(--primary);
+          background: #111;
+          border: 2px solid var(--primary);
           border-top: none;
-          max-height: 400px;
+          max-height: 500px;
           overflow-y: auto;
           z-index: 200;
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 10px;
+          padding: 10px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.8);
           
           .showOption {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 1rem;
+            justify-content: center;
+            padding: 0;
             cursor: pointer;
-            border-bottom: 1px solid #222;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.2s;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
             
             &:hover {
-              background: #111;
-              .showOptionLeft span { color: var(--primary); }
+              background: #222;
+              border-color: var(--primary);
+              transform: scale(1.05);
+              z-index: 10;
             }
             
-            .showOptionLeft {
-              display: flex;
-              align-items: center;
-              gap: 1rem;
-              .showOptionImage {
-                height: 40px;
-                width: 60px;
-                object-fit: contain;
-              }
-              span {
-                font-weight: bold;
-                font-style: italic;
-                text-transform: uppercase;
-              }
-            }
-
-            .sharedIndicators {
-              display: flex;
-              gap: 0.3rem;
-              .miniLogo {
-                height: 40px;
-                width: 60px;
-                object-fit: contain;
-              }
+            .showOptionImage {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
             }
           }
         }
@@ -210,13 +201,19 @@
       align-items: center;
       margin-left: 1rem;
     
+      .posterControlGroup {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 100%;
+      }
+
       .uploadBtn {
-        width: 80%;
         height: 100%;
         background: transparent;
         color: #fff;
         border: 1px solid var(--primary);
-        padding: 0.3rem;
+        padding: 0.3rem 0.6rem;
         border-radius: 4px;
         cursor: pointer;
         transition: all 0.2s;
@@ -231,6 +228,26 @@
           &:hover {
             background: rgba(0, 255, 0, 0.1);
           }
+        }
+      }
+
+      .infoIcon {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 1px solid rgba(255,255,255,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        cursor: help;
+        color: rgba(255,255,255,0.6);
+        transition: all 0.2s;
+
+        &:hover {
+          color: #fff;
+          border-color: #fff;
+          background: rgba(255,255,255,0.1);
         }
       }
     }
@@ -421,7 +438,7 @@
       &.grid-1 { grid-template-columns: 1fr; }
       &.grid-2 { grid-template-columns: 1fr 1fr; }
       &.grid-3 { grid-template-columns: 1fr 1fr 1fr; }
-      &.grid-4 { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
+      &.grid-4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: 1fr 1fr; }
       &.grid-5, &.grid-6 { grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; }
 
       .pSlot {

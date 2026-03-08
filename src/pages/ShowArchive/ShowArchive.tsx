@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../db/db';
 import type { Show, Brand } from '../../models/types';
+import ResolvedImage from '../../components/Common/ResolvedImage';
 import styles from './ShowArchive.module.scss';
-import { SHOWS_SEED } from '../../db/seeds/shows';
 
 const ShowArchive = () => {
   const navigate = useNavigate();
@@ -64,11 +64,6 @@ const ShowArchive = () => {
       return (b.valuation || 0) - (a.valuation || 0);
     });
 
-  const fixPath = (path: string | undefined): string => {
-    if (!path) return '';
-    if (path.startsWith('./')) return path.replace('./', '/');
-    return path;
-  };
 
   return (
     <div className={styles.archivePage}>
@@ -116,8 +111,7 @@ const ShowArchive = () => {
           </div>
             {filteredShows.map(show => {
               const brand = brands.find(b => b.id === show.brandId);
-              const showSeed = SHOWS_SEED.find(s => s.name === show.name);
-              const officialLogo = showSeed?.image || show.image;
+              const officialLogo = show.image;
 
               return (
                 <div key={show.id} className={styles.showRow}>
@@ -127,7 +121,7 @@ const ShowArchive = () => {
                   </div>
                   <div className={styles.logoCell}>
                     {officialLogo && (
-                      <img src={fixPath(officialLogo)} alt="Official Logo" title={show.name} className={styles.pleLogoImage} />
+                      <ResolvedImage src={officialLogo} alt="Official Logo" title={show.name} className={styles.pleLogoImage} />
                     )}
                   </div>
                   <div className={styles.nameCell}>
@@ -135,7 +129,7 @@ const ShowArchive = () => {
                     {show.type === 'PLE' && <span className={styles.pleBadge}>PLE</span>}
                   </div>
                   <div className={styles.brandCell}>
-                    {brand && <img src={fixPath(brand.logo)} alt={brand.name} className={styles.brandLogo} title={brand.name} />}
+                    {brand && <ResolvedImage src={brand.logo} alt={brand.name} className={styles.brandLogo} title={brand.name} />}
                   </div>
                   <div className={styles.ratingCell}>
                     <span className={styles.numericRating}>

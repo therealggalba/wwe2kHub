@@ -7,11 +7,10 @@ import type {
   Championship,
   Segment,
   Show,
-  TitleHistoryEntry
+  TitleHistoryEntry,
 } from "../../models/types";
+import ResolvedImage from "../../components/Common/ResolvedImage";
 import { GAME_CONFIG } from "../../config/gameConfig";
-import { BRANDS_SEED } from "../../db/seeds/brands";
-import { SHOWS_SEED } from "../../db/seeds/shows";
 import FilterBar, {
   type GenderFilter,
   type AlignmentFilter,
@@ -32,6 +31,7 @@ const EventCreation = () => {
   // Form State
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
   const [showName, setShowName] = useState("");
+  const [showImage, setShowImage] = useState("");
   const [season, setSeason] = useState(1);
   const [week, setWeek] = useState(1);
   const [segments, setSegments] = useState<Segment[]>([]);
@@ -44,6 +44,7 @@ const EventCreation = () => {
   const [overallRating, setOverallRating] = useState(0);
   const [isSaving, setIsSaving] = useState(false);
   const [customPoster, setCustomPoster] = useState<string | null>(null);
+  const [availableShows, setAvailableShows] = useState<Show[]>([]);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const [isBrandDropdownOpen, setIsBrandDropdownOpen] = useState(false);
@@ -53,29 +54,34 @@ const EventCreation = () => {
   const [activeGender, setActiveGender] = useState<GenderFilter>("ALL");
   const [activeAlignment, setActiveAlignment] =
     useState<AlignmentFilter>("ALL");
-  const [activeSubBrandId, setActiveSubBrandId] = useState<number | undefined>();
+  const [activeSubBrandId, setActiveSubBrandId] = useState<
+    number | undefined
+  >();
 
   // Sequential logic for Season/Week
   useEffect(() => {
     const suggestNextShow = async () => {
       if (!selectedBrand?.id) return;
-      const latestShow = await db.shows
+      
+      // Only count shows that have been actually created/played (have season and week)
+      const playedShows = await db.shows
         .where("brandId")
         .equals(selectedBrand.id)
+        .filter(s => s.season !== undefined && s.week !== undefined)
         .reverse()
         .sortBy("date");
 
-      const weeksSetting = await db.settings.get('weeksPerSeason');
-      const weeksPerSeason = weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason;
+      const weeksSetting = await db.settings.get("weeksPerSeason");
+      const weeksPerSeason = Number(weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason);
 
-      if (latestShow.length > 0) {
-        const last = latestShow[0];
-        if (last.week && last.week < weeksPerSeason) {
-          setWeek(last.week + 1);
-          setSeason(last.season || 1);
+      if (playedShows.length > 0) {
+        const last = playedShows[0];
+        if (last.week! < weeksPerSeason) {
+          setWeek(last.week! + 1);
+          setSeason(last.season!);
         } else {
           setWeek(1);
-          setSeason((last.season || 1) + 1);
+          setSeason(last.season! + 1);
         }
       } else {
         setSeason(1);
@@ -90,84 +96,67 @@ const EventCreation = () => {
       // Reset sub-brand filter when changing main brand
       setActiveSubBrandId(undefined);
 
-      // 1. Sync Brands from Seed
-      const seedNames = BRANDS_SEED.map((s) => s.name.trim());
+      const allBrands = await db.brands.toArray();
 
-      for (const brandData of BRANDS_SEED) {
-        const brandName = brandData.name.trim();
-        const existing = await db.brands
-          .where("name")
-          .equals(brandName)
-          .first();
-        if (!existing) {
-          await db.brands.add({
-            name: brandName,
-            primaryColor: brandData.primaryColor,
-            secondaryColor: brandData.secondaryColor,
-            logo: brandData.logo,
-            priority: brandData.priority,
-            isMajorBrand: brandData.isMajorBrand,
-            isShared: brandData.isShared,
-          });
-        } else {
-          await db.brands.update(existing.id!, {
-            primaryColor: brandData.primaryColor,
-            secondaryColor: brandData.secondaryColor,
-            logo: brandData.logo,
-            priority: brandData.priority,
-            isMajorBrand: brandData.isMajorBrand,
-            isShared: brandData.isShared,
-          });
+      // If no SHARED brand exists in DB, synthesize a virtual one for PLE mode
+      const hasShared = allBrands.some(
+        (b) => b.isShared || b.name.toUpperCase() === "SHARED",
+      );
+      if (!hasShared && !isWeekly) {
+        const configShared = GAME_CONFIG.brands.find(
+          (b) => b.isShared || b.name.toUpperCase() === "SHARED",
+        );
+        if (configShared) {
+          allBrands.push({
+            ...configShared,
+            id: -1, // Virtual ID for Shared Brand
+          } as Brand);
         }
       }
 
-      // Cleanup duplicates or invalid brands
-      const allDBBrands = await db.brands.toArray();
-      const seenNames = new Set<string>();
-      const toDelete: number[] = [];
+      const allWrestlers = await db.wrestlers.toArray();
+      const allTitles = await db.championships.toArray();
+      const allShows = await db.shows.toArray(); // Fetch all shows here
 
-      for (const b of allDBBrands) {
-        const bName = b.name.trim();
-        if (!seedNames.includes(bName) || seenNames.has(bName)) {
-          if (bName !== "FREE AGENT") {
-            // Keep special internal brands if they exist, but here we only care about seed
-            toDelete.push(b.id!);
-          }
-        } else {
-          seenNames.add(bName);
-        }
-      }
-
-      if (toDelete.length > 0) {
-        await db.brands.bulkDelete(toDelete);
-      }
-
-      const b = await db.brands.toArray();
-      const w = await db.wrestlers.toArray();
-      const t = await db.championships.toArray();
-
-      const filteredBrands = b.filter((brand) => brand.name !== "FREE AGENT");
+      // Only hide FREE AGENT from the brand list, but keep the virtual SHARED brand
+      const filteredBrands = allBrands.filter(
+        (brand) => brand.name !== "FREE AGENT" || brand.id === -1,
+      );
       setBrands(filteredBrands);
-      setAllWrestlers(w);
-      setAllTitles(t);
+      setAllWrestlers(allWrestlers);
+      setAllTitles(allTitles);
+      setAvailableShows(allShows); // Set available shows here
 
-      // Default brand by priority
-      if (filteredBrands.length > 0) {
-        const sortedBrands = [...filteredBrands].sort((a, b) => a.priority - b.priority);
-        setSelectedBrand(sortedBrands[0]);
+      // Default brand selection
+      if (!selectedBrand && filteredBrands.length > 0) {
+        // If PLE, try to select SHARED first if it exists
+        const shared = filteredBrands.find(
+          (b) => b.isShared || b.name.toUpperCase() === "SHARED" || b.id === -1,
+        );
+        if (!isWeekly && shared) {
+          setSelectedBrand(shared);
+        } else {
+          // Otherwise first major brand or the first brand in the filtered list
+          const major = filteredBrands.find((b) => b.isMajorBrand);
+          setSelectedBrand(major || filteredBrands[0]);
+        }
       }
+
       setLoading(false);
     };
     loadData();
-  }, []);
+  }, [selectedBrand, isWeekly]); // Added isWeekly to dependencies
+
+  useEffect(() => {
+    if (showName && availableShows.length > 0) {
+      const currentShow = availableShows.find((s) => s.name === showName);
+      if (currentShow && currentShow.image) {
+        setShowImage(currentShow.image);
+      }
+    }
+  }, [showName, availableShows]);
 
   // Helper to fix paths
-  const fixPath = (path: string | undefined): string => {
-    if (!path) return "";
-    if (path.startsWith("data:image")) return path; // Already a base64 string
-    if (path.startsWith("./")) return path.replace("./", "/");
-    return path;
-  };
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -224,33 +213,36 @@ const EventCreation = () => {
 
     try {
       // 0. Validation: Check for duplicates
-      if (selectedBrand?.id) {
+      if (selectedBrand?.id !== -1) { // Only check for duplicates if it's a real brand
         const existing = await db.shows
           .where({
             brandId: selectedBrand.id,
             season: season,
-            week: week
+            week: week,
           })
           .first();
 
         if (existing) {
-          alert(`A show for ${selectedBrand.name} in Season ${season}, Week ${week} already exists!`);
+          alert(
+            `A show for ${selectedBrand.name} in Season ${season}, Week ${week} already exists!`,
+          );
           setIsSaving(false);
           return;
         }
       }
 
       // 1. Prepare the show data
+      const weeklyTemplate = availableShows.find(
+        (s) => s.brandId === selectedBrand.id && s.type === "Weekly",
+      );
       const finalShowName = isWeekly
-        ? SHOWS_SEED.find(
-            (s) => s.brandName === selectedBrand.name && s.type === "Weekly",
-          )?.name || `${selectedBrand.name} Weekly`
+        ? weeklyTemplate?.name || `${selectedBrand.name} Weekly`
         : showName;
 
       const showData: Record<string, unknown> = {
         name: finalShowName,
         date: new Date(),
-        brandId: selectedBrand.id,
+        brandId: selectedBrand.id === -1 ? undefined : selectedBrand.id, // Use undefined for virtual SHARED brand
         type: isWeekly ? "Weekly" : "PLE",
         card: {
           segments: segments,
@@ -263,6 +255,8 @@ const EventCreation = () => {
 
       if (customPoster) {
         showData.image = customPoster;
+      } else if (!isWeekly && showImage) {
+        showData.image = showImage;
       }
 
       // 2. Save to Dexie
@@ -274,25 +268,36 @@ const EventCreation = () => {
       const titleDefenders = new Set<number>();
 
       for (const segment of segments) {
-        if (segment.type === 'Match' && segment.matchData?.titleMatch && segment.matchData.championshipId) {
+        if (
+          segment.type === "Match" &&
+          segment.matchData?.titleMatch &&
+          segment.matchData.championshipId
+        ) {
           const { championshipId, winnersIds } = segment.matchData;
           const championship = await db.championships.get(championshipId);
-          
+
           if (championship) {
             const currentChampionId = championship.currentChampionId;
             const isDraw = winnersIds.includes(-1);
-            const isNewChampion = !isDraw && winnersIds.length > 0 && !winnersIds.includes(currentChampionId || -1);
+            const isNewChampion =
+              !isDraw &&
+              winnersIds.length > 0 &&
+              !winnersIds.includes(currentChampionId || -1);
 
             if (isNewChampion) {
               // A. Remove title from former champion(s)
               const formerChampions = await db.wrestlers
-                .filter(w => (w.currentTitlesIds || []).includes(championshipId))
+                .filter((w) =>
+                  (w.currentTitlesIds || []).includes(championshipId),
+                )
                 .toArray();
 
               for (const former of formerChampions) {
                 titleLosers.add(former.id!);
                 await db.wrestlers.update(former.id!, {
-                  currentTitlesIds: (former.currentTitlesIds || []).filter(id => id !== championshipId)
+                  currentTitlesIds: (former.currentTitlesIds || []).filter(
+                    (id) => id !== championshipId,
+                  ),
                 });
               }
 
@@ -301,32 +306,39 @@ const EventCreation = () => {
                 const wrestler = await db.wrestlers.get(newChampId);
                 if (wrestler) {
                   titleWinners.add(newChampId);
-                  const updatedTitles = Array.from(new Set([...(wrestler.currentTitlesIds || []), championshipId]));
+                  const updatedTitles = Array.from(
+                    new Set([
+                      ...(wrestler.currentTitlesIds || []),
+                      championshipId,
+                    ]),
+                  );
                   await db.wrestlers.update(newChampId, {
-                    currentTitlesIds: updatedTitles
+                    currentTitlesIds: updatedTitles,
                   });
                 }
               }
 
               // C. Update Championship record
               const newChampionNames = await Promise.all(
-                winnersIds.map(async id => (await db.wrestlers.get(id))?.name || 'Unknown')
+                winnersIds.map(
+                  async (id) => (await db.wrestlers.get(id))?.name || "Unknown",
+                ),
               );
 
               const historyEntry: TitleHistoryEntry = {
                 wrestlerIds: winnersIds,
-                wrestlerName: newChampionNames.join(' & '),
+                wrestlerName: newChampionNames.join(" & "),
                 reignNumber: (championship.history?.length || 0) + 1,
-                totalWeeks: 0
+                totalWeeks: 0,
               };
 
               await db.championships.update(championshipId, {
                 currentChampionId: winnersIds[0],
-                history: [...(championship.history || []), historyEntry]
+                history: [...(championship.history || []), historyEntry],
               });
             } else if (!isDraw) {
               // Champion retained
-              winnersIds.forEach(id => titleDefenders.add(id));
+              winnersIds.forEach((id) => titleDefenders.add(id));
             }
           }
         }
@@ -335,7 +347,11 @@ const EventCreation = () => {
       // 3.5 Increment Tenure for ALL active championships (1 week passes)
       const allChamps = await db.championships.toArray();
       for (const champ of allChamps) {
-        if (champ.currentChampionId && champ.history && champ.history.length > 0) {
+        if (
+          champ.currentChampionId &&
+          champ.history &&
+          champ.history.length > 0
+        ) {
           const lastIndex = champ.history.length - 1;
           const updatedHistory = [...champ.history];
           updatedHistory[lastIndex].totalWeeks += 1;
@@ -345,13 +361,20 @@ const EventCreation = () => {
 
       // 4. Automated Wrestler Statistics & Morale Management
       const appearanceBonus = isWeekly ? 3 : 5;
-      const allParticipants = new Set(segments.flatMap(s => 
-        s.type === 'Match' ? (s.matchData?.participantsIds || []) : 
-        s.type === 'Promo' ? (s.promoData?.participantsIds || []) : []
-      ));
+      const allParticipants = new Set(
+        segments.flatMap((s) =>
+          s.type === "Match"
+            ? s.matchData?.participantsIds || []
+            : s.type === "Promo"
+              ? s.promoData?.participantsIds || []
+              : [],
+        ),
+      );
 
       const moraleSettings = await db.settings.get("enableMorale");
-      const isMoraleEnabled = moraleSettings ? moraleSettings.value : GAME_CONFIG.settings.enableMorale;
+      const isMoraleEnabled = moraleSettings
+        ? moraleSettings.value
+        : GAME_CONFIG.settings.enableMorale;
 
       for (const pid of allParticipants) {
         if (pid === 0) continue;
@@ -362,20 +385,27 @@ const EventCreation = () => {
 
         if (isMoraleEnabled) {
           let moraleChange = appearanceBonus;
-          if (titleWinners.has(pid) || titleDefenders.has(pid)) moraleChange += 5;
+          if (titleWinners.has(pid) || titleDefenders.has(pid))
+            moraleChange += 5;
           if (titleLosers.has(pid)) moraleChange -= 10;
 
-          const nextMorale = Math.min(100, Math.max(5, (wrestler.moral || 80) + moraleChange));
+          const nextMorale = Math.min(
+            100,
+            Math.max(5, (wrestler.moral || 80) + moraleChange),
+          );
           updateFields.moral = nextMorale;
           updateFields.isActive = nextMorale >= 5;
         }
 
         // If in a match, update stats (always, unless specifically told otherwise)
-        const matchSegment = segments.find(s => s.type === 'Match' && s.matchData?.participantsIds.includes(pid));
+        const matchSegment = segments.find(
+          (s) =>
+            s.type === "Match" && s.matchData?.participantsIds.includes(pid),
+        );
         if (matchSegment?.matchData) {
           const { winnersIds } = matchSegment.matchData;
           updateFields.matchesSeason = (wrestler.matchesSeason || 0) + 1;
-          
+
           if (winnersIds.includes(-1)) {
             updateFields.draws = (wrestler.draws || 0) + 1;
           } else if (winnersIds.includes(pid)) {
@@ -402,20 +432,27 @@ const EventCreation = () => {
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
-      
+
       // 6. Injury System logic
       const injurySettings = await db.settings.get("enableInjuries");
-      const isInjuryEnabled = injurySettings ? injurySettings.value : GAME_CONFIG.settings.enableInjuries;
+      const isInjuryEnabled = injurySettings
+        ? injurySettings.value
+        : GAME_CONFIG.settings.enableInjuries;
 
       if (isInjuryEnabled) {
-        const participantsIds = new Set(segments.flatMap(s => s.type === 'Match' ? (s.matchData?.participantsIds || []) : []));
-        
+        const participantsIds = new Set(
+          segments.flatMap((s) =>
+            s.type === "Match" ? s.matchData?.participantsIds || [] : [],
+          ),
+        );
+
         // 1. Recover/Decrement weeks for existing injuries of this brand
         const currentlyInjured = await db.wrestlers
-          .where('brandId').equals(selectedBrand.id!)
-          .and(w => w.injuryWeeks > 0)
+          .where("brandId")
+          .equals(selectedBrand.id!)
+          .and((w) => w.injuryWeeks > 0)
           .toArray();
-        
+
         for (const w of currentlyInjured) {
           // If they weren't in this show, decrement
           if (!participantsIds.has(w.id!)) {
@@ -426,7 +463,10 @@ const EventCreation = () => {
             };
 
             if (isMoraleEnabled) {
-              const updatedMorale = Math.min(100, Math.max(5, (w.moral || 80) - 5));
+              const updatedMorale = Math.min(
+                100,
+                Math.max(5, (w.moral || 80) - 5),
+              );
               updateFields.moral = updatedMorale;
               updateFields.isActive = updatedMorale >= 5;
             }
@@ -437,6 +477,13 @@ const EventCreation = () => {
 
         // 2. Calculate NEW injuries
         const config = GAME_CONFIG.settings.injurySystem;
+        const brandWrestlers = allWrestlers.filter((w) => {
+          if (selectedBrand.name === "SHARED") {
+            if (activeSubBrandId) return w.brandId === activeSubBrandId;
+            return true;
+          }
+          return w.brandId === selectedBrand.id;
+        });
         for (const w of brandWrestlers) {
           if (w.injuryWeeks > 0 || w.isActive === false) continue;
 
@@ -444,26 +491,38 @@ const EventCreation = () => {
           const isInMatch = participantsIds.has(w.id!);
           if (isInMatch) {
             chance += config.matchBonus;
-            const match = segments.find(s => s.type === 'Match' && s.matchData?.participantsIds.includes(w.id!))?.matchData;
-            if (match && (match.type.toLowerCase().includes('extreme') || match.type.toLowerCase().includes('nodq'))) {
+            const match = segments.find(
+              (s) =>
+                s.type === "Match" &&
+                s.matchData?.participantsIds.includes(w.id!),
+            )?.matchData;
+            if (
+              match &&
+              (match.type.toLowerCase().includes("extreme") ||
+                match.type.toLowerCase().includes("nodq"))
+            ) {
               chance += config.extremeBonus;
             }
           }
 
           if (Math.random() < chance) {
-            const weeks = Math.floor(Math.random() * (config.maxWeeks - config.minWeeks + 1)) + config.minWeeks;
+            const weeks =
+              Math.floor(
+                Math.random() * (config.maxWeeks - config.minWeeks + 1),
+              ) + config.minWeeks;
             await db.wrestlers.update(w.id!, {
               injuryWeeks: weeks,
-              injuryStatus: "Injured"
+              injuryStatus: "Injured",
             });
           }
         }
       }
 
       // 7. New Season Logic: Departures check
-      const weeksSetting = await db.settings.get('weeksPerSeason');
-      const weeksLimit = weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason;
-      
+      const weeksSetting = await db.settings.get("weeksPerSeason");
+      const weeksLimit =
+        weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason;
+
       if (week === weeksLimit) {
         // This was the last show of the season. At the start of next show (New Season), checks happen.
         // Wait, rule 7 says: "Al comenzar una nueva season, se comprobará..."
@@ -471,7 +530,7 @@ const EventCreation = () => {
         // "Al comenzar una nueva season" implies before create or during create of season N+1.
         // Let's do it right now if this is the transition.
       }
-      
+
       // Better: Check if we are TRANSITIONING to a new season.
       // Since suggestNextShow handles the display, handleSave should handle the enforcement.
       // If we are saving Season S, Week W, and W is the last week.
@@ -500,15 +559,23 @@ const EventCreation = () => {
     return <div className={styles.loading}>Loading...</div>;
 
   const brandWrestlers = allWrestlers.filter((w) => {
-    if (selectedBrand.name === "SHARED") {
+    const isBrandShared = selectedBrand.isShared || selectedBrand.name.toUpperCase() === "SHARED" || selectedBrand.id === -1;
+    if (isBrandShared) {
       if (activeSubBrandId) return w.brandId === activeSubBrandId;
-      return true;
+      // Dynamic Union of all Major Brands
+      const majorBrandIds = brands.filter(b => b.isMajorBrand).map(b => b.id);
+      return majorBrandIds.includes(w.brandId);
     }
     return w.brandId === selectedBrand.id;
   });
 
   const brandTitles = allTitles.filter((t) => {
-    if (selectedBrand.name === "SHARED") return true;
+    const isBrandShared = selectedBrand.isShared || selectedBrand.name.toUpperCase() === "SHARED" || selectedBrand.id === -1;
+    if (isBrandShared) {
+      // Dynamic Union of all Major Brands
+      const majorBrandIds = brands.filter(b => b.isMajorBrand).map(b => b.id);
+      return majorBrandIds.includes(t.brandId) || t.brandId === selectedBrand.id;
+    }
     return t.brandId === selectedBrand.id;
   });
 
@@ -531,21 +598,24 @@ const EventCreation = () => {
             className={styles.brandDropdownHeader}
             onClick={() => setIsBrandDropdownOpen(!isBrandDropdownOpen)}
           >
-            <img
-              src={fixPath(selectedBrand.logo)}
+            <ResolvedImage
+              src={selectedBrand.logo}
               alt={selectedBrand.name}
               className={styles.currentBrandLogo}
             />
-            {selectedBrand.name === "SHARED" && (
-              <span className={styles.sharedLabel}>SHARED</span>
-            )}
           </div>
           {isBrandDropdownOpen && (
             <div className={styles.brandDropdownList}>
               {brands
                 .filter((brand) => {
-                  if (brand.name === "SHARED") return !isWeekly;
-                  return true;
+                  const isBrandShared = brand.isShared || brand.name.toUpperCase() === "SHARED" || brand.id === -1;
+                  if (isWeekly) {
+                    // Weekly: Hide Shared brands
+                    return !isBrandShared;
+                  } else {
+                    // PLE: Show Major Brands + Shared Brands
+                    return brand.isMajorBrand || isBrandShared;
+                  }
                 })
                 .map((brand) => (
                   <div
@@ -558,8 +628,7 @@ const EventCreation = () => {
                       setIsBrandDropdownOpen(false);
                     }}
                   >
-                    <img src={fixPath(brand.logo)} alt={brand.name} />
-                    <span>{brand.name}</span>
+                    <ResolvedImage src={brand.logo} alt={brand.name} />
                   </div>
                 ))}
             </div>
@@ -575,21 +644,14 @@ const EventCreation = () => {
               >
                 {showName ? (
                   <div className={styles.selectedShow}>
-                    {(() => {
-                      const show = SHOWS_SEED.find((s) => s.name === showName);
-                      return show ? (
-                        <>
-                          <img
-                            src={fixPath(show.image)}
-                            alt={show.name}
-                            className={styles.showLogoHeader}
-                          />
-                          <span>{show.name}</span>
-                        </>
-                      ) : (
-                        <span>{showName}</span>
-                      );
-                    })()}
+                    {showImage && (
+                      <ResolvedImage
+                        src={showImage}
+                        alt={showName}
+                        className={styles.showLogoHeader}
+                      />
+                    )}
+                    <span>{showName}</span>
                   </div>
                 ) : (
                   <span className={styles.placeholderText}>
@@ -600,42 +662,37 @@ const EventCreation = () => {
 
               {isShowDropdownOpen && (
                 <div className={styles.showDropdownList}>
-                  {SHOWS_SEED.filter((show) => {
-                    if (show.type !== "PLE") return false;
-                    return show.brandName === selectedBrand.name;
-                  }).map((show) => (
-                    <div
-                      key={show.name}
-                      className={styles.showOption}
-                      onClick={() => {
-                        setShowName(show.name);
-                        setIsShowDropdownOpen(false);
-                      }}
-                    >
-                      <div className={styles.showOptionLeft}>
-                        <img
-                          src={fixPath(show.image)}
-                          alt={show.name}
-                          className={styles.showOptionImage}
-                        />
-                        <span>{show.name}</span>
+                  {availableShows
+                    .filter(
+                      (s) =>
+                        s.type === "PLE" &&
+                        (s.brandId === selectedBrand.id ||
+                          ((selectedBrand.isShared ||
+                            selectedBrand.id === -1 ||
+                            selectedBrand.name.toUpperCase() === "SHARED") &&
+                            (!s.brandId ||
+                              brands.find((b) => b.id === s.brandId)
+                                ?.isShared))),
+                    )
+                    .map((s) => (
+                      <div
+                        key={s.id}
+                        className={styles.showOption}
+                        onClick={() => {
+                          setShowName(s.name);
+                          setShowImage(s.image || "");
+                          setIsShowDropdownOpen(false);
+                        }}
+                      >
+                        {s.image && (
+                          <ResolvedImage
+                            src={s.image}
+                            alt={s.name}
+                            className={styles.showOptionImage}
+                          />
+                        )}
                       </div>
-                      {show.brandName === "SHARED" && (
-                        <div className={styles.sharedIndicators}>
-                          {brands
-                            .filter((b) => b.isMajorBrand)
-                            .map((b) => (
-                              <img
-                                key={b.id}
-                                src={fixPath(b.logo)}
-                                alt={b.name}
-                                className={styles.miniLogo}
-                              />
-                            ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                    ))}
                 </div>
               )}
             </div>
@@ -649,29 +706,29 @@ const EventCreation = () => {
                 accept="image/png"
                 onChange={handleImageUpload}
               />
-              <button
-                className={`${styles.uploadBtn} ${customPoster ? styles.hasPoster : ""}`}
-                onClick={() => fileInputRef.current?.click()}
-                title="Upload custom PLE poster"
-              >
-                {customPoster ? "✅ Poster" : "📤 Poster"}
-              </button>
+              <div className={styles.posterControlGroup}>
+                <button
+                  className={`${styles.uploadBtn} ${customPoster ? styles.hasPoster : ""}`}
+                  onClick={() => fileInputRef.current?.click()}
+                  title="Upload custom PLE poster"
+                >
+                  {customPoster ? "✅ Poster" : "📤 Poster"}
+                </button>
+                <div className={styles.infoIcon} title="Recommended: Vertical format (e.g. 600x900px) in PNG format.">
+                  ⓘ
+                </div>
+              </div>
             </div>
           )}
           {isWeekly && (
             <div className={styles.selectedShow}>
               {(() => {
-                const show = SHOWS_SEED.find(
-                  (s) =>
-                    s.brandName === selectedBrand.name && s.type === "Weekly",
+                const show = availableShows.find(
+                  (s) => s.brandId === selectedBrand.id && s.type === "Weekly",
                 );
-                return show ? (
-                  <>
-                    <span>{show.name}</span>
-                  </>
-                ) : (
-                  <span className={styles.placeholderText}>
-                    {selectedBrand.name} Weekly Show
+                return (
+                  <span>
+                    {show?.name || `${selectedBrand.name} Weekly Show`}
                   </span>
                 );
               })()}
@@ -852,8 +909,8 @@ const EventCreation = () => {
                           }
                         >
                           {wrestler ? (
-                            <img
-                              src={fixPath(wrestler.avatar || wrestler.image)}
+                            <ResolvedImage
+                              src={wrestler.avatar || wrestler.image}
                               alt={wrestler.name}
                             />
                           ) : (
@@ -902,15 +959,25 @@ const EventCreation = () => {
                       const newParticipants = Array(currentCount).fill(0);
 
                       if (championship) {
-                        const champions = allWrestlers.filter(w => 
-                          w.currentTitlesIds?.includes(championship.id!) && 
-                          w.name.toLowerCase() !== 'vacante' && 
-                          w.name.trim() !== ''
+                        const champions = allWrestlers.filter(
+                          (w) =>
+                            w.currentTitlesIds?.includes(championship.id!) &&
+                            w.name.toLowerCase() !== "vacante" &&
+                            w.name.trim() !== "",
                         );
-                        if (champions.length > 0) {
+                        const isVacant = champions.some(w => w.name.toLowerCase() === "vacante") || champions.length === 0;
+                        
+                        if (champions.length > 0 && !isVacant) {
                           if (currentType === "2 vs 2 Tag Team") {
                             newParticipants[0] = champions[0].id!;
-                            if (champions[1]) newParticipants[1] = champions[1].id!;
+                            if (champions[1])
+                              newParticipants[1] = champions[1].id!;
+                          } else if (currentType === "3 vs 3 Trios") {
+                            newParticipants[0] = champions[0].id!;
+                            if (champions[1])
+                              newParticipants[1] = champions[1].id!;
+                            if (champions[2])
+                              newParticipants[2] = champions[2].id!;
                           } else {
                             newParticipants[0] = champions[0].id!;
                           }
@@ -942,8 +1009,12 @@ const EventCreation = () => {
                       let numParticipants = 2;
                       if (newType === "Triple Threat 1 vs 1 vs 1")
                         numParticipants = 3;
-                      if (newType === "Fatal 4-Way 1 vs 1 vs 1 vs 1" || newType === "2 vs 2 Tag Team")
+                      if (
+                        newType === "Fatal 4-Way 1 vs 1 vs 1 vs 1" ||
+                        newType === "2 vs 2 Tag Team"
+                      )
                         numParticipants = 4;
+                      if (newType === "3 vs 3 Trios") numParticipants = 6;
 
                       // Reset participants to 0
                       const newParticipants = Array(numParticipants).fill(0);
@@ -955,16 +1026,25 @@ const EventCreation = () => {
                         );
                         if (championship) {
                           // Find all wrestlers who have this title, excluding 'Vacante'
-                          const champions = allWrestlers.filter(w => 
-                            w.currentTitlesIds?.includes(championship.id!) && 
-                            w.name.toLowerCase() !== 'vacante' && 
-                            w.name.trim() !== ''
+                          const champions = allWrestlers.filter(
+                            (w) =>
+                              w.currentTitlesIds?.includes(championship.id!) &&
+                              w.name.toLowerCase() !== "vacante" &&
+                              w.name.trim() !== "",
                           );
                           if (champions.length > 0) {
                             if (newType === "2 vs 2 Tag Team") {
                               // Tag match: fill first two slots with champions
                               newParticipants[0] = champions[0].id!;
-                              if (champions[1]) newParticipants[1] = champions[1].id!;
+                              if (champions[1])
+                                newParticipants[1] = champions[1].id!;
+                            } else if (newType === "3 vs 3 Trios") {
+                              // Trios match: fill first three slots with champions
+                              newParticipants[0] = champions[0].id!;
+                              if (champions[1])
+                                newParticipants[1] = champions[1].id!;
+                              if (champions[2])
+                                newParticipants[2] = champions[2].id!;
                             } else {
                               // Singles/Multi: first slot for champ
                               newParticipants[0] = champions[0].id!;
@@ -988,47 +1068,104 @@ const EventCreation = () => {
                     <option>Triple Threat 1 vs 1 vs 1</option>
                     <option>Fatal 4-Way 1 vs 1 vs 1 vs 1</option>
                     <option>2 vs 2 Tag Team</option>
+                    <option>3 vs 3 Trios</option>
                   </select>
                 </div>
                 <div className={styles.matchBody}>
                   <div className={styles.matchParticipants}>
-                    {segment.matchData?.type === "2 vs 2 Tag Team" ? (
-                      // TAG TEAM LAYOUT
+                    {segment.matchData?.type === "2 vs 2 Tag Team" ||
+                    segment.matchData?.type === "3 vs 3 Trios" ? (
+                      // TAG TEAM / TRIOS LAYOUT
                       <>
                         <div className={styles.tagGroup}>
-                          {[0, 1].map((pIdx) => {
-                            const pid = segment.matchData!.participantsIds[pIdx];
-                            const wrestler = allWrestlers.find((w) => w.id === pid);
+                          {(segment.matchData?.type === "2 vs 2 Tag Team"
+                            ? [0, 1]
+                            : [0, 1, 2]
+                          ).map((pIdx) => {
+                            const pid =
+                              segment.matchData!.participantsIds[pIdx];
+                            const wrestler = allWrestlers.find(
+                              (w) => w.id === pid,
+                            );
                             return (
-                              <div key={pIdx} className={styles.participantNode}>
+                              <div
+                                key={pIdx}
+                                className={styles.participantNode}
+                              >
                                 <div
-                                  className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < 2 ? styles.locked : ""}`}
+                                  className={`${styles.pSlot} ${segment.matchData?.titleMatch && ((segment.matchData?.type === "2 vs 2 Tag Team" && pIdx < 2) || (segment.matchData?.type === "3 vs 3 Trios" && pIdx < 3)) ? styles.locked : ""}`}
                                   onClick={() => {
-                                    if (segment.matchData?.titleMatch && pIdx < 2) return;
-                                    setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx });
+                                    if (
+                                      segment.matchData?.titleMatch &&
+                                      ((segment.matchData?.type ===
+                                        "2 vs 2 Tag Team" &&
+                                        pIdx < 2) ||
+                                        (segment.matchData?.type ===
+                                          "3 vs 3 Trios" &&
+                                          pIdx < 3))
+                                    )
+                                      return;
+                                    setActivePicker({
+                                      segmentId: segment.id,
+                                      type: "Match",
+                                      index: pIdx,
+                                    });
                                   }}
                                 >
-                                  {wrestler ? <img src={fixPath(wrestler.avatar || wrestler.image)} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
+                                  {wrestler ? (
+                                    <ResolvedImage
+                                      src={wrestler.avatar || wrestler.image}
+                                      alt={wrestler.name}
+                                    />
+                                  ) : (
+                                    <div className={styles.placeholder}>?</div>
+                                  )}
                                 </div>
-                                <span className={styles.pName}>{wrestler?.name || `Wrestler ${pIdx + 1}`}</span>
+                                <span className={styles.pName}>
+                                  {wrestler?.name || `Wrestler ${pIdx + 1}`}
+                                </span>
                               </div>
                             );
                           })}
                         </div>
                         <span className={styles.vs}>VS.</span>
                         <div className={styles.tagGroup}>
-                          {[2, 3].map((pIdx) => {
-                            const pid = segment.matchData!.participantsIds[pIdx];
-                            const wrestler = allWrestlers.find((w) => w.id === pid);
+                          {(segment.matchData?.type === "2 vs 2 Tag Team"
+                            ? [2, 3]
+                            : [3, 4, 5]
+                          ).map((pIdx) => {
+                            const pid =
+                              segment.matchData!.participantsIds[pIdx];
+                            const wrestler = allWrestlers.find(
+                              (w) => w.id === pid,
+                            );
                             return (
-                              <div key={pIdx} className={styles.participantNode}>
+                              <div
+                                key={pIdx}
+                                className={styles.participantNode}
+                              >
                                 <div
                                   className={styles.pSlot}
-                                  onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
+                                  onClick={() =>
+                                    setActivePicker({
+                                      segmentId: segment.id,
+                                      type: "Match",
+                                      index: pIdx,
+                                    })
+                                  }
                                 >
-                                  {wrestler ? <img src={fixPath(wrestler.avatar || wrestler.image)} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
+                                  {wrestler ? (
+                                    <ResolvedImage
+                                      src={wrestler.avatar || wrestler.image}
+                                      alt={wrestler.name}
+                                    />
+                                  ) : (
+                                    <div className={styles.placeholder}>?</div>
+                                  )}
                                 </div>
-                                <span className={styles.pName}>{wrestler?.name || `Wrestler ${pIdx + 1}`}</span>
+                                <span className={styles.pName}>
+                                  {wrestler?.name || `Wrestler ${pIdx + 1}`}
+                                </span>
                               </div>
                             );
                           })}
@@ -1044,7 +1181,10 @@ const EventCreation = () => {
                               <div
                                 className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx === 0 ? styles.locked : ""}`}
                                 onClick={() => {
-                                  if (segment.matchData?.titleMatch && pIdx === 0)
+                                  if (
+                                    segment.matchData?.titleMatch &&
+                                    pIdx === 0
+                                  )
                                     return;
                                   setActivePicker({
                                     segmentId: segment.id,
@@ -1054,10 +1194,8 @@ const EventCreation = () => {
                                 }}
                               >
                                 {wrestler ? (
-                                  <img
-                                    src={fixPath(
-                                      wrestler.avatar || wrestler.image,
-                                    )}
+                                  <ResolvedImage
+                                    src={wrestler.avatar || wrestler.image}
                                     alt={wrestler.name}
                                   />
                                 ) : (
@@ -1068,7 +1206,9 @@ const EventCreation = () => {
                                 {wrestler?.name || `Wrestler ${pIdx + 1}`}
                               </span>
                             </div>
-                            {pIdx < (segment.matchData?.participantsIds.length || 0) - 1 && <span className={styles.vs}>VS.</span>}
+                            {pIdx <
+                              (segment.matchData?.participantsIds.length || 0) -
+                                1 && <span className={styles.vs}>VS.</span>}
                           </React.Fragment>
                         );
                       })
@@ -1082,32 +1222,79 @@ const EventCreation = () => {
                         onChange={(e) => {
                           const val = e.target.value;
                           if (val === "-1") {
-                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: [-1] } });
+                            updateSegment(segment.id, {
+                              matchData: {
+                                ...segment.matchData!,
+                                winnersIds: [-1],
+                              },
+                            });
                           } else if (val) {
-                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: val.split(",").map(Number) } });
+                            updateSegment(segment.id, {
+                              matchData: {
+                                ...segment.matchData!,
+                                winnersIds: val.split(",").map(Number),
+                              },
+                            });
                           } else {
-                            updateSegment(segment.id, { matchData: { ...segment.matchData!, winnersIds: [] } });
+                            updateSegment(segment.id, {
+                              matchData: {
+                                ...segment.matchData!,
+                                winnersIds: [],
+                              },
+                            });
                           }
                         }}
                       >
                         <option value="">Choose the winner</option>
-                        {segment.matchData?.type === "2 vs 2 Tag Team" ? (
+                        {segment.matchData?.type === "2 vs 2 Tag Team" ||
+                        segment.matchData?.type === "3 vs 3 Trios" ? (
                           <>
                             {(() => {
-                              const p0 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[0]);
-                              const p1 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[1]);
-                              const p2 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[2]);
-                              const p3 = allWrestlers.find(wr => wr.id === segment.matchData?.participantsIds[3]);
+                              const team1Ids =
+                                segment.matchData?.type === "2 vs 2 Tag Team"
+                                  ? [0, 1]
+                                  : [0, 1, 2];
+                              const team2Ids =
+                                segment.matchData?.type === "2 vs 2 Tag Team"
+                                  ? [2, 3]
+                                  : [3, 4, 5];
+
+                              const team1 = team1Ids.map((idx) =>
+                                allWrestlers.find(
+                                  (wr) =>
+                                    wr.id ===
+                                    segment.matchData?.participantsIds[idx],
+                                ),
+                              );
+                              const team2 = team2Ids.map((idx) =>
+                                allWrestlers.find(
+                                  (wr) =>
+                                    wr.id ===
+                                    segment.matchData?.participantsIds[idx],
+                                ),
+                              );
+
+                              const team1Ready = team1.every((w) => !!w);
+                              const team2Ready = team2.every((w) => !!w);
+
                               return (
                                 <>
-                                  {p0 && p1 && (
-                                    <option value={[p0.id, p1.id].join(",")}>
-                                      {p0.name} & {p1.name}
+                                  {team1Ready && (
+                                    <option
+                                      value={team1.map((w) => w!.id).join(",")}
+                                    >
+                                      {team1.map((w) => w!.name).join(" & ")}
                                     </option>
                                   )}
-                                  {p2 && p3 && (
-                                    <option value={[p2.id, p3.id].join(",")}>
-                                      {p2.name} & {p3.name}
+                                  {team2Ready && (
+                                    <option
+                                      value={
+                                        team1Ready
+                                          ? team2.map((w) => w!.id).join(",")
+                                          : team2.map((w) => w!.id).join(",")
+                                      }
+                                    >
+                                      {team2.map((w) => w!.name).join(" & ")}
                                     </option>
                                   )}
                                 </>
@@ -1157,7 +1344,11 @@ const EventCreation = () => {
               {Array.from({ length: 10 }).map((_, i) => (
                 <span
                   key={i}
-                  className={i < Math.floor(overallRating) ? styles.starFilled : styles.starEmpty}
+                  className={
+                    i < Math.floor(overallRating)
+                      ? styles.starFilled
+                      : styles.starEmpty
+                  }
                   onClick={() => setOverallRating(i + 1)}
                 >
                   ★
@@ -1174,17 +1365,33 @@ const EventCreation = () => {
                 onChange={(e) => setOverallRating(parseFloat(e.target.value))}
                 className={styles.ratingSlider}
               />
-              <span className={styles.ratingDisplay}>{overallRating.toFixed(1)}</span>
+              <span className={styles.ratingDisplay}>
+                {overallRating.toFixed(1)}
+              </span>
             </div>
           </div>
         </div>
 
         <button
           className={styles.saveBtn}
-          disabled={isSaving || overallRating === 0 || (!isWeekly && !showName) || segments.some(s => s.type === 'Match' && (!s.matchData?.winnersIds.length || s.matchData.winnersIds[0] === undefined))}
+          disabled={
+            isSaving ||
+            overallRating === 0 ||
+            (!isWeekly && !showName) ||
+            segments.some(
+              (s) =>
+                s.type === "Match" &&
+                (!s.matchData?.winnersIds.length ||
+                  s.matchData.winnersIds[0] === undefined),
+            )
+          }
           onClick={handleSave}
         >
-          {overallRating === 0 ? 'RATE THE SHOW' : (isSaving ? 'SAVING...' : 'SAVE AND GO BACK')}
+          {overallRating === 0
+            ? "RATE THE SHOW"
+            : isSaving
+              ? "SAVING..."
+              : "SAVE AND GO BACK"}
         </button>
       </footer>
 
@@ -1214,7 +1421,13 @@ const EventCreation = () => {
             onAlignmentChange={setActiveAlignment}
             primaryColor={selectedBrand.primaryColor}
             secondaryColor={selectedBrand.secondaryColor}
-            brands={selectedBrand.name === "SHARED" ? brands.filter(b => b.name !== "SHARED" && b.name !== "FREE AGENT") : undefined}
+            brands={
+              selectedBrand.name === "SHARED"
+                ? brands.filter(
+                    (b) => b.name !== "SHARED" && b.name !== "FREE AGENT",
+                  )
+                : undefined
+            }
             activeBrandId={activeSubBrandId}
             onBrandChange={setActiveSubBrandId}
           />
@@ -1275,7 +1488,19 @@ const EventCreation = () => {
                   (activeAlignment === "FACES" && w.alignment === "Face") ||
                   (activeAlignment === "HEELS" && w.alignment === "Heel");
 
-                return matchesGender && matchesAlignment;
+                // Point 1: Brand restriction for Title Matches in SHARED PLE
+                let matchesTitleBrand = true;
+                if (activePicker?.type === "Match") {
+                  const segment = segments.find(s => s.id === activePicker.segmentId);
+                  if (segment?.matchData?.titleMatch && segment.matchData.championshipId) {
+                    const champ = allTitles.find(t => t.id === segment.matchData?.championshipId);
+                    if (champ) {
+                      matchesTitleBrand = w.brandId === champ.brandId;
+                    }
+                  }
+                }
+
+                return matchesGender && matchesAlignment && matchesTitleBrand;
               })
               .map((w) => (
                 <div
@@ -1293,24 +1518,59 @@ const EventCreation = () => {
                           newP[activePicker.index] = w.id!;
 
                           // Auto-partner selection for Tag Team
-                          if (segment.matchData!.type === "2 vs 2 Tag Team" && w.faction) {
+                          if (
+                            segment.matchData!.type === "2 vs 2 Tag Team" &&
+                            w.faction
+                          ) {
                             const isSlot0or1 = activePicker.index <= 1;
                             const partnerIndex = isSlot0or1
-                              ? (activePicker.index === 0 ? 1 : 0)
-                              : (activePicker.index === 2 ? 3 : 2);
-                            
+                              ? activePicker.index === 0
+                                ? 1
+                                : 0
+                              : activePicker.index === 2
+                                ? 3
+                                : 2;
+
                             // If partner slot is empty, try to fill it
                             if (newP[partnerIndex] === 0) {
-                              const partner = allWrestlers.find(p => 
-                                p.faction === w.faction && 
-                                p.id !== w.id && 
-                                p.gender === w.gender &&
-                                !newP.includes(p.id!)
+                              const partner = allWrestlers.find(
+                                (p) =>
+                                  p.faction === w.faction &&
+                                  p.id !== w.id &&
+                                  p.gender === w.gender &&
+                                  !newP.includes(p.id!) &&
+                                  (p.injuryWeeks === 0 || !p.injuryWeeks),
                               );
                               if (partner) {
                                 newP[partnerIndex] = partner.id!;
                               }
                             }
+                          }
+
+                          // Auto-partner selection for Trios
+                          if (
+                            segment.matchData!.type === "3 vs 3 Trios" &&
+                            w.faction
+                          ) {
+                            const isTeam1 = activePicker.index <= 2;
+                            const teamIndices = isTeam1 ? [0, 1, 2] : [3, 4, 5];
+                            
+                            // Fill other slots in the same team if they are empty
+                            teamIndices.forEach(idx => {
+                              if (idx !== activePicker.index && newP[idx] === 0) {
+                                const partner = allWrestlers.find(
+                                  (p) =>
+                                    p.faction === w.faction &&
+                                    p.id !== w.id &&
+                                    p.gender === w.gender &&
+                                    !newP.includes(p.id!) &&
+                                    (p.injuryWeeks === 0 || !p.injuryWeeks),
+                                );
+                                if (partner) {
+                                  newP[idx] = partner.id!;
+                                }
+                              }
+                            });
                           }
 
                           updateSegment(segment.id, {
@@ -1336,10 +1596,12 @@ const EventCreation = () => {
                   }}
                 >
                   <div className={styles.wrestlerAvatar}>
-                    <img src={fixPath(w.avatar || w.image)} alt={w.name} />
+                    <ResolvedImage src={w.avatar || w.image} alt={w.name} />
                     {w.injuryWeeks > 0 && (
                       <div className={styles.injuryIndicator}>
-                        <span className={styles.injuryWeeks}>{w.injuryWeeks}</span>
+                        <span className={styles.injuryWeeks}>
+                          {w.injuryWeeks}
+                        </span>
                       </div>
                     )}
                   </div>

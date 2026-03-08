@@ -93,6 +93,34 @@
         }
     }
 
+    .headerLogos {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+
+        .posterUploadArea {
+            .posterBtn {
+                background: rgba(255,255,255,0.05);
+                border: 1px solid rgba(255,255,255,0.1);
+                color: rgba(255,255,255,0.6);
+                padding: 4px 12px;
+                border-radius: 4px;
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:hover {
+                    background: rgba(255,255,255,0.15);
+                    color: #fff;
+                    border-color: var(--brand-color);
+                }
+            }
+        }
+    }
+
     .brandLogo {
         height: 80px;
         width: auto;
@@ -151,8 +179,11 @@
 
 .matchMetaRow {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .matchType {
@@ -282,10 +313,21 @@
             border: 3px solid #000;
             background: #000;
 
-            &:nth-child(2) {
+            &:nth-child(n+2) {
                 margin-left: -30px;
                 position: relative;
                 z-index: 1;
+            }
+        }
+    }
+
+    &.trios {
+        .teamAvatars img {
+            width: 70px;
+            height: 70px;
+            
+            &:nth-child(n+2) {
+                margin-left: -35px;
             }
         }
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { slugify } from '../../utils/slugify';
+import ResolvedImage from '../Common/ResolvedImage';
 import styles from './ChampionRow.module.scss';
 import type { Wrestler } from '../../models/types';
 
@@ -20,6 +21,7 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
   secondaryColor
 }) => {
   const isTagTeam = titleName.toLowerCase().includes('tag team');
+  const isTrios = titleName.toLowerCase().includes('trios') || titleName.toLowerCase().includes('trio');
   
   // 1. Deduplicate by name and Sort champions alphabetically for consistent display
   const uniqueChampionsMap = new Map<string, Wrestler>();
@@ -34,7 +36,7 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
   
   let displayedName = 'No Champion';
   if (sortedChampions.length > 0) {
-    if (isTagTeam && sortedChampions.length >= 2) {
+    if ((isTagTeam || isTrios) && sortedChampions.length >= 2) {
       // Check if they share a faction
       const sharedFaction = sortedChampions[0].faction;
       const allShareFaction = sharedFaction && sortedChampions.every(c => c.faction === sharedFaction);
@@ -60,16 +62,16 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
     >
       <div className={styles.titleInfo}>
         <div className={styles.titleIcon}>
-          {titleImage ? <img src={titleImage} alt={titleName} /> : '🏆'}
+          {titleImage ? <ResolvedImage src={titleImage} alt={titleName} /> : '🏆'}
         </div>
         <div className={styles.titleText}>
           <p className={styles.titleLabel}>{titleName}</p>
           <h3 className={styles.championName}>{displayedName.toUpperCase()}</h3>
         </div>
       </div>
-      <div className={`${styles.portraitContainer} ${isTagTeam ? styles.tagTeamLayout : styles.singleLayout}`}>
+      <div className={`${styles.portraitContainer} ${isTrios ? styles.triosLayout : isTagTeam ? styles.tagTeamLayout : styles.singleLayout}`}>
         {sortedChampions.length > 0 ? (
-          (isTagTeam ? sortedChampions.slice(0, 2) : [sortedChampions[0]]).map((champion, index) => (
+          (isTrios ? sortedChampions.slice(0, 3) : isTagTeam ? sortedChampions.slice(0, 2) : [sortedChampions[0]]).map((champion, index) => (
             <Link 
               key={champion.id} 
               to={`/roster/${slugify(champion.name)}`}
@@ -77,7 +79,7 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
               style={{ '--index': index } as React.CSSProperties}
             >
               {champion.avatar ? (
-                <img src={champion.avatar} alt={champion.name} />
+                <ResolvedImage src={champion.avatar} alt={champion.name} />
               ) : (
                 <div className={styles.placeholder}>👤</div>
               )}

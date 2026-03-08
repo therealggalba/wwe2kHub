@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../db/db";
 import type { Show } from "../../models/types";
+import ResolvedImage from "../Common/ResolvedImage";
 import styles from "./PLECarousel.module.scss";
 
 const PLECarousel = () => {
@@ -49,12 +50,6 @@ const PLECarousel = () => {
     loadData();
   }, [selectedSeason]);
 
-  const fixPath = (path: string | undefined): string => {
-    if (!path) return '';
-    if (path.startsWith('data:image')) return path; // Handle custom posters
-    if (path.startsWith('./')) return path.replace('./', '/');
-    return path;
-  };
 
   if (loading) return null;
   if (availableSeasons.length === 0) return null;
@@ -79,7 +74,7 @@ const PLECarousel = () => {
         {ples.map((ple) => (
           <div key={ple.id} className={styles.pleCard}>
             <div className={styles.posterWrapper}>
-              <img src={fixPath(ple.image)} alt={ple.name} />
+              <ResolvedImage src={ple.image} alt={ple.name} />
             </div>
             <div className={styles.cardInfo}>
               <h3>{ple.name}</h3>

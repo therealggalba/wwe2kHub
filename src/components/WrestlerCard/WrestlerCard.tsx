@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { slugify } from '../../utils/slugify';
+import { useAsset } from '../../hooks/useAsset';
 import styles from './WrestlerCard.module.scss';
 
 interface WrestlerCardProps {
@@ -26,7 +27,8 @@ const WrestlerCard: React.FC<WrestlerCardProps> = ({
   injuryWeeks,
   moral
 }) => {
-  const displayImage = avatar || image;
+  const displayImageRaw = avatar || image;
+  const displayImage = useAsset(displayImageRaw);
   const isLowMorale = (moral || 80) < 20;
 
   return (

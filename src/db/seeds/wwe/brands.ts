@@ -1,5 +1,5 @@
-import { GAME_CONFIG } from '../../config/gameConfig';
-import type { BrandName } from '../../models/types';
+import { GAME_CONFIG } from '../../../config/gameConfig';
+import type { BrandName } from '../../../models/types';
 
 export interface SeedBrand {
   name: BrandName;

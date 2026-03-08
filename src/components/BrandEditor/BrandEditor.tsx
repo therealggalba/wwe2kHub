@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { db } from '../../db/db';
 import type { Brand } from '../../models/types';
+import ResolvedImage from '../Common/ResolvedImage';
 import styles from './BrandEditor.module.scss';
 
 const BrandEditor: React.FC = () => {
@@ -41,12 +42,6 @@ const BrandEditor: React.FC = () => {
     setEditForm(null);
   };
 
-  const fixPath = (path: string | undefined): string => {
-    if (!path) return '';
-    if (path.startsWith('data:image')) return path;
-    if (path.startsWith('./')) return path.replace('./', '/');
-    return path;
-  };
 
   return (
     <div className={styles.editorContainer}>
@@ -118,7 +113,7 @@ const BrandEditor: React.FC = () => {
             ) : (
               <div className={styles.displayCard}>
                 <div className={styles.brandInfo}>
-                  {brand.logo && <img src={fixPath(brand.logo)} alt={brand.name} className={styles.logoPreview} />}
+                  {brand.logo && <ResolvedImage src={brand.logo} alt={brand.name} className={styles.logoPreview} />}
                   <div className={styles.details}>
                     <span className={styles.brandName}>{brand.name}</span>
                     <div className={styles.colors}>

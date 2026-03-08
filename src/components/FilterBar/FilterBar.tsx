@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './FilterBar.module.scss';
 import type { Brand } from '../../models/types';
+import ResolvedImage from '../Common/ResolvedImage';
+import styles from './FilterBar.module.scss';
 
 export type GenderFilter = 'ALL' | 'MEN' | 'WOMEN';
 export type AlignmentFilter = 'ALL' | 'FACES' | 'HEELS';
@@ -32,11 +33,6 @@ const FilterBar: React.FC<FilterBarProps> = ({
   const genders: GenderFilter[] = ['MEN', 'WOMEN'];
   const alignments: AlignmentFilter[] = ['FACES', 'HEELS'];
 
-  const fixPath = (path: string | undefined): string => {
-    if (!path) return "";
-    if (path.startsWith("./")) return path.replace("./", "/");
-    return path;
-  };
 
   return (
     <div 
@@ -68,7 +64,7 @@ const FilterBar: React.FC<FilterBarProps> = ({
               onClick={() => onBrandChange(activeBrandId === brand.id ? undefined : brand.id)}
               title={brand.name}
             >
-              <img src={fixPath(brand.logo)} alt={brand.name} className={styles.miniBrandLogo} />
+              <ResolvedImage src={brand.logo} alt={brand.name} className={styles.miniBrandLogo} />
             </button>
           ))}
         </div>

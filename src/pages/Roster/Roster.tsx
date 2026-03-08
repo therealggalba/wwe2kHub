@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../db/db';
-import type { Brand, Wrestler, Championship, BrandName } from '../../models/types';
+import type { Brand, Wrestler, Championship } from '../../models/types';
 import BrandColumn from '../../components/BrandColumn/BrandColumn';
 import WrestlerCard from '../../components/WrestlerCard/WrestlerCard';
 import ChampionRow from '../../components/ChampionRow/ChampionRow';
@@ -21,178 +21,9 @@ const Roster: React.FC = () => {
   const loadingRef = React.useRef(false);
 
   useEffect(() => {
-    const initData = async () => {
+    const loadData = async () => {
       if (loadingRef.current) return;
       loadingRef.current = true;
-
-      // Import new modular seed data (using internal variable names to avoid conflicts)
-      const { BRANDS_SEED, CHAMPIONSHIPS_SEED, WRESTLERS_SEED } = await import('../../db/seedData');
-
-      // 1. Seed Brands
-      for (const brandData of BRANDS_SEED) {
-        const brandName = brandData.name.trim() as BrandName;
-        const existing = await db.brands.where('name').equals(brandName).first();
-        if (!existing) {
-          await db.brands.add({
-            name: brandName,
-            primaryColor: brandData.primaryColor,
-            secondaryColor: brandData.secondaryColor,
-            logo: brandData.logo,
-            priority: brandData.priority || 0,
-            isMajorBrand: brandData.isMajorBrand || false,
-            isShared: brandData.isShared || false
-          });
-        } else {
-          await db.brands.update(existing.id!, {
-            primaryColor: brandData.primaryColor,
-            secondaryColor: brandData.secondaryColor,
-            logo: brandData.logo
-          });
-        }
-      }
-
-      // Cleanup brands not in seed AND duplicates in DB
-      const refreshedBrands = await db.brands.toArray();
-      const seenBrandNames = new Set<string>();
-      const brandCleanupIds: number[] = [];
-      const validNames = BRANDS_SEED.map(b => b.name.trim() as BrandName);
-
-      for (const b of refreshedBrands) {
-        if (!validNames.includes(b.name as BrandName) || seenBrandNames.has(b.name)) {
-          brandCleanupIds.push(b.id!);
-        } else {
-          seenBrandNames.add(b.name);
-        }
-      }
-
-      if (brandCleanupIds.length > 0) {
-        await db.brands.bulkDelete(brandCleanupIds);
-        await db.championships.where('brandId').anyOf(brandCleanupIds).delete();
-        await db.wrestlers.where('brandId').anyOf(brandCleanupIds).delete();
-      }
-
-      const finalBrands = await db.brands.toArray();
-      const brandMap = new Map(finalBrands.map(b => [b.name, b.id!]));
-
-      // 2. Seed Championships
-      for (const titleData of CHAMPIONSHIPS_SEED) {
-        const brandId = brandMap.get(titleData.brandName);
-        if (!brandId) continue;
-        const titleName = titleData.name.trim();
-
-        const existing = await db.championships
-          .where('name').equals(titleName)
-          .and(t => t.brandId === brandId)
-          .first();
-
-        if (!existing) {
-          await db.championships.add({
-            name: titleName,
-            brandId: brandId,
-            image: titleData.image,
-            history: []
-          });
-        } else {
-          await db.championships.update(existing.id!, {
-            image: titleData.image
-          });
-        }
-      }
-
-      // Cleanup championships not in seed OR duplicates
-      const refreshedTitles = await db.championships.toArray();
-      const seenTitles = new Set<string>();
-      const titleCleanupIds: number[] = [];
-
-      for (const t of refreshedTitles) {
-        const bName = finalBrands.find(rb => rb.id === t.brandId)?.name;
-        const key = `${t.name.trim()}_${bName}`;
-        const isCurrentlyInSeed = CHAMPIONSHIPS_SEED.some(st => st.name.trim() === t.name.trim() && st.brandName === bName);
-
-        if (!isCurrentlyInSeed || seenTitles.has(key)) {
-          titleCleanupIds.push(t.id!);
-        } else {
-          seenTitles.add(key);
-        }
-      }
-      if (titleCleanupIds.length > 0) await db.championships.bulkDelete(titleCleanupIds);
-
-      const finalTitles = await db.championships.toArray();
-      const titleIdMap = new Map();
-      finalTitles.forEach(t => {
-        const bName = finalBrands.find(rb => rb.id === t.brandId)?.name;
-        if (bName) titleIdMap.set(`${t.name.trim()}_${bName}`, t.id!);
-      });
-
-      // 3. Seed Wrestlers
-      for (const wrestlerData of WRESTLERS_SEED) {
-        const brandId = brandMap.get(wrestlerData.brandName);
-        if (!brandId) continue;
-        const wrestlerName = wrestlerData.name.trim();
-
-        const existing = await db.wrestlers
-          .where('name').equals(wrestlerName)
-          .and(w => w.brandId === brandId)
-          .first();
-
-        const currentTitlesIds = (wrestlerData.holdsTitleNames || [])
-          .map(tn => titleIdMap.get(`${tn.trim()}_${wrestlerData.brandName}`))
-          .filter(id => id !== undefined);
-
-        if (!existing) {
-          const wrestlerId = await db.wrestlers.add({
-            ...wrestlerData,
-            name: wrestlerName,
-            brandId: brandId,
-            currentTitlesIds,
-            historicalTitlesIds: [],
-            injuryWeeks: 0,
-            moral: 80,
-            matchesSeason: 0,
-            isActive: true
-          });
-          // Sync titles table
-          for (const titleId of currentTitlesIds) {
-            await db.championships.update(titleId, { currentChampionId: wrestlerId });
-          }
-        } else {
-          // Only update visual metadata to avoid overwriting user edits in the UI
-          await db.wrestlers.update(existing.id!, { 
-            image: wrestlerData.image,
-            avatar: wrestlerData.avatar,
-            gender: wrestlerData.gender
-          });
-          
-          // CRITICAL: Even if wrestler exists, if we haven't synced titles yet in this DB session, 
-          // we should ensure the championship record points to this wrestler if they hold it.
-          for (const titleId of existing.currentTitlesIds || []) {
-            const title = await db.championships.get(titleId);
-            if (title && !title.currentChampionId) {
-              await db.championships.update(titleId, { currentChampionId: existing.id });
-            }
-          }
-        }
-      }
-
-      // Cleanup wrestlers not in seed OR duplicates
-      const refreshedWrestlers = await db.wrestlers.toArray();
-      const seenWrestlers = new Set<string>();
-      const wrestlerCleanupIds: number[] = [];
-
-      for (const w of refreshedWrestlers) {
-        const bName = finalBrands.find(rb => rb.id === w.brandId)?.name;
-        const key = `${w.name.trim()}_${bName}`;
-        const isCurrentlyInSeed = WRESTLERS_SEED.some(sw => sw.name.trim() === w.name.trim() && sw.brandName === bName);
-
-        if (!isCurrentlyInSeed || seenWrestlers.has(key)) {
-          wrestlerCleanupIds.push(w.id!);
-        } else {
-          seenWrestlers.add(key);
-        }
-      }
-      if (wrestlerCleanupIds.length > 0) await db.wrestlers.bulkDelete(wrestlerCleanupIds);
-
-      // Show seeding removed to allow clean archive
 
       const allBrands = await db.brands.toArray();
       const allWrestlers = await db.wrestlers.toArray();
@@ -205,7 +36,7 @@ const Roster: React.FC = () => {
       loadingRef.current = false;
     };
 
-    initData();
+    loadData();
   }, []);
 
   const handleGenderChange = (brandId: number, filter: GenderFilter) => {

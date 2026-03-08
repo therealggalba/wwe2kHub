@@ -3,14 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { db } from '../../db/db';
 import type { Wrestler, Brand, Championship } from '../../models/types';
 import { slugify } from '../../utils/slugify';
+import ResolvedImage from '../../components/Common/ResolvedImage';
 import styles from './WrestlerDetails.module.scss';
-const fixImagePath = (path: string | undefined): string | undefined => {
-  if (!path) return undefined;
-  if (path.startsWith('./')) {
-    return path.substring(1); // Transform ./visuals/... to /visuals/...
-  }
-  return path;
-};
 
 const WrestlerDetails: React.FC = () => {
   const { name: slug } = useParams<{ name: string }>();
@@ -94,9 +88,20 @@ const WrestlerDetails: React.FC = () => {
         if (!title) continue;
 
         const isTagTeam = title.name.toLowerCase().includes('tag team');
+        const isTrios = title.name.toLowerCase().includes('trios') || title.name.toLowerCase().includes('trio');
         const currentHolders = await db.wrestlers.where('currentTitlesIds').equals(titleId).toArray();
 
-        if (isTagTeam) {
+        if (isTrios) {
+          // Trios Logic: Max 3 holders
+          if (currentHolders.length >= 3) {
+            // Remove from the "oldest" holder (first one that isn't the current wrestler)
+            const oldestHolder = currentHolders.find(h => h.id !== wrestler.id);
+            if (oldestHolder) {
+              const updatedOwnerTitles = (oldestHolder.currentTitlesIds || []).filter(id => id !== titleId);
+              await db.wrestlers.update(oldestHolder.id!, { currentTitlesIds: updatedOwnerTitles });
+            }
+          }
+        } else if (isTagTeam) {
           // Tag Team Logic: Max 2 holders
           if (currentHolders.length >= 2) {
             // Remove from the "oldest" holder (first one that isn't the current wrestler)
@@ -168,8 +173,12 @@ const WrestlerDetails: React.FC = () => {
         {/* LEFT COLUMN: VISUAL INFO */}
         <section className={styles.leftColumn}>
           <div className={styles.portraitWrapper}>
-            {wrestler.image ? (
-              <img src={fixImagePath(wrestler.image)} alt={wrestler.name} className={styles.mainImage} />
+            {(wrestler.image || wrestler.avatar) ? (
+              <ResolvedImage 
+                src={wrestler.image || wrestler.avatar} 
+                alt={wrestler.name} 
+                className={styles.mainImage} 
+              />
             ) : (
               <div className={styles.imagePlaceholder}>👤</div>
             )}
@@ -182,7 +191,7 @@ const WrestlerDetails: React.FC = () => {
             <div className={styles.titlesContainer}>
               {titles.map(title => (
                 <div key={title.id} className={styles.titleItem}>
-                  {title.image && <img src={fixImagePath(title.image)} alt={title.name} className={styles.titleLogo} />}
+                  {title.image && <ResolvedImage src={title.image} alt={title.name} className={styles.titleLogo} />}
                   <span className={styles.titleName}>{title.name.toUpperCase()}</span>
                 </div>
               ))}
@@ -318,8 +327,8 @@ const WrestlerDetails: React.FC = () => {
                         <span className={styles.honorReigns}>{reigns.length} x</span>
                         <span className={styles.honorTitleName}>{champ.name}</span>
                         {champ.image && (
-                          <img 
-                            src={fixImagePath(champ.image)} 
+                          <ResolvedImage 
+                            src={champ.image} 
                             alt={champ.name} 
                             className={styles.honorImage} 
                           />

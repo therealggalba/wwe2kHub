@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BrandColumn.module.scss';
+import ResolvedImage from '../Common/ResolvedImage';
 
 interface BrandColumnProps {
   name: string;
@@ -21,7 +22,7 @@ const BrandColumn: React.FC<BrandColumnProps> = ({ name, logo, primaryColor, sec
     >
       <div className={styles.header}>
         {logo ? (
-          <img src={logo} alt={name} className={styles.brandLogo} />
+          <ResolvedImage src={logo} alt={name} className={styles.brandLogo} />
         ) : (
           <h2 className={styles.title}>{name}</h2>
         )}

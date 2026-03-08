@@ -1,11 +1,28 @@
+import { useEffect, useState } from 'react';
 import PLECarousel from '../../components/PLECarousel/PLECarousel';
+import { db } from '../../db/db';
 import styles from './Home.module.scss';
 
 const Home = () => {
+  const [heroTitle, setHeroTitle] = useState('TU UNIVERSO, TUS REGLAS');
+
+  useEffect(() => {
+    const checkBrand = async () => {
+      const allBrands = await db.brands.toArray();
+      const aew = allBrands.find(b => b.name.includes('AEW'));
+      if (aew) {
+        setHeroTitle('SÉ PARTE DE LA ÉLITE');
+      } else {
+        setHeroTitle('DOMINA EL RING');
+      }
+    };
+    checkBrand();
+  }, []);
+
   return (
     <section className={styles.homeSection}>
       <div className={styles.hero}>
-        <h1 className={styles.heroTitle}>SÉ PARTE DE LA ÉLITE</h1>
+        <h1 className={styles.heroTitle}>{heroTitle}</h1>
         <p className={styles.heroDescription}>
           Toda la información de tus superestrellas favoritas en un solo lugar.
         </p>

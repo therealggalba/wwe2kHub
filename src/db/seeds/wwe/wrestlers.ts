@@ -1,4 +1,4 @@
-import type { BrandName } from '../../models/types';
+import type { BrandName } from '../../../models/types';
 
 export interface SeedWrestler {
   name: string;
