@@ -15,7 +15,7 @@
   padding: 0 2rem;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  border-bottom: 2px solid $primary-red;
+  border-bottom: 2px solid $primary-gold;
   transition: all $standard-transition;
 
   @media (max-width: $tablet) {
@@ -70,11 +70,11 @@
   border-bottom: 2px solid transparent;
 
   &:hover {
-    color: $primary-red;
+    color: $primary-gold;
   }
 
   &.active {
-    border-bottom: 2px solid $primary-red;
+    border-bottom: 2px solid $primary-gold;
   }
 
   @media (max-width: $mobile) {

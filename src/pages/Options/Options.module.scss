@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .optionsSection {
   padding: 2rem;
   min-height: calc(100vh - 80px);
@@ -42,7 +44,7 @@
 .sectionTitle {
   font-size: 1.1rem;
   font-weight: 800;
-  color: #ff0000;
+  color: $primary-gold;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -123,7 +125,7 @@
 }
 
 input:checked + .slider {
-  background-color: #ff0000;
+  background-color: $primary-gold;
 }
 
 input:checked + .slider:before {
@@ -143,7 +145,7 @@ input:checked + .slider:before {
 
   &:focus {
     outline: none;
-    border-color: #ff0000;
+    border-color: $primary-gold;
   }
 }
 
@@ -226,7 +228,7 @@ input:checked + .slider:before {
   color: rgba(255, 255, 255, 0.2);
   font-size: 1.2rem;
   cursor: pointer;
-  &:hover { color: #ff0000; }
+  &:hover { color: $primary-gold; }
 }
 
 .actionNote {
@@ -235,6 +237,17 @@ input:checked + .slider:before {
   p {
     opacity: 0.6;
     font-size: 0.85rem;
+  }
+  .lockedSelect {
+    background: rgba(white, 0.05);
+    border: 1px solid rgba($primary-gold, 0.2);
+    color: $text-white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    opacity: 0.8;
+    cursor: not-allowed;
+    min-width: 120px;
   }
 }
 
@@ -258,7 +271,7 @@ input:checked + .slider:before {
 
   &:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: #ff0000;
+    border-color: $primary-gold;
   }
 
   &.warning {

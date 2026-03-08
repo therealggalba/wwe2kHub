@@ -20,6 +20,7 @@ const Landing: React.FC = () => {
   // Custom Preset Wizard State
   const [customPresetName, setCustomPresetName] = useState('');
   const [importedData, setImportedData] = useState<FullDatabaseState | null>(null);
+  const [seasonDuration, setSeasonDuration] = useState<number>(24);
 
   // Local Assets State
   const [hasLinkedFolder, setHasLinkedFolder] = useState(false);
@@ -94,7 +95,14 @@ const Landing: React.FC = () => {
       const response = await fetch(presetPath);
       if (!response.ok) throw new Error('Preset no encontrado.');
       const data = await response.json();
-      await importState(data, true);
+      
+      // Inject selected season duration into settings
+      if (!data.settings) data.settings = [];
+      const setIdx = data.settings.findIndex((s: { key: string }) => s.key === 'weeksPerSeason');
+      if (setIdx > -1) data.settings[setIdx].value = seasonDuration;
+      else data.settings.push({ key: 'weeksPerSeason', value: seasonDuration });
+
+      await importState(data);
       navigate('/');
     } catch (error: unknown) {
       alert(error instanceof Error ? error.message : 'Error al cargar preset');
@@ -142,8 +150,13 @@ const Landing: React.FC = () => {
     if (!importedData) return;
     setIsLoading(true);
     try {
-      // We could inject the custom name into settings if we had a "universe name" setting
-      await importState(importedData, true);
+      // Inject selected season duration into settings
+      if (!importedData.settings) importedData.settings = [];
+      const setIdx = (importedData.settings as any).findIndex((s: any) => s.key === 'weeksPerSeason');
+      if (setIdx > -1) (importedData.settings as any)[setIdx].value = seasonDuration;
+      else (importedData.settings as any).push({ key: 'weeksPerSeason', value: seasonDuration });
+
+      await importState(importedData);
       navigate('/');
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
@@ -183,6 +196,21 @@ const Landing: React.FC = () => {
     <div className={styles.subMenu}>
       <button className={styles.backButton} onClick={() => setView('MAIN')}>← Volver</button>
       <h2 className={styles.viewTitle}>ELEGIR PRESET</h2>
+      
+      <div className={styles.durationSelector}>
+        <label>DURACIÓN DE LA SEASON:</label>
+        <div className={styles.durationOptions}>
+          {[12, 24, 60].map(d => (
+            <button 
+              key={d} 
+              className={seasonDuration === d ? styles.active : ''} 
+              onClick={() => setSeasonDuration(d)}
+            >
+              {d} SHOWS
+            </button>
+          ))}
+        </div>
+      </div>
       
       <div className={styles.presetGrid}>
         <div className={styles.presetCard} onClick={() => handleNewGameFromPreset('/presets/wwe_universe.json')}>
@@ -323,8 +351,8 @@ const Landing: React.FC = () => {
       <div className={styles.overlay}></div>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
-          <h1 className={styles.title}>WWE 2K<span>HUB</span></h1>
-          <p className={styles.subtitle}>UNIVERSE MANAGER ELITE</p>
+          <h1 className={styles.title}>ELITE<span>BOOKER</span></h1>
+          <p className={styles.subtitle}>PREMIUM UNIVERSE SIMULATOR</p>
         </div>
 
         <div className={styles.viewLayer}>

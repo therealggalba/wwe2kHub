@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import DatabaseTools from '../../components/DatabaseTools/DatabaseTools';
-import BrandEditor from '../../components/BrandEditor/BrandEditor';
 import { db } from '../../db/db';
 import { saveToSlot, getSaveSlots, deleteSlot, clearAllData } from '../../db/dbPersistence';
 import type { FullDatabaseState } from '../../db/dbPersistence';
@@ -94,10 +93,6 @@ const Options = () => {
     }
   };
 
-  const handleWeeksChange = async (val: number) => {
-    setWeeksPerSeason(val);
-    await db.settings.put({ key: 'weeksPerSeason', value: val });
-  };
 
   const handleCreateSaveSlot = async () => {
     const slotName = prompt('Nombre para el slot de guardado:');
@@ -174,16 +169,17 @@ const Options = () => {
             <div className={styles.settingItem}>
               <div className={styles.settingInfo}>
                 <span className={styles.settingLabel}>Semanas por Season</span>
-                <p className={styles.settingDescription}>Define cuántas semanas dura una temporada completa.</p>
+                <p className={styles.settingDescription}>Configurado al inicio de la partida (Inmutable).</p>
               </div>
-              <input 
-                type="number" 
-                className={styles.numberInput}
+              <select 
+                className={styles.lockedSelect}
                 value={weeksPerSeason}
-                min={4}
-                max={52}
-                onChange={(e) => handleWeeksChange(parseInt(e.target.value) || 4)}
-              />
+                disabled
+              >
+                <option value={12}>12 SHOWS</option>
+                <option value={24}>24 SHOWS</option>
+                <option value={60}>60 SHOWS</option>
+              </select>
             </div>
             
             <div className={styles.statusBadge}>
@@ -231,10 +227,10 @@ const Options = () => {
           
           <div className={styles.persistenceActions}>
             <button className={styles.saveButton} onClick={handleCreateSaveSlot}>
-              💾 Nuevo Slot de Guardado
+              💾 Guardar
             </button>
             <button className={styles.resetButton} onClick={handleResetGame}>
-              🔥 Nueva Partida (Reset)
+              🔥 Menú Principal
             </button>
           </div>
 
@@ -270,14 +266,6 @@ const Options = () => {
           </div>
         </div>
 
-        {/* Brand Tuning */}
-        <div className={styles.sectionCard}>
-          <h2 className={styles.sectionTitle}>🎨 Personalización de Marcas</h2>
-          <p className={styles.sectionDescription}>
-            Modifica nombres, colores y logos de todas tus marcas configuradas en el sistema.
-          </p>
-          <BrandEditor />
-        </div>
       </div>
     </section>
   );

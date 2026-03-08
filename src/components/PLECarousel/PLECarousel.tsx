@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { db } from "../../db/db";
 import type { Show } from "../../models/types";
 import ResolvedImage from "../Common/ResolvedImage";
+import FullscreenPoster from "../Common/FullscreenPoster";
 import styles from "./PLECarousel.module.scss";
 
 const PLECarousel = () => {
@@ -11,6 +12,7 @@ const PLECarousel = () => {
   const [availableSeasons, setAvailableSeasons] = useState<number[]>([]);
   const [selectedSeason, setSelectedSeason] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const [fullscreenPoster, setFullscreenPoster] = useState<{ src: string, alt: string } | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -73,8 +75,11 @@ const PLECarousel = () => {
       <div className={styles.carousel}>
         {ples.map((ple) => (
           <div key={ple.id} className={styles.pleCard}>
-            <div className={styles.posterWrapper}>
-              <ResolvedImage src={ple.image} alt={ple.name} />
+            <div 
+              className={styles.posterWrapper}
+              onClick={() => setFullscreenPoster({ src: ple.poster || ple.image || '', alt: ple.name })}
+            >
+              <ResolvedImage src={ple.poster || ple.image} alt={ple.name} />
             </div>
             <div className={styles.cardInfo}>
               <h3>{ple.name}</h3>
@@ -88,6 +93,14 @@ const PLECarousel = () => {
           </div>
         ))}
       </div>
+
+      {fullscreenPoster && (
+        <FullscreenPoster 
+          src={fullscreenPoster.src} 
+          alt={fullscreenPoster.alt} 
+          onClose={() => setFullscreenPoster(null)} 
+        />
+      )}
     </div>
   );
 };

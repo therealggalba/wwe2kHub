@@ -29,6 +29,7 @@ export interface Championship {
   currentChampionId?: number; // Wrestler ID
   brandId?: number; // Brand ID
   history: TitleHistoryEntry[];
+  gender: "Male" | "Female";
 }
 
 export interface NPC {
@@ -107,6 +108,7 @@ export interface Show {
   brandId?: number;
   music?: string;
   image?: string;
+  poster?: string;
   card?: MatchCard;
   valuation: number; // Overall show rating
   type: "Weekly" | "PLE" | "Special";

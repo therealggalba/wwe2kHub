@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .eventCreationPage {
   min-height: 100vh;
   padding: 2rem;
@@ -494,6 +496,78 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
+      min-height: 250px;
+
+      // Layout Wrapper Classes
+      .triosLayout, .tripleTagLayout, .standardLayout {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        width: 100%;
+      }
+
+      .layout5v5 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        .teamRow {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .vsCenter {
+          font-weight: 800;
+          font-size: 1.5rem;
+          color: var(--primary);
+          font-style: italic;
+        }
+      }
+
+      .eliminationGrid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+        justify-items: center;
+      }
+
+      &.grid-4:not(.tag-match):not(.trios-match) {
+        .standardLayout {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+
+      .grid5x2 {
+        display: grid !important;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 0.5rem;
+        justify-items: center;
+      }
+
+      .grid7x3 {
+        display: grid !important;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 0.3rem;
+        justify-items: center;
+        .pSlot { width: 80px; height: 80px; } // Smaller for large grids
+      }
+
+      .grid10x3 {
+        display: grid !important;
+        grid-template-columns: repeat(10, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 0.2rem;
+        justify-items: center;
+        .pSlot { width: 65px; height: 65px; } // Even smaller
+      }
 
       .tagGroup {
         display: flex;
@@ -510,14 +584,40 @@
       }
 
       .pSlot {
-        width: 100px;
-        height: 100px;
+        width: 110px; // Slightly larger for premium feel
+        height: 110px;
         background: #eee;
         border: 2px dashed var(--primary);
         cursor: pointer;
         position: relative;
+        transition: all 0.2s;
+        
+        &:hover {
+          border-color: #fff;
+          transform: scale(1.05);
+          box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
         img { width: 100%; height: 100%; object-fit: cover; }
         .placeholder { display: flex; align-items: center; justify-content: center; height: 100%; font-size: 2rem; }
+
+        .entryNumber {
+          position: absolute;
+          top: -5px;
+          left: -5px;
+          background: var(--brand-primary);
+          color: white;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.7rem;
+          font-weight: bold;
+          z-index: 10;
+          border: 1px solid white;
+        }
 
         &.locked {
           border: 2px solid gold;
@@ -527,7 +627,7 @@
             position: absolute;
             top: -10px;
             right: -10px;
-            font-size: 0.8rem;
+            font-size: 1rem;
             background: #000;
             border-radius: 50%;
             padding: 2px;
@@ -536,24 +636,29 @@
       }
 
       .pName { 
-        font-weight: 800; 
-        font-style: italic; 
-        text-transform: uppercase; 
-        color: black;
-        font-size: 0.6rem;
+        display: block;
+        font-weight: 800;
+        font-size: 0.7rem;
+        color: #fff;
+        text-shadow: 0 0 4px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,0.8);
         text-align: center;
-        white-space: normal;
-        max-lines: 1;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-top: 4px;
+        background: rgba(0,0,0,0.4);
+        padding: 2px 4px;
+        border-radius: 4px;
       }
       
       .vs { 
         font-weight: 800; 
-        font-size: 2rem; 
+        font-size: 1.5rem; 
         font-style: italic; 
         color: var(--primary); 
         margin: 0 0.5rem;
         align-self: center;
-        padding-bottom: 1rem;
       }
     }
 

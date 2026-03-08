@@ -111,7 +111,8 @@ const ShowArchive = () => {
           </div>
             {filteredShows.map(show => {
               const brand = brands.find(b => b.id === show.brandId);
-              const officialLogo = show.image;
+              // Use show.image specifically for the logo column
+              const officialLogo = show.image || brand?.logo;
 
               return (
                 <div key={show.id} className={styles.showRow}>

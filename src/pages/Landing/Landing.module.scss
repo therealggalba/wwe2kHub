@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables' as *;
 
 .landingPage {
   height: 100vh;
@@ -53,8 +53,8 @@
     font-style: italic;
 
     span {
-      color: #ff0000;
-      text-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+      color: $primary-gold;
+      text-shadow: 0 0 20px rgba($primary-gold, 0.4);
     }
   }
 
@@ -105,7 +105,7 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: #ff0000;
+    background: $primary-gold;
     transform: scaleY(0);
     transition: transform 0.3s;
   }
@@ -141,7 +141,7 @@
     transform: translateX(10px);
 
     &:before { transform: scaleY(1); }
-    .icon { background: #ff0000; transform: rotate(10deg); }
+    .icon { background: $primary-gold; color: $dark-bg; transform: rotate(10deg); }
   }
 
   &.disabled {
@@ -167,7 +167,7 @@
   font-style: italic;
   letter-spacing: 2px;
   text-transform: uppercase;
-  border-bottom: 3px solid #ff0000;
+  border-bottom: 3px solid $primary-gold;
   padding-bottom: 0.5rem;
 }
 
@@ -188,13 +188,65 @@
   transition: all 0.3s;
 
   &:hover {
-    background: rgba(255, 0, 0, 0.1);
-    border-color: #ff0000;
+    background: rgba($primary-gold, 0.1);
+    border-color: $primary-gold;
     border-radius: 4px;
   }
 }
 
 // PRESETS
+.durationSelector {
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem;
+  background: rgba(#1e293b, 0.6); // Slate Card from variables
+  border: 1px solid rgba(#c5a059, 0.2); // Primary Gold from variables
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #c5a059;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .durationOptions {
+    display: flex;
+    gap: 1.5rem;
+
+    button {
+      padding: 0.8rem 2rem;
+      background: rgba(white, 0.05);
+      color: rgba(white, 0.6);
+      border: 1px solid rgba(white, 0.1);
+      font-weight: 800;
+      font-size: 0.9rem;
+      min-width: 130px;
+      transition: all 0.3s;
+
+      &.active {
+        background: #c5a059;
+        color: #0f172a; // Dark Bg
+        border-color: #e2c08d;
+        box-shadow: 0 0 30px rgba(#c5a059, 0.3);
+        transform: scale(1.1);
+      }
+
+      &:hover:not(.active) {
+        background: rgba(white, 0.1);
+        color: white;
+        border-color: rgba(#c5a059, 0.4);
+      }
+    }
+  }
+}
+
 .presetGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -333,7 +385,7 @@
 
   &:hover {
     background: rgba(255,255,255,0.08);
-    border-color: #ff0000;
+    border-color: $primary-gold;
     transform: translateX(5px);
   }
 }
@@ -385,9 +437,9 @@
     transition: all 0.3s;
 
     &.active {
-      background: #ff0000;
-      border-color: #ff0000;
-      box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      background: $primary-gold;
+      border-color: $primary-gold;
+      box-shadow: 0 0 20px rgba($primary-gold, 0.4);
       transform: scale(1.2);
     }
 
@@ -438,12 +490,12 @@
     outline: none;
     transition: all 0.3s;
 
-    &:focus { border-color: #ff0000; background: rgba(255,255,255,0.1); }
+    &:focus { border-color: $primary-gold; background: rgba(255,255,255,0.1); }
   }
 
   button {
-    background: #ff0000;
-    color: #fff;
+    background: $primary-gold;
+    color: $dark-bg;
     border: none;
     padding: 1.2rem 3rem;
     font-size: 1.1rem;
@@ -455,7 +507,7 @@
     transition: all 0.3s;
     margin-top: 1rem;
 
-    &:hover:not(:disabled) { background: #cc0000; transform: scale(1.05); box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3); }
+    &:hover:not(:disabled) { background: $secondary-gold; transform: scale(1.05); box-shadow: 0 10px 20px rgba($primary-gold, 0.3); }
     &:disabled { opacity: 0.3; cursor: not-allowed; }
   }
 
@@ -468,7 +520,7 @@
     cursor: pointer;
     transition: all 0.3s;
     
-    &:hover { border-color: #ff0000; background: rgba(255,255,255,0.1); }
+    &:hover { border-color: $primary-gold; background: rgba(255,255,255,0.1); }
     
     input { display: none; }
     span { font-weight: 800; color: #fff; font-size: 1.1rem; }
@@ -579,7 +631,7 @@
     margin-bottom: 2rem;
     color: #fff;
     font-style: italic;
-    border-left: 6px solid #ff0000;
+    border-left: 6px solid $primary-gold;
     padding-left: 1.5rem;
   }
 }
@@ -595,7 +647,7 @@
 }
 
 .guideSection {
-  h3 { color: #ff0000; font-size: 1.2rem; font-weight: 900; margin-bottom: 1.2rem; font-style: italic; }
+  h3 { color: $primary-gold; font-size: 1.2rem; font-weight: 900; margin-bottom: 1.2rem; font-style: italic; }
   ul {
     list-style: none;
     padding: 0;
@@ -608,7 +660,7 @@
       line-height: 1.6;
       padding-left: 1.5rem;
       position: relative;
-      &:before { content: '→'; position: absolute; left: 0; color: #ff0000; font-weight: 900; }
+      &:before { content: '→'; position: absolute; left: 0; color: $primary-gold; font-weight: 900; }
       strong { color: #fff; }
     }
   }
@@ -629,8 +681,8 @@
 .copyButton {
   margin-top: 1rem;
   align-self: flex-start;
-  background: #ff0000;
-  color: #fff;
+  background: $primary-gold;
+    color: $dark-bg;
   border: none;
   padding: 1rem 2rem;
   font-weight: 900;

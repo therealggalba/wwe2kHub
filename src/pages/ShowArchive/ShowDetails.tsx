@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { db } from '../../db/db';
 import type { Show, Brand, Wrestler, Championship } from '../../models/types';
 import ResolvedImage from '../../components/Common/ResolvedImage';
+import FullscreenPoster from '../../components/Common/FullscreenPoster';
 import { GAME_CONFIG } from '../../config/gameConfig';
 import styles from './ShowDetails.module.scss';
 
@@ -14,6 +15,7 @@ const ShowDetails = () => {
     const [wrestlers, setWrestlers] = useState<Wrestler[]>([]);
     const [championships, setChampionships] = useState<Championship[]>([]);
     const [loading, setLoading] = useState(true);
+    const [showFullscreenPoster, setShowFullscreenPoster] = useState(false);
     const fileInputRef = React.useRef<HTMLInputElement>(null);
 
     const handlePosterUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,6 +88,9 @@ const ShowDetails = () => {
                 </div>
                 {brand && (
                     <div className={styles.headerLogos}>
+                        <div className={styles.brandLogoWrapper} onClick={() => setShowFullscreenPoster(true)}>
+                            <ResolvedImage src={brand.logo} alt={brand.name} className={styles.brandLogo} />
+                        </div>
                         <div className={styles.posterUploadArea}>
                             <input 
                                 type="file" 
@@ -98,10 +103,17 @@ const ShowDetails = () => {
                                 {show.image ? 'Change Poster' : 'Upload Poster'}
                             </button>
                         </div>
-                        <ResolvedImage src={brand.logo} alt={brand.name} className={styles.brandLogo} />
                     </div>
                 )}
             </header>
+
+            {showFullscreenPoster && (
+                <FullscreenPoster 
+                    src={show.poster || show.image || brand?.logo || ''} 
+                    alt={show.name || 'Poster'} 
+                    onClose={() => setShowFullscreenPoster(false)} 
+                />
+            )}
 
             <main className={styles.content}>
                 <div className={styles.carteleraLabel}>BILLBOARD</div>
