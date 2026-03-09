@@ -945,7 +945,7 @@
   "settings": [
     { "key": "enableInjuries", "value": true },
     { "key": "enableMorale", "value": true },
-    { "key": "weeksPerSeason", "value": 52 }
+    { "key": "weeksPerSeason", "value": 60 }
   ],
   "shows": [
   { "id": 1, "name": "Wednesday Dynamite", "brandName": "Dynamite", "type": "Weekly", "image": "./visuals/Brands/dynamite.png" },

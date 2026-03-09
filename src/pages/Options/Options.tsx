@@ -133,7 +133,7 @@ const Options = () => {
         {/* Game Settings */}
         <div className={styles.sectionCard}>
           <h2 className={styles.sectionTitle}>
-             ⚙️ Gestión del Juego
+              Gestión del Juego
           </h2>
           <div className={styles.settingsList}>
             <div className={styles.settingItem}>
@@ -144,7 +144,7 @@ const Options = () => {
               <label className={styles.switch}>
                 <input 
                   type="checkbox" 
-                  checked={enableInjuries} 
+                  checked={!enableInjuries} 
                   onChange={handleToggleInjuries}
                 />
                 <span className={styles.slider}></span>
@@ -159,7 +159,7 @@ const Options = () => {
               <label className={styles.switch}>
                 <input 
                   type="checkbox" 
-                  checked={enableMorale} 
+                  checked={!enableMorale} 
                   onChange={handleToggleMorale}
                 />
                 <span className={styles.slider}></span>
@@ -181,16 +181,12 @@ const Options = () => {
                 <option value={60}>60 SHOWS</option>
               </select>
             </div>
-            
-            <div className={styles.statusBadge}>
-              Próximamente: Activar/Desactivar sistemas de moral, economía y variaciones de Roster.
-            </div>
           </div>
         </div>
 
         {/* Local Assets Management */}
         <div className={styles.sectionCard}>
-          <h2 className={styles.sectionTitle}>🖼️ Recursos Locales</h2>
+          <h2 className={styles.sectionTitle}>Recursos Locales</h2>
           <p className={styles.sectionDescription}>
             Vincula una carpeta local para cargar imágenes sin modificar el código.
           </p>
@@ -198,11 +194,11 @@ const Options = () => {
           <div className={styles.assetStatus}>
             {!hasLinkedFolder ? (
               <button className={styles.linkButton} onClick={handleLinkFolder}>
-                📦 Vincular Carpeta visuals
+                Vincular Carpeta visuals
               </button>
             ) : !folderPermission ? (
               <button className={`${styles.linkButton} ${styles.warning}`} onClick={handleRequestPermission}>
-                🔓 Reactivar Acceso
+                Reactivar Acceso
               </button>
             ) : (
               <div className={styles.folderActive}>
@@ -220,17 +216,17 @@ const Options = () => {
 
         {/* Database Management */}
         <div className={styles.sectionCard}>
-          <h2 className={styles.sectionTitle}>📦 Datos y Backup</h2>
+          <h2 className={styles.sectionTitle}>Datos y Backup</h2>
           <p className={styles.sectionDescription}>
-            Gestiona la persistencia de tu partida. Guarda tu progreso en slots internos o exporta para compartir.
+            Gestiona la persistencia de tu partida. Guarda tu progreso en slots internos.
           </p>
           
           <div className={styles.persistenceActions}>
             <button className={styles.saveButton} onClick={handleCreateSaveSlot}>
-              💾 Guardar
+              Guardar
             </button>
             <button className={styles.resetButton} onClick={handleResetGame}>
-              🔥 Menú Principal
+              Menú Principal
             </button>
           </div>
 

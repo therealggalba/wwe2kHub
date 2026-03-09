@@ -20,6 +20,7 @@ import FilterBar, {
   type AlignmentFilter,
 } from "../../components/FilterBar/FilterBar";
 import ResolvedImage from "../../components/Common/ResolvedImage";
+import StarBorder from '../../components/StarBorder/StarBorder'
 import styles from "./EventCreation.module.scss";
 
 const EventCreation = () => {
@@ -591,6 +592,16 @@ const EventCreation = () => {
     return t.brandId === selectedBrand.id;
   });
 
+  const canSave =
+    overallRating !== 0 &&
+    !isSaving &&
+    (isWeekly || showName) &&
+    !segments.some(
+      (s) =>
+        s.type === "Match" &&
+        (!s.matchData?.winnersIds.length || s.matchData.winnersIds[0] === undefined),
+    );
+
   return (
     <div
       className={styles.eventCreationPage}
@@ -788,24 +799,44 @@ const EventCreation = () => {
 
             return (
               <>
-                <button
-                  disabled={isDisabled}
-                  onClick={() => addSegment("Match")}
+                <StarBorder
+                  as="div"
+                  color={selectedBrand.primaryColor}
+                  className={styles.ebButtonWrapper}
                 >
-                  Match
-                </button>
-                <button
-                  disabled={isDisabled}
-                  onClick={() => addSegment("Promo")}
+                  <button
+                    onClick={() => addSegment("Match")}
+                    disabled={
+                      isDisabled ||
+                      (isWeekly &&
+                        !segments.find((s) => s.matchData?.titleMatch) &&
+                        segments.filter((s) => s.type === "Match").length >= 4 &&
+                        availableShows.find((s) => s.id === Number(showName))?.type !== "PLE")
+                    }
+                  >
+                    Match
+                  </button>
+                </StarBorder>
+
+                <StarBorder
+                  as="div"
+                  color={selectedBrand.primaryColor}
+                  className={styles.ebButtonWrapper}
                 >
-                  Promo
-                </button>
-                <button
-                  disabled={isDisabled}
-                  onClick={() => addSegment("Video")}
+                  <button disabled={isDisabled} onClick={() => addSegment("Promo")}>
+                    Promo
+                  </button>
+                </StarBorder>
+
+                <StarBorder
+                  as="div"
+                  color={selectedBrand.primaryColor}
+                  className={styles.ebButtonWrapper}
                 >
-                  Video
-                </button>
+                  <button disabled={isDisabled} onClick={() => addSegment("Video")}>
+                    Video
+                  </button>
+                </StarBorder>
                 {isPLEMissingName && (
                   <span className={styles.warningHint}>Pick PLE first</span>
                 )}
@@ -1370,27 +1401,24 @@ const EventCreation = () => {
           </div>
         </div>
 
-        <button
-          className={styles.saveBtn}
-          disabled={
-            isSaving ||
-            overallRating === 0 ||
-            (!isWeekly && !showName) ||
-            segments.some(
-              (s) =>
-                s.type === "Match" &&
-                (!s.matchData?.winnersIds.length ||
-                  s.matchData.winnersIds[0] === undefined),
-            )
-          }
-          onClick={handleSave}
+        <StarBorder
+          as="div"
+          color={selectedBrand.primaryColor}
+          speed="3s"
+          className={styles.ebSaveButtonWrapper}
         >
-          {overallRating === 0
-            ? "RATE THE SHOW"
-            : isSaving
-              ? "SAVING..."
-              : "SAVE AND GO BACK"}
-        </button>
+          <button
+            className={styles.saveBtn}
+            onClick={handleSave}
+            disabled={!canSave}
+          >
+            {overallRating === 0
+              ? "RATE THE SHOW"
+              : isSaving
+                ? "SAVING..."
+                : "SAVE AND GO BACK"}
+          </button>
+        </StarBorder>
       </footer>
 
       {/* Roster Modal / Overlay */}

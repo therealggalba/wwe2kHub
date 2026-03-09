@@ -23,7 +23,7 @@
     {
       "id": 3,
       "name": "NXT",
-      "primaryColor": "#FFFF00",
+      "primaryColor": "#b98f06",
       "secondaryColor": "#000000",
       "logo": "/visuals/Brands/nxt.png",
       "priority": 3,
@@ -897,7 +897,7 @@
   "settings": [
     { "key": "enableInjuries", "value": true },
     { "key": "enableMorale", "value": true },
-    { "key": "weeksPerSeason", "value": 52 }
+    { "key": "weeksPerSeason", "value": 60 }
   ],
   "shows": [
   { "id": 1, "name": "Monday Night RAW", "brandName": "RAW", "type": "Weekly", "image": "./visuals/Brands/raw.png" },

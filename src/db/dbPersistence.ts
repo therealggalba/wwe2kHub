@@ -31,41 +31,32 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
     await db.settings.clear();
     await db.shows.clear();
 
-    // 1. Import Brands first to get their IDs
+    // 1. Import Brands first and preserve IDs
     const brandMap = new Map<string, number>();
     if (state.brands && state.brands.length > 0) {
       for (const brandData of state.brands) {
-        const id = await db.brands.add({
-          name: brandData.name,
-          primaryColor: brandData.primaryColor,
-          secondaryColor: brandData.secondaryColor,
-          logo: brandData.logo,
-          priority: brandData.priority,
-          isMajorBrand: brandData.isMajorBrand,
-          isShared: brandData.isShared,
-        });
+        // Use add() which preserves ID if present, or generates one if not
+        const id = await db.brands.add(brandData);
         brandMap.set(brandData.name, id);
       }
     }
 
-    // 2. Import Championships (mapping brandName to brandId)
+    // 2. Import Championships (preserving IDs and mapping brandId if needed)
     const titleMap = new Map<string, number>();
     if (state.championships && state.championships.length > 0) {
       for (const titleData of state.championships) {
         const championshipId = await db.championships.add({
-          name: titleData.name,
-          image: titleData.image,
+          ...titleData,
           brandId: titleData.brandId || (titleData.brandName ? brandMap.get(titleData.brandName) : undefined),
-          history: titleData.history || [],
         });
         titleMap.set(titleData.name, championshipId);
       }
     }
 
-    // 3. Import Wrestlers (mapping brandName and holdsTitleNames)
+    // 3. Import Wrestlers (preserving IDs and mapping brandId/titles if needed)
     if (state.wrestlers && state.wrestlers.length > 0) {
       const wrestlersWithMappedIds: Wrestler[] = state.wrestlers.map((w: any) => {
-        // Map titles from names if currentTitlesIds is missing
+        // Map titles from names ONLY if we need to (e.g. from a Preset)
         const titles: number[] = [...(w.currentTitlesIds || [])];
         if (w.holdsTitleNames && Array.isArray(w.holdsTitleNames)) {
           w.holdsTitleNames.forEach((tName: string) => {
@@ -96,7 +87,7 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
       await db.wrestlers.bulkAdd(wrestlersWithMappedIds);
     }
 
-    // 4. Import NPCs
+    // 4. Import NPCs (preserving IDs and mapping brandId)
     if (state.npcs && state.npcs.length > 0) {
       const npcsWithMappedIds = state.npcs.map((n: any) => ({
         ...n,
@@ -110,7 +101,7 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
       await db.settings.bulkAdd(state.settings);
     }
     
-    // 6. Import Shows
+    // 6. Import Shows (preserving IDs and mapping brandId)
     if (state.shows && state.shows.length > 0) {
       const showsWithMappedIds = state.shows.map((s: any) => ({
         ...s,

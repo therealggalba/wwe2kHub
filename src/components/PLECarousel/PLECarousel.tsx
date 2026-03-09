@@ -86,8 +86,7 @@ const PLECarousel = () => {
               <button 
                 className={styles.detailsBtn}
                 onClick={() => navigate(`/archive/show/${ple.id}`)}
-              >
-                Ver Detalles
+              >Detalles
               </button>
             </div>
           </div>

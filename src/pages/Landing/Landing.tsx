@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { importState, getSaveSlots, loadFromSlot, deleteSlot } from '../../db/dbPersistence';
 import type { FullDatabaseState } from '../../db/dbPersistence';
 import { linkAssetsFolder, initAssetsFolder, checkAssetsPermission, requestAssetsPermission } from '../../utils/assetResolver';
+import ResolvedImage from '../../components/Common/ResolvedImage';
 import styles from './Landing.module.scss';
+import Hyperspeed from '../../components/Hyperspeed/Hyperspeed';
+import { hyperspeedPresets } from '../../components/Hyperspeed/hyperspeedPresets';
 
 type ViewState = 'MAIN' | 'NEW_GAME' | 'LOAD_GAME' | 'WIZARD';
 type WizardStep = '1_NAME' | '2_PREP' | '3_IMPORT' | '4_ASSETS' | '5_CONFIRM';
@@ -28,36 +31,49 @@ const Landing: React.FC = () => {
 
   const jsonTemplate = {
     brands: [
-      { 
-        id: 1, 
-        name: "RAW", 
-        primaryColor: "#FF0000", 
-        secondaryColor: "#000000", 
-        logo: "/visuals/Brands/raw.png", 
-        priority: 1, 
-        isMajorBrand: true, 
-        isShared: false 
-      }
+      {
+      "id": 1,
+      "name": "NombreDeMarca",
+      "primaryColor": "#FFFFFF",
+      "secondaryColor": "#000000",
+      "logo": "/visuals/Brands/nombredemarca.png",
+      "priority": 1,
+      "isMajorBrand": true,
+      "isShared": false
+    },
     ],
     wrestlers: [
       { 
         id: 1, 
-        name: "Cody Rhodes", 
+        name: "Nombre Wrestler", 
         gender: "Male", 
         brandId: 1, 
-        avatar: "/visuals/Wrestlers/men/cody/avatar.png", 
-        image: "/visuals/Wrestlers/men/cody/full.png"
+        avatar: "/visuals/Wrestlers/men/nombrewrestler/nombrewrestleravatar.png", 
+        image: "/visuals/Wrestlers/men/nombrewrestler/nombrewrestlerfull.png"
+      },
+      { 
+        id: 2, 
+        name: "Nombre Wrestler", 
+        gender: "Female", 
+        brandId: 1, 
+        avatar: "/visuals/Wrestlers/women/nombrewrestler/nombrewrestleravatar.png", 
+        image: "/visuals/Wrestlers/women/nombrewrestler/nombrewrestlerfull.png"
       }
     ],
     championships: [
-      { id: 1, name: "WWE Championship", brandId: 1, history: [] }
+      { id: 1, name: "World Championship", brandId: 1}
     ],
     npcs: [
-      { id: 100, name: "Adam Pearce", role: "General Manager", brandId: 1 }
+      { id: 100, name: "Name NPC", role: "General Manager", brandId: 1 }
     ],
-    settings: [],
+    settings: [
+    { "key": "enableInjuries", "value": true },
+    { "key": "enableMorale", "value": true },
+    { "key": "weeksPerSeason", "value": 60 }
+    ],
     shows: [
-      { id: 1, name: "Monday Night RAW", type: "Weekly", day: "Monday", brandId: 1 }
+      { "id": 1, "name": "Tuesday Night Show", "brandName": "NombreDeMarca", "type": "Weekly", "image": "./visuals/Events/Logos/nombredemarca.png" },
+      { "id": 2, "name": "WrestleShow", "brandName": "SHARED", "type": "PLE", "image": "./visuals/Events/Logos/wrestleshow.png" }
     ]
   };
 
@@ -168,27 +184,18 @@ const Landing: React.FC = () => {
   const renderMainMenu = () => (
     <div className={styles.mainMenu}>
       <button className={styles.menuItem} onClick={() => setView('NEW_GAME')}>
-        <span className={styles.icon}>➕</span>
         <div className={styles.text}>
           <h3>NUEVA PARTIDA</h3>
-          <p>Crea un nuevo universo desde un preset o personalizalo.</p>
         </div>
       </button>
-      
       <button 
         className={`${styles.menuItem} ${saveSlots.length === 0 ? styles.disabled : ''}`} 
-        onClick={() => saveSlots.length > 0 && setView('LOAD_GAME')}
-      >
-        <span className={styles.icon}>💾</span>
+        onClick={() => saveSlots.length > 0 && setView('LOAD_GAME')}>
         <div className={styles.text}>
           <h3>CARGAR PARTIDA</h3>
           <p>{saveSlots.length > 0 ? `Tienes ${saveSlots.length} partidas guardadas.` : 'No hay partidas guardadas.'}</p>
         </div>
       </button>
-
-      <div className={styles.footerInfo}>
-        <p>WWE 2K HUB - v1.2.0</p>
-      </div>
     </div>
   );
 
@@ -199,36 +206,34 @@ const Landing: React.FC = () => {
       
       <div className={styles.durationSelector}>
         <label>DURACIÓN DE LA SEASON:</label>
-        <div className={styles.durationOptions}>
-          {[12, 24, 60].map(d => (
-            <button 
-              key={d} 
-              className={seasonDuration === d ? styles.active : ''} 
-              onClick={() => setSeasonDuration(d)}
-            >
-              {d} SHOWS
-            </button>
+        <div className={styles.durationOptions}>{[12, 24, 60].map(d => (
+            <button key={d} className={seasonDuration === d ? styles.active : ''} 
+              onClick={() => setSeasonDuration(d)}>{d} SHOWS</button>
           ))}
         </div>
       </div>
       
       <div className={styles.presetGrid}>
         <div className={styles.presetCard} onClick={() => handleNewGameFromPreset('/presets/wwe_universe.json')}>
-          <div className={styles.presetLogo}>WWE</div>
-          <h4>WWE UNIVERSE</h4>
-          <p>Configuración completa con RAW, SD y NXT.</p>
+          <div className={styles.presetLogo}>
+            <ResolvedImage src="/visuals/Brands/wwe.png" alt="WWE" />
+          </div>
+          <p>Preset con RAW, SD y NXT.</p>
+          <p>2026</p>
         </div>
 
         <div className={styles.presetCard} onClick={() => handleNewGameFromPreset('/presets/aew_universe.json')}>
-          <div className={`${styles.presetLogo} ${styles.aew}`}>AEW</div>
-          <h4>AEW DYNAMITE</h4>
-          <p>Preset básico para All Elite Wrestling.</p>
+          <div className={`${styles.presetLogo} ${styles.aew}`}>
+            <ResolvedImage src="/visuals/Brands/aew.png" alt="AEW" />
+          </div>
+          <p>Preset con Dynamite y Collision.</p>
+          <p>2026</p>
         </div>
 
         <div className={`${styles.presetCard} ${styles.custom}`} onClick={() => setView('WIZARD')}>
           <div className={styles.presetLogo}>⚙️</div>
-          <h4>PERSONALIZADO</h4>
-          <p>Guía paso a paso para importar tus propios datos.</p>
+          <p>Crea tu preset personalizado.</p>
+          <p>2026</p>
         </div>
       </div>
     </div>
@@ -247,7 +252,7 @@ const Landing: React.FC = () => {
               <span className={styles.slotName}>{slot.name}</span>
               <span className={styles.slotDate}>{new Date(slot.timestamp).toLocaleString()}</span>
             </div>
-            <button className={styles.deleteSlotBtn} onClick={(e) => slot.id && handleDeleteSlot(slot.id, e)}>🗑️</button>
+            <button className={styles.deleteSlotBtn} onClick={(e) => slot.id && handleDeleteSlot(slot.id, e)}>X</button>
           </div>
         ))}
       </div>
@@ -271,7 +276,7 @@ const Landing: React.FC = () => {
           {wizardStep === '1_NAME' && (
             <div className={styles.wizardView}>
               <h2>Nombre del Universo</h2>
-              <p>Dale un nombre a tu nueva creación para identificarla en los slots.</p>
+              <p>Nombra tu nueva creación para identificarla en los slots.</p>
               <input 
                 type="text" 
                 placeholder="Ej: My Custom Universe" 
@@ -286,12 +291,12 @@ const Landing: React.FC = () => {
           {wizardStep === '2_PREP' && (
             <div className={styles.wizardView}>
               <h2>Preparación de Datos</h2>
-              <p>Necesitas un archivo JSON con la estructura correcta. Descarga nuestra plantilla y rellénala con tus datos.</p>
+              <p>Usa nuestra plantilla JSON y rellénala con tus datos.</p>
               <div className={styles.actionBox}>
-                <button className={styles.downloadBtn} onClick={() => setShowTemplateModal(true)}>📖 Ver Instrucciones y Plantilla</button>
-                <div className={styles.tip}>Tip: Asegúrate de que los IDs no se repitan y que las rutas de imagen coincidan con tu carpeta local.</div>
+                <button className={styles.downloadBtn} onClick={() => setShowTemplateModal(true)}>VER INSTRUCCIONES Y LA PLANTILLA</button>
+                <div className={styles.tip}>Tip: Verifica los IDs y que las rutas de imagen coincidan con tu carpeta local.</div>
               </div>
-              <button onClick={() => setWizardStep('3_IMPORT')}>Tengo mi archivo listo</button>
+              <button onClick={() => setWizardStep('3_IMPORT')}>Archivo JSON listo</button>
             </div>
           )}
 
@@ -348,6 +353,7 @@ const Landing: React.FC = () => {
 
   return (
     <div className={styles.landingPage}>
+      <Hyperspeed effectOptions={hyperspeedPresets.two} />
       <div className={styles.overlay}></div>
       <div className={styles.content}>
         <div className={styles.logoContainer}>
@@ -366,24 +372,26 @@ const Landing: React.FC = () => {
       {showTemplateModal && (
         <div className={styles.modalOverlay} onClick={() => setShowTemplateModal(false)}>
           <div className={styles.templateModal} onClick={e => e.stopPropagation()}>
-            <button className={styles.closeModal} onClick={() => setShowTemplateModal(false)}>×</button>
-            <h2>Guía de Configuración JSON</h2>
+            <div className={styles.titleModal}>
+              <h2>Guía de Configuración JSON</h2>
+              <button className={styles.closeModal} onClick={() => setShowTemplateModal(false)}>X</button>
+            </div>
             <div className={styles.modalScroll}>
               <section className={styles.guideSection}>
-                <h3>Instrucciones de Rellenado</h3>
+                <h3>Instrucciones</h3>
                 <p className={styles.description}>
                   Sigue estos pasos para que tu preset funcione perfectamente:
                 </p>
                 <ul>
-                  <li><strong>IDs Únicos:</strong> Cada luchador, marca y título debe tener un ID numérico único.</li>
-                  <li><strong>Rutas de Imagen:</strong> Usa rutas que empiecen por <code>/visuals/</code> (ej: <code>/visuals/Wrestlers/cena.png</code>).</li>
-                  <li><strong>Campos Dinámicos:</strong> No te preocupes por victorias, derrotas o lesiones; el sistema los inicializará por ti.</li>
-                  <li><strong>Marcas:</strong> Define al menos una marca para que el sistema pueda asignar luchadores.</li>
+                  <li><strong>IDs Únicos:</strong> Cada wrestler, marca y título debe tener un ID numérico único.</li>
+                  <li><strong>Estructura:</strong> /visuals/Brands, /visuals/Championships, /visuals/Events, /visuals/Wrestlers/(wo)men/wrestler.</li>
+                  <li><strong>Detalles:</strong> No te preocupes por victorias o lesiones; el sistema los inicializará.</li>
+                  <li><strong>Marcas:</strong> Define al menos una marca para asignar luchadores.</li>
                 </ul>
               </section>
 
               <section className={styles.templateSection}>
-                <h3>Plantilla JSON (Estructura Base)</h3>
+                <h3>Plantilla JSON (Estructura de ejemplo)</h3>
                 <pre className={styles.codeBlock}>
                   {JSON.stringify(jsonTemplate, null, 2)}
                 </pre>
@@ -393,8 +401,7 @@ const Landing: React.FC = () => {
                     navigator.clipboard.writeText(JSON.stringify(jsonTemplate, null, 2));
                     alert('Plantilla copiada al portapapeles');
                   }}
-                >
-                  📋 Copiar Plantilla
+                >Copiar Plantilla
                 </button>
               </section>
             </div>
