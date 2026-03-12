@@ -64,7 +64,6 @@ const EventCreation = () => {
     number | undefined
   >();
 
-  const [weeksPerSeason, setWeeksPerSeason] = useState(GAME_CONFIG.settings.weeksPerSeason);
 
   // Sequential logic for Season/Week
   useEffect(() => {
@@ -73,7 +72,7 @@ const EventCreation = () => {
       
       const weeksSetting = await db.settings.get("weeksPerSeason");
       const currentWeeksPerSeason = Number(weeksSetting?.value || GAME_CONFIG.settings.weeksPerSeason);
-      setWeeksPerSeason(currentWeeksPerSeason);
+      // setWeeksPerSeason(currentWeeksPerSeason);
 
       // Only count shows that have been actually created/played (have season and week)
       const playedShows = await db.shows
@@ -235,6 +234,14 @@ const EventCreation = () => {
 
   const handleSave = async () => {
     if (!selectedBrand) return;
+    
+    // Minimum matches validation (5 matches required)
+    const matchesCount = segments.filter(s => s.type === "Match").length;
+    if (matchesCount < 5) {
+      alert("Debes tener al menos 5 combates en la cartelera para poder guardar el show.");
+      return;
+    }
+
     setIsSaving(true);
 
     try {
@@ -286,7 +293,7 @@ const EventCreation = () => {
       }
 
       // 2. Save to Dexie
-      await db.shows.add(showData as unknown as Show);
+      const addedShowId = await db.shows.add(showData as unknown as Show);
 
       // 3. Automated Championship Management & Morale
       const titleLosers = new Set<number>();
@@ -356,6 +363,7 @@ const EventCreation = () => {
                 wrestlerName: newChampionNames.join(" & "),
                 reignNumber: (championship.history?.length || 0) + 1,
                 totalWeeks: 0,
+                showId: addedShowId,
               };
 
               await db.championships.update(championshipId, {
@@ -559,7 +567,7 @@ const EventCreation = () => {
       }
 
       // 4. Navigate back
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       console.error("Error saving show:", error);
       alert("Failed to save show. Check console.");
@@ -763,23 +771,11 @@ const EventCreation = () => {
 
         <div className={styles.timeInfo}>
           <div className={styles.inputGroup}>
-            <input
-              type="number"
-              value={season}
-              min={1}
-              max={10}
-              onChange={(e) => setSeason(parseInt(e.target.value))}
-            />
+            <div className={styles.readOnlyValue}>{season}</div>
             <span>Season</span>
           </div>
           <div className={styles.inputGroup}>
-            <input
-              type="number"
-              value={week}
-              min={1}
-              max={weeksPerSeason}
-              onChange={(e) => setWeek(parseInt(e.target.value))}
-            />
+            <div className={styles.readOnlyValue}>{week}</div>
             <span>Week</span>
           </div>
         </div>
@@ -1092,7 +1088,7 @@ const EventCreation = () => {
                       });
                     }}
                   >
-                    {(STIPULATIONS_BY_QUANTITY[segment.matchData?.type.split(" - ")[0] || "1 vs 1"] || ["Standard"]).map(s => <option key={s} value={s}>{s}</option>)}
+                    {(STIPULATIONS_BY_QUANTITY[segment.matchData?.type.split(" - ")[0] || "1 vs 1"] || ["Singles"]).map(s => <option key={s} value={s}>{s}</option>)}
                   </select>
                 </div>
                 <div className={styles.matchBody}>
@@ -1112,7 +1108,7 @@ const EventCreation = () => {
                                     return (
                                       <div key={pIdx} className={styles.participantNode}>
                                         <div
-                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? 2 : 0) ? styles.locked : ""}`}
+                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? (segment.matchData.type.includes("2 vs 2") ? 2 : segment.matchData.type.includes("3 vs 3") ? 3 : 1) : 0) && allWrestlers.find(w => w.id === segment.matchData?.participantsIds[pIdx])?.name.toLowerCase() !== "vacante" ? styles.locked : ""}`}
                                           onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
                                         >
                                           {wrestler ? <ResolvedImage src={wrestler.avatar || wrestler.image} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
@@ -1140,7 +1136,7 @@ const EventCreation = () => {
                                     return (
                                       <div key={pIdx} className={styles.participantNode}>
                                         <div
-                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? 3 : 0) ? styles.locked : ""}`}
+                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? 3 : 0) && allWrestlers.find(w => w.id === segment.matchData?.participantsIds[pIdx])?.name.toLowerCase() !== "vacante" ? styles.locked : ""}`}
                                           onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
                                         >
                                           {wrestler ? <ResolvedImage src={wrestler.avatar || wrestler.image} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
@@ -1168,7 +1164,7 @@ const EventCreation = () => {
                                     return (
                                       <div key={pIdx} className={styles.participantNode}>
                                         <div
-                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? 5 : 0) ? styles.locked : ""}`}
+                                          className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx < (segment.matchData?.championshipId ? 5 : 0) && allWrestlers.find(w => w.id === segment.matchData?.participantsIds[pIdx])?.name.toLowerCase() !== "vacante" ? styles.locked : ""}`}
                                           onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
                                         >
                                           {wrestler ? <ResolvedImage src={wrestler.avatar || wrestler.image} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
@@ -1232,7 +1228,7 @@ const EventCreation = () => {
                               <React.Fragment key={pIdx}>
                                 <div className={styles.participantNode}>
                                   <div
-                                    className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx === 0 ? styles.locked : ""}`}
+                                    className={`${styles.pSlot} ${segment.matchData?.titleMatch && pIdx === 0 && allWrestlers.find(w => w.id === pid)?.name.toLowerCase() !== "vacante" ? styles.locked : ""}`}
                                     onClick={() => setActivePicker({ segmentId: segment.id, type: "Match", index: pIdx })}
                                   >
                                     {wrestler ? <ResolvedImage src={wrestler.avatar || wrestler.image} alt={wrestler.name} /> : <div className={styles.placeholder}>?</div>}
@@ -1280,11 +1276,11 @@ const EventCreation = () => {
                         }}
                       >
                         <option value="">Choose the winner</option>
-                        {segment.matchData?.type === "2 vs 2" ||
-                        segment.matchData?.type === "3 vs 3" ? (
+                        {segment.matchData?.type.includes("2 vs 2") ||
+                        segment.matchData?.type.includes("3 vs 3") ? (
                           <>
                             {(() => {
-                              const isTag = segment.matchData?.type === "2 vs 2";
+                              const isTag = segment.matchData?.type.includes("2 vs 2");
                               const team1Ids = isTag ? [0, 1] : [0, 1, 2];
                               const team2Ids = isTag ? [2, 3] : [3, 4, 5];
 
@@ -1312,18 +1308,26 @@ const EventCreation = () => {
                                     <option
                                       value={team1.map((w) => w!.id).join(",")}
                                     >
-                                      {team1.map((w) => w!.name).join(" & ")}
+                                      {(() => {
+                                        const faction = team1[0]?.faction;
+                                        if (faction && team1.every(w => w?.faction === faction)) {
+                                          return faction;
+                                        }
+                                        return team1.map((w) => w!.name).join(" & ");
+                                      })()}
                                     </option>
                                   )}
                                   {team2Ready && (
                                     <option
-                                      value={
-                                        team1Ready
-                                          ? team2.map((w) => w!.id).join(",")
-                                          : team2.map((w) => w!.id).join(",")
-                                      }
+                                      value={team2.map((w) => w!.id).join(",")}
                                     >
-                                      {team2.map((w) => w!.name).join(" & ")}
+                                      {(() => {
+                                        const faction = team2[0]?.faction;
+                                        if (faction && team2.every(w => w?.faction === faction)) {
+                                          return faction;
+                                        }
+                                        return team2.map((w) => w!.name).join(" & ");
+                                      })()}
                                     </option>
                                   )}
                                 </>
@@ -1562,7 +1566,7 @@ const EventCreation = () => {
 
                           // Auto-partner selection for Tag Team
                           if (
-                            segment.matchData!.type === "2 vs 2" &&
+                            segment.matchData!.type.includes("2 vs 2") &&
                             w.faction
                           ) {
                             const isSlot0or1 = activePicker.index <= 1;
@@ -1592,7 +1596,7 @@ const EventCreation = () => {
 
                           // Auto-partner selection for Trios
                           if (
-                            segment.matchData!.type === "3 vs 3" &&
+                            segment.matchData!.type.includes("3 vs 3") &&
                             w.faction
                           ) {
                             const isTeam1 = activePicker.index <= 2;

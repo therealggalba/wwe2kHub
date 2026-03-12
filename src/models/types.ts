@@ -20,6 +20,7 @@ export interface TitleHistoryEntry {
   wrestlerName: string;
   reignNumber: number;
   totalWeeks: number;
+  showId?: number;
 }
 
 export interface Championship {

@@ -1,36 +1,24 @@
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import Layout from './components/Layout/Layout'
-import Home from './pages/Home/Home'
-import Options from './pages/Options/Options'
-import Roster from './pages/Roster/Roster'
-import WrestlerDetails from './pages/WrestlerDetails/WrestlerDetails'
-import EventCreation from './pages/EventCreation/EventCreation'
-import ShowArchive from './pages/ShowArchive/ShowArchive'
-import ShowDetails from './pages/ShowArchive/ShowDetails'
-import Landing from './pages/Landing/Landing'
-import { isDatabaseEmpty } from './db/dbPersistence'
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Layout from "./components/Layout/Layout";
+import Home from "./pages/Home/Home";
+import Options from "./pages/Options/Options";
+import Roster from "./pages/Roster/Roster";
+import WrestlerDetails from "./pages/WrestlerDetails/WrestlerDetails";
+import EventCreation from "./pages/EventCreation/EventCreation";
+import ShowArchive from "./pages/ShowArchive/ShowArchive";
+import ShowDetails from "./pages/ShowArchive/ShowDetails";
+import Landing from "./pages/Landing/Landing";
 
 function App() {
-  const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    const checkEmpty = async () => {
-      const empty = await isDatabaseEmpty();
-      if (empty && location.pathname !== '/landing') {
-        navigate('/landing');
-      }
-    };
-    checkEmpty();
-  }, [navigate, location]);
-
-  const isLanding = location.pathname === '/landing';
+  const isLanding =
+    location.pathname === "/landing" || location.pathname === "/";
 
   const content = (
     <Routes>
+      <Route path="/" element={<Navigate to="/landing" replace />} />
       <Route path="/landing" element={<Landing />} />
-      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/options" element={<Options />} />
       <Route path="/roster" element={<Roster />} />
       <Route path="/roster/:name" element={<WrestlerDetails />} />
@@ -43,4 +31,4 @@ function App() {
   return isLanding ? content : <Layout>{content}</Layout>;
 }
 
-export default App
+export default App;

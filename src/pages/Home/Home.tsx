@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import PLECarousel from '../../components/PLECarousel/PLECarousel';
 import StarBorder from '../../components/StarBorder/StarBorder';
 import { db } from '../../db/db';
+import DigitalNewspaper from '../../components/DigitalNewspaper/DigitalNewspaper';
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
@@ -11,13 +12,10 @@ const Home: React.FC = () => {
     const checkBrand = async () => {
       const allBrands = await db.brands.toArray();
       const aew = allBrands.find(b => b.name.includes('AEW'));
-      const wwe = allBrands.find(b => b.name.includes('WWE'));
       if (aew) {
         setHeroTitle('SÉ PARTE DE LA ÉLITE');
-      } else if (wwe){
+      } else{
         setHeroTitle('CONSTRUYE TU LEGADO')
-      } else {
-        setHeroTitle('DOMINA EL RING');
       }
     };
     checkBrand();
@@ -26,6 +24,9 @@ const Home: React.FC = () => {
   return (
     <section className={styles.homeSection}>
       <div className={styles.hero}><h1 className={styles.heroTitle}>{heroTitle}</h1></div>
+      
+      <DigitalNewspaper />
+
       <div className={styles.grid}>
         {[
           { title: 'Show Semanal', type: 'semanal', description: 'Crea y gestiona tu programación semanal.', color: '#e00012' },

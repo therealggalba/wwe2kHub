@@ -119,7 +119,7 @@ const Landing: React.FC = () => {
       else data.settings.push({ key: 'weeksPerSeason', value: seasonDuration });
 
       await importState(data);
-      navigate('/');
+      navigate('/home');
     } catch (error: unknown) {
       alert(error instanceof Error ? error.message : 'Error al cargar preset');
     } finally {
@@ -147,7 +147,7 @@ const Landing: React.FC = () => {
     setIsLoading(true);
     try {
       await loadFromSlot(id);
-      navigate('/');
+      navigate('/home');
     } catch {
       alert('Error al cargar la partida');
     } finally {
@@ -173,7 +173,7 @@ const Landing: React.FC = () => {
       else (importedData.settings as any).push({ key: 'weeksPerSeason', value: seasonDuration });
 
       await importState(importedData);
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
     } finally {

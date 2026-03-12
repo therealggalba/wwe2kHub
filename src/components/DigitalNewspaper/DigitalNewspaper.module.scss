@@ -1,0 +1,176 @@
+@use "../../styles/variables" as v;
+
+.newspaperContainer {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: seashell;
+  color: #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 100px rgba(0,0,0,0.05);
+  font-family: 'Playfair Display', serif; // Typical newspaper font
+  border: 1px solid #ddd;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: 
+    "header header header"
+    "leftContent centerContent rightContent";
+  grid-template-columns: 300px 1fr 300px;
+  gap: 0.5rem;
+  
+  // Paper texture effect
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  @media (max-width: v.$tablet) {
+    grid-template-areas: 
+      "header"
+      "centerContent"
+      "leftContent"
+      "rightContent";
+    grid-template-columns: 1fr;
+  }
+}
+
+.newspaperHeader {
+  grid-area: header;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 3px double #333;
+  padding-bottom: 0.5rem;
+
+  .subline {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-family: v.$font-family;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+.leftColumn {
+  grid-area: leftContent;
+  border-right: 1px solid #ddd;
+  padding-right: 0.2rem;
+}
+
+.centerColumn {
+  grid-area: centerContent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightColumn {
+  grid-area: rightContent;
+  border-left: 1px solid #ddd;
+  padding-left: 0.2rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 1px solid #333;
+  display: block;
+  max-lines: 1;
+}
+
+.showName {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.dateInfo {
+  font-style: italic;
+}
+
+.mainEntry {
+  text-align: center;
+  width: 90%;
+
+  .meImageContainer {
+    width: 100%;
+    height: 200px;
+    background: #f0f0f0;
+    margin-bottom: 0.25rem;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #999;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: sepia(0.2) contrast(1.1); // Newspaper look
+    }
+  }
+
+  .headline {
+    font-size: 1.5rem;
+    line-height: 1.1;
+    font-weight: 900;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    text-transform: capitalize;
+  }
+
+  .summary {
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: black;
+    text-align: justify;
+  }
+}
+
+.brandLogo {
+  height: 80px;
+  margin-bottom: 1rem;
+  filter: grayscale(0.5);
+}
+
+.newsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    text-align: justify;
+    border-bottom: 1px dotted #ccc;
+    font-size: 0.6rem;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+
+    strong {
+      display: block;
+      color: #333;
+    }
+  }
+}
+
+.emptyState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  font-style: italic;
+  color: v.$text-gray;
+}

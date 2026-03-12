@@ -4,12 +4,12 @@ import styles from './Header.module.scss'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <Link to="/" className={styles.titleLink}>
+      <Link to="/home" className={styles.titleLink}>
         <h1 className={styles.title}>ELITE<span>BOOKER</span></h1>
       </Link>
       <nav className={styles.nav}>
         <NavLink 
-          to="/" 
+          to="/home" 
           className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
         >
           Home

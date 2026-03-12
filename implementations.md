@@ -62,3 +62,23 @@ Registro detallado de todas las funcionalidades, mejoras y cambios realizados en
     - Bloqueo de creación de segmentos en PLEs hasta que se elija un evento.
     - Selección obligatoria de ganador (incluyendo opción "NO CONTEST") para poder avanzar o guardar.
   - **Refinamiento de UI**: Exclusión de la marca SHARED en la vista de Roster principal por petición del usuario.
+
+---
+
+## 12 de Marzo de 2026 - Periódico Digital y Refinamientos de Experiencia
+- **Implementación**: Sistema de noticias dinámico "Digital Newspaper" y pulido integral del flujo de eventos.
+- **Detalle**: 
+  - **Digital Newspaper**: Nuevo sistema que analiza el último show para generar titulares automáticos, boletines médicos y cambios de títulos. Incluye una "Edición de Bienvenida" para nuevas partidas.
+  - **Lógica de Campeonatos**: 
+    - Detección precisa de cambios vs retenciones mediante tracking por ID de show.
+    - Ocultación inteligente del icono de campeón para títulos vacantes.
+  - **Automatización en Tag/Trios**: 
+    - Auto-selección de compañeros de equipo basada en facción y marca.
+    - Visualización de nombres de facción en la selección de ganadores.
+  - **Validación y Estructura**: 
+    - Bloqueo de inputs temporales (Season/Week) para garantizar cronología.
+    - Regla de validación de mínimo 5 combates por show.
+    - Corrección del listado completo de estipulaciones para 1 vs 1.
+  - **Impacto Visual (UI)**:
+    - Rediseño de `StarBorder` con efecto de rotación eléctrica mediante `conic-gradient` y aceleración en hover.
+    - Header interactivo y limpieza de elementos innecesarios en el Billboard.
