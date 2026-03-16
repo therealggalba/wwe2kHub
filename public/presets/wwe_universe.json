@@ -1208,7 +1208,15 @@
     { "id": 14, "name": "NXT North American Women Champion", "image": "./visuals/Championships/northamericanwomen.png", "brandName": "NXT" },
     { "id": 15, "name": "NXT Tag Team Champions", "image": "./visuals/Championships/nxttagteam.png", "brandName": "NXT" }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": 1,
+      "name": "Triple H",
+      "image": "./visuals/Wrestlers/others/tripleh/triplehavatar.png",
+      "role": "General Manager",
+      "brandName": "SHARED"
+    }
+  ],
   "settings": [
     { "key": "enableInjuries", "value": true },
     { "key": "enableMorale", "value": true },

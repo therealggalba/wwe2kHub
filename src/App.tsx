@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Suspense, lazy } from 'react'
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import Options from "./pages/Options/Options";
@@ -8,6 +9,8 @@ import EventCreation from "./pages/EventCreation/EventCreation";
 import ShowArchive from "./pages/ShowArchive/ShowArchive";
 import ShowDetails from "./pages/ShowArchive/ShowDetails";
 import Landing from "./pages/Landing/Landing";
+
+const GMChat = lazy(() => import('./components/GMChat/GMChat'));
 
 function App() {
   const location = useLocation();
@@ -28,7 +31,14 @@ function App() {
     </Routes>
   );
 
-  return isLanding ? content : <Layout>{content}</Layout>;
+  return (
+    <>
+      <Suspense fallback={null}>
+        <GMChat />
+      </Suspense>
+      {isLanding ? content : <Layout>{content}</Layout>}
+    </>
+  );
 }
 
 export default App;

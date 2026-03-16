@@ -4,6 +4,7 @@ import StarBorder from '../../components/StarBorder/StarBorder';
 import { db } from '../../db/db';
 import DigitalNewspaper from '../../components/DigitalNewspaper/DigitalNewspaper';
 import styles from './Home.module.scss';
+import { aiEngine } from '../../utils/aiEngine';
 
 const Home: React.FC = () => {
   const [heroTitle, setHeroTitle] = useState('DOMINA EL RING');
@@ -19,6 +20,11 @@ const Home: React.FC = () => {
       }
     };
     checkBrand();
+
+    // Precargar el motor de IA en segundo plano
+    setTimeout(() => {
+      aiEngine.init().catch(console.error);
+    }, 1500);
   }, []);
 
   return (

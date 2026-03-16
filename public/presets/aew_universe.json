@@ -941,7 +941,15 @@
     { "id": 9, "name": "TBS Women's Champion", "image": "./visuals/Championships/aewtbs.png", "brandName": "Collision" },
     { "id": 10, "name": "AEW Trios Champions", "image": "./visuals/Championships/aewtrios.png", "brandName": "Collision" }
   ],
-  "npcs": [],
+  "npcs": [
+    {
+      "id": 1,
+      "name": "Tony Khan",
+      "image": "./visuals/Wrestlers/others/tonykhan/tonykhanavatar.png",
+      "role": "General Manager",
+      "brandName": "Shared"
+    }
+  ],
   "settings": [
     { "key": "enableInjuries", "value": true },
     { "key": "enableMorale", "value": true },

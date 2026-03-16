@@ -144,7 +144,7 @@ const ShowDetails = () => {
                                         )}
                                     </div>
                                     <div className={styles.participants}>
-                                        {segment.matchData.type === "2 vs 2 Tag Team" ? (
+                                        {segment.matchData.type.toLowerCase().includes("2 vs 2") || segment.matchData.participantsIds.length === 4 ? (
                                             // TAG TEAM GROUPED LAYOUT
                                             <>
                                                 {[0, 2].map((startIndex) => {
@@ -177,7 +177,7 @@ const ShowDetails = () => {
                                                     );
                                                 })}
                                             </>
-                                        ) : segment.matchData.type === "3 vs 3 Trios" ? (
+                                        ) : segment.matchData.type.toLowerCase().includes("3 vs 3") || segment.matchData.participantsIds.length === 6 ? (
                                             // TRIOS GROUPED LAYOUT
                                             <>
                                                 {[0, 3].map((startIndex) => {

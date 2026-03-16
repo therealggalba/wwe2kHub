@@ -90,6 +90,13 @@ const Landing: React.FC = () => {
       }
     };
     checkStatus();
+
+    // Subtle AI Preloading
+    setTimeout(() => {
+      import('../../utils/aiEngine').then(({ aiEngine }) => {
+        aiEngine.init().catch(console.error);
+      });
+    }, 2000);
   }, []);
 
   const handleLinkFolder = async () => {
@@ -108,7 +115,7 @@ const Landing: React.FC = () => {
   const handleNewGameFromPreset = async (presetPath: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch(presetPath);
+      const response = await fetch(`${presetPath}?t=${new Date().getTime()}`);
       if (!response.ok) throw new Error('Preset no encontrado.');
       const data = await response.json();
       
@@ -119,7 +126,7 @@ const Landing: React.FC = () => {
       else data.settings.push({ key: 'weeksPerSeason', value: seasonDuration });
 
       await importState(data);
-      navigate('/home');
+      window.location.href = '/home';
     } catch (error: unknown) {
       alert(error instanceof Error ? error.message : 'Error al cargar preset');
     } finally {
@@ -172,8 +179,21 @@ const Landing: React.FC = () => {
       if (setIdx > -1) (importedData.settings as any)[setIdx].value = seasonDuration;
       else (importedData.settings as any).push({ key: 'weeksPerSeason', value: seasonDuration });
 
+      // Inject Gonzalo Galba as GM if not present
+      if (!importedData.npcs) importedData.npcs = [];
+      const hasGM = importedData.npcs.some((n: any) => n.role === 'General Manager' || n.role === 'GM');
+      if (!hasGM) {
+        importedData.npcs.push({
+          id: 999,
+          name: "Gonzalo Galba",
+          role: "General Manager",
+          brandName: "SHARED",
+          image: "./visuals/Wrestlers/others/gonzalogalba/gonzalogalbaavatar.png"
+        } as any);
+      }
+
       await importState(importedData);
-      navigate('/home');
+      window.location.href = '/home';
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
     } finally {

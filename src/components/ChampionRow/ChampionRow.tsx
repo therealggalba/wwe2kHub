@@ -44,8 +44,7 @@ const ChampionRow: React.FC<ChampionRowProps> = ({
       if (allShareFaction) {
         displayedName = sharedFaction;
       } else {
-        // Requirement: If no shared faction, use "prueba dummy faccion"
-        displayedName = 'prueba dummy faccion';
+        displayedName = sortedChampions.map(c => c.name).reverse().join(' & ');
       }
     } else {
       displayedName = sortedChampions[0].name;

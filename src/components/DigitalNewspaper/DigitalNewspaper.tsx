@@ -4,6 +4,13 @@ import type { Show, Wrestler, Championship, Brand } from '../../models/types';
 import ResolvedImage from '../Common/ResolvedImage';
 import styles from './DigitalNewspaper.module.scss';
 
+interface CollageData {
+  winnersImages: string[];
+  losersAvatars: string[];
+  championshipImage?: string;
+  fallbackImage?: string;
+}
+
 interface NewspaperData {
   showTitle: string;
   date: string;
@@ -11,6 +18,7 @@ interface NewspaperData {
   headline: string;
   summary: string;
   mainEventImage?: string;
+  collageData?: CollageData;
   championsNews: string[];
   injuriesNews: string[];
 }
@@ -38,7 +46,7 @@ const DigitalNewspaper: React.FC = () => {
             brandLogo: brandLogo,
             headline: "¡UNA NUEVA ERA COMIENZA EN EL HUB!",
             summary: "Todo está listo para el inicio de la temporada. El roster está preparado, los títulos esperan dueño y tú tienes el control total. ¿Quiénes se convertirán en las próximas leyendas de tu universo?",
-            mainEventImage: undefined, 
+            collageData: { winnersImages: [], losersAvatars: [], fallbackImage: brandLogo },
             championsNews: ["¡Todos los títulos están vacantes!", "La carrera por el oro comienza hoy mismo.", "Prepara el primer Main Event de la historia."],
             injuriesNews: ["El vestuario está al 100% de energía.", "Sin bajas registradas para el debut.", "Listos para dar el espectáculo."]
           });
@@ -55,39 +63,80 @@ const DigitalNewspaper: React.FC = () => {
         const mainEvent = segments[segments.length - 1];
         let headline = "¡Guerra sin Cuartel!";
         let summary = "Un show para la historia que deja a todos los fans con ganas de más.";
-        let meImage = lastShow.image || lastShow.poster;
+        const meImage = lastShow.image || lastShow.poster;
+        const collageData: CollageData = { winnersImages: [], losersAvatars: [], fallbackImage: meImage };
 
         if (mainEvent?.type === 'Match' && mainEvent.matchData) {
           const participants = mainEvent.matchData.participantsIds
-            .map(id => wrestlers.find(w => w.id === id)?.name)
-            .filter(Boolean);
+            .map(id => wrestlers.find(w => w.id === id))
+            .filter(Boolean) as Wrestler[];
           
           const winners = mainEvent.matchData.winnersIds
-            .map(id => wrestlers.find(w => w.id === id)?.name)
-            .filter(Boolean);
+            .map(id => wrestlers.find(w => w.id === id))
+            .filter(Boolean) as Wrestler[];
+
+          const losers = participants.filter(p => !mainEvent.matchData!.winnersIds.includes(p.id!));
+
+          let championshipImage: string | undefined = undefined;
+          if (mainEvent.matchData.titleMatch && mainEvent.matchData.championshipId) {
+             const title = titles.find(t => t.id === mainEvent.matchData!.championshipId);
+             championshipImage = title?.image;
+          }
 
           if (participants.length >= 2) {
-            const isNoContest = winners.includes('NO CONTEST') || mainEvent.matchData.winnersIds.includes(-1) || winners.length === 0;
+            const getTeamName = (team: Wrestler[]) => {
+              if (team.length === 0) return '';
+              if (team.length === 1) return team[0].name;
+              const firstFaction = team[0].faction;
+              if (firstFaction && team.every(w => w.faction === firstFaction)) {
+                return firstFaction;
+              }
+              return team.map(w => w.name).join(' & ');
+            };
+
+            const isNoContest = winners.length === 0 || mainEvent.matchData.winnersIds.some(id => id === -1 || id === null) || winners.some(w => w.name === 'NO CONTEST');
+            
+            const getRandomItem = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
             
             if (isNoContest) {
-              headline = `¡${participants[0]} vs ${participants[1]} termina en Caos!`;
-              summary = `El esperado combate entre ${participants.join(' y ')} terminó sin un ganador claro en un impactante final para ${lastShow.name}.`;
+              // Intento dividir a los participantes a la mitad para los nombres de la rivalidad si son equipo
+              const half = Math.ceil(participants.length / 2);
+              const team1 = participants.slice(0, half);
+              const team2 = participants.slice(half);
+              const t1Name = getTeamName(team1);
+              const t2Name = getTeamName(team2);
+
+              headline = getRandomItem([
+                 `¡${t1Name} vs ${t2Name} termina en Caos!`,
+                 `Sin Decisión en el Combate Estelar`,
+                 `¡La controversia mancha ${lastShow.name}!`,
+                 `Nadie Resulta Vencedor Hoy`
+              ]);
+              summary = getRandomItem([
+                 `El esperado combate entre ${t1Name} y ${t2Name} terminó sin un ganador claro en un impactante final para ${lastShow.name}.`,
+                 `Los oficiales no pudieron mantener el control y declararon un "No Contest" entre ${t1Name} y ${t2Name}.`,
+                 `Una batalla tan brutal entre ${t1Name} y ${t2Name} que el árbitro se vio obligado a detenerla.`,
+                 `¡Qué escándalo! ${t1Name} y ${t2Name} destrozaron irremediablemente todo a su paso sin importarles la victoria legal.`
+              ]);
+              collageData.losersAvatars = participants.map(p => p.avatar || p.image || '').filter(Boolean);
             } else {
-              const winnerNames = winners.join(' & ');
-              headline = `¡${winnerNames} domina el Main Event!`;
-              summary = `En una demostración de superioridad, ${winnerNames} consiguió la victoria sobre sus oponentes en el evento estelar de ${lastShow.name}.`;
+              const winnerNameStr = getTeamName(winners);
+              headline = getRandomItem([
+                 `¡${winnerNameStr} domina el Main Event!`,
+                 `Una Noche Triunfal para ${winnerNameStr}`,
+                 `¡${winnerNameStr} sella su victoria!`,
+                 `La gloria pertenece a ${winnerNameStr}`
+              ]);
+              summary = getRandomItem([
+                 `En una demostración de superioridad, ${winnerNameStr} consiguió la victoria sobre sus oponentes en el evento estelar de ${lastShow.name}.`,
+                 `El público enloqueció cuando ${winnerNameStr} remató la faena, llevándose el aplauso general tras un gran Main Event.`,
+                 `Contra todo pronóstico y dejando el alma en el ring, ${winnerNameStr} se impuso a sus rivales cerrando ${lastShow.name} magistralmente.`,
+                 `La cartelera estelar no defraudó, concluyendo con una espectacular contienda donde ${winnerNameStr} logró alzarse con el brazo en alto.`
+              ]);
+              collageData.winnersImages = winners.map(w => w.image || w.avatar || '').filter(Boolean);
+              collageData.losersAvatars = losers.map(l => l.avatar || l.image || '').filter(Boolean);
             }
-            
-            // Try to use a winner's image if show image is missing
-            if (!meImage) {
-              const winnerId = mainEvent.matchData.winnersIds[0];
-              if (winnerId && winnerId !== -1) {
-                meImage = wrestlers.find(w => w.id === winnerId)?.image;
-              }
-              if (!meImage) {
-                meImage = wrestlers.find(w => w.id === mainEvent.matchData?.participantsIds[0])?.image;
-              }
-            }
+            collageData.championshipImage = championshipImage;
           }
         }
 
@@ -100,12 +149,22 @@ const DigitalNewspaper: React.FC = () => {
             
             // A title change is detected if there's a history entry corresponding to THIS show
             const isChange = title?.history.some(h => h.showId === lastShow.id);
-            const winnerNames = winnerIds.map(id => wrestlers.find(w => w.id === id)?.name).filter(Boolean);
+            const winnersForTitle = winnerIds.map(id => wrestlers.find(w => w.id === id)).filter(Boolean) as Wrestler[];
+            
+            const getTeamNameInternal = (team: Wrestler[]) => {
+              if (team.length === 0) return '';
+              if (team.length === 1) return team[0].name;
+              const firstFaction = team[0].faction;
+              if (firstFaction && team.every(w => w.faction === firstFaction)) return firstFaction;
+              return team.map(w => w.name).join(' & ');
+            };
 
-            if (isChange) {
-              championsNews.push(`¡NUEVO CAMPEÓN! ${winnerNames.join(' & ')} se corona como ${title?.name}.`);
-            } else if (winnerIds.length > 0 && !winnerIds.includes(-1)) {
-              championsNews.push(`${winnerNames.join(' & ')} retiene el título ${title?.name}.`);
+            const winnerNamesStr = getTeamNameInternal(winnersForTitle);
+
+            if (isChange && winnerNamesStr) {
+              championsNews.push(`¡NUEVO CAMPEÓN! ${winnerNamesStr} se corona como ${title?.name}.`);
+            } else if (winnerIds.length > 0 && !winnerIds.includes(-1) && winnerNamesStr) {
+              championsNews.push(`${winnerNamesStr} retiene el título ${title?.name}.`);
             }
           }
         }
@@ -122,7 +181,7 @@ const DigitalNewspaper: React.FC = () => {
           brandLogo: brand?.logo || lastShow.image,
           headline,
           summary,
-          mainEventImage: meImage,
+          collageData,
           championsNews: championsNews.length > 0 ? championsNews : ["Sin cambios titulares reportados."],
           injuriesNews: injuriesNews.length > 0 ? injuriesNews : ["El roster se mantiene saludable."]
         });
@@ -163,11 +222,40 @@ const DigitalNewspaper: React.FC = () => {
           {data.brandLogo && (
             <ResolvedImage src={data.brandLogo} alt="Logo" className={styles.brandLogo} />
           )}
-          {data.mainEventImage && (
-            <div className={styles.meImageContainer}>
-              <ResolvedImage src={data.mainEventImage} alt="Main Event" />
-            </div>
-          )}
+          <div className={styles.meImageContainer}>
+            {data.collageData && data.collageData.winnersImages.length > 0 ? (
+               <div className={styles.collage}>
+                  {data.collageData.championshipImage && (
+                     <ResolvedImage src={data.collageData.championshipImage} className={styles.championshipOverlay} alt="Title" />
+                  )}
+                  <div className={styles.winnersContainer}>
+                     {data.collageData.winnersImages.map((img, idx) => (
+                        <ResolvedImage key={idx} src={img} className={styles.winnerImage} alt="Winner" />
+                     ))}
+                  </div>
+                  {data.collageData.losersAvatars.length > 0 && (
+                     <div className={styles.losersContainer}>
+                        {data.collageData.losersAvatars.map((img, idx) => (
+                           <ResolvedImage key={idx} src={img} className={styles.loserAvatar} alt="Loser" />
+                        ))}
+                     </div>
+                  )}
+               </div>
+            ) : data.collageData && data.collageData.losersAvatars.length > 0 ? (
+               <div className={styles.collageNoContest}>
+                  <div className={styles.losersContainer}>
+                     {data.collageData.losersAvatars.map((img, idx) => (
+                        <ResolvedImage key={idx} src={img} className={styles.loserAvatar} alt="Participant" />
+                     ))}
+                  </div>
+                  {data.collageData.championshipImage && (
+                     <ResolvedImage src={data.collageData.championshipImage} className={styles.championshipOverlay} alt="Title" />
+                  )}
+               </div>
+            ) : (
+              <ResolvedImage src={data.collageData?.fallbackImage || data.mainEventImage || ''} alt="Main Event" />
+            )}
+          </div>
           <h2 className={styles.headline}>{data.headline}</h2>
           <p className={styles.summary}>{data.summary}</p>
         </div>
