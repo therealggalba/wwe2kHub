@@ -115,7 +115,9 @@ const Landing: React.FC = () => {
   const handleNewGameFromPreset = async (presetPath: string) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${presetPath}?t=${new Date().getTime()}`);
+      const baseUrl = import.meta.env.BASE_URL;
+      const cleanPath = presetPath.startsWith('/') ? presetPath.substring(1) : presetPath;
+      const response = await fetch(`${baseUrl}${cleanPath}?t=${new Date().getTime()}`);
       if (!response.ok) throw new Error('Preset no encontrado.');
       const data = await response.json();
       

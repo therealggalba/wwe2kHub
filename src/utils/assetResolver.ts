@@ -64,8 +64,13 @@ export const requestAssetsPermission = async (): Promise<boolean> => {
  */
 export const normalizeVisualsPath = (path: string | undefined): string | undefined => {
   if (!path) return undefined;
-  if (path.startsWith('./')) return path.substring(1);
-  return path;
+  
+  let cleanPath = path;
+  
+  if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(1);
+  if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+  
+  return cleanPath;
 };
 
 /**
@@ -78,8 +83,14 @@ export const resolveAssetPath = async (path: string | undefined): Promise<string
   const normalized = normalizeVisualsPath(path);
   if (!directoryHandle) return normalized;
 
-  // We only intercept paths that start with /visuals/
-  if (!normalized?.startsWith('/visuals/')) return path;
+  if (!normalized?.startsWith('/visuals/')) {
+    const baseUrl = import.meta.env.BASE_URL;
+    let finalPath = normalized;
+    if (baseUrl !== '/' && finalPath && finalPath.startsWith('/') && !finalPath.startsWith(baseUrl)) {
+      finalPath = `${baseUrl}${finalPath.substring(1)}`;
+    }
+    return finalPath;
+  }
 
   // Check cache
   if (blobUrlCache.has(normalized)) return blobUrlCache.get(normalized);
@@ -105,8 +116,12 @@ export const resolveAssetPath = async (path: string | undefined): Promise<string
     
     return url;
   } catch {
-    // If not found in local folder, fallback to normalized path
-    return normalized;
+    const baseUrl = import.meta.env.BASE_URL;
+    let finalPath = normalized;
+    if (baseUrl !== '/' && finalPath && finalPath.startsWith('/') && !finalPath.startsWith(baseUrl)) {
+      finalPath = `${baseUrl}${finalPath.substring(1)}`;
+    }
+    return finalPath;
   }
 };
 
@@ -118,5 +133,12 @@ export const getQuickAssetPath = (path: string | undefined): string | undefined 
   if (!path) return undefined;
   const normalized = normalizeVisualsPath(path);
   if (!directoryHandle) return normalized;
-  return blobUrlCache.get(normalized!) || normalized;
+  const baseUrl = import.meta.env.BASE_URL;
+  let finalPath = blobUrlCache.get(normalized!) || normalized;
+  
+  if (finalPath && finalPath.startsWith('/') && !finalPath.startsWith('blob:') && baseUrl !== '/' && !finalPath.startsWith(baseUrl)) {
+    finalPath = `${baseUrl}${finalPath.substring(1)}`;
+  }
+  
+  return finalPath;
 };
