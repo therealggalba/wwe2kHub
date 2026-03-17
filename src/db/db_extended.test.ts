@@ -17,7 +17,10 @@ describe('Extended Database Schema', () => {
       name: 'RAW',
       primaryColor: '#FF0000',
       secondaryColor: '#FFFFFF',
-      arena: 'Monday Night RAW Arena'
+      arena: 'Monday Night RAW Arena',
+      priority: 1,
+      isMajorBrand: true,
+      isShared: false
     });
 
     // 2. Add a Wrestler to that Brand
@@ -33,7 +36,10 @@ describe('Extended Database Schema', () => {
       moral: 90,
       contract: 'Full-time',
       rating: 93,
-      gender: 'Male'
+      gender: 'Male',
+      injuryWeeks: 0,
+      matchesSeason: 0,
+      alignment: 'Face'
     });
 
     // 3. Create a Championship
@@ -41,6 +47,7 @@ describe('Extended Database Schema', () => {
       name: 'World Heavyweight Championship',
       currentChampionId: wrestlerId,
       brandId: rawId,
+      gender: 'Male',
       history: [
         { wrestlerName: 'Seth Rollins', reignNumber: 1, totalWeeks: 20 }
       ]
@@ -56,8 +63,9 @@ describe('Extended Database Schema', () => {
       card: {
         segments: [
           {
+            id: 'seg-1',
             type: 'Match',
-            data: {
+            matchData: {
               titleMatch: true,
               championshipId: titleId,
               type: 'Singles',
@@ -79,7 +87,7 @@ describe('Extended Database Schema', () => {
 
     const savedShow = await db.shows.get(showId!);
     expect(savedShow?.card?.segments[0].type).toBe('Match');
-    expect((savedShow?.card?.segments[0].data as Match).rating).toBe(4.5);
+    expect((savedShow?.card?.segments[0].matchData as Match).rating).toBe(4.5);
   });
 
   it('should handle NPCs', async () => {

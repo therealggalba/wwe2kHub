@@ -47,7 +47,7 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
       for (const titleData of state.championships) {
         const championshipId = await db.championships.add({
           ...titleData,
-          brandId: titleData.brandId || (titleData.brandName ? brandMap.get(titleData.brandName) : undefined),
+          brandId: titleData.brandId || (('brandName' in titleData) ? brandMap.get((titleData as any).brandName) : undefined),
         });
         titleMap.set(titleData.name, championshipId);
       }

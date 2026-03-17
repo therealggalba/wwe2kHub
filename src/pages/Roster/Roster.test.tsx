@@ -45,13 +45,19 @@ describe('Roster Page', () => {
       name: 'RAW', 
       primaryColor: '#ff0000', 
       secondaryColor: '#000000', 
-      logo: 'fake-logo-1' 
+      logo: 'fake-logo-1',
+      priority: 1,
+      isMajorBrand: true,
+      isShared: false
     });
     await db.brands.add({ 
       name: 'RAW', 
       primaryColor: '#ff0000', 
       secondaryColor: '#000000', 
-      logo: 'fake-logo-2' 
+      logo: 'fake-logo-2',
+      priority: 1,
+      isMajorBrand: true,
+      isShared: false
     });
     
     render(
