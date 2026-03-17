@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PLECarousel from '../../components/PLECarousel/PLECarousel';
 import StarBorder from '../../components/StarBorder/StarBorder';
 import { db } from '../../db/db';
@@ -7,6 +8,7 @@ import styles from './Home.module.scss';
 import { aiEngine } from '../../utils/aiEngine';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   const [heroTitle, setHeroTitle] = useState('DOMINA EL RING');
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Home: React.FC = () => {
             speed="6s"
             className={styles.electricCardWrapper}>
             <div 
-              onClick={() => window.location.href = `/create-event/${event.type}`}
+              onClick={() => navigate(`/create-event/${event.type}`)}
               className={`${styles.eventCard} ${styles[event.type]}`}>
               <h3 className={styles.eventTitle}>{event.title}</h3>
               <p className={styles.eventDescription}>{event.description}</p>
