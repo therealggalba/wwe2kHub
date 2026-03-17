@@ -128,7 +128,7 @@ const Landing: React.FC = () => {
       else data.settings.push({ key: 'weeksPerSeason', value: seasonDuration });
 
       await importState(data);
-      navigate('/home');
+      navigate(import.meta.env.BASE_URL + 'home');
     } catch (error: unknown) {
       alert(error instanceof Error ? error.message : 'Error al cargar preset');
     } finally {
@@ -195,7 +195,7 @@ const Landing: React.FC = () => {
       }
 
       await importState(importedData);
-      navigate('/home');
+      navigate(import.meta.env.BASE_URL + 'home');
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
     } finally {

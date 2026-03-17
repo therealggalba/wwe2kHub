@@ -66,7 +66,7 @@ const ShowDetails = () => {
     return (
         <div className={styles.detailsPage} style={{ '--brand-color': brand?.primaryColor || '#e00012' } as React.CSSProperties}>
             <header className={styles.header}>
-                <button className={styles.backBtn} onClick={() => navigate('/archive')}>← Back</button>
+                <button className={styles.backBtn} onClick={() => navigate('../archive')}>← Back</button>
                 <div className={styles.titleInfo}>
                     <h1>{show.name}</h1>
                     <div className={styles.meta}>
