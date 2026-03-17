@@ -67,6 +67,18 @@ export const normalizeVisualsPath = (path: string | undefined): string | undefin
   
   let cleanPath = path;
   
+  // If it's already an absolute HTTP URL or blob, leave it alone
+  if (cleanPath.startsWith('http') || cleanPath.startsWith('blob:') || cleanPath.startsWith('data:')) {
+    return cleanPath;
+  }
+  
+  // Don't modify if it's already prefixed correctly with base URL
+  const baseUrl = import.meta.env.BASE_URL;
+  if (baseUrl !== '/' && cleanPath.startsWith(baseUrl)) {
+      return cleanPath;
+  }
+
+  // Remove leading dot or slash to standardize
   if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(1);
   if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
   
@@ -84,10 +96,21 @@ export const resolveAssetPath = async (path: string | undefined): Promise<string
   const baseUrl = import.meta.env.BASE_URL;
 
   const appendBaseUrl = (p: string) => {
-    if (baseUrl !== '/' && p.startsWith('/') && !p.startsWith(baseUrl)) {
-      return `${baseUrl}${p.substring(1)}`;
+    // If it's an external URL, just return it
+    if (p.startsWith('http') || p.startsWith('data:') || p.startsWith('blob:')) return p;
+    
+    // Check if it already has the BASE_URL to prevent duplicates
+    if (baseUrl !== '/' && p.startsWith(baseUrl)) return p;
+    
+    // For GitHub Pages subdirectory deploy via Vite, it's safer to use relative paths without a leading slash
+    // or properly structure them as `${baseUrl}visuals/...`
+    const cleanPath = p.startsWith('/') ? p.substring(1) : p;
+    if (baseUrl !== '/') {
+        return `${baseUrl}${cleanPath}`;
     }
-    return p;
+    
+    // On localhost (where baseUrl is '/'), we keep the leading slash for root absolute resolution
+    return `/${cleanPath}`;
   };
 
   if (!directoryHandle) return normalized ? appendBaseUrl(normalized) : normalized;
@@ -134,17 +157,27 @@ export const getQuickAssetPath = (path: string | undefined): string | undefined 
   const baseUrl = import.meta.env.BASE_URL;
 
   const appendBaseUrl = (p: string) => {
-    if (baseUrl !== '/' && p.startsWith('/') && !p.startsWith(baseUrl)) {
-      return `${baseUrl}${p.substring(1)}`;
+    // If it's an external URL, just return it
+    if (p.startsWith('http') || p.startsWith('data:') || p.startsWith('blob:')) return p;
+    
+    // Check if it already has the BASE_URL to prevent duplicates
+    if (baseUrl !== '/' && p.startsWith(baseUrl)) return p;
+    
+    // Fix absolute pathing by joining with the configured base
+    const cleanPath = p.startsWith('/') ? p.substring(1) : p;
+    if (baseUrl !== '/') {
+        return `${baseUrl}${cleanPath}`;
     }
-    return p;
+    
+    // Localhost fallback
+    return `/${cleanPath}`;
   };
 
   if (!directoryHandle) return normalized ? appendBaseUrl(normalized) : normalized;
 
   let finalPath = blobUrlCache.get(normalized!) || normalized;
   
-  if (finalPath && finalPath.startsWith('/') && !finalPath.startsWith('blob:')) {
+  if (finalPath && !finalPath.startsWith('blob:')) {
     finalPath = appendBaseUrl(finalPath);
   }
   
