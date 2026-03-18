@@ -5,7 +5,7 @@
       "name": "Dynamite",
       "primaryColor": "#888",
       "secondaryColor": "#ddae15",
-      "logo": "/visuals/Brands/dynamite.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/dynamite.png",
       "priority": 1,
       "isMajorBrand": true,
       "isShared": false
@@ -15,7 +15,7 @@
       "name": "Collision",
       "primaryColor": "#FF0000",
       "secondaryColor": "#ddae15",
-      "logo": "/visuals/Brands/collision.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/collision.png",
       "priority": 2,
       "isMajorBrand": true,
       "isShared": false
@@ -25,7 +25,7 @@
       "name": "SHARED",
       "primaryColor": "#ddae15",
       "secondaryColor": "#ffffff",
-      "logo": "/visuals/Brands/aew.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/aew.png",
       "priority": 3,
       "isMajorBrand": false,
       "isShared": true
@@ -34,918 +34,918 @@
   "wrestlers": [
     {
     "name": "Ace Austin", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/aceaustin/aceaustinavatar.png", "image": "./visuals/Wrestlers/men/aceaustin/aceaustinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/aceaustin/aceaustinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/aceaustin/aceaustinfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Bang Bang Gang", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Action Andretti", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/actionandretti/actionandrettiavatar.png", "image": "./visuals/Wrestlers/men/actionandretti/actionandrettifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/actionandretti/actionandrettiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/actionandretti/actionandrettifull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Adam Cole", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/adamcole/adamcoleavatar.png", "image": "./visuals/Wrestlers/men/adamcole/adamcolefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adamcole/adamcoleavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adamcole/adamcolefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Paragon", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Adam Copeland", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/adamcopeland/adamcopelandavatar.png", "image": "./visuals/Wrestlers/men/adamcopeland/adamcopelandfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adamcopeland/adamcopelandavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adamcopeland/adamcopelandfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Adam Page", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/adampage/adampageavatar.png", "image": "./visuals/Wrestlers/men/adampage/adampagefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adampage/adampageavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/adampage/adampagefull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 93,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Alex Reynolds", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/alexreynolds/alexreynoldsavatar.png", "image": "./visuals/Wrestlers/men/alexreynolds/alexreynoldsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/alexreynolds/alexreynoldsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/alexreynolds/alexreynoldsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Dark Order", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Andrade", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/andrade/andradeavatar.png", "image": "./visuals/Wrestlers/men/andrade/andradefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/andrade/andradeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/andrade/andradefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Angelo Parker", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/angeloparker/angeloparkeravatar.png", "image": "./visuals/Wrestlers/men/angeloparker/angeloparkerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angeloparker/angeloparkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angeloparker/angeloparkerfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Anthony Bowens", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/anthonybowens/anthonybowensavatar.png", "image": "./visuals/Wrestlers/men/anthonybowens/anthonybowensfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/anthonybowens/anthonybowensavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/anthonybowens/anthonybowensfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "AR Fox", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/arfox/arfoxavatar.png", "image": "./visuals/Wrestlers/men/arfox/arfoxfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/arfox/arfoxavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/arfox/arfoxfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Austin Gunn", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/austingunn/austingunnavatar.png", "image": "./visuals/Wrestlers/men/austingunn/austingunnfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/austingunn/austingunnavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/austingunn/austingunnfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Bang Bang Gang", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bandido", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/bandido/bandidoavatar.png", "image": "./visuals/Wrestlers/men/bandido/bandidofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bandido/bandidoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bandido/bandidofull.png",
     "gender": "Male", "alignment": "Face", "faction": "Brodido", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Big Bill", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/bigbill/bigbillavatar.png", "image": "./visuals/Wrestlers/men/bigbill/bigbillfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bigbill/bigbillavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bigbill/bigbillfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bobby Lashley", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/bobbylashley/bobbylashleyavatar.png", "image": "./visuals/Wrestlers/men/bobbylashley/bobbylashleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bobbylashley/bobbylashleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bobbylashley/bobbylashleyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brian Cage", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/briancage/briancageavatar.png", "image": "./visuals/Wrestlers/men/briancage/briancagefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/briancage/briancageavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/briancage/briancagefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brody King", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/brodyking/brodykingavatar.png", "image": "./visuals/Wrestlers/men/brodyking/brodykingfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brodyking/brodykingavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brodyking/brodykingfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Brodido", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Buddy Matthews", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/buddymatthews/buddymatthewsavatar.png", "image": "./visuals/Wrestlers/men/buddymatthews/buddymatthewsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/buddymatthews/buddymatthewsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/buddymatthews/buddymatthewsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Cash Wheeler", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/cashwheeler/cashwheeleravatar.png", "image": "./visuals/Wrestlers/men/cashwheeler/cashwheelerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cashwheeler/cashwheeleravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cashwheeler/cashwheelerfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "FTR", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Chris Jericho", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/chrisjericho/chrisjerichoavatar.png", "image": "./visuals/Wrestlers/men/chrisjericho/chrisjerichofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chrisjericho/chrisjerichoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chrisjericho/chrisjerichofull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Christian Cage", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/christiancage/christiancageavatar.png", "image": "./visuals/Wrestlers/men/christiancage/christiancagefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/christiancage/christiancageavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/christiancage/christiancagefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Clark Connors", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/clarkconnors/clarkconnorsavatar.png", "image": "./visuals/Wrestlers/men/clarkconnors/clarkconnorsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/clarkconnors/clarkconnorsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/clarkconnors/clarkconnorsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Dogs", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Claudio Castagnoli", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/claudiocastagnoli/claudiocastagnoliavatar.png", "image": "./visuals/Wrestlers/men/claudiocastagnoli/claudiocastagnolifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/claudiocastagnoli/claudiocastagnoliavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/claudiocastagnoli/claudiocastagnolifull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Death Riders", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Colten Gunn", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/coltengunn/coltengunnavatar.png", "image": "./visuals/Wrestlers/men/coltengunn/coltengunnfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/coltengunn/coltengunnavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/coltengunn/coltengunnfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Bang Bang Gang", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Daniel Garcia", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/danielgarcia/danielgarciaavatar.png", "image": "./visuals/Wrestlers/men/danielgarcia/danielgarciafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/danielgarcia/danielgarciaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/danielgarcia/danielgarciafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Death Riders", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dante Martin", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/dantemartin/dantemartinavatar.png", "image": "./visuals/Wrestlers/men/dantemartin/dantemartinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dantemartin/dantemartinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dantemartin/dantemartinfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Top Flight", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Darby Allin", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/darbyallin/darbyallinavatar.png", "image": "./visuals/Wrestlers/men/darbyallin/darbyallinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/darbyallin/darbyallinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/darbyallin/darbyallinfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Darius Martin", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/dariusmartin/dariusmartinavatar.png", "image": "./visuals/Wrestlers/men/dariusmartin/dariusmartinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dariusmartin/dariusmartinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dariusmartin/dariusmartinfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Top Flight", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "David Finlay", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/davidfinlay/davidfinlayavatar.png", "image": "./visuals/Wrestlers/men/davidfinlay/davidfinlayfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/davidfinlay/davidfinlayavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/davidfinlay/davidfinlayfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Dogs", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dax Harwood", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/daxharwood/daxharwoodavatar.png", "image": "./visuals/Wrestlers/men/daxharwood/daxharwoodfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/daxharwood/daxharwoodavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/daxharwood/daxharwoodfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "FTR", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dezmond Xavier", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/weslee/wesleeavatar.png", "image": "./visuals/Wrestlers/men/weslee/wesleefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/weslee/wesleeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/weslee/wesleefull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Rascalz", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dralistico", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/dralistico/dralisticoavatar.png", "image": "./visuals/Wrestlers/men/dralistico/dralisticofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dralistico/dralisticoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dralistico/dralisticofull.png",
     "gender": "Male", "alignment": "Face", "faction": "La Faccion Ingobernable", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dustin Rhodes", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/dustinrhodes/dustinrhodesavatar.png", "image": "./visuals/Wrestlers/men/dustinrhodes/dustinrhodesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dustinrhodes/dustinrhodesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dustinrhodes/dustinrhodesfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Eddie Kingston", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/eddiekingston/eddiekingstonavatar.png", "image": "./visuals/Wrestlers/men/eddiekingston/eddiekingstonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eddiekingston/eddiekingstonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eddiekingston/eddiekingstonfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Evil Uno", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/eviluno/evilunoavatar.png", "image": "./visuals/Wrestlers/men/eviluno/evilunofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eviluno/evilunoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eviluno/evilunofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Dark Order", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Gabe Kidd", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/gabekidd/gabekiddavatar.png", "image": "./visuals/Wrestlers/men/gabekidd/gabekiddfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/gabekidd/gabekiddavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/gabekidd/gabekiddfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Dogs", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Hechicero", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/hechicero/hechiceroavatar.png", "image": "./visuals/Wrestlers/men/hechicero/hechicerofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hechicero/hechiceroavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hechicero/hechicerofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Hook", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/hook/hookavatar.png", "image": "./visuals/Wrestlers/men/hook/hookfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hook/hookavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hook/hookfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Isaiah Kassidy", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/isaiahkassidy/isaiahkassidyavatar.png", "image": "./visuals/Wrestlers/men/isaiahkassidy/isaiahkassidyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/isaiahkassidy/isaiahkassidyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/isaiahkassidy/isaiahkassidyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Private Party", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jack Perry", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/jackperry/jackperryavatar.png", "image": "./visuals/Wrestlers/men/jackperry/jackperryfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jackperry/jackperryavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jackperry/jackperryfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Jurassic Express", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "James Drake", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/jamesdrake/jamesdrakeavatar.png", "image": "./visuals/Wrestlers/men/jamesdrake/jamesdrakefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jamesdrake/jamesdrakeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jamesdrake/jamesdrakefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Grizzled Young Veterans", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jay White", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/jaywhite/jaywhiteavatar.png", "image": "./visuals/Wrestlers/men/jaywhite/jaywhitefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jaywhite/jaywhiteavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jaywhite/jaywhitefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Bang Bang Gang", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "John Silver", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/johnsilver/johnsilveravatar.png", "image": "./visuals/Wrestlers/men/johnsilver/johnsilverfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/johnsilver/johnsilveravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/johnsilver/johnsilverfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Dark Order", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jon Moxley", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/jonmoxley/jonmoxleyavatar.png", "image": "./visuals/Wrestlers/men/jonmoxley/jonmoxleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jonmoxley/jonmoxleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jonmoxley/jonmoxleyfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Death Riders", "rating": 95,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Josh Alexander", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/joshalexander/joshalexanderavatar.png", "image": "./visuals/Wrestlers/men/joshalexander/joshalexanderfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshalexander/joshalexanderavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshalexander/joshalexanderfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Josh Woods", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/joshwoods/joshwoodsavatar.png", "image": "./visuals/Wrestlers/men/joshwoods/joshwoodsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshwoods/joshwoodsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshwoods/joshwoodsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Juice Robinson", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/juicerobinson/juicerobinsonavatar.png", "image": "./visuals/Wrestlers/men/juicerobinson/juicerobinsonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/juicerobinson/juicerobinsonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/juicerobinson/juicerobinsonfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Bang Bang Gang", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Katsuyori Shibata", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/katsuyorishibata/katsuyorishibataavatar.png", "image": "./visuals/Wrestlers/men/katsuyorishibata/katsuyorishibatafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/katsuyorishibata/katsuyorishibataavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/katsuyorishibata/katsuyorishibatafull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Opps", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kazuchika Okada", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/kazuchikaokada/kazuchikaokadaavatar.png", "image": "./visuals/Wrestlers/men/kazuchikaokada/kazuchikaokadafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kazuchikaokada/kazuchikaokadaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kazuchikaokada/kazuchikaokadafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 93,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kenny Omega", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/kennyomega/kennyomegaavatar.png", "image": "./visuals/Wrestlers/men/kennyomega/kennyomegafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kennyomega/kennyomegaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kennyomega/kennyomegafull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kip Sabian", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/kipsabian/kipsabianavatar.png", "image": "./visuals/Wrestlers/men/kipsabian/kipsabianfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kipsabian/kipsabianavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kipsabian/kipsabianfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Komander", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/komander/komanderavatar.png", "image": "./visuals/Wrestlers/men/komander/komanderfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/komander/komanderavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/komander/komanderfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Konosuke Takeshita", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/konosuketakeshita/konosuketakeshitaavatar.png", "image": "./visuals/Wrestlers/men/konosuketakeshita/konosuketakeshitafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/konosuketakeshita/konosuketakeshitaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/konosuketakeshita/konosuketakeshitafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kyle Fletcher", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/kylefletcher/kylefletcheravatar.png", "image": "./visuals/Wrestlers/men/kylefletcher/kylefletcherfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kylefletcher/kylefletcheravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kylefletcher/kylefletcherfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kyle O'Reilly", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/kyleoreilly/kyleoreillyavatar.png", "image": "./visuals/Wrestlers/men/kyleoreilly/kyleoreillyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kyleoreilly/kyleoreillyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kyleoreilly/kyleoreillyfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Paragon", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lance Archer", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/lancearcher/lancearcheravatar.png", "image": "./visuals/Wrestlers/men/lancearcher/lancearcherfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lancearcher/lancearcheravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lancearcher/lancearcherfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Luchasaurus", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/luchasaurus/luchasaurusavatar.png", "image": "./visuals/Wrestlers/men/luchasaurus/luchasaurusfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/luchasaurus/luchasaurusavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/luchasaurus/luchasaurusfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Jurassic Express", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Mark Briscoe", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/markbriscoe/markbriscoeavatar.png", "image": "./visuals/Wrestlers/men/markbriscoe/markbriscoefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/markbriscoe/markbriscoeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/markbriscoe/markbriscoefull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Marq Quen", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/marqquen/marqquenavatar.png", "image": "./visuals/Wrestlers/men/marqquen/marqquenfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/marqquen/marqquenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/marqquen/marqquenfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Private Party", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Mascara Dorada", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/mascaradorada/mascaradoradaavatar.png", "image": "./visuals/Wrestlers/men/mascaradorada/mascaradoradaofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mascaradorada/mascaradoradaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mascaradorada/mascaradoradaofull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Matt Menard", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/mattmenard/mattmenardavatar.png", "image": "./visuals/Wrestlers/men/mattmenard/mattmenardfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattmenard/mattmenardavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattmenard/mattmenardfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Matt Jackson", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/mattjackson/mattjacksonavatar.png", "image": "./visuals/Wrestlers/men/mattjackson/mattjacksonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattjackson/mattjacksonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattjackson/mattjacksonfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Young Bucks", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Max Caster", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/maxcaster/maxcasteravatar.png", "image": "./visuals/Wrestlers/men/maxcaster/maxcasterfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/maxcaster/maxcasteravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/maxcaster/maxcasterfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Mike Bailey", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/mikebailey/mikebaileyavatar.png", "image": "./visuals/Wrestlers/men/mikebailey/mikebaileyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mikebailey/mikebaileyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mikebailey/mikebaileyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "MJF", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/mjf/mjfavatar.png", "image": "./visuals/Wrestlers/men/mjf/mjffull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mjf/mjfavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mjf/mjffull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 95,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Myron Reed", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/myronreed/myronreedavatar.png", "image": "./visuals/Wrestlers/men/myronreed/myronreedfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/myronreed/myronreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/myronreed/myronreedfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Rascalz", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nick Jackson", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/nickjackson/nickjacksonavatar.png", "image": "./visuals/Wrestlers/men/nickjackson/nickjacksonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nickjackson/nickjacksonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nickjackson/nickjacksonfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Young Bucks", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nick Wayne", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/nickwayne/nickwayneavatar.png", "image": "./visuals/Wrestlers/men/nickwayne/nickwaynetfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nickwayne/nickwayneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nickwayne/nickwaynetfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Orange Cassidy", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/orangecassidy/orangecassidyavatar.png", "image": "./visuals/Wrestlers/men/orangecassidy/orangecassidyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/orangecassidy/orangecassidyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/orangecassidy/orangecassidyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "PAC", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/pac/pacavatar.png", "image": "./visuals/Wrestlers/men/pac/pacfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/pac/pacavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/pac/pacfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Death Riders", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ricochet", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/ricochet/ricochetavatar.png", "image": "./visuals/Wrestlers/men/ricochet/ricochetfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ricochet/ricochetavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ricochet/ricochetfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Demand", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Roderick Strong", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/roderickstrong/roderickstrongavatar.png", "image": "./visuals/Wrestlers/men/roderickstrong/roderickstrongfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/roderickstrong/roderickstrongavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/roderickstrong/roderickstrongfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Paragon", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Rush", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/rush/rushavatar.png", "image": "./visuals/Wrestlers/men/rush/rushfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rush/rushavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rush/rushfull.png",
     "gender": "Male", "alignment": "Face", "faction": "La Faccion Ingobernable", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sammy Guevara", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/sammyguevara/sammyguevaraavatar.png", "image": "./visuals/Wrestlers/men/sammyguevara/sammyguevarafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sammyguevara/sammyguevaraavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sammyguevara/sammyguevarafull.png",
     "gender": "Male", "alignment": "Face", "faction": "La Faccion Ingobernable", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Samoa Joe", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/samoajoe/samoajoeavatar.png", "image": "./visuals/Wrestlers/men/samoajoe/samoajoefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/samoajoe/samoajoeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/samoajoe/samoajoefull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Opps", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Swerve Strickland", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/swervestrickland/swervestricklandavatar.png", "image": "./visuals/Wrestlers/men/swervestrickland/swervestricklandfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/swervestrickland/swervestricklandavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/swervestrickland/swervestricklandfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "The Beast Mortos", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/thebeastmortos/thebeastmortosavatar.png", "image": "./visuals/Wrestlers/men/thebeastmortos/thebeastmortosfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/thebeastmortos/thebeastmortosavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/thebeastmortos/thebeastmortosfull.png",
     "gender": "Male", "alignment": "Face", "faction": "La Faccion Ingobernable", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "The Blade", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/theblade/thebladeavatar.png", "image": "./visuals/Wrestlers/men/theblade/thebladefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/theblade/thebladeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/theblade/thebladefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Butcher & The Blade", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "The Butcher", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/thebutcher/thebutcheravatar.png", "image": "./visuals/Wrestlers/men/thebutcher/thebutcherfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/thebutcher/thebutcheravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/thebutcher/thebutcherfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Butcher & The Blade", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Toa Liona", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/toaliona/toalionaavatar.png", "image": "./visuals/Wrestlers/men/toaliona/toalionafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/toaliona/toalionaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/toaliona/toalionafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Demand", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tommaso Ciampa", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/tommasociampa/tommasociampaavatar.png", "image": "./visuals/Wrestlers/men/tommasociampa/tommasociampafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tommasociampa/tommasociampaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tommasociampa/tommasociampafull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Trey Miguel", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/treymiguel/treymiguelavatar.png", "image": "./visuals/Wrestlers/men/treymiguel/treymiguelfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/treymiguel/treymiguelavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/treymiguel/treymiguelfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Rascalz", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Truth Magnum", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/truthmagnum/truthmagnumavatar.png", "image": "./visuals/Wrestlers/men/truthmagnum/truthmagnumfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/truthmagnum/truthmagnumavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/truthmagnum/truthmagnumfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Outrunners", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Turbo Floyd", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/turbofloyd/turbofloydavatar.png", "image": "./visuals/Wrestlers/men/turbofloyd/turbofloydfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/turbofloyd/turbofloydavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/turbofloyd/turbofloydfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Outrunners", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Wardlow", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/wardlow/wardlowavatar.png", "image": "./visuals/Wrestlers/men/wardlow/wardlowfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/wardlow/wardlowavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/wardlow/wardlowfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Don Callis Family", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Wheeler Yuta", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/wheeleryuta/wheeleryutaavatar.png", "image": "./visuals/Wrestlers/men/wheeleryuta/wheeleryutafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/wheeleryuta/wheeleryutaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/wheeleryuta/wheeleryutafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Death Riders", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Will Ospreay", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/men/willospreay/willospreayavatar.png", "image": "./visuals/Wrestlers/men/willospreay/willospreayfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/willospreay/willospreayavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/willospreay/willospreayfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 96,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zach Wentz", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/zachwentz/zachwentzavatar.png", "image": "./visuals/Wrestlers/men/zachwentz/zachwentzfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/zachwentz/zachwentzavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/zachwentz/zachwentzfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Rascalz", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zack Gibson", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/men/zackgibson/zackgibsonavatar.png", "image": "./visuals/Wrestlers/men/zackgibson/zackgibsonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/zackgibson/zackgibsonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/zackgibson/zackgibsonfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Grizzled Young Veterans", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Alex Windsor", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/alexwindsor/alexwindsoravatar.png", "image": "./visuals/Wrestlers/women/alexwindsor/alexwindsorfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/alexwindsor/alexwindsoravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/alexwindsor/alexwindsorfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Anna Jay", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/annajay/annajayavatar.png", "image": "./visuals/Wrestlers/women/annajay/annajayfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/annajay/annajayavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/annajay/annajayfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Tayjay", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Athena", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/athena/athenaavatar.png", "image": "./visuals/Wrestlers/women/athena/athenafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/athena/athenaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/athena/athenafull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Billie Starkz", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/billiestarkz/billiestarkzavatar.png", "image": "./visuals/Wrestlers/women/billiestarkz/billiestarkzfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/billiestarkz/billiestarkzavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/billiestarkz/billiestarkzfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Britt Baker", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/brittbaker/brittbakeravatar.png", "image": "./visuals/Wrestlers/women/brittbaker/brittbakerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/brittbaker/brittbakeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/brittbaker/brittbakerfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Charlette Renegade", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/charletterenegade/charletterenegadeavatar.png", "image": "./visuals/Wrestlers/women/charletterenegade/charletterenegadefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/charletterenegade/charletterenegadeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/charletterenegade/charletterenegadefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "The Renegades", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Deonna Purrazzo", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/deonnapurrazzo/deonnapurrazzoavatar.png", "image": "./visuals/Wrestlers/women/deonnapurrazzo/deonnapurrazzofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/deonnapurrazzo/deonnapurrazzoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/deonnapurrazzo/deonnapurrazzofull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Emi Sakura", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/emisakura/emisakuraavatar.png", "image": "./visuals/Wrestlers/women/emisakura/emisakurafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/emisakura/emisakuraavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/emisakura/emisakurafull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Harley Cameron", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/harleycameron/harleycameronavatar.png", "image": "./visuals/Wrestlers/women/harleycameron/harleycameronfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/harleycameron/harleycameronavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/harleycameron/harleycameronfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Babes Of Wrath", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Hikaru Shida", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/hikarushida/hikarushidaavatar.png", "image": "./visuals/Wrestlers/women/hikarushida/hikarushidafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/hikarushida/hikarushidaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/hikarushida/hikarushidafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jamie Hayter", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/jamiehayter/jamiehayteravatar.png", "image": "./visuals/Wrestlers/women/jamiehayter/jamiehayterfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jamiehayter/jamiehayteravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jamiehayter/jamiehayterfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Julia Hart", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/juliahart/juliahartavatar.png", "image": "./visuals/Wrestlers/women/juliahart/juliahartfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/juliahart/juliahartavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/juliahart/juliahartfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Triangle Of Madness", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kamille", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/kamille/kamilleavatar.png", "image": "./visuals/Wrestlers/women/kamille/kamillefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kamille/kamilleavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kamille/kamillefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kris Statlander", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/krisstatlander/krisstatlanderavatar.png", "image": "./visuals/Wrestlers/women/krisstatlander/krisstatlanderfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/krisstatlander/krisstatlanderavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/krisstatlander/krisstatlanderfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lady Frost", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/ladyfrost/ladyfrostavatar.png", "image": "./visuals/Wrestlers/women/ladyfrost/ladyfrostfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ladyfrost/ladyfrostavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ladyfrost/ladyfrostfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Leila Grey", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/leilagrey/leilagreyavatar.png", "image": "./visuals/Wrestlers/women/leilagrey/leilagreyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/leilagrey/leilagreyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/leilagrey/leilagreyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Skyflight", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lena Kross", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/lenakross/lenakrossavatar.png", "image": "./visuals/Wrestlers/women/lenakross/lenakrossfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lenakross/lenakrossavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lenakross/lenakrossfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Madison Rayne", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/madisonrayne/madisonrayneavatar.png", "image": "./visuals/Wrestlers/women/madisonrayne/madisonraynefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/madisonrayne/madisonrayneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/madisonrayne/madisonraynefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Marina Shafir", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/marinashafir/marinashafiravatar.png", "image": "./visuals/Wrestlers/women/marinashafir/marinashafirfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/marinashafir/marinashafiravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/marinashafir/marinashafirfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Death Riders", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Megan Bayne", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/meganbayne/meganbayneavatar.png", "image": "./visuals/Wrestlers/women/meganbayne/meganbaynefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/meganbayne/meganbayneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/meganbayne/meganbaynefull.png",
     "gender": "Female", "alignment": "Face", "faction": "Megabad", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Mercedes Moné", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/mercedesmone/mercedesmoneavatar.png", "image": "./visuals/Wrestlers/women/mercedesmone/mercedesmonefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/mercedesmone/mercedesmoneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/mercedesmone/mercedesmonefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Mina Shirakawa", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/minashirakawa/minashirakawaavatar.png", "image": "./visuals/Wrestlers/women/minashirakawa/minashirakawafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/minashirakawa/minashirakawaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/minashirakawa/minashirakawafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nyla Rose", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/nylarose/nylaroseavatar.png", "image": "./visuals/Wrestlers/women/nylarose/nylarosefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nylarose/nylaroseavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nylarose/nylarosefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Penelope Ford", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/penelopeford/penelopefordavatar.png", "image": "./visuals/Wrestlers/women/penelopeford/penelopefordfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/penelopeford/penelopefordavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/penelopeford/penelopefordfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Megabad", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Persephone", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/persephone/persephoneavatar.png", "image": "./visuals/Wrestlers/women/persephone/persephonefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/persephone/persephoneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/persephone/persephonefull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Queen Aminata", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/queenaminata/queenaminataavatar.png", "image": "./visuals/Wrestlers/women/queenaminata/queenaminatafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/queenaminata/queenaminataavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/queenaminata/queenaminatafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Red Velvet", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/redvelvet/redvelvetavatar.png", "image": "./visuals/Wrestlers/women/redvelvet/redvelvetfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/redvelvet/redvelvetavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/redvelvet/redvelvetfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Riho", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/riho/rihoavatar.png", "image": "./visuals/Wrestlers/women/riho/rihofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/riho/rihoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/riho/rihofull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Robyn Renegade", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/robynrenegade/robynrenegadeavatar.png", "image": "./visuals/Wrestlers/women/robynrenegade/robynrenegadefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/robynrenegade/robynrenegadeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/robynrenegade/robynrenegadefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "The Renegades", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ruby Soho", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/rubysoho/rubysohoavatar.png", "image": "./visuals/Wrestlers/women/rubysoho/rubysohofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/rubysoho/rubysohoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/rubysoho/rubysohofull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sara León", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/saraleon/saraleonavatar.png", "image": "./visuals/Wrestlers/women/saraleon/saraleonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/saraleon/saraleonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/saraleon/saraleonfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Serena Deeb", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/serenadeeb/serenadeebavatar.png", "image": "./visuals/Wrestlers/women/serenadeeb/serenadeebfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/serenadeeb/serenadeebavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/serenadeeb/serenadeebfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Skye Blue", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/skyeblue/skyeblueavatar.png", "image": "./visuals/Wrestlers/women/skyeblue/skyebluefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/skyeblue/skyeblueavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/skyeblue/skyebluefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Triangle Of Madness", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tay Melo", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/taymelo/taymeloavatar.png", "image": "./visuals/Wrestlers/women/taymelo/taymelofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/taymelo/taymeloavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/taymelo/taymelofull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Tayjay", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Thekla", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/thekla/theklaavatar.png", "image": "./visuals/Wrestlers/women/thekla/theklafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/thekla/theklaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/thekla/theklafull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Triangle Of Madness", "rating": 91,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Thunder Rosa", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/thunderrosa/thunderrosaavatar.png", "image": "./visuals/Wrestlers/women/thunderrosa/thunderrosafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/thunderrosa/thunderrosaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/thunderrosa/thunderrosafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Toni Storm", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/tonistorm/tonistormavatar.png", "image": "./visuals/Wrestlers/women/tonistorm/tonistormfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tonistorm/tonistormavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tonistorm/tonistormfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 93,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Willow Nightingale", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/willownightingale/willownightingaleavatar.png", "image": "./visuals/Wrestlers/women/willownightingale/willownightingalefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/willownightingale/willownightingaleavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/willownightingale/willownightingalefull.png",
     "gender": "Female", "alignment": "Face", "faction": "Babes Of Wrath", "rating": 91,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Yuka Sakazaki", "brandName": "Collision",
-    "avatar": "./visuals/Wrestlers/women/yukasakazaki/yukasakazakiavatar.png", "image": "./visuals/Wrestlers/women/yukasakazaki/yukasakazakifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/yukasakazaki/yukasakazakiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/yukasakazaki/yukasakazakifull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zayda Steel", "brandName": "Dynamite",
-    "avatar": "./visuals/Wrestlers/women/zaydasteel/zaydasteelavatar.png", "image": "./visuals/Wrestlers/women/zaydasteel/zaydasteelfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zaydasteel/zaydasteelavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zaydasteel/zaydasteelfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Skyflight", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   }
   ],
   "championships": [
-    { "id": 1, "name": "AEW World Champion", "image": "./visuals/Championships/aewworldmen.png", "brandName": "Dynamite" },
-    { "id": 2, "name": "AEW Women Champion", "image": "./visuals/Championships/aewworldwomen.png", "brandName": "Dynamite" },
-    { "id": 3, "name": "TNT Champion", "image": "./visuals/Championships/aewtnt.png", "brandName": "Dynamite" },
-    { "id": 4, "name": "AEW Tag Team Champions", "image": "./visuals/Championships/aewtagteam.png", "brandName": "Dynamite" },
-    { "id": 5, "name": "Women's Tag Team Champions", "image": "./visuals/Championships/aewwomentagteam.png", "brandName": "Dynamite" },
-    { "id": 6, "name": "Continental Champion", "image": "./visuals/Championships/aewcontinental.png", "brandName": "Collision" },
-    { "id": 7, "name": "International Women's Champion", "image": "./visuals/Championships/aewinternational.png", "brandName": "Collision" },
-    { "id": 8, "name": "National Champion", "image": "./visuals/Championships/aewnational.png", "brandName": "Collision" },
-    { "id": 9, "name": "TBS Women's Champion", "image": "./visuals/Championships/aewtbs.png", "brandName": "Collision" },
-    { "id": 10, "name": "AEW Trios Champions", "image": "./visuals/Championships/aewtrios.png", "brandName": "Collision" }
+    { "id": 1, "name": "AEW World Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewworldmen.png", "brandName": "Dynamite" },
+    { "id": 2, "name": "AEW Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewworldwomen.png", "brandName": "Dynamite" },
+    { "id": 3, "name": "TNT Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewtnt.png", "brandName": "Dynamite" },
+    { "id": 4, "name": "AEW Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewtagteam.png", "brandName": "Dynamite" },
+    { "id": 5, "name": "Women's Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewwomentagteam.png", "brandName": "Dynamite" },
+    { "id": 6, "name": "Continental Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewcontinental.png", "brandName": "Collision" },
+    { "id": 7, "name": "International Women's Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewinternational.png", "brandName": "Collision" },
+    { "id": 8, "name": "National Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewnational.png", "brandName": "Collision" },
+    { "id": 9, "name": "TBS Women's Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewtbs.png", "brandName": "Collision" },
+    { "id": 10, "name": "AEW Trios Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/aewtrios.png", "brandName": "Collision" }
   ],
   "npcs": [
     {
       "id": 1,
       "name": "Tony Khan",
-      "image": "./visuals/Wrestlers/others/tonykhan/tonykhanavatar.png",
+      "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/others/tonykhan/tonykhanavatar.png",
       "role": "General Manager",
       "brandName": "Shared"
     }
@@ -956,32 +956,32 @@
     { "key": "weeksPerSeason", "value": 60 }
   ],
   "shows": [
-  { "id": 1, "name": "Wednesday Dynamite", "brandName": "Dynamite", "type": "Weekly", "image": "./visuals/Brands/dynamite.png" },
-  { "id": 2, "name": "Blood And Guts", "brandName": "Dynamite", "type": "PLE", "image": "./visuals/Events/Logos/bloodandguts.png" },
-  { "id": 3, "name": "New Year Smash", "brandName": "Dynamite", "type": "PLE", "image": "./visuals/Events/Logos/newyearsmash.png" },
-  { "id": 4, "name": "Fyter Fest", "brandName": "Dynamite", "type": "PLE", "image": "./visuals/Events/Logos/fyterfest.png" },
-  { "id": 5, "name": "Winter Is Coming", "brandName": "Dynamite", "type": "PLE", "image": "./visuals/Events/Logos/winteriscoming.png" },
-  { "id": 6, "name": "Grand Slam", "brandName": "Dynamite", "type": "PLE", "image": "./visuals/Events/Logos/grandslam.png" },
-  { "id": 7, "name": "Saturday Collision", "brandName": "Collision", "type": "Weekly", "image": "./visuals/Brands/collision.png" },
-  { "id": 8, "name": "Battle Of The Belts", "brandName": "Collision", "type": "PLE", "image": "./visuals/Events/Logos/battleofthebelts.png" },
-  { "id": 9, "name": "Bash At The Beach", "brandName": "Collision", "type": "PLE", "image": "./visuals/Events/Logos/bashatthebeach.png" },
-  { "id": 10, "name": "Fight For The Fallen", "brandName": "Collision", "type": "PLE", "image": "./visuals/Events/Logos/fightforthefallen.png" },
-  { "id": 11, "name": "Homecoming", "brandName": "Collision", "type": "PLE", "image": "./visuals/Events/Logos/homecoming.png" },
-  { "id": 12, "name": "Big Business", "brandName": "Collision", "type": "PLE", "image": "./visuals/Events/Logos/bigbusiness.png" },
-  { "id": 13, "name": "Worlds End", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/worldsend.png" },
-  { "id": 14, "name": "Dinasty", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/dinasty.png" },
-  { "id": 15, "name": "Double Or Nothing", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/doubleornothing.png" },
-  { "id": 16, "name": "All In 2026", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allin2026.png" },
-  { "id": 17, "name": "All Out 2026", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allout2026.png" },
-  { "id": 18, "name": "Forbidden Door", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/forbiddendoor.png" },
-  { "id": 19, "name": "Revolution", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/revolution.png" },
-  { "id": 20, "name": "Holiday Bash", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/holidaybash.png" },
-  { "id": 21, "name": "All In 2027", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allin2027.png" },
-  { "id": 22, "name": "All Out 2027", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allout2027.png" },
-  { "id": 23, "name": "Full Gear", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/fullgear.png" },
-  { "id": 24, "name": "Rampage", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/rampage.png" },
-  { "id": 25, "name": "WrestleDream", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/wrestledream.png" },
-  { "id": 26, "name": "All In 2028", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allin2028.png" },
-  { "id": 27, "name": "All Out 2028", "brandName": "Shared", "type": "PLE", "image": "./visuals/Events/Logos/allout2028.png" }
+  { "id": 1, "name": "Wednesday Dynamite", "brandName": "Dynamite", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/dynamite.png" },
+  { "id": 2, "name": "Blood And Guts", "brandName": "Dynamite", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/bloodandguts.png" },
+  { "id": 3, "name": "New Year Smash", "brandName": "Dynamite", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/newyearsmash.png" },
+  { "id": 4, "name": "Fyter Fest", "brandName": "Dynamite", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/fyterfest.png" },
+  { "id": 5, "name": "Winter Is Coming", "brandName": "Dynamite", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/winteriscoming.png" },
+  { "id": 6, "name": "Grand Slam", "brandName": "Dynamite", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/grandslam.png" },
+  { "id": 7, "name": "Saturday Collision", "brandName": "Collision", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/collision.png" },
+  { "id": 8, "name": "Battle Of The Belts", "brandName": "Collision", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/battleofthebelts.png" },
+  { "id": 9, "name": "Bash At The Beach", "brandName": "Collision", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/bashatthebeach.png" },
+  { "id": 10, "name": "Fight For The Fallen", "brandName": "Collision", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/fightforthefallen.png" },
+  { "id": 11, "name": "Homecoming", "brandName": "Collision", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/homecoming.png" },
+  { "id": 12, "name": "Big Business", "brandName": "Collision", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/bigbusiness.png" },
+  { "id": 13, "name": "Worlds End", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/worldsend.png" },
+  { "id": 14, "name": "Dinasty", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/dinasty.png" },
+  { "id": 15, "name": "Double Or Nothing", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/doubleornothing.png" },
+  { "id": 16, "name": "All In 2026", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allin2026.png" },
+  { "id": 17, "name": "All Out 2026", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allout2026.png" },
+  { "id": 18, "name": "Forbidden Door", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/forbiddendoor.png" },
+  { "id": 19, "name": "Revolution", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/revolution.png" },
+  { "id": 20, "name": "Holiday Bash", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/holidaybash.png" },
+  { "id": 21, "name": "All In 2027", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allin2027.png" },
+  { "id": 22, "name": "All Out 2027", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allout2027.png" },
+  { "id": 23, "name": "Full Gear", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/fullgear.png" },
+  { "id": 24, "name": "Rampage", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/rampage.png" },
+  { "id": 25, "name": "WrestleDream", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestledream.png" },
+  { "id": 26, "name": "All In 2028", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allin2028.png" },
+  { "id": 27, "name": "All Out 2028", "brandName": "Shared", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/allout2028.png" }
   ]
 }
