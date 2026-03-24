@@ -5,7 +5,7 @@
       "name": "RAW",
       "primaryColor": "#FF0000",
       "secondaryColor": "#000000",
-      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/raw.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/raw.png",
       "priority": 1,
       "isMajorBrand": true,
       "isShared": false
@@ -15,7 +15,7 @@
       "name": "SMACKDOWN",
       "primaryColor": "#0000FF",
       "secondaryColor": "#000000",
-      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/smackdown.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/smackdown.png",
       "priority": 2,
       "isMajorBrand": true,
       "isShared": false
@@ -25,7 +25,7 @@
       "name": "NXT",
       "primaryColor": "#b98f06",
       "secondaryColor": "#000000",
-      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/nxt.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxt.png",
       "priority": 3,
       "isMajorBrand": true,
       "isShared": false
@@ -35,7 +35,7 @@
       "name": "SHARED",
       "primaryColor": "##5d01f0",
       "secondaryColor": "#ffffff",
-      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/wwe.png",
+      "logo": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwe.png",
       "priority": 4,
       "isMajorBrand": false,
       "isShared": true
@@ -44,1175 +44,1175 @@
   "wrestlers": [
     {
     "name": "AJ Styles", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ajstyles/ajstylesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ajstyles/ajstylesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ajstylesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ajstylesfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Akira Tozawa", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/akiratozawa/akiratozawaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/akiratozawa/akiratozawafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/akiratozawaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/akiratozawafull.png",
     "gender": "Male", "alignment": "Face", "faction": "Alpha Academy", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Aleister Black", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/malakaiblack/malakaiblackavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/malakaiblack/malakaiblackfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/malakaiblackavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/malakaiblackfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Alex Shelley", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/alexshelley/alexshelleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/alexshelley/alexshelleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/alexshelleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/alexshelleyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Motor City Machine Guns", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Andre Chase", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/andreachase/andreachaseavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/andreachase/andreachasefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/andreachaseavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/andreachasefull.png",
     "gender": "Male", "alignment": "Face", "faction": "Chase U", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Angel", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angel/angelavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angel/angelfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/angelavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/angelfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Los Garza", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Angelo Dawkins", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angelodawkins/angelodawkinsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/angelodawkins/angelodawkinsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/angelodawkinsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/angelodawkinsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Street Profits", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Apollo Crews", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/apollocrews/apollocrewsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/apollocrews/apollocrewsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/apollocrewsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/apollocrewsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Austin Theory", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/austintheory/austintheoryavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/austintheory/austintheoryfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/austintheoryavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/austintheoryfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Vision", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Axiom", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/axiom/axiomavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/axiom/axiomfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/axiomavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/axiomfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Fraxiom", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Berto", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/berto/bertoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/berto/bertofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bertoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bertofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Los Garza", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brad Baylor", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bradbaylor/bradbayloravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bradbaylor/bradbaylorfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bradbayloravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bradbaylorfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Vanity Project", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bron Breakker", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronbreakker/bronbreakkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronbreakker/bronbreakkerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronbreakkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronbreakkerfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Vision", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bronco Nima", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronconima/bronconimaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronconima/bronconimafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronconimaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronconimafull.png",
     "gender": "Male", "alignment": "Face", "faction": "OTM", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bronson Reed", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronsonreed/bronsonreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/bronsonreed/bronsonreedfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronsonreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bronsonreedfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Vision", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brooks Jensen", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brooksjensen/brooksjensenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brooksjensen/brooksjensenfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brooksjensenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brooksjensenfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brutus Creed", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brutuscreed/brutuscreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brutuscreed/brutuscreedfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brutuscreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brutuscreedfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Creed Brothers", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Carmelo Hayes", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/carmelohayes/carmelohayesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/carmelohayes/carmelohayesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/carmelohayesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/carmelohayesfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Chad Gable", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chadgable/chadgableavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chadgable/chadgablefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chadgableavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chadgablefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Channing Lorenzo", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/channingstackslorenzo/channingstackslorenzoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/channingstackslorenzo/channingstackslorenzofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/channingstackslorenzoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/channingstackslorenzofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Birthright", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Charlie Dempsey", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/charliedempsey/charliedempseyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/charliedempsey/charliedempseyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/charliedempseyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/charliedempseyfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Birthright", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Chris Sabin", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chrissabin/chrissabinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/chrissabin/chrissabinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chrissabinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chrissabinfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Motor City Machine Guns", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "CM Punk", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cmpunk/cmpunkavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cmpunk/cmpunkfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cmpunkavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cmpunkfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Cody Rhodes", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/codyrhodes/codyrhodesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/codyrhodes/codyrhodesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/codyrhodesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/codyrhodesfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 96,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Cruz Del Toro", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cruzdeltoro/cruzdeltoroavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cruzdeltoro/cruzdeltorofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cruzdeltoroavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cruzdeltorofull.png",
     "gender": "Male", "alignment": "Face", "faction": "LWO", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Cutler James", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cutlerjames/cutlerjamesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/cutlerjames/cutlerjamesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cutlerjamesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/cutlerjamesfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "DarkState", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dante Chen", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dantechen/dantechenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dantechen/dantechenfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dantechenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dantechenfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 73,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Damian Priest", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/damianpriest/damianpriestavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/damianpriest/damianpriestfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/damianpriestavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/damianpriestfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dexter Lumis", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dexterlumis/dexterlumisavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dexterlumis/dexterlumisfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dexterlumisavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dexterlumisfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Wyatt 6", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dion Lennox", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dionlennox/dionlennoxavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dionlennox/dionlennoxfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dionlennoxavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dionlennoxfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "DarkState", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dominik Mysterio", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dominikmysterio/dominikmysterioavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dominikmysterio/dominikmysteriofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dominikmysterioavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dominikmysteriofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Judgment Day", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Dragon Lee", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dragonlee/dragonleeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/dragonlee/dragonleefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dragonleeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/dragonleefull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Drew McIntyre", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/drewmcintyre/drewmcintyreavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/drewmcintyre/drewmcintyrefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/drewmcintyreavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/drewmcintyrefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 93,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "El Grande Americano", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/elgrandeamericano/elgrandeamericanoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/elgrandeamericano/elgrandeamericanofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/elgrandeamericanoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/elgrandeamericanofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Eli Knight", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eliknight/eliknightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eliknight/eliknightfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eliknightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eliknightfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Elio LeFleur", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eliolefleur/eliolefleuravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eliolefleur/eliolefleurfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eliolefleuravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eliolefleurfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Elton Prince", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eltonprince/eltonprinceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/eltonprince/eltonprincefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eltonprinceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eltonprincefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Pretty Deadly", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Erick Rowan", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/erickrowan/erickrowanavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/erickrowan/erickrowanfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/erickrowanavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/erickrowanfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Wyatt 6", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Erik", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/erik/erikavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/erik/erikfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/erikavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/erikfull.png",
     "gender": "Male", "alignment": "Face", "faction": "War Raiders", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ethan Page", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ethanpage/ethanpageavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ethanpage/ethanpagefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ethanpageavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ethanpagefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Finn Balor", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/finnbalor/finnbaloravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/finnbalor/finnbalorfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/finnbaloravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/finnbalorfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Judgment Day", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Grayson Waller", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/graysonwaller/graysonwalleravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/graysonwaller/graysonwallerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/graysonwalleravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/graysonwallerfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Günther", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/gunther/guntheravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/gunther/guntherfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/guntheravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/guntherfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 95,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Hank Walker", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hankwalker/hankwalkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/hankwalker/hankwalkerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/hankwalkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/hankwalkerfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Hank & Tank", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ilja Dragunov", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/iljadragunov/iljadragunovavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/iljadragunov/iljadragunovfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/iljadragunovavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/iljadragunovfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ivar", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ivar/ivaravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ivar/ivarfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ivaravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ivarfull.png",
     "gender": "Male", "alignment": "Face", "faction": "War Raiders", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jackson Drake", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jacksondrake/jacksondrakeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jacksondrake/jacksondrakefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacksondrakeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacksondrakefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Vanity Project", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jacob Fatu", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jacobfatu/jacobfatuavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jacobfatu/jacobfatufull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacobfatuavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacobfatufull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jasper Troy", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jaspertroy/jaspertroyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jaspertroy/jaspertroyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jaspertroyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jaspertroyfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Vanity Project", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "JC Mateo", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jcmateo/jcmateoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jcmateo/jcmateofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jcmateoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jcmateofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "MFT", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "JD McDonagh", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jdmcdonagh/jdmcdonaghavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jdmcdonagh/jdmcdonaghfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jdmcdonaghavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jdmcdonaghfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Judgment Day", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Je'von Evans", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jevonevans/jevonevansavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jevonevans/jevonevansfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jevonevansavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jevonevansfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jey Uso", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jeyuso/jeyusoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jeyuso/jeyusofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jeyusoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jeyusofull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Usos", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jimmy Uso", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jimmyuso/jimmyusoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/jimmyuso/jimmyusofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jimmyusoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jimmyusofull.png",
     "gender": "Male", "alignment": "Face", "faction": "The Usos", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Joaquin Wilde", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joaquinwilde/joaquinwildeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joaquinwilde/joaquinwildefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joaquinwildeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joaquinwildefull.png",
     "gender": "Male", "alignment": "Face", "faction": "LWO", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Joe Gacy", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joegacy/joegacyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joegacy/joegacyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joegacyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joegacyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Wyatt 6", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Joe Hendry", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joehendry/joehendryavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joehendry/joehendryfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joehendryavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joehendryfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Johnny Gargano", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/johnnygargano/johnnygarganoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/johnnygargano/johnnygarganofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/johnnygarganoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/johnnygarganofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Josh Briggs", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshbriggs/joshbriggsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/joshbriggs/joshbriggsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joshbriggsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/joshbriggsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Julius Creed", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brutuscreed/brutuscreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/brutuscreed/brutuscreedfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brutuscreedavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/brutuscreedfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Creed Brothers", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kale Dixon", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kaledixon/kaledixonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kaledixon/kaledixonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kaledixonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kaledixonfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Chase U", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Keanu Carver", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/keanucarver/keanucarveravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/keanucarver/keanucarverfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/keanucarveravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/keanucarverfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kevin Owens", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kevinowens/kevinowensavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kevinowens/kevinowensfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kevinowensavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kevinowensfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 90,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kit Wilson", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kitwilson/kitwilsonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kitwilson/kitwilsonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kitwilsonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kitwilsonfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Pretty Deadly", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kofi Kingston", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kofikingston/kofikingstonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/kofikingston/kofikingstonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kofikingstonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kofikingstonfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The New Day", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "L.A. Knight", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/laknight/laknightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/laknight/laknightfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/laknightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/laknightfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lexis King", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lexisking/lexiskingavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lexisking/lexiskingfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lexiskingavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lexiskingfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Birthright", "rating": 71,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Logan Paul", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/loganpaul/loganpaulavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/loganpaul/loganpaulfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/loganpaulavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/loganpaulfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Vision", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lucien Price", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lucienprice/lucienpriceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/lucienprice/lucienpricefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lucienpriceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lucienpricefull.png",
     "gender": "Male", "alignment": "Face", "faction": "OTM", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ludwig Kaiser", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ludwigkaiser/ludwigkaiseravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/ludwigkaiser/ludwigkaiserfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ludwigkaiseravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ludwigkaiserfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Matt Cardona", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattcardona/mattcardonaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mattcardona/mattcardonafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/mattcardonaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/mattcardonafull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Montez Ford", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/montezford/montezfordavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/montezford/montezfordfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/montezfordavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/montezfordfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Street Profits", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Myles Borne", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mylesborne/mylesborneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/mylesborne/mylesbornefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/mylesborneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/mylesbornefull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nathan Frazer", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nathanfrazer/nathanfrazeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nathanfrazer/nathanfrazerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nathanfrazeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nathanfrazerfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Fraxiom", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Niko Vance", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nikovance/nikovanceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/nikovance/nikovancefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikovanceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikovancefull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Culling", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Oba Femi", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/obafemi/obafemiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/obafemi/obafemifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/obafemiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/obafemifull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Osiris Griffin", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/osirisgriffin/osirisgriffinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/osirisgriffin/osirisgriffinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/osirisgriffinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/osirisgriffinfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "DarkState", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Otis", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/otis/otisavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/otis/otisfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/otisavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/otisfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Alpha Academy", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Penta", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/penta/pentaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/penta/pentafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/pentaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/pentafull.png",
     "gender": "Male", "alignment": "Face", "faction": "Lucha Brothers", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Pete Dunne", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/petedunne/petedunneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/petedunne/petedunnefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/petedunneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/petedunnefull.png",
     "gender": "Male", "alignment": "Face", "faction": "New Catch Republic", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Randy Orton", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/randyorton/randyortonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/randyorton/randyortonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/randyortonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/randyortonfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Rey Fenix", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/reyfenix/reyfenixavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/reyfenix/reyfenixfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/reyfenixavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/reyfenixfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Lucha Brothers", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Rey Mysterio", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/reymysterio/reymysterioavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/reymysterio/reymysteriofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/reymysterioavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/reymysteriofull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ricky Saints", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rickysaints/rickysaintsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rickysaints/rickysaintsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rickysaintsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rickysaintsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ricky Smokes", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rickysmokes/rickysmokesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rickysmokes/rickysmokesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rickysmokesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rickysmokesfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "Vanity Project", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Roman Reigns", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/romanreigns/romanreignsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/romanreigns/romanreignsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/romanreignsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/romanreignsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 96,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "R-Truth", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rtruth/rtruthavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rtruth/rtruthfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rtruthavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rtruthfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Rusev", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rusev/rusevavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/rusev/rusevfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rusevavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rusevfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sami Zayn", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/samizayn/samizaynavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/samizayn/samizaynfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/samizaynavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/samizaynfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Saquon Shugars", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/saquonshugars/saquonshugarsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/saquonshugars/saquonshugarsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/saquonshugarsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/saquonshugarsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "DarkState", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sean Legacy", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/seanlegacy/seanlegacyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/seanlegacy/seanlegacyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/seanlegacyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/seanlegacyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 74,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Seth Rollins", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sethrollins/sethrollinsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sethrollins/sethrollinsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/sethrollinsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/sethrollinsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Shawn Spears", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/shawnspears/shawnspearsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/shawnspears/shawnspearsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/shawnspearsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/shawnspearsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Culling", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sheamus", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sheamus/sheamusavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/sheamus/sheamusfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/sheamusavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/sheamusfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Shinsuke Nakamura", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/shinsukenakamura/shinsukenakamuraavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/shinsukenakamura/shinsukenakamurafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/shinsukenakamuraavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/shinsukenakamurafull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Solo Sikoa", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/solosikoa/solosikoaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/solosikoa/solosikoafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/solosikoaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/solosikoafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "MFT", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Talla Tonga", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tallatonga/tallatongaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tallatonga/tallatongafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tallatongaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tallatongafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "MFT", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tama Tonga", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tamatonga/tamatongaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tamatonga/tamatongafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tamatongaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tamatongafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "MFT", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tank Ledger", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tankledger/tankledgeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tankledger/tankledgerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tankledgeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tankledgerfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Hank & Tank", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tavion Heights", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tavionheights/tavionheightsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tavionheights/tavionheightsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tavionheightsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tavionheightsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "The Miz", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/themiz/themizavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/themiz/themizfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/themizavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/themizfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tonga Loa", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tongaloa/tongaloaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tongaloa/tongaloafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tongaloaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tongaloafull.png",
     "gender": "Male", "alignment": "Heel", "faction": "MFT", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tony D'Angelo", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tonydangelo/tonydangeloavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tonydangelo/tonydangelofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tonydangeloavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tonydangelofull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Trick Williams", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/trickwilliams/trickwilliamsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/trickwilliams/trickwilliamsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/trickwilliamsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/trickwilliamsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tyler Bate", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tylerbate/tylerbateavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/tylerbate/tylerbatefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tylerbateavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tylerbatefull.png",
     "gender": "Male", "alignment": "Face", "faction": "New Catch Republic", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Uncle Howdy", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/unclehowdy/unclehowdyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/unclehowdy/unclehowdyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/unclehowdyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/unclehowdyfull.png",
     "gender": "Male", "alignment": "Face", "faction": "Wyatt 6", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Uriah Connors", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/uriahconnors/uriahconnorsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/uriahconnors/uriahconnorsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/uriahconnorsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/uriahconnorsfull.png",
     "gender": "Male", "alignment": "Heel", "faction": "The Birthright", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Xavier Woods", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/xavierwoods/xavierwoodsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/men/xavierwoods/xavierwoodsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/xavierwoodsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/xavierwoodsfull.png",
     "gender": "Male", "alignment": "Face", "faction": "The New Day", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Adriana Rizzo", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/adrianarizzo/adrianarizzoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/adrianarizzo/adrianarizzofull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/adrianarizzoavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/adrianarizzofull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 73,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Alba Fyre", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/albafyre/albafyreavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/albafyre/albafyrefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/albafyreavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/albafyrefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "ServiceHer", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Alexa Bliss", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/alexabliss/alexablissavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/alexabliss/alexablissfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/alexablissavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/alexablissfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Arianna Grace", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ariannagrace/ariannagraceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ariannagrace/ariannagracefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ariannagraceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ariannagracefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "The Birthright", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Asuka", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/asuka/asukaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/asuka/asukafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/asukaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/asukafull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Kabuki Warriors", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bayley", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/bayley/bayleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/bayley/bayleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bayleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bayleyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Becky Lynch", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/beckylynch/beckylynchavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/beckylynch/beckylynchfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/beckylynchavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/beckylynchfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 94,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "B-Fab", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/bfab/bfabavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/bfab/bfabfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bfabavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/bfabfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Bianca Belair", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/biancabelair/biancabelairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/biancabelair/biancabelairfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/biancabelairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/biancabelairfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 93,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Blake Monroe", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/blakemonroe/blakemonroeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/blakemonroe/blakemonroefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/blakemonroeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/blakemonroefull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Brie Bella", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/briebella/briebellaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/briebella/briebellafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/briebellaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/briebellafull.png",
     "gender": "Female", "alignment": "Face", "faction": "Bella Twins", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Candice Lerae", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/candicelerae/candiceleraeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/candicelerae/candiceleraefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/candiceleraeavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/candiceleraefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Carlee Bright", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/carleebright/carleebrightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/carleebright/carleebrightfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/carleebrightavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/carleebrightfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 73,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Charlotte Flair", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/charlotteflair/charlotteflairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/charlotteflair/charlotteflairfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/charlotteflairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/charlotteflairfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 95,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Chelsea Green", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/chelseagreen/chelseagreenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/chelseagreen/chelseagreenfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chelseagreenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/chelseagreenfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "ServiceHer", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Fallon Henley", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/fallonhenley/fallonhenleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/fallonhenley/fallonhenleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/fallonhenleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/fallonhenleyfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Fatal Influence", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Giulia", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/giulia/giuliaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/giulia/giuliafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/giuliaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/giuliafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Ivy Nile", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ivynile/ivynileavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/ivynile/ivynilefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ivynileavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/ivynilefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Iyo Sky", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/iyosky/iyoskyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/iyosky/iyoskyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/iyoskyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/iyoskyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Izzi Dame", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/izzidame/izzidameavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/izzidame/izzidamefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/izzidameavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/izzidamefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "The Culling", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jacy Jayne", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jacyjayne/jacyjayneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jacyjayne/jacyjaynefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacyjayneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jacyjaynefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Fatal Influence", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jade Cargill", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jadecargill/jadecargillavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jadecargill/jadecargillfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jadecargillavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jadecargillfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jaida Parker", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jaidaparker/jaidaparkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jaidaparker/jaidaparkerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jaidaparkeravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jaidaparkerfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Jordynne Grace", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jordynnegrace/jordynnegraceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/jordynnegrace/jordynnegracefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jordynnegraceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/jordynnegracefull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kairi Sane", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kairisane/kairisaneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kairisane/kairisanefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kairisaneavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kairisanefull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Kabuki Warriors", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Karmen Petrovic", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/karmenpetrovic/karmenpetrovicavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/karmenpetrovic/karmenpetrovicfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/karmenpetrovicavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/karmenpetrovicfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kelani Jordan", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kelanijordan/kelanijordanavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kelanijordan/kelanijordanfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kelanijordanavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kelanijordanfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kendal Grey", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kendalgrey/kendalgreyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kendalgrey/kendalgreyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kendalgreyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kendalgreyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Kiana James", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kianajames/kianajamesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/kianajames/kianajamesfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kianajamesavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kianajamesfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 83,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lainey Reid", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/laineyreid/laineyreidavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/laineyreid/laineyreidfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/laineyreidavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/laineyreidfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Fatal Influence", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lash Legend", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lashlegend/lashlegendavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lashlegend/lashlegendfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lashlegendavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lashlegendfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Irresistible Forces", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Liv Morgan", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/livmorgan/livmorganavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/livmorgan/livmorganfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/livmorganavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/livmorganfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Judgment Day", "rating": 91,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lola Vice", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lolavice/lolaviceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lolavice/lolavicefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lolaviceavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lolavicefull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 81,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Lyra Valkyria", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lyravalkyria/lyravalkyriaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/lyravalkyria/lyravalkyriafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lyravalkyriaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/lyravalkyriafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Maxxine Dupri", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/maxxinedupri/maxxinedupriavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/maxxinedupri/maxxineduprifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/maxxinedupriavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/maxxineduprifull.png",
     "gender": "Female", "alignment": "Face", "faction": "Alpha Academy", "rating": 77,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Michin", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/michin/michinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/michin/michinfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/michinavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/michinfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Naomi", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/naomi/naomiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/naomi/naomifull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/naomiavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/naomifull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 89,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Natalya", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/natalya/natalyaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/natalya/natalyafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/natalyaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/natalyafull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nia Jax", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/niajax/niajaxavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/niajax/niajaxfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/niajaxavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/niajaxfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Irresistible Forces", "rating": 87,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nikki Bella", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkibella/nikkibellaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkibella/nikkibellafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkibellaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkibellafull.png",
     "gender": "Female", "alignment": "Face", "faction": "Bella Twins", "rating": 85,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nikki Cross", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkicross/nikkicrossavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkicross/nikkicrossfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkicrossavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkicrossfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Wyatt 6", "rating": 76,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Nikkita Lyons", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkitalyons/nikkitalyonsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/nikkitalyons/nikkitalyonsfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkitalyonsavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nikkitalyonsfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Piper Niven", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/piperniven/pipernivenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/piperniven/pipernivenfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/pipernivenavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/pipernivenfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "ServiceHer", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Raquel Rodriguez", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/raquelrodriguez/raquelrodriguezavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/raquelrodriguez/raquelrodriguezfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/raquelrodriguezavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/raquelrodriguezfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Judgment Day", "rating": 86,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Rhea Ripley", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/rhearipley/rhearipleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/rhearipley/rhearipleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rhearipleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/rhearipleyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 95,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Roxanne Perez", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/roxanneperez/roxanneperezavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/roxanneperez/roxanneperezfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/roxanneperezavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/roxanneperezfull.png",
     "gender": "Female", "alignment": "Heel", "faction": "Judgment Day", "rating": 88,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Sol Ruca", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/solruca/solrucaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/solruca/solrucafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/solrucaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/solrucafull.png",
     "gender": "Female", "alignment": "Face", "faction": "Zaruca", "rating": 84,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Stephanie Vaquer", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/stephanievaquer/stephanievaqueravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/stephanievaquer/stephanievaquerfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/stephanievaqueravatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/stephanievaquerfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 92,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tatum Paxley", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tatumpaxley/tatumpaxleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tatumpaxley/tatumpaxleyfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tatumpaxleyavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tatumpaxleyfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 79,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tiffany Stratton", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tiffanystratton/tiffanystrattonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tiffanystratton/tiffanystrattonfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tiffanystrattonavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tiffanystrattonfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 91,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Thea Hail", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/theahail/theahailavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/theahail/theahailfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/theahailavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/theahailfull.png",
     "gender": "Female", "alignment": "Face", "faction": "Chase U", "rating": 78,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Tyra Mae Steele", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tyramaesteele/tyramaesteeleavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/tyramaesteele/tyramaesteelefull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tyramaesteeleavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tyramaesteelefull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Wren Sinclair", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/wrensinclair/wrensinclairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/wrensinclair/wrensinclairfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrensinclairavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrensinclairfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 75,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zaria", "brandName": "NXT",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zaria/zariaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zaria/zariafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zariaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zariafull.png",
     "gender": "Female", "alignment": "Face", "faction": "Zaruca", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zelina Vega", "brandName": "SMACKDOWN",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zelinavega/zelinavegaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zelinavega/zelinavegafull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zelinavegaavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zelinavegafull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 82,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   },
   {
     "name": "Zoey Stark", "brandName": "RAW",
-    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zoeystark/zoeystarkavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/women/zoeystark/zoeystarkfull.png",
+    "avatar": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zoeystarkavatar.png", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/zoeystarkfull.png",
     "gender": "Female", "alignment": "Face", "faction": "", "rating": 80,
     "wins": 0, "losses": 0, "draws": 0, "injuryStatus": "None", "moral": 100,
     "holdsTitleNames": []
   }
   ],
   "championships": [
-    { "id": 1, "name": "WWE Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/wwemen.png", "brandName": "SMACKDOWN" },
-    { "id": 2, "name": "WWE Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/wwewomen.png", "brandName": "SMACKDOWN" },
-    { "id": 3, "name": "United States Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/unitedstatesmen.png", "brandName": "SMACKDOWN" },
-    { "id": 4, "name": "United States Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/unitedstateswomen.png", "brandName": "SMACKDOWN" },
-    { "id": 5, "name": "WWE Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/wwetagteam.png", "brandName": "SMACKDOWN" },
-    { "id": 6, "name": "World Heavyweight Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/worldheavyweightmen.png", "brandName": "RAW" },
-    { "id": 7, "name": "World Heavyweight Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/worldheavyweightwomen.png", "brandName": "RAW" },
-    { "id": 8, "name": "Intercontinental Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/intercontinentalmen.png", "brandName": "RAW" },
-    { "id": 9, "name": "Intercontinental Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/intercontinentalwomen.png", "brandName": "RAW" },
-    { "id": 10, "name": "World Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/worldtagteam.png", "brandName": "RAW" },
-    { "id": 11, "name": "NXT Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/nxtmen.png", "brandName": "NXT" },
-    { "id": 12, "name": "NXT Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/nxtwomen.png", "brandName": "NXT" },
-    { "id": 13, "name": "NXT North American Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/northamericanmen.png", "brandName": "NXT" },
-    { "id": 14, "name": "NXT North American Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/northamericanwomen.png", "brandName": "NXT" },
-    { "id": 15, "name": "NXT Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Championships/nxttagteam.png", "brandName": "NXT" }
+    { "id": 1, "name": "WWE Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwemen.png", "brandName": "SMACKDOWN" },
+    { "id": 2, "name": "WWE Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwewomen.png", "brandName": "SMACKDOWN" },
+    { "id": 3, "name": "United States Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/unitedstatesmen.png", "brandName": "SMACKDOWN" },
+    { "id": 4, "name": "United States Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/unitedstateswomen.png", "brandName": "SMACKDOWN" },
+    { "id": 5, "name": "WWE Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwetagteam.png", "brandName": "SMACKDOWN" },
+    { "id": 6, "name": "World Heavyweight Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/worldheavyweightmen.png", "brandName": "RAW" },
+    { "id": 7, "name": "World Heavyweight Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/worldheavyweightwomen.png", "brandName": "RAW" },
+    { "id": 8, "name": "Intercontinental Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/intercontinentalmen.png", "brandName": "RAW" },
+    { "id": 9, "name": "Intercontinental Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/intercontinentalwomen.png", "brandName": "RAW" },
+    { "id": 10, "name": "World Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/worldtagteam.png", "brandName": "RAW" },
+    { "id": 11, "name": "NXT Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtmen.png", "brandName": "NXT" },
+    { "id": 12, "name": "NXT Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtwomen.png", "brandName": "NXT" },
+    { "id": 13, "name": "NXT North American Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/northamericanmen.png", "brandName": "NXT" },
+    { "id": 14, "name": "NXT North American Women Champion", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/northamericanwomen.png", "brandName": "NXT" },
+    { "id": 15, "name": "NXT Tag Team Champions", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxttagteam.png", "brandName": "NXT" }
   ],
   "npcs": [
     {
       "id": 1,
       "name": "Triple H",
-      "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Wrestlers/others/tripleh/triplehavatar.png",
+      "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/triplehavatar.png",
       "role": "General Manager",
       "brandName": "SHARED"
     }
@@ -1223,53 +1223,53 @@
     { "key": "weeksPerSeason", "value": 60 }
   ],
   "shows": [
-  { "id": 1, "name": "Monday Night RAW", "brandName": "RAW", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/raw.png" },
-  { "id": 2, "name": "Backlash", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/backlash.png" },
-  { "id": 3, "name": "Bad Blood", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/badblood.png" },
-  { "id": 4, "name": "Crown Jewel", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/crownjewel.png" },
-  { "id": 5, "name": "Night Of Champions", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nightofchampions.png"},
-  { "id": 6, "name": "Payback", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/payback.png"},
-  { "id": 7, "name": "Friday Night SmackDown", "brandName": "SMACKDOWN", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/smackdown.png" },
-  { "id": 8, "name": "Clash At The Castle", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/clashatthecastle.png" },
-  { "id": 9, "name": "Hell In A Cell", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/hellinacell.png"},
-  { "id": 10, "name": "New Year's Revolution", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/newyearsrevolution.png"},
-  { "id": 11, "name": "No Mercy", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nomercy.png"},
-  { "id": 12, "name": "Super Showdown", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/supershowdown.png"},
-  { "id": 13, "name": "Tuesday Night NXT", "brandName": "NXT", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Brands/nxt.png" },
-  { "id": 14, "name": "NXT The Great American Bash", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/thegreatamericanbash.png"},
-  { "id": 15, "name": "New Year's Evil", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/newyearsevil.png"},
-  { "id": 16, "name": "NXT Battleground", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtbattleground.png"},
-  { "id": 17, "name": "NXT Vengeance day", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtvengeance.png"},
-  { "id": 18, "name": "NXT Stand & Deliver 2026", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/standanddeliver2027.png"},
-  { "id": 19, "name": "NXT Deadline", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtdeadline.png"},
-  { "id": 20, "name": "NXT Gold Rush", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtgoldrush.png"},
-  { "id": 21, "name": "NXT Mutiny", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtmutiny.png"},
-  { "id": 22, "name": "NXT Roadblock", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtroadblock.png"},
-  { "id": 23, "name": "NXT Stand & Deliver 2027", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/standanddeliver2026.png"},
-  { "id": 24, "name": "NXT No Mercy", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtnomercy.png"},
-  { "id": 25, "name": "NXT Spring Breakin", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/nxtspringbreakin.png"},
-  { "id": 26, "name": "Halloween Havoc", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/halloweenhavoc.png" },
-  { "id": 27, "name": "TBD", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/tbd.png"},
-  { "id": 28, "name": "NXT Stand & Deliver 2028", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/standanddeliver2028.png"},
-  { "id": 29, "name": "Saturday Night Main Event", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/snme.png"},
-  { "id": 30, "name": "Elimination Chambers", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/eliminationchambers.png" },
-  { "id": 31, "name": "King And Queen Of The Ring", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/kingandqueenofthering.png"},
-  { "id": 32, "name": "Money In The Bank", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/moneyinthebank.png"},
-  { "id": 33, "name": "WrestleMania 42", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestlemania42.png" },
-  { "id": 34, "name": "Main Event", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/mainevent.png"},
-  { "id": 35, "name": "Survivor Series 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/survivorseries2026.png"},
-  { "id": 36, "name": "Royal Rumble 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/royalrumble2026.png"},
-  { "id": 37, "name": "Summer Slam 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/summerslam2026.png"},
-  { "id": 38, "name": "WrestleMania 43", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestlemania43.png" },
-  { "id": 39, "name": "Hall Of Fame", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/halloffame.png" },
-  { "id": 40, "name": "Survivor Series 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/survivorseries2027.png"},
-  { "id": 41, "name": "Royal Rumble 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/royalrumble2027.png"},
-  { "id": 42, "name": "Summer Slam 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/summerslam2027.png"},
-  { "id": 43, "name": "WrestleMania 44", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestlemania44.png" },
-  { "id": 44, "name": "Wrestlepalooza", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestlepalooza.png"},
-  { "id": 45, "name": "Survivor Series 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/survivorseries2028.png"},
-  { "id": 46, "name": "Royal Rumble 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/royalrumble2028.png"},
-  { "id": 47, "name": "Summer Slam 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/summerslam2028.png"},
-  { "id": 48, "name": "WrestleMania 45", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1/visuals/Events/Logos/wrestlemania45.png" }
+  { "id": 1, "name": "Monday Night RAW", "brandName": "RAW", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/raw.png" },
+  { "id": 2, "name": "Backlash", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/backlash.png" },
+  { "id": 3, "name": "Bad Blood", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/badblood.png" },
+  { "id": 4, "name": "Crown Jewel", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/crownjewel.png" },
+  { "id": 5, "name": "Night Of Champions", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nightofchampions.png"},
+  { "id": 6, "name": "Payback", "brandName": "RAW", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/payback.png"},
+  { "id": 7, "name": "Friday Night SmackDown", "brandName": "SMACKDOWN", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/smackdown.png" },
+  { "id": 8, "name": "Clash At The Castle", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/clashatthecastle.png" },
+  { "id": 9, "name": "Hell In A Cell", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/hellinacell.png"},
+  { "id": 10, "name": "New Year's Revolution", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/newyearsrevolution.png"},
+  { "id": 11, "name": "No Mercy", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nomercy.png"},
+  { "id": 12, "name": "Super Showdown", "brandName": "SMACKDOWN", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/supershowdown.png"},
+  { "id": 13, "name": "Tuesday Night NXT", "brandName": "NXT", "type": "Weekly", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxt.png" },
+  { "id": 14, "name": "NXT The Great American Bash", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/thegreatamericanbash.png"},
+  { "id": 15, "name": "New Year's Evil", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/newyearsevil.png"},
+  { "id": 16, "name": "NXT Battleground", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtbattleground.png"},
+  { "id": 17, "name": "NXT Vengeance day", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtvengeance.png"},
+  { "id": 18, "name": "NXT Stand & Deliver 2026", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/standanddeliver2027.png"},
+  { "id": 19, "name": "NXT Deadline", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtdeadline.png"},
+  { "id": 20, "name": "NXT Gold Rush", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtgoldrush.png"},
+  { "id": 21, "name": "NXT Mutiny", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtmutiny.png"},
+  { "id": 22, "name": "NXT Roadblock", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtroadblock.png"},
+  { "id": 23, "name": "NXT Stand & Deliver 2027", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/standanddeliver2026.png"},
+  { "id": 24, "name": "NXT No Mercy", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtnomercy.png"},
+  { "id": 25, "name": "NXT Spring Breakin", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/nxtspringbreakin.png"},
+  { "id": 26, "name": "Halloween Havoc", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/halloweenhavoc.png" },
+  { "id": 27, "name": "TBD", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tbd.png"},
+  { "id": 28, "name": "NXT Stand & Deliver 2028", "brandName": "NXT", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/standanddeliver2028.png"},
+  { "id": 29, "name": "Saturday Night Main Event", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/snme.png"},
+  { "id": 30, "name": "Elimination Chambers", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/eliminationchambers.png" },
+  { "id": 31, "name": "King And Queen Of The Ring", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/kingandqueenofthering.png"},
+  { "id": 32, "name": "Money In The Bank", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/moneyinthebank.png"},
+  { "id": 33, "name": "WrestleMania 42", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrestlemania42.png" },
+  { "id": 34, "name": "Main Event", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/mainevent.png"},
+  { "id": 35, "name": "Survivor Series 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/survivorseries2026.png"},
+  { "id": 36, "name": "Royal Rumble 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/royalrumble2026.png"},
+  { "id": 37, "name": "Summer Slam 2026", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/summerslam2026.png"},
+  { "id": 38, "name": "WrestleMania 43", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrestlemania43.png" },
+  { "id": 39, "name": "Hall Of Fame", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/halloffame.png" },
+  { "id": 40, "name": "Survivor Series 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/survivorseries2027.png"},
+  { "id": 41, "name": "Royal Rumble 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/royalrumble2027.png"},
+  { "id": 42, "name": "Summer Slam 2027", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/summerslam2027.png"},
+  { "id": 43, "name": "WrestleMania 44", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrestlemania44.png" },
+  { "id": 44, "name": "Wrestlepalooza", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrestlepalooza.png"},
+  { "id": 45, "name": "Survivor Series 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/survivorseries2028.png"},
+  { "id": 46, "name": "Royal Rumble 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/royalrumble2028.png"},
+  { "id": 47, "name": "Summer Slam 2028", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/summerslam2028.png"},
+  { "id": 48, "name": "WrestleMania 45", "brandName": "SHARED", "type": "PLE", "image": "https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wrestlemania45.png" }
   ]
 }

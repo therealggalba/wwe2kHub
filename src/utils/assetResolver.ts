@@ -65,8 +65,13 @@ export const requestAssetsPermission = async (): Promise<boolean> => {
 export const normalizeVisualsPath = (path: string | undefined): string | undefined => {
   if (!path) return undefined;
   
-  let cleanPath = path;
+  // Clean and trim the path
+  let cleanPath = path.trim();
   
+  // Fix common malformations like ".http://" or "./http://"
+  if (cleanPath.startsWith('.http')) cleanPath = cleanPath.substring(1);
+  if (cleanPath.startsWith('./http')) cleanPath = cleanPath.substring(2);
+
   // If it's already an absolute HTTP URL or blob, leave it alone
   if (cleanPath.startsWith('http') || cleanPath.startsWith('blob:') || cleanPath.startsWith('data:')) {
     return cleanPath;
@@ -79,10 +84,11 @@ export const normalizeVisualsPath = (path: string | undefined): string | undefin
   }
 
   // Remove leading dot or slash to standardize
-  if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(1);
-  if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+  if (cleanPath.startsWith('./')) cleanPath = cleanPath.substring(2);
+  if (cleanPath.startsWith('/')) cleanPath = cleanPath.substring(1);
   
-  return cleanPath;
+  // Ensure it starts with exactly one slash for local resolver fallback
+  return '/' + cleanPath;
 };
 
 /**

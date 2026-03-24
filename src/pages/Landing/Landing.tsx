@@ -238,7 +238,7 @@ const Landing: React.FC = () => {
       <div className={styles.presetGrid}>
         <div className={styles.presetCard} onClick={() => handleNewGameFromPreset('/presets/wwe_universe.json')}>
           <div className={styles.presetLogo}>
-            <ResolvedImage src="/visuals/Brands/wwe.png" alt="WWE" />
+            <ResolvedImage src="https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwe.png" alt="WWE" />
           </div>
           <p>Preset con RAW, SD y NXT.</p>
           <p>2026</p>
@@ -246,7 +246,7 @@ const Landing: React.FC = () => {
 
         <div className={styles.presetCard} onClick={() => handleNewGameFromPreset('/presets/aew_universe.json')}>
           <div className={`${styles.presetLogo} ${styles.aew}`}>
-            <ResolvedImage src="/visuals/Brands/aew.png" alt="AEW" />
+            <ResolvedImage src="https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/aew.png" alt="AEW" />
           </div>
           <p>Preset con Dynamite y Collision.</p>
           <p>2026</p>
