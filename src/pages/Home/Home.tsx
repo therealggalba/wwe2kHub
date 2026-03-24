@@ -12,10 +12,13 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [heroTitle, setHeroTitle] = useState('DOMINA EL RING');
   const [showTutorial, setShowTutorial] = useState(() => {
-    return localStorage.getItem('showTutorial') === 'true';
+    const val = localStorage.getItem('showTutorial') === 'true';
+    console.log('Home: Initial showTutorial state:', val);
+    return val;
   });
 
   useEffect(() => {
+    console.log('Home: showTutorial current state:', showTutorial);
     const checkBrand = async () => {
       const allBrands = await db.brands.toArray();
       const aew = allBrands.find(b => b.name.includes('AEW'));

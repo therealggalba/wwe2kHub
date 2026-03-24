@@ -195,6 +195,7 @@ const Landing: React.FC = () => {
       }
 
       await importState(importedData);
+      console.log('Landing: Setting showTutorial to true');
       localStorage.setItem('showTutorial', 'true');
       navigate('/home');
     } catch (error) {

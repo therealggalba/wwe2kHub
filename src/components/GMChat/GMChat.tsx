@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import { db } from '../../db/db';
 import ResolvedImage from '../Common/ResolvedImage';
 import styles from './GMChat.module.scss';
@@ -10,6 +11,7 @@ interface Message {
 }
 
 const GMChat: React.FC = () => {
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -85,7 +87,7 @@ const GMChat: React.FC = () => {
         });
       }
     });
-  }, []);
+  }, [location.pathname]);
 
   const getUniverseContext = async () => {
     const wrestlers = await db.wrestlers.toArray();
