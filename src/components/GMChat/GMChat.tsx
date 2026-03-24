@@ -14,11 +14,9 @@ const GMChat: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [status, setStatus] = useState('');
-  
   const [gmName, setGmName] = useState('Gonzalo Galba');
-  const [gmImage, setGmImage] = useState('visuals/Wrestlers/others/gonzalogalba/gonzalogalbaavatar.png');
+  const [gmImage, setGmImage] = useState('https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/gonzalogalbaavatar.png');
+  const [showAvailabilityPopup, setShowAvailabilityPopup] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -45,20 +43,37 @@ const GMChat: React.FC = () => {
   }, [messages]);
 
   useEffect(() => {
-    let currentGmName = 'Gonzalo Galba';
     const fetchGM = async () => {
+      const brands = await db.brands.toArray();
+      const hasAEW = brands.some(b => b.name.includes('AEW') || b.name === 'Dynamite');
+      const hasWWE = brands.some(b => ['RAW', 'SMACKDOWN', 'NXT'].includes(b.name));
+      
+      let currentGmName = 'Gonzalo Galba';
+      let currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/gonzalogalbaavatar.png';
+
+      if (hasAEW) {
+        currentGmName = 'Tony Khan';
+        currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tonykhanavatar.png';
+      } else if (hasWWE) {
+        currentGmName = 'Triple H';
+        currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/triplehavatar.png';
+      }
+
       const npcs = await db.npcs.toArray();
       const gm = npcs.find(n => n.role === 'General Manager' || n.role === 'GM');
       if (gm) {
-        setGmName(gm.name);
         currentGmName = gm.name;
-        if (gm.image) setGmImage(gm.image.replace('./', ''));
+        if (gm.image) {
+            const imgName = gm.image.split('/').pop();
+            currentGmImage = `https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/${imgName}`;
+        }
       }
 
-      // Re-check engine so we have the proper currentGmName
+      setGmName(currentGmName);
+      setGmImage(currentGmImage);
+
       const engine = aiEngine.getEngine();
       if (engine) {
-        setStatus('Motor cargado. El GM está listo.');
         setMessages(prev => {
           if (prev.length === 0) {
             return [{ role: 'assistant', content: `¡Hola! Soy tu General Manager, ${currentGmName}. Estoy listo para ayudarte a gestionar tu universo. ¿Qué tienes en mente para el próximo show?` }];
@@ -68,18 +83,6 @@ const GMChat: React.FC = () => {
       }
     };
     fetchGM();
-
-    const onProgress = (report: any) => {
-      setProgress(Math.round(report.progress * 100));
-      setStatus(report.text);
-      if (report.progress === 1) {
-        setStatus('Motor listo.');
-      }
-    };
-
-    aiEngine.addProgressCallback(onProgress);
-
-    return () => aiEngine.removeProgressCallback(onProgress);
   }, []);
 
   const getUniverseContext = async () => {
@@ -220,13 +223,9 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
     if (!isOpen) {
       const engine = aiEngine.getEngine();
       if (!engine) {
-        aiEngine.init().then(() => {
-          if (messages.length === 0) {
-            setMessages([
-              { role: 'assistant', content: `¡Hola! Soy tu General Manager, ${gmName}. Estoy listo para ayudarte a gestionar tu universo. ¿Qué tienes en mente para el próximo show?` }
-            ]);
-          }
-        });
+        setShowAvailabilityPopup(true);
+        setTimeout(() => setShowAvailabilityPopup(false), 3500);
+        return;
       }
     }
     setIsOpen(!isOpen);
@@ -257,10 +256,9 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
           <div ref={messagesEndRef} />
         </div>
 
-        {status && progress < 100 && (
-          <div className={styles.loadingOverlay}>
-            <div>{status}</div>
-            {progress > 0 && <div>{progress}%</div>}
+        {showAvailabilityPopup && (
+          <div className={styles.availabilityPopup}>
+             <p>El GM está aún por llegar a su despacho. Por favor, espera a que termine de prepararse.</p>
           </div>
         )}
 
