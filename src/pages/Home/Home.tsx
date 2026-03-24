@@ -4,12 +4,16 @@ import PLECarousel from '../../components/PLECarousel/PLECarousel';
 import StarBorder from '../../components/StarBorder/StarBorder';
 import { db } from '../../db/db';
 import DigitalNewspaper from '../../components/DigitalNewspaper/DigitalNewspaper';
+import TutorialOverlay from '../../components/Tutorial/TutorialOverlay';
 import styles from './Home.module.scss';
 import { aiEngine } from '../../utils/aiEngine';
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
   const [heroTitle, setHeroTitle] = useState('DOMINA EL RING');
+  const [showTutorial, setShowTutorial] = useState(() => {
+    return localStorage.getItem('showTutorial') === 'true';
+  });
 
   useEffect(() => {
     const checkBrand = async () => {
@@ -29,8 +33,15 @@ const Home: React.FC = () => {
     }, 1500);
   }, []);
 
+  const handleTutorialComplete = () => {
+    setShowTutorial(false);
+    localStorage.removeItem('showTutorial');
+  };
+
   return (
     <section className={styles.homeSection}>
+      {showTutorial && <TutorialOverlay onComplete={handleTutorialComplete} />}
+      
       <div className={styles.hero}><h1 className={styles.heroTitle}>{heroTitle}</h1></div>
       
       <DigitalNewspaper />

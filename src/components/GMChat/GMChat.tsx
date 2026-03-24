@@ -42,47 +42,49 @@ const GMChat: React.FC = () => {
     scrollToBottom();
   }, [messages]);
 
+  const updateGMInfo = async () => {
+    const brands = await db.brands.toArray();
+    const hasAEW = brands.some(b => b.name.includes('AEW') || b.name === 'Dynamite');
+    const hasWWE = brands.some(b => ['RAW', 'SMACKDOWN', 'NXT'].includes(b.name));
+    
+    let currentGmName = 'Gonzalo Galba';
+    let currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/gonzalogalbaavatar.png';
+
+    if (hasAEW) {
+      currentGmName = 'Tony Khan';
+      currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tonykhanavatar.png';
+    } else if (hasWWE) {
+      currentGmName = 'Triple H';
+      currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/triplehavatar.png';
+    }
+
+    const npcs = await db.npcs.toArray();
+    const gm = npcs.find(n => n.role === 'General Manager' || n.role === 'GM');
+    if (gm) {
+      currentGmName = gm.name;
+      if (gm.image) {
+          const imgName = gm.image.split('/').pop();
+          currentGmImage = `https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/${imgName}`;
+      }
+    }
+
+    setGmName(currentGmName);
+    setGmImage(currentGmImage);
+    return currentGmName;
+  };
+
   useEffect(() => {
-    const fetchGM = async () => {
-      const brands = await db.brands.toArray();
-      const hasAEW = brands.some(b => b.name.includes('AEW') || b.name === 'Dynamite');
-      const hasWWE = brands.some(b => ['RAW', 'SMACKDOWN', 'NXT'].includes(b.name));
-      
-      let currentGmName = 'Gonzalo Galba';
-      let currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/gonzalogalbaavatar.png';
-
-      if (hasAEW) {
-        currentGmName = 'Tony Khan';
-        currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/tonykhanavatar.png';
-      } else if (hasWWE) {
-        currentGmName = 'Triple H';
-        currentGmImage = 'https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/triplehavatar.png';
-      }
-
-      const npcs = await db.npcs.toArray();
-      const gm = npcs.find(n => n.role === 'General Manager' || n.role === 'GM');
-      if (gm) {
-        currentGmName = gm.name;
-        if (gm.image) {
-            const imgName = gm.image.split('/').pop();
-            currentGmImage = `https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/${imgName}`;
-        }
-      }
-
-      setGmName(currentGmName);
-      setGmImage(currentGmImage);
-
+    updateGMInfo().then((name) => {
       const engine = aiEngine.getEngine();
       if (engine) {
         setMessages(prev => {
           if (prev.length === 0) {
-            return [{ role: 'assistant', content: `¡Hola! Soy tu General Manager, ${currentGmName}. Estoy listo para ayudarte a gestionar tu universo. ¿Qué tienes en mente para el próximo show?` }];
+            return [{ role: 'assistant', content: `¡Hola! Soy tu General Manager, ${name}. Estoy listo para ayudarte a gestionar tu universo. ¿Qué tienes en mente para el próximo show?` }];
           }
           return prev;
         });
       }
-    };
-    fetchGM();
+    });
   }, []);
 
   const getUniverseContext = async () => {
@@ -189,13 +191,13 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
 6. Campeones Reales: Tienes acceso a quiénes son los campeones EXACTOS actualmente en el prompt anterior. Planifica alrededor de ellos y no te inventes que alguien es campeón si no lo es.
 7. División de Marcas: Respeta las marcas. Un luchador de una marca NO DEBE luchar ni interactuar en combates contra alguien de otra marca distinta (a menos que se especifique claramente que es un evento especial intermarca). Planifica siempre combates sólo dentro del mismo Roster.`;
 
-      const fullMessages: Message[] = [
+      const fullMessages = [
         { role: 'system', content: systemPrompt },
         ...newMessages
       ];
 
       const chunks = await currentEngine.chat.completions.create({
-        messages: fullMessages as any,
+        messages: fullMessages as Array<{ role: 'user' | 'assistant' | 'system'; content: string }>,
         stream: true,
       });
 
@@ -221,6 +223,7 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
 
   const toggleChat = async () => {
     if (!isOpen) {
+      updateGMInfo();
       const engine = aiEngine.getEngine();
       if (!engine) {
         setShowAvailabilityPopup(true);

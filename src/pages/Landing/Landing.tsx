@@ -61,7 +61,7 @@ const Landing: React.FC = () => {
       }
     ],
     championships: [
-      { id: 1, name: "World Championship", brandId: 1}
+      { id: 1, name: "World Championship", image: "/visuals/Championships/worldchampionship.png", brandId: 1}
     ],
     npcs: [
       { id: 100, name: "Name NPC", role: "General Manager", brandId: 1 }
@@ -195,6 +195,7 @@ const Landing: React.FC = () => {
       }
 
       await importState(importedData);
+      localStorage.setItem('showTutorial', 'true');
       navigate('/home');
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);

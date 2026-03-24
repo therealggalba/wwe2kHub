@@ -1,0 +1,168 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5000;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.content {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(40, 40, 40, 0.9) 100%);
+  border: 1px solid rgba(255, 204, 0, 0.3);
+  padding: 40px;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 204, 0, 0.05);
+  text-align: center;
+  position: relative;
+  z-index: 5001;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  h2 {
+    color: #ffcc00;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  p {
+    color: #eee;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+    
+    strong {
+      color: #ffcc00;
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+
+  span {
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  button {
+    background: #ffcc00;
+    color: #000;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      background: #ffe066;
+    }
+  }
+}
+
+.arrowContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5005;
+}
+
+.arrow {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bounce 0.8s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+  
+  .arrowPoint {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #ffcc00;
+    filter: drop-shadow(0 0 5px rgba(255, 204, 0, 0.8));
+  }
+}
+
+/* Specific arrow positioning based on targets */
+.ahrefroster {
+  top: 40px;
+  left: calc(30% + 25px); /* Approximation for Roster link in Nav */
+  transform: translateX(-50%);
+}
+
+.ahrefoptions {
+  top: 40px;
+  left: calc(70% - 25px); /* Approximation for Options link in Nav */
+  transform: translateX(-50%);
+}
+
+.dummyHomeCards {
+  top: calc(50% + 80px);
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg); /* Points UP */
+}
+
+.buttontitleHablarconelGM {
+  bottom: 100px;
+  right: 50px;
+  transform: rotate(-90deg); /* Points RIGHT to the FAB */
+}
+
+.generic {
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+}
+
+@keyframes bounce {
+  from { opacity: 0.5; transform: translate(-50%, 0) rotate(var(--rot, 0deg)); }
+  to { opacity: 1; transform: translate(-50%, 20px) rotate(var(--rot, 0deg)); }
+}
+
+/* Override bounce for side arrows */
+.buttontitleHablarconelGM {
+  --rot: -90deg;
+  @keyframes bounceSide {
+    from { opacity: 0.5; transform: translate(0, -50%) rotate(-90deg); }
+    to { opacity: 1; transform: translate(-20px, -50%) rotate(-90deg); }
+  }
+  animation-name: bounceSide;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
