@@ -116,8 +116,16 @@ const Options = () => {
 
   const handleResetGame = async () => {
     if (!confirm('¿Estás seguro de resetear la partida actual? Se borrarán todos los datos no guardados en slots.')) return;
-    await clearAllData();
-    navigate('/landing');
+    try {
+      console.log('Resetting game data...');
+      await clearAllData();
+      console.log('Data cleared, navigating to /landing');
+      navigate('/landing');
+    } catch (err) {
+      console.error('Error resetting game:', err);
+      // Fallback
+      window.location.hash = '/landing';
+    }
   };
 
   return (
