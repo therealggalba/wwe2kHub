@@ -177,27 +177,25 @@ const Landing: React.FC = () => {
     try {
       // Inject selected season duration into settings
       if (!importedData.settings) importedData.settings = [];
-      const setIdx = (importedData.settings as any).findIndex((s: any) => s.key === 'weeksPerSeason');
-      if (setIdx > -1) (importedData.settings as any)[setIdx].value = seasonDuration;
-      else (importedData.settings as any).push({ key: 'weeksPerSeason', value: seasonDuration });
+      const setIdx = (importedData.settings as any[]).findIndex((s: any) => s.key === 'weeksPerSeason');
+      if (setIdx > -1) (importedData.settings as any[])[setIdx].value = seasonDuration;
+      else (importedData.settings as any[]).push({ key: 'weeksPerSeason', value: seasonDuration });
 
       // Inject Gonzalo Galba as GM if not present
       if (!importedData.npcs) importedData.npcs = [];
-      const hasGM = importedData.npcs.some((n: any) => n.role === 'General Manager' || n.role === 'GM');
+      const hasGM = (importedData.npcs as any[]).some((n: any) => n.role === 'General Manager' || n.role === 'GM');
       if (!hasGM) {
-        importedData.npcs.push({
+        (importedData.npcs as any[]).push({
           id: 999,
           name: "Gonzalo Galba",
           role: "General Manager",
           brandName: "SHARED",
           image: "./visuals/Wrestlers/others/gonzalogalba/gonzalogalbaavatar.png"
-        } as any);
+        });
       }
 
       await importState(importedData);
-      console.log('Landing: Setting showTutorial to true');
-      localStorage.setItem('showTutorial', 'true');
-      navigate('/home');
+      navigate('/home', { state: { newGame: true } });
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
     } finally {

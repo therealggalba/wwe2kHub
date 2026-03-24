@@ -242,6 +242,12 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
         <span className={styles.fabText}>GM</span>
       </button>
 
+      {showAvailabilityPopup && (
+        <div className={styles.availabilityPopup}>
+            <p>El GM está aún por llegar a su despacho. Por favor, espera a que termine de prepararse.</p>
+        </div>
+      )}
+
       <div className={`${styles.chatDrawer} ${isOpen ? styles.open : ''}`}>
         <header className={styles.chatHeader}>
           <ResolvedImage src={gmImage} alt="GM" className={styles.gmAvatar} />
@@ -260,12 +266,6 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
           {isTyping && <div className={`${styles.message} ${styles.ai}`}>Escribiendo...</div>}
           <div ref={messagesEndRef} />
         </div>
-
-        {showAvailabilityPopup && (
-          <div className={styles.availabilityPopup}>
-             <p>El GM está aún por llegar a su despacho. Por favor, espera a que termine de prepararse.</p>
-          </div>
-        )}
 
         <div className={styles.inputArea}>
           <input 
