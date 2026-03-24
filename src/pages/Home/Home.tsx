@@ -9,20 +9,15 @@ import styles from './Home.module.scss';
 import { aiEngine } from '../../utils/aiEngine';
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const [heroTitle, setHeroTitle] = useState('DOMINA EL RING');
   const [showTutorial, setShowTutorial] = useState(false);
 
   useEffect(() => {
     if (location.state?.newGame) {
-      // Defer state update to next tick to avoid lint error / cascading render
-      Promise.resolve().then(() => {
-        setShowTutorial(true);
-        navigate(location.pathname, { replace: true, state: {} });
-      });
+      setShowTutorial(true);
     }
-  }, [location.state, navigate, location.pathname]);
+  }, [location.state?.newGame]);
 
   useEffect(() => {
     const checkBrand = async () => {
