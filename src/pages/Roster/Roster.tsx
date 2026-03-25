@@ -6,6 +6,7 @@ import WrestlerCard from '../../components/WrestlerCard/WrestlerCard';
 import ChampionRow from '../../components/ChampionRow/ChampionRow';
 import FilterBar, { type GenderFilter, type AlignmentFilter } from '../../components/FilterBar/FilterBar';
 import styles from './Roster.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface BrandFilters {
   gender: GenderFilter;
@@ -13,6 +14,7 @@ interface BrandFilters {
 }
 
 const Roster: React.FC = () => {
+  const { t } = useTranslation();
   const [brands, setBrands] = useState<Brand[]>([]);
   const [wrestlers, setWrestlers] = useState<Wrestler[]>([]);
   const [titles, setTitles] = useState<Championship[]>([]);
@@ -53,7 +55,7 @@ const Roster: React.FC = () => {
     }));
   };
 
-  if (loading) return <div>Loading Roster...</div>;
+  if (loading) return <div>{t('roster.loading')}</div>;
 
   return (
     <div className={styles.rosterPage}>

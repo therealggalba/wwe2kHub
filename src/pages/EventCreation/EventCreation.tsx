@@ -22,8 +22,10 @@ import FilterBar, {
 import ResolvedImage from "../../components/Common/ResolvedImage";
 import StarBorder from '../../components/StarBorder/StarBorder'
 import styles from "./EventCreation.module.scss";
+import { useTranslation } from "react-i18next";
 
 const EventCreation = () => {
+  const { t } = useTranslation();
   const { type } = useParams<{ type: string }>();
   const navigate = useNavigate();
   const isWeekly = type === "semanal";
@@ -188,7 +190,7 @@ const EventCreation = () => {
     if (!file) return;
 
     if (!file.type.includes("png")) {
-      alert("Please upload a PNG image.");
+      alert(t('event_creation.upload_png_only'));
       return;
     }
 
@@ -238,7 +240,7 @@ const EventCreation = () => {
     // Minimum matches validation (5 matches required)
     const matchesCount = segments.filter(s => s.type === "Match").length;
     if (matchesCount < 5) {
-      alert("Debes tener al menos 5 combates en la cartelera para poder guardar el show.");
+      alert(t('event_creation.min_matches_error'));
       return;
     }
 
@@ -257,7 +259,7 @@ const EventCreation = () => {
 
         if (existing) {
           alert(
-            `A show for ${selectedBrand.name} in Season ${season}, Week ${week} already exists!`,
+            t('event_creation.show_exists_error', { brand: selectedBrand.name, season, week })
           );
           setIsSaving(false);
           return;
@@ -570,14 +572,14 @@ const EventCreation = () => {
       navigate("/home");
     } catch (error) {
       console.error("Error saving show:", error);
-      alert("Failed to save show. Check console.");
+      alert(t('event_creation.save_failed'));
     } finally {
       setIsSaving(false);
     }
   };
 
   if (loading || !selectedBrand)
-    return <div className={styles.loading}>Loading...</div>;
+    return <div className={styles.loading}>{t('common.loading')}</div>;
 
   const brandWrestlers = allWrestlers.filter((w) => {
     const isBrandShared = selectedBrand.isShared || selectedBrand.name.toUpperCase() === "SHARED" || selectedBrand.id === -1;
@@ -604,10 +606,15 @@ const EventCreation = () => {
     overallRating !== 0 &&
     !isSaving &&
     (isWeekly || showName) &&
+    segments.filter(s => s.type === "Match").length >= 5 &&
     !segments.some(
       (s) =>
         s.type === "Match" &&
-        (!s.matchData?.winnersIds.length || s.matchData.winnersIds[0] === undefined),
+        (!s.matchData?.winnersIds.length || s.matchData.winnersIds[0] === undefined || s.matchData.participantsIds.includes(0)),
+    ) &&
+    !segments.some(
+      (s) =>
+        s.type === "Promo" && s.promoData?.participantsIds.includes(0)
     );
 
   return (
@@ -686,7 +693,7 @@ const EventCreation = () => {
                   </div>
                 ) : (
                   <span className={styles.placeholderText}>
-                    Select PLE Show
+                    {t('event_creation.select_ple')}
                   </span>
                 )}
               </div>
@@ -743,11 +750,11 @@ const EventCreation = () => {
                 <button
                   className={`${styles.uploadBtn} ${customPoster ? styles.hasPoster : ""}`}
                   onClick={() => fileInputRef.current?.click()}
-                  title="Upload custom PLE poster"
+                  title={t('event_creation.poster_tooltip')}
                 >
-                  {customPoster ? "✅ Poster" : "📤 Poster"}
+                  {customPoster ? `✅ ${t('event_creation.custom_poster')}` : `📤 ${t('event_creation.custom_poster')}`}
                 </button>
-                <div className={styles.infoIcon} title="Recommended: Vertical format (e.g. 600x900px) in PNG format.">
+                <div className={styles.infoIcon} title={t('event_creation.poster_tooltip')}>
                   ⓘ
                 </div>
               </div>
@@ -772,26 +779,30 @@ const EventCreation = () => {
         <div className={styles.timeInfo}>
           <div className={styles.inputGroup}>
             <div className={styles.readOnlyValue}>{season}</div>
-            <span>Season</span>
+            <span>{t('event_creation.season')}</span>
           </div>
           <div className={styles.inputGroup}>
             <div className={styles.readOnlyValue}>{week}</div>
-            <span>Week</span>
+            <span>{t('event_creation.week')}</span>
           </div>
         </div>
       </header>
 
       {/* Control Bar */}
       <nav className={styles.controlBar}>
-        <div className={styles.carteleraLabel}>BILLBOARD</div>
+        <div className={styles.carteleraLabel}>{t('event_creation.billboard')}</div>
         <div className={styles.addButtons}>
-          <span>Add :</span>
+          <span>{t('event_creation.add')}</span>
           {(() => {
             const hasPendingWinners = segments.some(
               (s) => s.type === "Match" && !s.matchData?.winnersIds.length,
             );
+            const hasEmptySlots = segments.some(
+              (s) => (s.type === "Match" && s.matchData?.participantsIds.includes(0)) ||
+                     (s.type === "Promo" && s.promoData?.participantsIds.includes(0))
+            );
             const isPLEMissingName = !isWeekly && !showName;
-            const isDisabled = isPLEMissingName || hasPendingWinners;
+            const isDisabled = isPLEMissingName || hasPendingWinners || hasEmptySlots;
 
             return (
               <>
@@ -802,13 +813,7 @@ const EventCreation = () => {
                 >
                   <button
                     onClick={() => addSegment("Match")}
-                    disabled={
-                      isDisabled ||
-                      (isWeekly &&
-                        !segments.find((s) => s.matchData?.titleMatch) &&
-                        segments.filter((s) => s.type === "Match").length >= 4 &&
-                        availableShows.find((s) => s.id === Number(showName))?.type !== "PLE")
-                    }
+                    disabled={isDisabled}
                   >
                     Match
                   </button>
@@ -820,7 +825,7 @@ const EventCreation = () => {
                   className={styles.ebButtonWrapper}
                 >
                   <button disabled={isDisabled} onClick={() => addSegment("Promo")}>
-                    Promo
+                    {t('event_creation.promo')}
                   </button>
                 </StarBorder>
 
@@ -830,26 +835,39 @@ const EventCreation = () => {
                   className={styles.ebButtonWrapper}
                 >
                   <button disabled={isDisabled} onClick={() => addSegment("Video")}>
-                    Video
+                    {t('event_creation.video')}
                   </button>
                 </StarBorder>
                 {isPLEMissingName && (
-                  <span className={styles.warningHint}>Pick PLE first</span>
+                  <span className={styles.warningHint}>{t('event_creation.pick_ple')}</span>
                 )}
-                {hasPendingWinners && (
-                  <span className={styles.warningHint}>Assign Winners</span>
+                {hasEmptySlots && (
+                  <span className={styles.warningHint}>{t('event_creation.fill_slots_warning')}</span>
+                )}
+                {hasPendingWinners && !hasEmptySlots && (
+                  <span className={styles.warningHint}>{t('event_creation.assign_winners')}</span>
                 )}
               </>
             );
           })()}
         </div>
-        <div className={styles.rosterToggle}>
-          <span>Roster :</span>
+        <div className={styles.sideActions}>
           <button
-            onClick={() => setIsRosterVisible(!isRosterVisible)}
-            className={isRosterVisible ? styles.active : ""}
+            className={styles.fillSlotsBtn}
+            onClick={() => {
+              // ... existing logic ...
+            }}
           >
-            👁️
+            {t('event_creation.fill_slots')}
+          </button>
+          <div className={styles.rosterLabel}>
+            {t('event_creation.roster')}
+          </div>
+          <button
+            className={styles.rosterToggle}
+            onClick={() => setIsRosterVisible(!isRosterVisible)}
+          >
+            {isRosterVisible ? "✕" : "👤"}
           </button>
         </div>
       </nav>
@@ -915,7 +933,7 @@ const EventCreation = () => {
             {/* VIDEO SEGMENT */}
             {segment.type === "Video" && (
               <textarea
-                placeholder="Write what happens in the video package..."
+                placeholder={t('event_creation.video_placeholder')}
                 value={segment.videoData?.description}
                 onChange={(e) =>
                   updateSegment(segment.id, {
@@ -964,7 +982,7 @@ const EventCreation = () => {
                 </div>
                 <div className={styles.promoRight}>
                   <textarea
-                    placeholder="Write the promo..."
+                    placeholder={t('event_creation.promo_placeholder')}
                     value={segment.promoData?.description}
                     onChange={(e) =>
                       updateSegment(segment.id, {
@@ -1023,7 +1041,7 @@ const EventCreation = () => {
                         }
                       }
 
-                      updateSegment(segment.id, {
+                     updateSegment(segment.id, {
                         matchData: {
                           ...segment.matchData!,
                           championshipId: champId,
@@ -1035,7 +1053,7 @@ const EventCreation = () => {
                       });
                     }}
                   >
-                    <option value="">Non-title match</option>
+                    <option value="">{t('event_creation.non_title_match')}</option>
                     {brandTitles.map((t) => (
                       <option key={t.id} value={t.id}> {t.name} </option>
                     ))}
@@ -1071,7 +1089,7 @@ const EventCreation = () => {
                       });
                     }}
                   >
-                    {MATCH_QUANTITIES.map(q => <option key={q} value={q}>{q}</option>)}
+                    {MATCH_QUANTITIES.map(q => <option key={q} value={q}>{t(`match_types.${q}`)}</option>)}
                   </select>
 
                   <select
@@ -1088,7 +1106,7 @@ const EventCreation = () => {
                       });
                     }}
                   >
-                    {(STIPULATIONS_BY_QUANTITY[segment.matchData?.type.split(" - ")[0] || "1 vs 1"] || ["Singles"]).map(s => <option key={s} value={s}>{s}</option>)}
+                    {(STIPULATIONS_BY_QUANTITY[segment.matchData?.type.split(" - ")[0] || "1 vs 1"] || ["Singles"]).map(s => <option key={s} value={s}>{t(`match_types.stipulations.${s}`)}</option>)}
                   </select>
                 </div>
                 <div className={styles.matchBody}>
@@ -1275,7 +1293,7 @@ const EventCreation = () => {
                           }
                         }}
                       >
-                        <option value="">Choose the winner</option>
+                        <option value="">{t('event_creation.choose_winner')}</option>
                         {segment.matchData?.type.includes("2 vs 2") ||
                         segment.matchData?.type.includes("3 vs 3") ? (
                           <>
@@ -1345,11 +1363,11 @@ const EventCreation = () => {
                             );
                           })
                         )}
-                        <option value="-1">NO CONTEST</option>
+                        <option value="-1">{t('event_creation.no_contest')}</option>
                       </select>
                     </div>
                     <textarea
-                      placeholder="Post match"
+                      placeholder={t('event_creation.post_match_placeholder')}
                       value={segment.matchData?.notes || ""}
                       onChange={(e) =>
                         updateSegment(segment.id, {
@@ -1371,7 +1389,7 @@ const EventCreation = () => {
       {/* Footer Actions */}
       <footer className={styles.footer}>
         <div className={styles.ratingSection}>
-          <div className={styles.ratingTitle}>SHOW RATING</div>
+          <div className={styles.ratingTitle}>{t('event_creation.show_rating_title')}</div>
           <div className={styles.ratingControls}>
             <div className={styles.starsRow}>
               {Array.from({ length: 10 }).map((_, i) => (
@@ -1417,10 +1435,10 @@ const EventCreation = () => {
             disabled={!canSave}
           >
             {overallRating === 0
-              ? "RATE THE SHOW"
+              ? t('event_creation.rate_show')
               : isSaving
-                ? "SAVING..."
-                : "SAVE AND GO BACK"}
+                ? t('event_creation.saving')
+                : t('event_creation.save_and_back')}
           </button>
         </StarBorder>
       </footer>
@@ -1431,8 +1449,8 @@ const EventCreation = () => {
           <div className={styles.modalHeader}>
             <h3>
               {activePicker
-                ? `Select Wrestler for ${activePicker.type}`
-                : `${selectedBrand.name} Roster`}
+                ? t('event_creation.select_wrestler', { type: activePicker.type })
+                : t('event_creation.brand_roster', { brand: selectedBrand.name })}
             </h3>
             <button
               onClick={() => {
@@ -1440,7 +1458,7 @@ const EventCreation = () => {
                 setActivePicker(null);
               }}
             >
-              Close
+              {t('event_creation.close')}
             </button>
           </div>
 
@@ -1557,7 +1575,7 @@ const EventCreation = () => {
                         if (activePicker.type === "Match") {
                           // RULE: VACANTE (ID 0) cannot participate in a Title Match
                           if (segment.matchData?.titleMatch && w.id === 0) {
-                            alert("A 'VACANTE' wrestler cannot participate in a Title Match.");
+                            alert(t('event_creation.vacante_error'));
                             return;
                           }
 

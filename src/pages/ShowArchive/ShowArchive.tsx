@@ -4,8 +4,10 @@ import { db } from '../../db/db';
 import type { Show, Brand } from '../../models/types';
 import ResolvedImage from '../../components/Common/ResolvedImage';
 import styles from './ShowArchive.module.scss';
+import { useTranslation } from 'react-i18next';
 
 const ShowArchive = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [shows, setShows] = useState<Show[]>([]);
   const [brands, setBrands] = useState<Brand[]>([]);
@@ -47,7 +49,7 @@ const ShowArchive = () => {
   }, []);
 
   const handleDeleteShow = async (id: number) => {
-    if (window.confirm('Are you sure you want to delete this show permanently?')) {
+    if (window.confirm(t('archive.delete_confirm'))) {
       await db.shows.delete(id);
       setShows(prev => prev.filter(s => s.id !== id));
     }
@@ -70,12 +72,12 @@ const ShowArchive = () => {
       <div className={styles.controls}>
         <div className={styles.filterGroup}>
           <select value={brandFilter} onChange={(e) => setBrandFilter(e.target.value === 'ALL' ? 'ALL' : Number(e.target.value))}>
-            <option value="ALL">All Brands</option>
+            <option value="ALL">{t('archive.all_brands')}</option>
             {brands.map(b => <option key={b.id} value={b.id}>{b.name}</option>)}
           </select>
           <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as Show['type'] | 'ALL')}>
-            <option value="ALL">All Types</option>
-            <option value="Weekly">Weekly</option>
+            <option value="ALL">{t('archive.all_types')}</option>
+            <option value="Weekly">{t('event_creation.match')}</option>
             <option value="PLE">PLE</option>
           </select>
         </div>
@@ -84,30 +86,30 @@ const ShowArchive = () => {
             className={sortBy === 'date' ? styles.activeSort : ''} 
             onClick={() => setSortBy('date')}
           >
-            By Date
+            {t('archive.by_date')}
           </button>
           <button 
             className={sortBy === 'valuation' ? styles.activeSort : ''} 
             onClick={() => setSortBy('valuation')}
           >
-            By Rating
+            {t('archive.by_rating')}
           </button>
         </div>
       </div>
 
       {loading ? (
-        <div className={styles.loading}>Loading Archive...</div>
+        <div className={styles.loading}>{t('archive.loading')}</div>
       ) : filteredShows.length === 0 ? (
-        <div className={styles.emptyState}>No shows found matching the filters.</div>
+        <div className={styles.emptyState}>{t('archive.no_shows')}</div>
       ) : (
           <div className={styles.showTable}>
-            <div className={styles.tableHeader}>
-            <span>Date</span>
-            <span>Logo</span>
-            <span>Show</span>
-            <span>Brand</span>
-            <span>Rating</span>
-            <span style={{ textAlign: 'right' }}>Actions</span>
+           <div className={styles.tableHeader}>
+            <span>{t('archive.col_date')}</span>
+            <span>{t('archive.col_logo')}</span>
+            <span>{t('archive.col_show')}</span>
+            <span>{t('archive.col_brand')}</span>
+            <span>{t('archive.col_rating')}</span>
+            <span style={{ textAlign: 'right' }}>{t('archive.col_actions')}</span>
           </div>
             {filteredShows.map(show => {
               const brand = brands.find(b => b.id === show.brandId);

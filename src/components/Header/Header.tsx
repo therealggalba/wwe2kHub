@@ -1,7 +1,9 @@
 import { NavLink, Link } from 'react-router-dom'
 import styles from './Header.module.scss'
+import { useTranslation } from 'react-i18next'
 
 const Header = () => {
+  const { t } = useTranslation();
   return (
     <header className={styles.header}>
       <Link to="/home" className={styles.titleLink}>
@@ -12,25 +14,27 @@ const Header = () => {
           to="/home" 
           className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
         >
-          Home
+          {t('common.home')}
         </NavLink>
         <NavLink 
+          id="nav-roster"
           to="/roster" 
           className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
         >
-          Roster
+          {t('common.roster')}
         </NavLink>
         <NavLink 
           to="/archive" 
           className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
         >
-          Archive
+          {t('common.archive')}
         </NavLink>
         <NavLink 
+          id="nav-options"
           to="/options" 
           className={({ isActive }) => isActive ? `${styles.navButton} ${styles.active}` : styles.navButton}
         >
-          Options
+          {t('common.options')}
         </NavLink>
       </nav>
     </header>

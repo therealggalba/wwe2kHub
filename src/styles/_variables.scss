@@ -5,8 +5,8 @@ $deep-purple: #2d1b4e;
 $dark-bg: #0f172a; // Slate Dark
 $card-bg: #1e293b; // Slate Card
 $text-white: #f8fafc;
-$text-gray: #94a3b8;
-$accent-gradient: linear-gradient(135deg, $deep-purple, #1e1b4b);
+$text-gray: #a1a1aa; // Slightly lighter for better contrast on dark
+$accent-gradient: linear-gradient(135deg, $deep-purple, #4f46e5); // Brighter second stop for logo
 $gold-gradient: linear-gradient(135deg, $primary-gold, $secondary-gold);
 
 // Breakpoints

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../db/db';
-import type { Show, Wrestler, Championship, Brand } from '../../models/types';
+import type { Show, Wrestler, Championship, Brand, TitleHistoryEntry } from '../../models/types';
 import ResolvedImage from '../Common/ResolvedImage';
 import styles from './DigitalNewspaper.module.scss';
+import { useTranslation } from 'react-i18next';
 
 interface CollageData {
   winnersImages: string[];
   losersAvatars: string[];
   championshipImage?: string;
   fallbackImage?: string;
+  mainEventImage?: string;
 }
 
 interface NewspaperData {
@@ -24,6 +26,7 @@ interface NewspaperData {
 }
 
 const DigitalNewspaper: React.FC = () => {
+  const { t } = useTranslation();
   const [data, setData] = useState<NewspaperData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -34,21 +37,28 @@ const DigitalNewspaper: React.FC = () => {
         const lastShow = shows.find(s => s.season !== undefined && s.week !== undefined);
 
         if (!lastShow) {
-          // Welcome Edition for first-time users - try to find the brand logo
-          const brands = await db.brands.toArray();
+          const brands: Brand[] = await db.brands.toArray();
           const firstMajorBrand = brands.find(b => b.isMajorBrand);
           const genericLogo = "https://www.wwe.com/g/show-logo-placeholder.png";
           const brandLogo = firstMajorBrand?.logo || genericLogo;
 
           setData({
-            showTitle: "Temporada I: El Comienzo",
+            showTitle: t('newspaper.welcome_title'),
             date: "S1 W1",
             brandLogo: brandLogo,
-            headline: "¡UNA NUEVA ERA COMIENZA EN EL HUB!",
-            summary: "Todo está listo para el inicio de la temporada. El roster está preparado, los títulos esperan dueño y tú tienes el control total. ¿Quiénes se convertirán en las próximas leyendas de tu universo?",
+            headline: t('newspaper.welcome_headline'),
+            summary: t('newspaper.welcome_summary'),
             collageData: { winnersImages: [], losersAvatars: [], fallbackImage: brandLogo },
-            championsNews: ["¡Todos los títulos están vacantes!", "La carrera por el oro comienza hoy mismo.", "Prepara el primer Main Event de la historia."],
-            injuriesNews: ["El vestuario está al 100% de energía.", "Sin bajas registradas para el debut.", "Listos para dar el espectáculo."]
+            championsNews: [
+              t('newspaper.welcome_news_1'),
+              t('newspaper.welcome_news_2'),
+              t('newspaper.welcome_news_3')
+            ],
+            injuriesNews: [
+              t('newspaper.welcome_injuries_1'),
+              t('newspaper.welcome_injuries_2'),
+              t('newspaper.welcome_injuries_3')
+            ]
           });
           setLoading(false);
           return;
@@ -58,11 +68,10 @@ const DigitalNewspaper: React.FC = () => {
         const wrestlers: Wrestler[] = await db.wrestlers.toArray();
         const titles: Championship[] = await db.championships.toArray();
 
-        // 1. Process Main Event
         const segments = lastShow.card?.segments || [];
         const mainEvent = segments[segments.length - 1];
-        let headline = "¡Guerra sin Cuartel!";
-        let summary = "Un show para la historia que deja a todos los fans con ganas de más.";
+        let headline = t('newspaper.fallback_headline');
+        let summary = t('newspaper.fallback_summary');
         const meImage = lastShow.image || lastShow.poster;
         const collageData: CollageData = { winnersImages: [], losersAvatars: [], fallbackImage: meImage };
 
@@ -99,40 +108,27 @@ const DigitalNewspaper: React.FC = () => {
             const getRandomItem = (arr: string[]) => arr[Math.floor(Math.random() * arr.length)];
             
             if (isNoContest) {
-              // Intento dividir a los participantes a la mitad para los nombres de la rivalidad si son equipo
               const half = Math.ceil(participants.length / 2);
               const team1 = participants.slice(0, half);
               const team2 = participants.slice(half);
               const t1Name = getTeamName(team1);
               const t2Name = getTeamName(team2);
 
-              headline = getRandomItem([
-                 `¡${t1Name} vs ${t2Name} termina en Caos!`,
-                 `Sin Decisión en el Combate Estelar`,
-                 `¡La controversia mancha ${lastShow.name}!`,
-                 `Nadie Resulta Vencedor Hoy`
-              ]);
-              summary = getRandomItem([
-                 `El esperado combate entre ${t1Name} y ${t2Name} terminó sin un ganador claro en un impactante final para ${lastShow.name}.`,
-                 `Los oficiales no pudieron mantener el control y declararon un "No Contest" entre ${t1Name} y ${t2Name}.`,
-                 `Una batalla tan brutal entre ${t1Name} y ${t2Name} que el árbitro se vio obligado a detenerla.`,
-                 `¡Qué escándalo! ${t1Name} y ${t2Name} destrozaron irremediablemente todo a su paso sin importarles la victoria legal.`
-              ]);
+              const headlinesList = t('newspaper.headlines.no_contest', { returnObjects: true }) as string[];
+              const summariesList = t('newspaper.summaries.no_contest', { returnObjects: true }) as string[];
+
+              headline = getRandomItem(headlinesList).replace('{{t1}}', t1Name).replace('{{t2}}', t2Name).replace('{{show}}', lastShow.name);
+              summary = getRandomItem(summariesList).replace('{{t1}}', t1Name).replace('{{t2}}', t2Name).replace('{{show}}', lastShow.name);
+              
               collageData.losersAvatars = participants.map(p => p.avatar || p.image || '').filter(Boolean);
             } else {
               const winnerNameStr = getTeamName(winners);
-              headline = getRandomItem([
-                 `¡${winnerNameStr} domina el Main Event!`,
-                 `Una Noche Triunfal para ${winnerNameStr}`,
-                 `¡${winnerNameStr} sella su victoria!`,
-                 `La gloria pertenece a ${winnerNameStr}`
-              ]);
-              summary = getRandomItem([
-                 `En una demostración de superioridad, ${winnerNameStr} consiguió la victoria sobre sus oponentes en el evento estelar de ${lastShow.name}.`,
-                 `El público enloqueció cuando ${winnerNameStr} remató la faena, llevándose el aplauso general tras un gran Main Event.`,
-                 `Contra todo pronóstico y dejando el alma en el ring, ${winnerNameStr} se impuso a sus rivales cerrando ${lastShow.name} magistralmente.`,
-                 `La cartelera estelar no defraudó, concluyendo con una espectacular contienda donde ${winnerNameStr} logró alzarse con el brazo en alto.`
-              ]);
+              const headlinesList = t('newspaper.headlines.victory', { returnObjects: true }) as string[];
+              const summariesList = t('newspaper.summaries.victory', { returnObjects: true }) as string[];
+
+              headline = getRandomItem(headlinesList).replace('{{winner}}', winnerNameStr).replace('{{show}}', lastShow.name);
+              summary = getRandomItem(summariesList).replace('{{winner}}', winnerNameStr).replace('{{show}}', lastShow.name);
+
               collageData.winnersImages = winners.map(w => w.image || w.avatar || '').filter(Boolean);
               collageData.losersAvatars = losers.map(l => l.avatar || l.image || '').filter(Boolean);
             }
@@ -140,15 +136,12 @@ const DigitalNewspaper: React.FC = () => {
           }
         }
 
-        // 2. Process Champions
         const championsNews: string[] = [];
         for (const segment of segments) {
           if (segment.type === 'Match' && segment.matchData?.titleMatch && segment.matchData.championshipId) {
             const title = titles.find(t => t.id === segment.matchData!.championshipId);
             const winnerIds = segment.matchData.winnersIds;
-            
-            // A title change is detected if there's a history entry corresponding to THIS show
-            const isChange = title?.history.some(h => h.showId === lastShow.id);
+            const isChange = title?.history.some((h: TitleHistoryEntry) => h.showId === lastShow.id);
             const winnersForTitle = winnerIds.map(id => wrestlers.find(w => w.id === id)).filter(Boolean) as Wrestler[];
             
             const getTeamNameInternal = (team: Wrestler[]) => {
@@ -162,18 +155,15 @@ const DigitalNewspaper: React.FC = () => {
             const winnerNamesStr = getTeamNameInternal(winnersForTitle);
 
             if (isChange && winnerNamesStr) {
-              championsNews.push(`¡NUEVO CAMPEÓN! ${winnerNamesStr} se corona como ${title?.name}.`);
+              championsNews.push(t('newspaper.new_champion', { winner: winnerNamesStr, title: title?.name }));
             } else if (winnerIds.length > 0 && !winnerIds.includes(-1) && winnerNamesStr) {
-              championsNews.push(`${winnerNamesStr} retiene el título ${title?.name}.`);
+              championsNews.push(t('newspaper.retains', { winner: winnerNamesStr, title: title?.name }));
             }
           }
         }
 
-        // 3. Process Injuries (Simplified: any wrestler with injuryWeeks > 0 who appeared or was already injured)
-        // More specific: check who got injured in THIS show (this logic might need a field in Wrestler like 'injuredInShowId')
-        // For now, let's look for wrestlers with high injury weeks who are active
         const injuredWrestlers = wrestlers.filter(w => w.injuryWeeks > 0 && w.brandId === lastShow.brandId);
-        const injuriesNews = injuredWrestlers.slice(0, 3).map(w => `${w.name} estará fuera ${w.injuryWeeks} semanas.`);
+        const injuriesNews = injuredWrestlers.slice(0, 3).map(w => t('newspaper.injury_report', { name: w.name, weeks: w.injuryWeeks }));
 
         setData({
           showTitle: lastShow.name,
@@ -182,8 +172,8 @@ const DigitalNewspaper: React.FC = () => {
           headline,
           summary,
           collageData,
-          championsNews: championsNews.length > 0 ? championsNews : ["Sin cambios titulares reportados."],
-          injuriesNews: injuriesNews.length > 0 ? injuriesNews : ["El roster se mantiene saludable."]
+          championsNews: championsNews.length > 0 ? championsNews : [t('newspaper.no_title_changes')],
+          injuriesNews: injuriesNews.length > 0 ? injuriesNews : [t('newspaper.roster_healthy')]
         });
       } catch (error) {
         console.error("Error loading newspaper data:", error);
@@ -193,23 +183,23 @@ const DigitalNewspaper: React.FC = () => {
     };
 
     loadLastShow();
-  }, []);
+  }, [t]);
 
   if (loading) return null;
-  if (!data) return <div className={styles.newspaperContainer}><p className={styles.emptyState}>No hay ediciones anteriores disponibles. ¡Crea tu primer show para ver las noticias!</p></div>;
+  if (!data) return <div className={styles.newspaperContainer}><p className={styles.emptyState}>{t('newspaper.no_editions')}</p></div>;
 
   return (
     <article className={styles.newspaperContainer}>
       <header className={styles.newspaperHeader}>
         <div className={styles.subline}>
-          <span>Edición Especial</span>
+          <span>{t('newspaper.edition')}</span>
           <span>{data.showTitle}</span>
           <span>{data.date}</span>
         </div>
       </header>
 
       <aside className={styles.leftColumn}>
-        <span className={styles.sectionTitle}>Títulos de Oro</span>
+        <span className={styles.sectionTitle}>{t('newspaper.titles_of_gold')}</span>
         <ul className={styles.newsList}>
           {data.championsNews.map((news, i) => (
             <li key={i}>{news}</li>
@@ -262,7 +252,7 @@ const DigitalNewspaper: React.FC = () => {
       </main>
 
       <aside className={styles.rightColumn}>
-        <span className={styles.sectionTitle}>Boletín Médico</span>
+        <span className={styles.sectionTitle}>{t('newspaper.medical_bulletin')}</span>
         <ul className={styles.newsList}>
           {data.injuriesNews.map((news, i) => (
             <li key={i}>{news}</li>

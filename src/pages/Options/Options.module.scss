@@ -251,6 +251,33 @@ input:checked + .slider:before {
   }
 }
 
+.languageSelect {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border-color: $primary-gold;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-gold;
+  }
+
+  option {
+    background: #1a1a1a;
+    color: #fff;
+  }
+}
+
 .assetStatus {
   margin: 1.5rem 0;
 }

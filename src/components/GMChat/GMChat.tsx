@@ -238,7 +238,7 @@ INSTRUCCIONES ESTRICTAS QUE DEBES CUMPLIR:
 
   return (
     <div className={styles.chatWrapper}>
-      <button className={styles.fab} onClick={toggleChat} title="Hablar con el GM">
+      <button id="gm-fab" className={styles.fab} onClick={toggleChat} title="Hablar con el GM">
         <span className={styles.fabText}>GM</span>
       </button>
 

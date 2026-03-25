@@ -37,6 +37,44 @@
   padding: 2rem;
 }
 
+.languageSwitcher {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 100;
+
+  button {
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.6);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border-color: $primary-gold;
+    }
+
+    &.active {
+      background: $primary-gold;
+      color: $dark-bg;
+      border-color: $primary-gold;
+    }
+  }
+
+  @media (max-width: $tablet) {
+    right: 1rem;
+    top: 0.5rem;
+  }
+}
+
 .logoContainer {
   text-align: center;
   animation: fadeInDown 1s ease-out;

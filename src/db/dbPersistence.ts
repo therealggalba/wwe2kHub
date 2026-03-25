@@ -8,7 +8,22 @@ export interface FullDatabaseState {
   npcs: NPC[];
   settings: { key: string; value: unknown }[];
   shows: Show[];
+  [key: string]: unknown;
 }
+
+export const validateUniverseData = (data: unknown): boolean => {
+  if (!data || typeof data !== 'object') return false;
+  const d = data as Record<string, unknown>;
+  
+  const requiredKeys = ['brands', 'wrestlers', 'championships'];
+  for (const key of requiredKeys) {
+    if (!Array.isArray(d[key])) {
+      console.error(`Missing or invalid required array: ${key}`);
+      return false;
+    }
+  }
+  return true;
+};
 
 export const exportState = async (): Promise<FullDatabaseState> => {
   return {
@@ -21,7 +36,10 @@ export const exportState = async (): Promise<FullDatabaseState> => {
   };
 };
 
-export const importState = async (state: Partial<FullDatabaseState> & Record<string, any>) => {
+export const importState = async (state: Partial<FullDatabaseState>) => {
+  if (!validateUniverseData(state)) {
+    throw new Error('Invalid universe data format. Required fields missing.');
+  }
   await db.transaction('rw', [db.brands, db.wrestlers, db.championships, db.npcs, db.settings, db.shows], async () => {
     // Clear existing data
     await db.brands.clear();
@@ -34,7 +52,7 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
     // 1. Import Brands first and preserve IDs
     const brandMap = new Map<string, number>();
     if (state.brands && state.brands.length > 0) {
-      for (const brandData of state.brands) {
+      for (const brandData of (state.brands as Brand[])) {
         // Use add() which preserves ID if present, or generates one if not
         const id = await db.brands.add(brandData);
         brandMap.set(brandData.name, id);
@@ -44,18 +62,18 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
     // 2. Import Championships (preserving IDs and mapping brandId if needed)
     const titleMap = new Map<string, number>();
     if (state.championships && state.championships.length > 0) {
-      for (const titleData of state.championships) {
+      for (const titleData of (state.championships as (Championship & { brandName?: string })[])) {
         const championshipId = await db.championships.add({
           ...titleData,
-          brandId: titleData.brandId || (('brandName' in titleData) ? brandMap.get((titleData as any).brandName) : undefined),
-        });
+          brandId: titleData.brandId || (titleData.brandName ? brandMap.get(titleData.brandName) : undefined),
+        } as Championship);
         titleMap.set(titleData.name, championshipId);
       }
     }
 
     // 3. Import Wrestlers (preserving IDs and mapping brandId/titles if needed)
     if (state.wrestlers && state.wrestlers.length > 0) {
-      const wrestlersWithMappedIds: Wrestler[] = state.wrestlers.map((w: any) => {
+      const wrestlersWithMappedIds: Wrestler[] = (state.wrestlers as (Wrestler & { holdsTitleNames?: string[], brandName?: string })[]).map((w) => {
         // Map titles from names ONLY if we need to (e.g. from a Preset)
         const titles: number[] = [...(w.currentTitlesIds || [])];
         if (w.holdsTitleNames && Array.isArray(w.holdsTitleNames)) {
@@ -88,8 +106,8 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
     }
 
     // 4. Import NPCs (preserving IDs and mapping brandId)
-    if (state.npcs && state.npcs.length > 0) {
-      const npcsWithMappedIds = state.npcs.map((n: any) => ({
+    if (state.npcs && (state.npcs as NPC[]).length > 0) {
+      const npcsWithMappedIds = (state.npcs as (Partial<NPC> & { brandName?: string })[]).map((n) => ({
         ...n,
         brandId: n.brandId || (n.brandName ? brandMap.get(n.brandName) : undefined)
       })) as NPC[];
@@ -103,7 +121,7 @@ export const importState = async (state: Partial<FullDatabaseState> & Record<str
     
     // 6. Import Shows (preserving IDs and mapping brandId)
     if (state.shows && state.shows.length > 0) {
-      const showsWithMappedIds = state.shows.map((s: any) => ({
+      const showsWithMappedIds = (state.shows as (Partial<Show> & { brandName?: string })[]).map((s) => ({
         ...s,
         date: s.date ? new Date(s.date) : new Date(),
         brandId: s.brandId || (s.brandName ? brandMap.get(s.brandName) : undefined)
@@ -125,7 +143,7 @@ export const saveToSlot = async (name: string) => {
 export const loadFromSlot = async (slotId: number) => {
   const slot = await db.save_slots.get(slotId);
   if (!slot) throw new Error('Slot not found');
-  await importState(slot.data);
+  await importState(slot.data as Partial<FullDatabaseState>);
 };
 
 export const getSaveSlots = async () => {

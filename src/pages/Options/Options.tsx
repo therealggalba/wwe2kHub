@@ -7,6 +7,7 @@ import { GAME_CONFIG } from '../../config/gameConfig';
 import styles from './Options.module.scss';
 import { useNavigate } from 'react-router-dom';
 import { linkAssetsFolder, initAssetsFolder, checkAssetsPermission, requestAssetsPermission } from '../../utils/assetResolver';
+import { useTranslation } from 'react-i18next';
 
 interface SaveSlot {
   id?: number;
@@ -16,6 +17,7 @@ interface SaveSlot {
 }
 
 const Options = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [enableInjuries, setEnableInjuries] = useState<boolean>(GAME_CONFIG.settings.enableInjuries);
   const [enableMorale, setEnableMorale] = useState<boolean>(GAME_CONFIG.settings.enableMorale);
@@ -95,27 +97,27 @@ const Options = () => {
 
 
   const handleCreateSaveSlot = async () => {
-    const slotName = prompt('Nombre para el slot de guardado:');
+    const slotName = prompt(t('options.slot_name_prompt'));
     if (!slotName) return;
     try {
       await saveToSlot(slotName);
       const slots = await getSaveSlots();
       setSaveSlots(slots);
-      alert(`Partida guardada en el slot: ${slotName}`);
+      alert(t('options.save_success', { name: slotName }));
     } catch {
-      alert('Error al guardar la partida');
+      alert(t('options.save_error'));
     }
   };
 
   const handleDeleteSlot = async (id: number) => {
-    if (!confirm('¿Estás seguro de eliminar este slot de guardado?')) return;
+    if (!confirm(t('options.delete_slot_confirm'))) return;
     await deleteSlot(id);
     const slots = await getSaveSlots();
     setSaveSlots(slots);
   };
 
   const handleResetGame = async () => {
-    if (!confirm('¿Estás seguro de resetear la partida actual? Se borrarán todos los datos no guardados en slots.')) return;
+    if (!confirm(t('options.reset_game_confirm'))) return;
     try {
       console.log('Resetting game data...');
       await clearAllData();
@@ -132,7 +134,7 @@ const Options = () => {
     <section className={styles.optionsSection}>
       <header className={styles.header}>
         <h1 className={styles.title}>
-          OPTIONS
+          {t('common.options')}
         </h1>
         <DatabaseTools />
       </header>
@@ -141,13 +143,28 @@ const Options = () => {
         {/* Game Settings */}
         <div className={styles.sectionCard}>
           <h2 className={styles.sectionTitle}>
-              Gestión del Juego
+              {t('options.game_management')}
           </h2>
           <div className={styles.settingsList}>
             <div className={styles.settingItem}>
               <div className={styles.settingInfo}>
-                <span className={styles.settingLabel}>Sistema de Lesiones</span>
-                <p className={styles.settingDescription}>Activa o desactiva las lesiones aleatorias tras los shows.</p>
+                <span className={styles.settingLabel}>{t('options.language')}</span>
+                <p className={styles.settingDescription}>{t('options.select_lang')}</p>
+              </div>
+              <select 
+                className={styles.languageSelect}
+                value={i18n.language.split('-')[0]} 
+                onChange={(e) => i18n.changeLanguage(e.target.value)}
+              >
+                <option value="es">Español</option>
+                <option value="en">English</option>
+              </select>
+            </div>
+
+            <div className={styles.settingItem}>
+              <div className={styles.settingInfo}>
+                <span className={styles.settingLabel}>{t('options.injury_system')}</span>
+                <p className={styles.settingDescription}>{t('options.injury_desc')}</p>
               </div>
               <label className={styles.switch}>
                 <input 
@@ -161,8 +178,8 @@ const Options = () => {
 
             <div className={styles.settingItem}>
               <div className={styles.settingInfo}>
-                <span className={styles.settingLabel}>Sistema de Moral</span>
-                <p className={styles.settingDescription}>Activa o desactiva la progresión de moral de los luchadores.</p>
+                <span className={styles.settingLabel}>{t('options.morale_system')}</span>
+                <p className={styles.settingDescription}>{t('options.morale_desc')}</p>
               </div>
               <label className={styles.switch}>
                 <input 
@@ -176,17 +193,17 @@ const Options = () => {
 
             <div className={styles.settingItem}>
               <div className={styles.settingInfo}>
-                <span className={styles.settingLabel}>Semanas por Season</span>
-                <p className={styles.settingDescription}>Configurado al inicio de la partida (Inmutable).</p>
+                <span className={styles.settingLabel}>{t('options.weeks_per_season')}</span>
+                <p className={styles.settingDescription}>{t('options.immutable_desc')}</p>
               </div>
               <select 
                 className={styles.lockedSelect}
                 value={weeksPerSeason}
                 disabled
               >
-                <option value={12}>12 SHOWS</option>
-                <option value={24}>24 SHOWS</option>
-                <option value={60}>60 SHOWS</option>
+                <option value={12}>12 {t('landing.shows')}</option>
+                <option value={24}>24 {t('landing.shows')}</option>
+                <option value={60}>60 {t('landing.shows')}</option>
               </select>
             </div>
           </div>
@@ -194,54 +211,54 @@ const Options = () => {
 
         {/* Local Assets Management */}
         <div className={styles.sectionCard}>
-          <h2 className={styles.sectionTitle}>Recursos Locales</h2>
+          <h2 className={styles.sectionTitle}>{t('options.local_assets')}</h2>
           <p className={styles.sectionDescription}>
-            Vincula una carpeta local para cargar imágenes sin modificar el código.
+            {t('options.local_assets_desc')}
           </p>
           
           <div className={styles.assetStatus}>
             {!hasLinkedFolder ? (
               <button className={styles.linkButton} onClick={handleLinkFolder}>
-                Vincular Carpeta visuals
+                {t('options.link_visuals_folder')}
               </button>
             ) : !folderPermission ? (
               <button className={`${styles.linkButton} ${styles.warning}`} onClick={handleRequestPermission}>
-                Reactivar Acceso
+                {t('options.reactivate_access')}
               </button>
             ) : (
               <div className={styles.folderActive}>
                 <span className={styles.statusDot}></span>
-                Conectado a visuals/
-                <button className={styles.smallButton} onClick={handleLinkFolder}>Cambiar</button>
+                {t('options.connected_to')} visuals/
+                <button className={styles.smallButton} onClick={handleLinkFolder}>{t('options.change')}</button>
               </div>
             )}
           </div>
           
           <p className={styles.assetNote}>
-            Asegúrate de que la estructura sea <code>visuals/Wrestlers</code>, <code>visuals/Brands</code>, etc.
+            {t('options.asset_note')}
           </p>
         </div>
 
         {/* Database Management */}
         <div className={styles.sectionCard}>
-          <h2 className={styles.sectionTitle}>Datos y Backup</h2>
+          <h2 className={styles.sectionTitle}>{t('options.data_backup')}</h2>
           <p className={styles.sectionDescription}>
-            Gestiona la persistencia de tu partida. Guarda tu progreso en slots internos.
+            {t('options.persistence_desc')}
           </p>
           
           <div className={styles.persistenceActions}>
             <button className={styles.saveButton} onClick={handleCreateSaveSlot}>
-              Guardar
+              {t('common.save')}
             </button>
             <button className={styles.resetButton} onClick={handleResetGame}>
-              Menú Principal
+              {t('options.main_menu')}
             </button>
           </div>
 
           <div className={styles.slotsManagement}>
-            <h3 className={styles.subTitle}>Slots Guardados</h3>
+            <h3 className={styles.subTitle}>{t('options.saved_slots')}</h3>
             {saveSlots.length === 0 ? (
-              <p className={styles.noSlots}>No hay slots de guardado.</p>
+              <p className={styles.noSlots}>{t('options.no_slots')}</p>
             ) : (
               <div className={styles.slotsMiniList}>
                 {saveSlots.map(slot => (
@@ -265,7 +282,7 @@ const Options = () => {
 
           <div className={styles.actionNote}>
              <p>
-               Para cargar una partida guardada, sal al Menú Principal.
+               {t('options.load_instruction')}
              </p>
           </div>
         </div>

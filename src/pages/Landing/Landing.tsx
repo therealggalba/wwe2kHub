@@ -7,11 +7,13 @@ import ResolvedImage from '../../components/Common/ResolvedImage';
 import styles from './Landing.module.scss';
 import Hyperspeed from '../../components/Hyperspeed/Hyperspeed';
 import { hyperspeedPresets } from '../../components/Hyperspeed/hyperspeedPresets';
+import { useTranslation } from 'react-i18next';
 
 type ViewState = 'MAIN' | 'NEW_GAME' | 'LOAD_GAME' | 'WIZARD';
 type WizardStep = '1_NAME' | '2_PREP' | '3_IMPORT' | '4_ASSETS' | '5_CONFIRM';
 
 const Landing: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [view, setView] = useState<ViewState>('MAIN');
   const [wizardStep, setWizardStep] = useState<WizardStep>('1_NAME');
@@ -128,7 +130,7 @@ const Landing: React.FC = () => {
       else data.settings.push({ key: 'weeksPerSeason', value: seasonDuration });
 
       await importState(data);
-      navigate('/home');
+      navigate('/home', { state: { newGame: true } });
     } catch (error: unknown) {
       alert(error instanceof Error ? error.message : 'Error al cargar preset');
     } finally {
@@ -177,15 +179,17 @@ const Landing: React.FC = () => {
     try {
       // Inject selected season duration into settings
       if (!importedData.settings) importedData.settings = [];
-      const setIdx = (importedData.settings as any[]).findIndex((s: any) => s.key === 'weeksPerSeason');
-      if (setIdx > -1) (importedData.settings as any[])[setIdx].value = seasonDuration;
-      else (importedData.settings as any[]).push({ key: 'weeksPerSeason', value: seasonDuration });
+      const settings = importedData.settings as { key: string; value: any }[];
+      const setIdx = settings.findIndex(s => s.key === 'weeksPerSeason');
+      if (setIdx > -1) settings[setIdx].value = seasonDuration;
+      else settings.push({ key: 'weeksPerSeason', value: seasonDuration });
 
       // Inject Gonzalo Galba as GM if not present
       if (!importedData.npcs) importedData.npcs = [];
-      const hasGM = (importedData.npcs as any[]).some((n: any) => n.role === 'General Manager' || n.role === 'GM');
+      const npcs = importedData.npcs as { id: number; name: string; role: string; brandName?: string; image?: string }[];
+      const hasGM = npcs.some(n => n.role === 'General Manager' || n.role === 'GM');
       if (!hasGM) {
-        (importedData.npcs as any[]).push({
+        npcs.push({
           id: 999,
           name: "Gonzalo Galba",
           role: "General Manager",
@@ -194,7 +198,7 @@ const Landing: React.FC = () => {
         });
       }
 
-      await importState(importedData);
+      await importState(importedData as Partial<FullDatabaseState>);
       navigate('/home', { state: { newGame: true } });
     } catch (error) {
       alert('Error al finalizar la creación: ' + error);
@@ -207,15 +211,15 @@ const Landing: React.FC = () => {
     <div className={styles.mainMenu}>
       <button className={styles.menuItem} onClick={() => setView('NEW_GAME')}>
         <div className={styles.text}>
-          <h3>NUEVA PARTIDA</h3>
+          <h3>{t('common.new_game')}</h3>
         </div>
       </button>
       <button 
         className={`${styles.menuItem} ${saveSlots.length === 0 ? styles.disabled : ''}`} 
         onClick={() => saveSlots.length > 0 && setView('LOAD_GAME')}>
         <div className={styles.text}>
-          <h3>CARGAR PARTIDA</h3>
-          <p>{saveSlots.length > 0 ? `Tienes ${saveSlots.length} partidas guardadas.` : 'No hay partidas guardadas.'}</p>
+          <h3>{t('common.continue')}</h3>
+          <p>{saveSlots.length > 0 ? t('landing.has_saves', { count: saveSlots.length }) : t('landing.no_saves')}</p>
         </div>
       </button>
     </div>
@@ -223,14 +227,14 @@ const Landing: React.FC = () => {
 
   const renderNewGameMenu = () => (
     <div className={styles.subMenu}>
-      <button className={styles.backButton} onClick={() => setView('MAIN')}>← Volver</button>
-      <h2 className={styles.viewTitle}>ELEGIR PRESET</h2>
+      <button className={styles.backButton} onClick={() => setView('MAIN')}>← {t('common.back')}</button>
+      <h2 className={styles.viewTitle}>{t('landing.pick_preset')}</h2>
       
       <div className={styles.durationSelector}>
-        <label>DURACIÓN DE LA SEASON:</label>
+        <label>{t('landing.season_duration')}:</label>
         <div className={styles.durationOptions}>{[12, 24, 60].map(d => (
             <button key={d} className={seasonDuration === d ? styles.active : ''} 
-              onClick={() => setSeasonDuration(d)}>{d} SHOWS</button>
+              onClick={() => setSeasonDuration(d)}>{d} {t('landing.shows')}</button>
           ))}
         </div>
       </div>
@@ -240,7 +244,7 @@ const Landing: React.FC = () => {
           <div className={styles.presetLogo}>
             <ResolvedImage src="https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/wwe.png" alt="WWE" />
           </div>
-          <p>Preset con RAW, SD y NXT.</p>
+          <p>{t('landing.preset_wwe_desc')}</p>
           <p>2026</p>
         </div>
 
@@ -248,13 +252,13 @@ const Landing: React.FC = () => {
           <div className={`${styles.presetLogo} ${styles.aew}`}>
             <ResolvedImage src="https://res.cloudinary.com/dgvthwz6h/image/upload/v1774380691/aew.png" alt="AEW" />
           </div>
-          <p>Preset con Dynamite y Collision.</p>
+          <p>{t('landing.preset_aew_desc')}</p>
           <p>2026</p>
         </div>
 
         <div className={`${styles.presetCard} ${styles.custom}`} onClick={() => setView('WIZARD')}>
           <div className={styles.presetLogo}>⚙️</div>
-          <p>Crea tu preset personalizado.</p>
+          <p>{t('landing.custom_universe')}</p>
           <p>2026</p>
         </div>
       </div>
@@ -263,8 +267,8 @@ const Landing: React.FC = () => {
 
   const renderLoadGameMenu = () => (
     <div className={styles.subMenu}>
-      <button className={styles.backButton} onClick={() => setView('MAIN')}>← Volver</button>
-      <h2 className={styles.viewTitle}>MIS PARTIDAS</h2>
+      <button className={styles.backButton} onClick={() => setView('MAIN')}>← {t('common.back')}</button>
+      <h2 className={styles.viewTitle}>{t('landing.select_slot')}</h2>
       
       <div className={styles.slotsList}>
         {saveSlots.map(slot => (
@@ -297,74 +301,78 @@ const Landing: React.FC = () => {
         <div className={styles.stepContent}>
           {wizardStep === '1_NAME' && (
             <div className={styles.wizardView}>
-              <h2>Nombre del Universo</h2>
-              <p>Nombra tu nueva creación para identificarla en los slots.</p>
+              <h2>{t('landing.wizard_step_1_title')}</h2>
+              <p>{t('landing.wizard_step_1_desc')}</p>
               <input 
                 type="text" 
-                placeholder="Ej: My Custom Universe" 
+                placeholder={t('landing.wizard_step_1_placeholder')}
                 value={customPresetName}
                 onChange={e => setCustomPresetName(e.target.value)}
                 autoFocus
               />
-              <button disabled={!customPresetName} onClick={() => setWizardStep('2_PREP')}>Siguiente</button>
+              <button disabled={!customPresetName} onClick={() => setWizardStep('2_PREP')}>{t('landing.next')}</button>
             </div>
           )}
 
           {wizardStep === '2_PREP' && (
             <div className={styles.wizardView}>
-              <h2>Preparación de Datos</h2>
-              <p>Usa nuestra plantilla JSON y rellénala con tus datos.</p>
+              <h2>{t('landing.wizard_step_2_title')}</h2>
+              <p>{t('landing.wizard_step_2_desc')}</p>
               <div className={styles.actionBox}>
-                <button className={styles.downloadBtn} onClick={() => setShowTemplateModal(true)}>VER INSTRUCCIONES Y LA PLANTILLA</button>
-                <div className={styles.tip}>Tip: Verifica los IDs y que las rutas de imagen coincidan con tu carpeta local.</div>
+                <button className={styles.downloadBtn} onClick={() => setShowTemplateModal(true)}>{t('landing.wizard_step_2_instructions')}</button>
+                <div className={styles.tip}>{t('landing.wizard_step_2_tip')}</div>
               </div>
-              <button onClick={() => setWizardStep('3_IMPORT')}>Archivo JSON listo</button>
+              <button onClick={() => setWizardStep('3_IMPORT')}>{t('landing.wizard_step_2_ready')}</button>
             </div>
           )}
 
           {wizardStep === '3_IMPORT' && (
             <div className={styles.wizardView}>
-              <h2>Importar JSON</h2>
-              <p>Selecciona el archivo <code>.json</code> que has modificado.</p>
+              <h2>{t('landing.wizard_step_3_title')}</h2>
+              <p>{t('landing.wizard_step_3_desc')}</p>
               <label className={styles.fileLabel}>
-                <span>📂 Seleccionar Archivo</span>
+                <span>📂 {t('landing.select_file')}</span>
                 <input type="file" accept=".json" onChange={handleJsonUpload} />
               </label>
-              {importedData && <p className={styles.successMsg}>✅ Archivo detectado correctamente.</p>}
+              {importedData && <p className={styles.successMsg}>✅ {t('landing.file_detected')}</p>}
             </div>
           )}
 
           {wizardStep === '4_ASSETS' && (
             <div className={styles.wizardView}>
-              <h2>Recursos Visuales</h2>
-              <p>Vincula la carpeta local donde guardas las imágenes para que se vean en el HUB.</p>
+              <h2>{t('landing.wizard_step_4_title')}</h2>
+              <p>{t('landing.wizard_step_4_desc')}</p>
               <div className={styles.assetWizardBox}>
                  {!hasLinkedFolder ? (
-                  <button className={styles.wizardActionBtn} onClick={handleLinkFolder}>📂 Vincular Carpeta de Imágenes</button>
+                  <button className={styles.wizardActionBtn} onClick={handleLinkFolder}>📂 {t('landing.link_folder')}</button>
                 ) : !folderPermission ? (
-                  <button className={styles.wizardActionBtn} onClick={handleRequestPermission}>⚠️ Reactivar Permisos</button>
+                  <button className={styles.wizardActionBtn} onClick={handleRequestPermission}>⚠️ {t('landing.reactivate_perms')}</button>
                 ) : (
-                  <div className={styles.successBox}>✅ Carpeta vinculada correctamente.</div>
+                  <div className={styles.successBox}>✅ {t('landing.folder_linked')}</div>
                 )}
               </div>
-              <p className={styles.hint}>Si no vinculas la carpeta ahora, podrás hacerlo más tarde en Opciones.</p>
-              <button onClick={() => setWizardStep('5_CONFIRM')}>Continuar</button>
+              <p className={styles.hint}>{t('landing.link_later_hint')}</p>
+              <button onClick={() => setWizardStep('5_CONFIRM')}>{t('landing.next')}</button>
             </div>
           )}
 
           {wizardStep === '5_CONFIRM' && (
             <div className={styles.wizardView}>
-              <h2>¡Todo listo!</h2>
-              <p>Vas a crear el universo <strong>{customPresetName}</strong>.</p>
+              <h2>{t('landing.wizard_step_5_title')}</h2>
+              <p>
+                {t('landing.wizard_step_5_desc').split('<strong>{{name}}</strong>')[0]}
+                <strong>{customPresetName}</strong>
+                {t('landing.wizard_step_5_desc').split('<strong>{{name}}</strong>')[1]}
+              </p>
               <div className={styles.summaryBox}>
                 <ul>
-                  <li>Marcas: {importedData?.brands.length || 0}</li>
-                  <li>Luchadores: {importedData?.wrestlers.length || 0}</li>
-                  <li>Títulos: {importedData?.championships.length || 0}</li>
+                  <li>{t('landing.brands')}: {importedData?.brands?.length ?? 0}</li>
+                  <li>{t('landing.wrestlers')}: {importedData?.wrestlers?.length ?? 0}</li>
+                  <li>{t('landing.championships')}: {importedData?.championships?.length ?? 0}</li>
                 </ul>
               </div>
               <button className={styles.finalBtn} onClick={finalizeCustomWizard} disabled={isLoading}>
-                {isLoading ? 'CREANDO...' : 'COMENZAR AVENTURA'}
+                {isLoading ? t('landing.creating') : t('landing.start_adventure')}
               </button>
             </div>
           )}
@@ -378,9 +386,24 @@ const Landing: React.FC = () => {
       <Hyperspeed effectOptions={hyperspeedPresets.two} />
       <div className={styles.overlay}></div>
       <div className={styles.content}>
+        <div className={styles.languageSwitcher}>
+          <button 
+            className={i18n.language === 'es' ? styles.active : ''} 
+            onClick={() => i18n.changeLanguage('es')}
+          >
+            ES
+          </button>
+          <button 
+            className={i18n.language === 'en' ? styles.active : ''} 
+            onClick={() => i18n.changeLanguage('en')}
+          >
+            EN
+          </button>
+        </div>
+
         <div className={styles.logoContainer}>
           <h1 className={styles.title}>ELITE<span>BOOKER</span></h1>
-          <p className={styles.subtitle}>PREMIUM UNIVERSE SIMULATOR</p>
+          <p className={styles.subtitle}>{t('landing.subtitle')}</p>
         </div>
 
         <div className={styles.viewLayer}>
